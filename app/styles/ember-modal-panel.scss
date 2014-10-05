@@ -1,0 +1,22 @@
+.ember-modal-panel {
+  z-index:51;
+  position:absolute;
+  border-radius:8px;
+  background-color:#fff;
+  box-shadow:0 0 10px #222;
+}
+.ember-modal-panel .pointer {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-bottom: 7px solid transparent;
+  border-top: 7px solid transparent;
+  position: absolute;
+}
+
+.ember-modal-panel .pointer.point-right {
+  border-left: 10px solid #404040;
+}
+.ember-modal-panel .pointer.point-left {
+  border-right: 10px solid #404040;
+}
