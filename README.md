@@ -1,4 +1,6 @@
-# Ember-modal-dialog
+# ember-modal-dialog
+
+Component for rendering a modal dialog. Early extraction from a Yapp app. Probably not ready for re-use yet.
 
 This README outlines the details of collaborating on this Ember addon.
 
@@ -21,5 +23,11 @@ This README outlines the details of collaborating on this Ember addon.
 ## Building
 
 * `ember build`
+
+## TODO
+
+* Docs
+* Tests
+* Examples
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
