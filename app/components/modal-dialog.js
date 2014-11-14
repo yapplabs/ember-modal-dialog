@@ -27,6 +27,17 @@ export default Ember.Component.extend({
         width = $originView.outerWidth();
         this.$('.ember-modal-panel').css('left', originOffset.left + width).css('top', originOffset.top);
         break;
+      case 'bottom':
+        var $panel = this.$('.ember-modal-panel');
+        $originView = originView.$();
+        originOffset = $originView.offset();
+        width = $originView.outerWidth();
+        height = $originView.outerHeight();
+        $panel.css({
+          left: originOffset.left + width / 2 + $panel.width() / 2,
+          top: originOffset.top + height
+        });
+        break;
       case 'center':
         var $panel = this.$('.ember-modal-panel');
         $originView = originView.$();
