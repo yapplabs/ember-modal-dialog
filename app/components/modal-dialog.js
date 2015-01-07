@@ -8,47 +8,49 @@ export default Ember.Component.extend({
   positionElement: function() {
     if (this.get('_state') !== 'inDOM') { return; }
 
+    var $panel = this.$('.ember-modal-panel');
+
     if (!this.get('isPositioned')) {
-      this.$('.ember-modal-panel').css('left', '').css('top', '');
+      $panel.css('left', '').css('top', '');
       return;
     }
 
-    var originView = this.get('originView');
+    var $originView = this.get('originView').$();
+    var originOffset = $originView.offset();
     var alignmentToOrigin = this.get('alignmentToOrigin');
-    var width, height, $originView, originOffset;
+    var leftOffset, topOffset;
+
     switch (alignmentToOrigin) {
       case 'left':
-        originOffset = originView.$().offset();
-        this.$('.ember-modal-panel').css('left', originOffset.left).css('top', originOffset.top);
+        leftOffset = originOffset.left;
+        topOffset = originOffset.top;
+
         break;
       case 'right':
-        $originView = originView.$();
-        originOffset = $originView.offset();
-        width = $originView.outerWidth();
-        this.$('.ember-modal-panel').css('left', originOffset.left + width).css('top', originOffset.top);
+        leftOffset = originOffset.left + $originView.outerWidth();
+        topOffset = originOffset.top;
+
         break;
       case 'bottom':
-        var $panel = this.$('.ember-modal-panel');
-        $originView = originView.$();
-        originOffset = $originView.offset();
-        width = $originView.outerWidth();
-        height = $originView.outerHeight();
-        $panel.css({
-          left: originOffset.left + width / 2 + $panel.width() / 2,
-          top: originOffset.top + height
-        });
+        leftOffset = originOffset.left + $originView.outerWidth() / 2 + $panel.width() / 2;
+        topOffset = originOffset.top + $originView.outerHeight();
+
         break;
       case 'center':
-        var $panel = this.$('.ember-modal-panel');
-        $originView = originView.$();
-        originOffset = $originView.offset();
-        width = $originView.outerWidth();
-        height = $originView.outerHeight();
-        $panel.css({
-          left: originOffset.left + width / 2 - $panel.width() / 2,
-          top: originOffset.top + height / 2 - $panel.height() / 2
-        });
+        leftOffset = originOffset.left + $originView.outerWidth() / 2 - $panel.width() / 2;
+        topOffset = originOffset.top + $originView.outerHeight() / 2 - $panel.height() / 2;
+
+        break;
+      default:
+        leftOffset = originOffset.left;
+        topOffset = originOffset.top;
+
+        break;
     }
+
+    $panel.css('left', leftOffset)
+          .css('top', topOffset);
+
   }.observes('isPositioned').on('didInsertElement'),
   actions: {
     close: function() {
