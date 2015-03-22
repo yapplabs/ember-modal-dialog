@@ -1,0 +1,11 @@
+.ember-modal-dialog {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #222;
+  padding: 10px;
+}
+.ember-modal-overlay.translucent {
+  opacity: 0.77;
+  filter: alpha(opacity=15);
+  background-color: #808080;
+}

@@ -1,0 +1,43 @@
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+@import "tomorrow-night-eighties";
+@import "custom-styles";
+
+body {
+  font-family: sans-serif;
+  font-size: 12px;
+}
+
+.example {
+  padding: 10px;
+  background: #ddd;
+  border: solid 1px #666;
+  border-radius: 4px;
+  margin: 0 5px 5px 0;
+  min-height: 120px;
+  width: 500px;
+}
+
+button {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #0f9d58;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+
+.alignmentTargetContainer {
+  text-align: center;
+}
+
+pre {
+  border: solid 1px #bbb;
+  border-radius: 4px;
+}
+
+h1,
+h2 {
+  padding: 0 0 8px 0;
+  margin: 0;
+}

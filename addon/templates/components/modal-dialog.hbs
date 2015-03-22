@@ -1,0 +1,7 @@
+{{#ember-modal-dialog-overlay hasOverlay=hasOverlay overlayClassNames=overlayClassNames translucent=translucentOverlay close='close'}}
+  {{#ember-modal-dialog-positioned-container containerClassNames=containerClassNames
+                                alignment=alignment
+                                alignmentTarget=alignmentTarget}}
+    {{yield}}
+  {{/ember-modal-dialog-positioned-container}}
+{{/ember-modal-dialog-overlay}}

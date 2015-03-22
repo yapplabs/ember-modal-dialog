@@ -1,0 +1,13 @@
+.ember-modal-overlay {
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 50;
+}
+.ember-modal-dialog {
+  z-index: 50;
+  position: fixed;
+}

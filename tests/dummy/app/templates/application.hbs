@@ -1,3 +1,65 @@
-<h2 id='title'>Welcome to Ember.js</h2>
+<h1 id="title">Ember Modal Dialog</h1>
 
 {{outlet}}
+
+<div class='example' id='example-basic'>
+<h2>Basic</h2>
+  <button {{action 'toggleBasic'}}>Do It</button>
+  {{code-snippet name='basic.hbs'}}
+  {{#if isShowingBasic}}
+    {{#modal-dialog close='toggleBasic'}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Basic</p>
+      <button {{action 'toggleBasic'}}>Close</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-translucent'>
+  <h2>With Translucent Overlay</h2>
+  <button {{action 'toggleTranslucent'}}>Do It</button>
+  {{code-snippet name='translucent.hbs'}}
+  {{#if isShowingTranslucent}}
+    {{#modal-dialog close='toggleTranslucent'
+                    translucentOverlay=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>With Translucent Overlay</p>
+      <button {{action 'toggleTranslucent'}}>Close</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-custom-styles'>
+  <h2>Custom Styles</h2>
+  <button {{action 'toggleCustomStyles'}}>Do It</button>
+  {{code-snippet name='custom-styles.hbs'}}
+  {{code-snippet name='custom-styles.scss'}}
+  {{#if isShowingCustomStyles}}
+    {{#modal-dialog close='toggleCustomStyles'
+                    alignment='none'
+                    containerClassNames='custom-styles-modal-container'
+                    overlayClassNames='custom-styles-modal' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Custom Styles</p>
+      <button {{action 'toggleCustomStyles'}}>Close</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-alignment-target'>
+  <h2>Alignment Target</h2>
+  <div class='alignmentTargetContainer'>
+    <button id='alignModalToMe' {{action 'toggleAlignmentTarget'}}>Do It</button>
+  </div>
+  {{code-snippet name='alignment-target.hbs'}}
+  {{#if isShowingAlignmentTarget}}
+    {{#modal-dialog close='toggleAlignmentTarget'
+                    hasOverlay=false
+                    alignment=alignmentTargetDirection
+                    alignmentTarget='#alignModalToMe' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Alignment Target</p>
+      <button {{action 'closeAlignmentTarget'}}>Close</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
