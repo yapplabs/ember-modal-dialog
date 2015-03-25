@@ -1,4 +1,4 @@
-# Ember Modal Dialog
+# Ember Modal Dialog [![Build Status](https://travis-ci.org/yapplabs/ember-modal-dialog.svg?branch=master)](https://travis-ci.org/yapplabs/ember-modal-dialog)
 
 The ember-modal-dialog addon provides components to implement modal dialogs throughout an Ember application using a simple, consistent pattern.
 
