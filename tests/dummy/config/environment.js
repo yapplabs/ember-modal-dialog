@@ -20,9 +20,11 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      emberModalDialog: {
-        modalRootElementId: 'custom-modal-root-element'
-      }
+
+      // Here is how to configure a custom modal root element id
+      // emberModalDialog: {
+      //   modalRootElementId: 'custom-modal-root-element'
+      // }
     }
   };
 

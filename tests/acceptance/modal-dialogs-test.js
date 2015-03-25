@@ -7,7 +7,7 @@ import startApp from '../helpers/start-app';
 
 import QUnit from 'qunit';
 
-var modalRootElementSelector = '#custom-modal-root-element';
+var modalRootElementSelector = '#modal-overlays';
 var overlaySelector = '.ember-modal-overlay';
 var dialogSelector = '.ember-modal-dialog';
 
