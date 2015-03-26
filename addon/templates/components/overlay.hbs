@@ -1,4 +1,4 @@
 {{#if hasOverlay}}
-  <div class={{overlayClassNamesString}} {{action 'close'}}></div>
+  <div {{bind-attr class=overlayClassNamesString}} {{action 'close'}}></div>
 {{/if}}
 {{yield}}
