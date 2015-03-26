@@ -180,6 +180,7 @@ export default Component.extend({
 
 ## Running Tests
 
+* `ember try:testall`
 * `ember test`
 * `ember test --server`
 
