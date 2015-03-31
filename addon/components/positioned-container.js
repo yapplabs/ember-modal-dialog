@@ -1,6 +1,8 @@
 import Ember from 'ember';
 
 var computed = Ember.computed;
+var observer = Ember.observer;
+var on = Ember.on;
 
 export default Ember.Component.extend({
 
@@ -22,7 +24,7 @@ export default Ember.Component.extend({
   }),
   classNameBindings: ['containerClassNamesString'],
 
-  didGetPositioned: function() {
+  didGetPositioned: observer('isPositioned', on('didInsertElement', function() {
     if (this._state !== 'inDOM') { return; }
 
     if (this.get('isPositioned')) {
@@ -30,7 +32,7 @@ export default Ember.Component.extend({
     } else {
       this.$().css('left', '').css('top', '');
     }
-  }.observes('isPositioned').on('didInsertElement'),
+  })),
 
   //TODO: Add resize and scroll handlers
   updateAlignment: function() {
@@ -76,5 +78,4 @@ export default Ember.Component.extend({
         break;
     }
   }
-
 });
