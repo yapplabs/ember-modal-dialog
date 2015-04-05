@@ -1,7 +1,10 @@
-{{#ember-modal-dialog-overlay hasOverlay=hasOverlay overlayClassNames=overlayClassNames translucent=translucentOverlay close='close'}}
+{{#ember-wormhole to=destinationElementId}}
+  {{#if hasOverlay}}
+    <div {{bind-attr class=overlayClassNamesString}} {{action 'close'}}></div>
+  {{/if}}
   {{#ember-modal-dialog-positioned-container containerClassNames=containerClassNames
                                 alignment=alignment
                                 alignmentTarget=alignmentTarget}}
     {{yield}}
   {{/ember-modal-dialog-positioned-container}}
-{{/ember-modal-dialog-overlay}}
+{{/ember-wormhole}}

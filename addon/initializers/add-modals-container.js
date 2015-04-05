@@ -10,7 +10,7 @@ export default function(container, application){
   application.register('config:modals-container-id',
                        modalContainerElId,
                        { instantiate: false });
-  application.inject('component:ember-modal-dialog-overlay',
-                     'containerElementId',
+  application.inject('component:modal-dialog',
+                     'destinationElementId',
                      'config:modals-container-id');
 }

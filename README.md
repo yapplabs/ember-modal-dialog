@@ -2,7 +2,7 @@
 
 The ember-modal-dialog addon provides components to implement modal dialogs throughout an Ember application using a simple, consistent pattern.
 
-Unlike other modal libraries for Ember, ember-modal-dialog uses advanced features of HTMLBars to render a modal as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. (For more info on this,
+Unlike other modal libraries for Ember, ember-modal-dialog uses our [ember-wormhole](//github.com/yapplabs/ember-wormhole) addon to render a modal as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. (For more info on this,
 see the "Wormhole" section below!)
 
 Test examples are located in `tests/dummy/app/templates/application.hbs` and can be run locally by following the instructions in the "Installation" and "Running" sections below.
@@ -83,9 +83,9 @@ Property              | Purpose
 
 Display of a modal dialog is typically triggered by a user interaction. While the content in the dialog is related to the content in the user interaction, the underyling display mechanism for the dialogs can be shared across the entire application.
 
-The `add-modals-container` initializer appends a container element to the `application.rootElement`. It injects a reference to this container element id as a property of the internal `ember-modal-dialog-overlay` component.
+The `add-modals-container` initializer appends a container element to the `application.rootElement`. It injects a reference to this container element id as a property of the `modal-dialog` component.
 
-This overlay component renders a dialog by appending a morph to a dedicated element in the DOM. This decouples the DOM location of a modal from the DOM location of whatever triggered its display... hence wormholes!
+This component uses the ember-wormhole component to render a dialog by appending a morph to a dedicated element in the DOM. This decouples the DOM location of a modal from the DOM location of whatever triggered its display... hence wormholes!
 
 ## Configuring the Modal Root Element Id
 
@@ -165,13 +165,11 @@ export default Component.extend({
 ## Dependencies
 
 * Requires Ember CLI >= 0.2.0
-* Requires Ember >= 1.11.0-beta.5
+* Requires Ember >= 1.10.0
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+* `ember install:addon ember-modal-dialog`
 
 ## Running
 
@@ -189,3 +187,8 @@ export default Component.extend({
 * `ember build`
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+
+## Credits
+
+Contributions from @stefanpenner, @krisselden, @chrislopresto, @lukemelia, @raycohen and
+others. [Yapp Labs](http://yapplabs.com) is an Ember.js consultancy based in NYC.
