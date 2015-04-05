@@ -17,4 +17,14 @@ install:
   - bower install
 
 script:
-  - ember try:testall
+  - ./node_modules/.bin/ember try "$EMBER_TRY_SCENARIO" test
+
+env:
+  - EMBER_TRY_SCENARIO="Ember 1.10.0"
+  - EMBER_TRY_SCENARIO="Ember 1.11.1"
+  - EMBER_TRY_SCENARIO="Ember Beta"
+  - EMBER_TRY_SCENARIO="Ember Canary"
+
+matrix:
+  allow_failures:
+    - env: EMBER_TRY_SCENARIO="Ember Canary"
