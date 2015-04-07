@@ -139,7 +139,7 @@ The addon packages default styles for modal structure and appearance. To use the
 
 ## Wiring Up a Key Responder
 
-Here is an example of how to extend the `modal-dialog` component within an Ember app that is using [ember-key-responder](https://github.com/yapplabs/ember-key-responder).
+Here is an example of how to extend the `modal-dialog` component within an Ember app that is using [ember-key-responder](https://github.com/yapplabs/ember-key-responder) (e.g. to respond to keyboard shortcuts like 'escape').
 
 **app/components/modal-dialog.js**
 
