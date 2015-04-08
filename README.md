@@ -137,13 +137,33 @@ The addon packages default styles for modal structure and appearance. To use the
 @import "ember-modal-dialog/ember-modal-appearance";
 ```
 
-## Wiring Up a Key Responder
+## Keyboard shortcuts
 
-Here is an example of how to extend the `modal-dialog` component within an Ember app that is using [ember-key-responder](https://github.com/yapplabs/ember-key-responder).
+A quick-and-dirty way to implement keyboard shortcuts (e.g. to dismiss your modals with `escape`) is to subclass the dialog and attach keyboard events:
 
-**app/components/modal-dialog.js**
+```js
+// app/components/modal-dialog/component.js
+import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
+
+export default ModalDialog.extend({
+  setup: function() {
+    Ember.$('body').on('keyup', (e) => {
+      if (e.keyCode == 27) {
+        this.sendAction('close');
+      }
+    });
+  }.on('didInsertElement'),
+
+  teardown: function() {
+    Ember.$('body').off('keyup');
+  }.on('willDestroyElement'),
+});
+```
+
+This can work, but some apps require a more sophisticated approach. One approach, inspired by Cocoa, takes advantage of the [ember-key-responder](https://github.com/yapplabs/ember-key-responder) library. Here's an example:
 
 ```javascript
+// app/components/modal-dialog.js
 import Component from 'ember-modal-dialog/components/modal-dialog';
 
 export default Component.extend({
@@ -161,6 +181,8 @@ export default Component.extend({
   }
 });
 ```
+
+View [the library](https://github.com/yapplabs/ember-key-responder) for more information.
 
 ## Dependencies
 
