@@ -142,12 +142,12 @@ The addon packages default styles for modal structure and appearance. To use the
 A quick-and-dirty way to implement keyboard shortcuts (e.g. to dismiss your modals with `escape`) is to subclass the dialog and attach keyboard events:
 
 ```js
-// app/components/modal-dialog/component.js
+// app/components/modal-dialog.js
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
 
 export default ModalDialog.extend({
   setup: function() {
-    Ember.$('body').on('keyup', (e) => {
+    Ember.$('body').on('keyup.modal-dialog', (e) => {
       if (e.keyCode == 27) {
         this.sendAction('close');
       }
@@ -155,7 +155,7 @@ export default ModalDialog.extend({
   }.on('didInsertElement'),
 
   teardown: function() {
-    Ember.$('body').off('keyup');
+    Ember.$('body').off('keyup.modal-dialog');
   }.on('willDestroyElement'),
 });
 ```
@@ -164,9 +164,9 @@ This can work, but some apps require a more sophisticated approach. One approach
 
 ```javascript
 // app/components/modal-dialog.js
-import Component from 'ember-modal-dialog/components/modal-dialog';
+import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
 
-export default Component.extend({
+export default ModalDialog.extend({
   acceptsKeyResponder: true,
   becomeKeyResponderWhenInserted: function(){
     this.becomeKeyResponder();
