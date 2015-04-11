@@ -35,6 +35,9 @@ QUnit.assert.dialogOpensAndCloses = function(options, message) {
       self.isPresentOnce(overlaySelector);
     }
     self.isPresentOnce(dialogContent);
+    if (options.whileOpen) {
+      options.whileOpen();
+    }
     return click(options.closeSelector).then(function() {
       self.isAbsent(overlaySelector);
       self.isAbsent(dialogContent);
@@ -96,7 +99,10 @@ test('opening and closing modals', function(assert) {
     openSelector: '#example-custom-styles button',
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
-    hasOverlay: true
+    hasOverlay: true,
+    whileOpen: function(){
+      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided containerClassNames');
+    }
   });
   assert.dialogOpensAndCloses({
     openSelector: '#example-custom-styles button',

@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   isShowingCustomStyles: false,
   isShowingAlignmentTarget: false,
   alignmentTargetDirection: 'right',
+  customContainerClassNames: 'custom-styles-modal-container',
   actions: {
     toggleBasic: function(){
       this.toggleProperty('isShowingBasic');

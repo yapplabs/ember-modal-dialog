@@ -17,9 +17,10 @@ export default Ember.Component.extend({
     return this.get('alignment') === 'center';
   }),
   containerClassNamesString: computed('containerClassNames.[]', function() {
-    var containerClassNames = this.get('containerClassNames');
+    // var containerClassNames = this.get('containerClassNames');
+    var containerClassNames = Ember.makeArray(this.get('containerClassNames'));
     if (containerClassNames) {
-      return this.get('containerClassNames').join(' ');
+      return containerClassNames.join(' ');
     }
   }),
   classNameBindings: ['containerClassNamesString'],
