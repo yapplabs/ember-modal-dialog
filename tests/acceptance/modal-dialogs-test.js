@@ -112,8 +112,22 @@ test('opening and closing modals', function(assert) {
   });
 
   assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target button',
-    dialogText: 'Alignment Target',
+    openSelector: '#example-alignment-target-selector button',
+    dialogText: 'Alignment Target - Selector',
+    closeSelector: dialogCloseButton,
+    hasOverlay: false
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-alignment-target-view button',
+    dialogText: 'Alignment Target - View',
+    closeSelector: dialogCloseButton,
+    hasOverlay: false
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-alignment-target-element button',
+    dialogText: 'Alignment Target - Element',
     closeSelector: dialogCloseButton,
     hasOverlay: false
   });

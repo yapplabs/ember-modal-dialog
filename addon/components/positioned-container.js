@@ -6,7 +6,7 @@ var on = Ember.on;
 
 export default Ember.Component.extend({
 
-  alignmentTarget: null, // element selector, passed in
+  alignmentTarget: null, // element selector, element, or Ember View passed in
   alignment: null, // passed in; valid values are:
                    // left, right, top, bottom (relative to alignmentTarget)
                    // center (relative to container)
@@ -38,7 +38,13 @@ export default Ember.Component.extend({
   //TODO: Add resize and scroll handlers
   updateAlignment: function() {
     var alignmentTarget = this.get('alignmentTarget');
-    var originOffset = alignmentTarget && Ember.$(alignmentTarget).offset();
+    if (Ember.typeOf(alignmentTarget) === 'string') {
+      alignmentTarget = Ember.$(alignmentTarget)[0];
+    } else if (Ember.View.detectInstance(alignmentTarget)) {
+      alignmentTarget = alignmentTarget.element;
+    }
+    var $alignmentTarget = Ember.$(alignmentTarget);
+    var originOffset = alignmentTarget && $alignmentTarget.offset();
     var alignment = this.get('alignment');
 
     var originOffsetTop;
@@ -53,18 +59,18 @@ export default Ember.Component.extend({
           .css('top', originOffsetTop);
         break;
       case 'right':
-        targetWidth = Ember.$(alignmentTarget).outerWidth();
+        targetWidth = $alignmentTarget.outerWidth();
         this.$().css('left', originOffset.left + targetWidth)
           .css('top', originOffsetTop);
         break;
       case 'bottom':
-        targetWidth = Ember.$(alignmentTarget).outerWidth();
-        targetHeight = Ember.$(alignmentTarget).outerHeight();
+        targetWidth = $alignmentTarget.outerWidth();
+        targetHeight = $alignmentTarget.outerHeight();
         this.$().css('left', (originOffset.left + targetWidth/2 - elementWidth/2))
           .css('top', originOffsetTop + targetHeight);
         break;
       case 'top':
-        targetWidth = Ember.$(alignmentTarget).outerWidth();
+        targetWidth = $alignmentTarget.outerWidth();
         elementHeight = this.$().outerHeight();
         this.$().css('left', (originOffset.left + targetWidth/2 - elementWidth/2))
           .css('top', originOffsetTop - elementHeight);

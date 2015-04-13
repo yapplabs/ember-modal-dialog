@@ -46,20 +46,63 @@
   {{/if}}
 </div>
 
-<div class='example' id='example-alignment-target'>
-  <h2>Alignment Target</h2>
+<div class='example' id='example-alignment-target-selector'>
+  <h2>Alignment Target (Selector)</h2>
   <div class='alignmentTargetContainer'>
-    <button id='alignModalToMe' {{action 'toggleAlignmentTarget'}}>Do It</button>
+    <button id='alignModalToMe' {{action 'toggleAlignmentTargetSelector'}}>Do It</button>
   </div>
-  {{code-snippet name='alignment-target.hbs'}}
-  {{#if isShowingAlignmentTarget}}
-    {{#modal-dialog close='toggleAlignmentTarget'
+  {{code-snippet name='alignment-target-selector.hbs'}}
+  {{#if isShowingAlignmentTargetSelector}}
+    {{#modal-dialog close='toggleAlignmentTargetSelector'
                     hasOverlay=false
                     alignment=alignmentTargetDirection
                     alignmentTarget='#alignModalToMe' }}
       <h1>Stop! Modal Time!</h1>
-      <p>Alignment Target</p>
-      <button {{action 'closeAlignmentTarget'}}>Close</button>
+      <p>Alignment Target - Selector: '#alignModalToMe'</p>
+      <p>Alignment: {{alignmentTargetDirection}}</p>
+      <button {{action 'closeAlignmentTargetSelector'}}>Close</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-alignment-target-view'>
+  <h2>Alignment Target (View)</h2>
+  <div class='alignmentTargetContainer'>
+    {{#view viewName="buttonWrapper1" tagName="span"}}
+      <button {{action 'toggleAlignmentTargetView'}}>Do It</button>
+    {{/view}}
+  </div>
+  {{code-snippet name='alignment-target-view.hbs'}}
+  {{#if isShowingAlignmentTargetView}}
+    {{#modal-dialog close='toggleAlignmentTargetView'
+                    hasOverlay=false
+                    alignment=alignmentTargetDirection
+                    alignmentTarget=view.buttonWrapper1 }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Alignment Target - View: {{view.buttonWrapper1}}</p>
+      <p>Alignment: {{alignmentTargetDirection}}</p>
+      <button {{action 'closeAlignmentTargetView'}}>Close</button>
+    {{/modal-dialog}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-alignment-target-element'>
+  <h2>Alignment Target (Element)</h2>
+  <div class='alignmentTargetContainer'>
+    {{#view viewName="buttonWrapper2" tagName="span"}}
+      <button {{action 'toggleAlignmentTargetElement'}}>Do It</button>
+    {{/view}}
+  </div>
+  {{code-snippet name='alignment-target-element.hbs'}}
+  {{#if isShowingAlignmentTargetElement}}
+    {{#modal-dialog close='toggleAlignmentTargetElement'
+                    hasOverlay=false
+                    alignment=alignmentTargetDirection
+                    alignmentTarget=view.buttonWrapper2.element }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Alignment Target - Element{{view.buttonWrapper2.elementId}}</p>
+      <p>Alignment: {{alignmentTargetDirection}}</p>
+      <button {{action 'closeAlignmentTargetElement'}}>Close</button>
     {{/modal-dialog}}
   {{/if}}
 </div>
