@@ -76,7 +76,7 @@ Property              | Purpose
 `overlayClassNames`   | CSS class names to append to overlay divs. **NOTE:** does **not** replace the default overlay class (default: `'ember-modal-overlay'`)
 `containerClassNames` | CSS class names to append to container divs. **NOTE:** does **not** replace the default container class (default: `'ember-modal-dialog'`)
 `alignment`           | `top|right|left|bottom|center|none` (for use with `alignmentTarget`)
-`alignmentTarget`     | Element selector frame of reference for modal position (for use with `alignment`)
+`alignmentTarget`     | Element selector, element, or Ember View reference for modal position (for use with `alignment`)
 `close`               | The action handler for the dialog's `close` action
 
 ## Wormholes

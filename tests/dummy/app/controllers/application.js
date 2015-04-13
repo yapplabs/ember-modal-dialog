@@ -7,6 +7,19 @@ export default Ember.Controller.extend({
   isShowingAlignmentTarget: false,
   alignmentTargetDirection: 'right',
   customContainerClassNames: 'custom-styles-modal-container',
+  nextAlignmentTargetDirection: function(){
+    switch(this.alignmentTargetDirection) {
+      case 'right':
+        return 'bottom';
+      case 'bottom':
+        return 'left';
+      case 'left':
+        return 'top';
+      case 'top':
+        return 'right';
+    }
+    return false;
+  },
   actions: {
     toggleBasic: function(){
       this.toggleProperty('isShowingBasic');
@@ -17,29 +30,49 @@ export default Ember.Controller.extend({
     toggleCustomStyles: function(){
       this.toggleProperty('isShowingCustomStyles');
     },
-    toggleAlignmentTarget: function(){
-      if (this.get('isShowingAlignmentTarget')) {
-        switch(this.alignmentTargetDirection) {
-          case 'right':
-            this.set('alignmentTargetDirection', 'bottom');
-            break;
-          case 'bottom':
-            this.set('alignmentTargetDirection', 'left');
-            break;
-          case 'left':
-            this.set('alignmentTargetDirection', 'top');
-            break;
-          case 'top':
-            this.toggleProperty('isShowingAlignmentTarget');
-            this.set('alignmentTargetDirection', 'right');
-            break;
+    toggleAlignmentTargetSelector: function(){
+      if (this.get('isShowingAlignmentTargetSelector')) {
+        var newAlignment = this.nextAlignmentTargetDirection();
+        this.set('alignmentTargetDirection', newAlignment);
+        if (newAlignment !== 'right') {
+          return;
         }
-      } else {
-        this.toggleProperty('isShowingAlignmentTarget');
       }
+      this.toggleProperty('isShowingAlignmentTargetSelector');
     },
-    closeAlignmentTarget: function() {
-      this.set('isShowingAlignmentTarget', false);
+    toggleAlignmentTargetView: function(){
+      if (this.get('isShowingAlignmentTargetView')) {
+        var newAlignment = this.nextAlignmentTargetDirection();
+        this.set('alignmentTargetDirection', newAlignment);
+        if (newAlignment !== 'right') {
+          return;
+        }
+      }
+      this.toggleProperty('isShowingAlignmentTargetView');
+    },
+    toggleAlignmentTargetElement: function(){
+      if (this.get('isShowingAlignmentTargetElement')) {
+        var newAlignment = this.nextAlignmentTargetDirection();
+        this.set('alignmentTargetDirection', newAlignment);
+        if (newAlignment !== 'right') {
+          return;
+        }
+      }
+      this.toggleProperty('isShowingAlignmentTargetElement');
+    },
+    toggleSubclassed: function(){
+      this.toggleProperty('isShowingSubclassed');
+    },
+    closeAlignmentTargetSelector: function() {
+      this.set('isShowingAlignmentTargetSelector', false);
+      this.set('alignmentTargetDirection', 'right');
+    },
+    closeAlignmentTargetView: function() {
+      this.set('isShowingAlignmentTargetView', false);
+      this.set('alignmentTargetDirection', 'right');
+    },
+    closeAlignmentTargetElement: function() {
+      this.set('isShowingAlignmentTargetElement', false);
       this.set('alignmentTargetDirection', 'right');
     }
   }
