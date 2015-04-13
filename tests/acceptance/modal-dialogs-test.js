@@ -101,7 +101,8 @@ test('opening and closing modals', function(assert) {
     closeSelector: overlaySelector,
     hasOverlay: true,
     whileOpen: function(){
-      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided containerClassNames');
+      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlay-class');
+      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
     }
   });
   assert.dialogOpensAndCloses({
@@ -130,5 +131,15 @@ test('opening and closing modals', function(assert) {
     dialogText: 'Alignment Target - Element',
     closeSelector: dialogCloseButton,
     hasOverlay: false
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-subclass button',
+    dialogText: 'Via Subclass',
+    closeSelector: dialogCloseButton,
+    hasOverlay: true,
+    whileOpen: function(){
+      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('my-cool-modal'), 'has provided containerClassNames');
+    }
   });
 });

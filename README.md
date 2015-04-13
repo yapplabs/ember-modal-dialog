@@ -73,8 +73,10 @@ Property              | Purpose
 --------------------- | -------------
 `hasOverlay`          | `true|false` (default: `true`)
 `translucentOverlay`  | `true|false` (default: `false`)
-`overlayClassNames`   | CSS class names to append to overlay divs. **NOTE:** does **not** replace the default overlay class (default: `'ember-modal-overlay'`)
-`containerClassNames` | CSS class names to append to container divs. **NOTE:** does **not** replace the default container class (default: `'ember-modal-dialog'`)
+`overlay-class`       | CSS class name(s) to append to overlay divs. Set this from template.`)
+`overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
+`container-class`     | CSS class name(s) to append to container divs. Set this from template.`)
+`containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
 `alignment`           | `top|right|left|bottom|center|none` (for use with `alignmentTarget`)
 `alignmentTarget`     | Element selector, element, or Ember View reference for modal position (for use with `alignment`)
 `close`               | The action handler for the dialog's `close` action

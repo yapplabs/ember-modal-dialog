@@ -37,8 +37,8 @@
   {{#if isShowingCustomStyles}}
     {{#modal-dialog close='toggleCustomStyles'
                     alignment='none'
-                    containerClassNames=customContainerClassNames
-                    overlayClassNames='custom-styles-modal' }}
+                    container-class=customContainerClassNames
+                    overlay-class='custom-styles-modal' }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
       <button {{action 'toggleCustomStyles'}}>Close</button>
@@ -104,5 +104,20 @@
       <p>Alignment: {{alignmentTargetDirection}}</p>
       <button {{action 'closeAlignmentTargetElement'}}>Close</button>
     {{/modal-dialog}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-subclass'>
+  <h2>Via Subclass</h2>
+  <button {{action 'toggleSubclassed'}}>Do It</button>
+  {{code-snippet name='subclass.js'}}
+  {{code-snippet name='subclass.hbs'}}
+  {{#if isShowingSubclassed}}
+    {{#my-cool-modal-dialog close='toggleSubclassed'
+                    translucentOverlay=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Via Subclass</p>
+      <button {{action 'toggleSubclassed'}}>Close</button>
+    {{/my-cool-modal-dialog}}
   {{/if}}
 </div>
