@@ -18,6 +18,7 @@ export default Ember.Component.extend({
   containerClassNamesString: computedJoin('containerClassNames'),
 
   "overlay-class": null, // set this from templates
+  overlayId: null,
   overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
   overlayClassNamesString: computedJoin('overlayClassNames'),
 
