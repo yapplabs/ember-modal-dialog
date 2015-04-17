@@ -36,7 +36,7 @@
   "dependencies": {
     "ember-cli-babel": "4.1.0",
     "ember-cli-htmlbars": "^0.7.4",
-    "ember-wormhole": "0.1.0"
+    "ember-wormhole": "0.2.1"
   },
   "keywords": [
     "ember-addon"
