@@ -28,6 +28,7 @@ test("it doesn't show component on start", function(assert){
   // render the component
   this.$();
 
+  // cannot use this.$ because the modal-dialog exists outside of the component
   assert.equal(Ember.$('.ember-modal-dialog').length, 0);
 });
 
@@ -38,5 +39,6 @@ test('it shows component when open modal clicked', function(assert){
 
   this.$('button.open').click();
 
+  // cannot use this.$ because the modal-dialog exists outside of the component
   assert.equal(Ember.$('.ember-modal-dialog').length, 1);
 });
