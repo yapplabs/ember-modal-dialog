@@ -27,7 +27,7 @@
     "ember-cli-qunit": "0.3.9",
     "ember-cli-sass": "3.1.1",
     "ember-cli-uglify": "1.0.1",
-    "ember-code-snippet": "^1.0.1",
+    "ember-code-snippet": "^1.0.2",
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
     "ember-try": "0.0.3",
