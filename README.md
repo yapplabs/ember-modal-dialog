@@ -91,7 +91,7 @@ This component uses the ember-wormhole component to render a dialog by appending
 
 ## Configuring the Modal Root Element Id
 
-This default id of the modal root element is `modals-overlay` and can be overridden in environment application options as follows:
+This default id of the modal root element is `modal-overlays` and can be overridden in environment application options as follows:
 
 ```javascript
 module.exports = function(environment) {
