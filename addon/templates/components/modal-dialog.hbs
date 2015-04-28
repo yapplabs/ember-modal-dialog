@@ -2,7 +2,7 @@
   {{#if hasOverlay}}
     <div {{bind-attr class="overlayClassNamesString translucentOverlay:translucent overlay-class"}} {{action 'close'}}></div>
   {{/if}}
-  {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString container-class"
+  {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString alignmentClass container-class"
                                 alignment=alignment
                                 alignmentTarget=alignmentTarget}}
     {{yield}}
