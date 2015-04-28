@@ -14,11 +14,11 @@ export default Ember.Component.extend({
                // the container div
   layout: template,
 
-  "container-class": null, // set this from templates
+  'container-class': null, // set this from templates
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
   containerClassNamesString: computedJoin('containerClassNames'),
 
-  "overlay-class": null, // set this from templates
+  'overlay-class': null, // set this from templates
   overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
   overlayClassNamesString: computedJoin('overlayClassNames'),
 
@@ -31,12 +31,19 @@ export default Ember.Component.extend({
     }
   }),
 
+  renderInPlaceClass: computed('renderInPlace', function() {
+    if (this.get('renderInPlace')) {
+      return 'ember-modal-dialog-in-place';
+    }
+  }),
+
   destinationElementId: null, // injected
   alignmentTarget: null, // view instance, passed in
   alignment: 'center', // passed in
   isPositioned: computed.notEmpty('alignmentTarget'),
   hasOverlay: true,
   translucentOverlay: false,
+  renderInPlace: false,
 
   actions: {
     close: function() {

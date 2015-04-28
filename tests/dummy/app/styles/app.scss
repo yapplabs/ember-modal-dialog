@@ -18,6 +18,12 @@ body {
   width: 500px;
 }
 
+#container-in-place {
+  min-height: 10px;
+  border: dotted 2px lime;
+  padding: 20px;
+}
+
 button {
   padding: 4px 8px;
   border-radius: 4px;

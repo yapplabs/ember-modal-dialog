@@ -5,6 +5,8 @@ export default Ember.Controller.extend({
   isShowingTranslucent: false,
   isShowingCustomStyles: false,
   isShowingAlignmentTarget: false,
+  isShowingSubclassed: false,
+  isShowingInPlace: false,
   alignmentTargetDirection: 'right',
   customContainerClassNames: 'custom-styles-modal-container',
   nextAlignmentTargetDirection: function(){
@@ -62,6 +64,9 @@ export default Ember.Controller.extend({
     },
     toggleSubclassed: function(){
       this.toggleProperty('isShowingSubclassed');
+    },
+    toggleInPlace: function() {
+      this.toggleProperty('isShowingInPlace');
     },
     closeAlignmentTargetSelector: function() {
       this.set('isShowingAlignmentTargetSelector', false);
