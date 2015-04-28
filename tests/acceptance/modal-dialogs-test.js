@@ -116,7 +116,10 @@ test('opening and closing modals', function(assert) {
     openSelector: '#example-alignment-target-selector button',
     dialogText: 'Alignment Target - Selector',
     closeSelector: dialogCloseButton,
-    hasOverlay: false
+    hasOverlay: false,
+    whileOpen: function(){
+      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('ember-modal-dialog-right'), 'has alignment class name');
+    }
   });
 
   assert.dialogOpensAndCloses({
