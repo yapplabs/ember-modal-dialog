@@ -121,3 +121,19 @@
     {{/my-cool-modal-dialog}}
   {{/if}}
 </div>
+
+<div class='example' id='example-in-place'>
+<h2>In Place</h2>
+  <button {{action 'toggleInPlace'}}>Do It</button>
+  {{code-snippet name='in-place.hbs'}}
+  <div id='container-in-place'>
+    I AM THE CONTAINER
+    {{#if isShowingInPlace}}
+      {{#modal-dialog close='toggleInPlace' renderInPlace=true alignment='none'}}
+        <h1>Stop! Modal Time!</h1>
+        <p>In Place</p>
+        <button {{action 'toggleInPlace'}}>Close</button>
+      {{/modal-dialog}}
+    {{/if}}
+  </div>
+</div>

@@ -145,4 +145,22 @@ test('opening and closing modals', function(assert) {
       assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
   });
+
+  click('#example-in-place button');
+  var dialogText = 'In Place';
+  var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
+  var inPlaceDialogSelector = dialogSelector + '.ember-modal-dialog-in-place';
+  var inPlaceRootSelector = '#container-in-place';
+  var inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, ':contains(' + dialogText + ')'].join(' ');
+  var inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
+  andThen(function() {
+    assert.isAbsent(defaultSelector);
+    assert.isPresentOnce(inPlaceSelector);
+  });
+
+  click(inPlaceCloseButton);
+  andThen(function() {
+    assert.isAbsent(defaultSelector);
+    assert.isAbsent(inPlaceSelector);
+  });
 });
