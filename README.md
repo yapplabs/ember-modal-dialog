@@ -70,7 +70,7 @@ export default Ember.Controller.extend({
 
 ## Routable Usage
 
-To have a modal open for a specific route, just drop the `{{modal-dialog}}` into that route's template.
+To have a modal open for a specific route, just drop the `{{modal-dialog}}` into that route's template. Don't forget to have an `{{outlet}}` on the parent route.
 
 ## Configurable Properties
 
