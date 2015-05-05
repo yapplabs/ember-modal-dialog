@@ -2,6 +2,8 @@ import Ember from 'ember';
 import template from '../templates/components/modal-dialog';
 var dasherize = Ember.String.dasherize;
 
+var injectService = Ember.inject.service;
+var reads = Ember.computed.reads;
 var computed = Ember.computed;
 var computedJoin = function(prop) {
   return computed(prop, function(){
@@ -13,6 +15,9 @@ export default Ember.Component.extend({
   tagName: '', // modal-dialog is itself tagless. positioned-container provides
                // the container div
   layout: template,
+
+  modalService: injectService("modal-dialog"),
+  destinationElementId: reads("modalService.destinationElementId"),
 
   'container-class': null, // set this from templates
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
@@ -37,7 +42,6 @@ export default Ember.Component.extend({
     }
   }),
 
-  destinationElementId: null, // injected
   alignmentTarget: null, // view instance, passed in
   alignment: 'center', // passed in
   isPositioned: computed.notEmpty('alignmentTarget'),
