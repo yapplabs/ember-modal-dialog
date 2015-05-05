@@ -10,7 +10,8 @@ export default function(container, application){
   application.register('config:modals-container-id',
                        modalContainerElId,
                        { instantiate: false });
-  application.inject('component:modal-dialog',
+
+  application.inject('service:modal-dialog',
                      'destinationElementId',
                      'config:modals-container-id');
 }

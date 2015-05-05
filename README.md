@@ -83,7 +83,7 @@ Property              | Purpose
 `overlay-class`       | CSS class name(s) to append to overlay divs. Set this from template.`)
 `overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
 `container-class`     | CSS class name(s) to append to container divs. Set this from template.`)
-`containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
+`containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
 `alignment`           | `top|right|left|bottom|center|none` (for use with `alignmentTarget`)
 `alignmentTarget`     | Element selector, element, or Ember View reference for modal position (for use with `alignment`)
 `close`               | The action handler for the dialog's `close` action
@@ -92,7 +92,7 @@ Property              | Purpose
 
 Display of a modal dialog is typically triggered by a user interaction. While the content in the dialog is related to the content in the user interaction, the underyling display mechanism for the dialogs can be shared across the entire application.
 
-The `add-modals-container` initializer appends a container element to the `application.rootElement`. It injects a reference to this container element id as a property of the `modal-dialog` component.
+The `add-modals-container` initializer appends a container element to the `application.rootElement`. It injects a reference to this container element id as a property of the `modal-dialog` service, which is then used in the `modal-dialog` component. The property is injected into a service instead of directly into the `modal-dialog` component to make it easier to extend the component and make custom modals.
 
 This component uses the ember-wormhole component to render a dialog by appending a morph to a dedicated element in the DOM. This decouples the DOM location of a modal from the DOM location of whatever triggered its display... hence wormholes!
 
@@ -198,6 +198,30 @@ export default ModalDialog.extend({
 ```
 
 View [the library](https://github.com/yapplabs/ember-key-responder) for more information.
+
+## Custom Modals
+
+If you have various different styles of modal dialog in your app, it can be useful to subclass the dialog as a new component:
+
+```js
+// app/components/full-screen-modal.js
+
+import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
+
+export default ModalDialog.extend({
+  containerClassNames: "full-screen-modal",
+  hasOverlay: false,
+  alignment: "none"
+});
+```
+
+This can then be used like so:
+
+```htmlbars
+{{#full-screen-modal}}
+  Custom modal contents
+{{/full-screen-modal}}
+```
 
 ## Dependencies
 
