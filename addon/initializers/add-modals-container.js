@@ -1,11 +1,21 @@
-/*globals document*/
-export default function(container, application){
-  var rootEl = document.querySelector(application.rootElement);
+/*globals document */
+
+var hasDOM = typeof document !== 'undefined';
+
+function appendContainerElement(rootElementId, id) {
+  if (!hasDOM) {
+    return;
+  }
+
+  var rootEl = document.querySelector(rootElementId);
   var modalContainerEl = document.createElement('div');
+  modalContainerEl.id = id;
+  rootEl.appendChild(modalContainerEl);
+}
+
+export default function(container, application){
   var emberModalDialog = application.emberModalDialog || {};
   var modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
-  modalContainerEl.id = modalContainerElId;
-  rootEl.appendChild(modalContainerEl);
 
   application.register('config:modals-container-id',
                        modalContainerElId,
@@ -14,4 +24,6 @@ export default function(container, application){
   application.inject('service:modal-dialog',
                      'destinationElementId',
                      'config:modals-container-id');
+
+  appendContainerElement(application.rootElement, modalContainerElId);
 }
