@@ -46,7 +46,8 @@ Here is a more useful example of how to conditionally display a modal based on a
 <button {{action "toggleModal"}}>Toggle Modal</button>
 
 {{#if isShowingModal}}
-  {{#modal-dialog alignment='center'
+  {{#modal-dialog close="toggleModal"
+                  alignment="center"
                   translucentOverlay=true}}
     Oh hai there!
   {{/modal-dialog}}
@@ -86,7 +87,7 @@ Property              | Purpose
 `containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
 `alignment`           | `top|right|left|bottom|center|none` (for use with `alignmentTarget`)
 `alignmentTarget`     | Element selector, element, or Ember View reference for modal position (for use with `alignment`)
-`close`               | The action handler for the dialog's `close` action
+`close`               | The action handler for the dialog's `close` action. This action triggers when the user clicks the modal overlay.
 
 ## Wormholes
 
