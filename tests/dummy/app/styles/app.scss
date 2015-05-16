@@ -1,7 +1,6 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "tomorrow-night-eighties";
-@import "custom-styles";
 
 body {
   font-family: sans-serif;
@@ -49,4 +48,30 @@ h2 {
 }
 .my-cool-modal {
   border-radius: 100px;
+  padding: 40px;
 }
+
+// BEGIN-SNIPPET custom-styles
+$theme-color: #0f9d58;
+
+.custom-styles-modal {
+  background: $theme-color;
+  filter: alpha(opacity=15);
+  opacity: 0.77;
+  z-index: 100000;
+}
+
+.custom-styles-modal-container {
+  background: #222;
+  color: white;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+  width: 300px;
+  z-index: 100000;
+
+  h1 {
+    color: $theme-color;
+  }
+}
+// END-SNIPPET

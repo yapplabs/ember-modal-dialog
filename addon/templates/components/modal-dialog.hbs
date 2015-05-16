@@ -2,9 +2,21 @@
   {{#if hasOverlay}}
     <div {{bind-attr class="overlayClassNamesString translucentOverlay:translucent overlay-class"}} {{action 'close'}}></div>
   {{/if}}
-  {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
-                                alignment=alignment
-                                alignmentTarget=alignmentTarget}}
-    {{yield}}
-  {{/ember-modal-dialog-positioned-container}}
+  {{#if useEmberTether}}
+    {{#ember-tether classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+        target=_alignmentTargetNormalized
+        attachment=_attachmentNormalized
+        targetAttachment=_targetAttachmentNormalized
+        targetModifier=_targetModifierNormalized
+    }}
+      {{yield}}
+    {{/ember-tether}}
+  {{else}}
+    {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+        alignment=alignment
+        alignmentTarget=alignmentTarget
+    }}
+      {{yield}}
+    {{/ember-modal-dialog-positioned-container}}
+  {{/if}}
 {{/ember-wormhole}}

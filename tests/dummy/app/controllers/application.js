@@ -4,9 +4,13 @@ export default Ember.Controller.extend({
   isShowingBasic: false,
   isShowingTranslucent: false,
   isShowingCustomStyles: false,
-  isShowingAlignmentTarget: false,
+  isShowingAlignmentTargetSelector: false,
+  isShowingAlignmentTargetView: false,
+  isShowingAlignmentTargetElement: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
+  exampleTargetAttachment: 'middle left',
+  exampleAttachment: 'middle right',
   alignmentTargetDirection: 'right',
   customContainerClassNames: 'custom-styles-modal-container',
   nextAlignmentTargetDirection: function(){
@@ -22,6 +26,19 @@ export default Ember.Controller.extend({
     }
     return false;
   },
+  nextAttachment: function(val){
+    switch(val) {
+      case 'middle right':
+        return 'bottom center';
+      case 'bottom center':
+        return 'middle left';
+      case 'middle left':
+        return 'top center';
+      case 'top center':
+        return 'middle right';
+    }
+    return false;
+  },
   actions: {
     toggleBasic: function(){
       this.toggleProperty('isShowingBasic');
@@ -34,9 +51,13 @@ export default Ember.Controller.extend({
     },
     toggleAlignmentTargetSelector: function(){
       if (this.get('isShowingAlignmentTargetSelector')) {
+        var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
+        var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         var newAlignment = this.nextAlignmentTargetDirection();
         this.set('alignmentTargetDirection', newAlignment);
-        if (newAlignment !== 'right') {
+        this.set('exampleTargetAttachment', newTargetAttachment);
+        this.set('exampleAttachment', newAttachment);
+        if (newTargetAttachment !== 'middle left') {
           return;
         }
       }
@@ -44,9 +65,13 @@ export default Ember.Controller.extend({
     },
     toggleAlignmentTargetView: function(){
       if (this.get('isShowingAlignmentTargetView')) {
+        var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
+        var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         var newAlignment = this.nextAlignmentTargetDirection();
         this.set('alignmentTargetDirection', newAlignment);
-        if (newAlignment !== 'right') {
+        this.set('exampleTargetAttachment', newTargetAttachment);
+        this.set('exampleAttachment', newAttachment);
+        if (newTargetAttachment !== 'middle left') {
           return;
         }
       }
@@ -54,9 +79,13 @@ export default Ember.Controller.extend({
     },
     toggleAlignmentTargetElement: function(){
       if (this.get('isShowingAlignmentTargetElement')) {
+        var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
+        var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         var newAlignment = this.nextAlignmentTargetDirection();
         this.set('alignmentTargetDirection', newAlignment);
-        if (newAlignment !== 'right') {
+        this.set('exampleTargetAttachment', newTargetAttachment);
+        this.set('exampleAttachment', newAttachment);
+        if (newTargetAttachment !== 'middle left') {
           return;
         }
       }
@@ -70,15 +99,18 @@ export default Ember.Controller.extend({
     },
     closeAlignmentTargetSelector: function() {
       this.set('isShowingAlignmentTargetSelector', false);
-      this.set('alignmentTargetDirection', 'right');
+      this.set('exampleTargetAttachment', 'middle left');
+      this.set('exampleAttachment', 'middle right');
     },
     closeAlignmentTargetView: function() {
       this.set('isShowingAlignmentTargetView', false);
-      this.set('alignmentTargetDirection', 'right');
+      this.set('exampleTargetAttachment', 'middle left');
+      this.set('exampleAttachment', 'middle right');
     },
     closeAlignmentTargetElement: function() {
       this.set('isShowingAlignmentTargetElement', false);
-      this.set('alignmentTargetDirection', 'right');
+      this.set('exampleTargetAttachment', 'middle left');
+      this.set('exampleAttachment', 'middle right');
     }
   }
 });

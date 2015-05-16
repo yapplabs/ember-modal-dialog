@@ -11,10 +11,10 @@ const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
 var modalDialogService = Ember.Service.extend({
   destinationElementId: 'modal-overlays',
-  hasEmberTether: true
+  hasEmberTether: false
 });
 
-module('Acceptance: Display Modal Dialogs With Tether', {
+module('Acceptance: Display Modal Dialogs Without Tether', {
   beforeEach: function() {
     application = startApp({}, function(app) {
       stubResolver(app, 'service:modal-dialog', modalDialogService);
@@ -42,6 +42,13 @@ test('basic modal', function(assert) {
     closeSelector: overlaySelector,
     hasOverlay: true,
   });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-basic button',
+    dialogText: 'Basic',
+    closeSelector: dialogCloseButton,
+    hasOverlay: true,
+  });
 });
 
 test('modal with translucent overlay', function(assert) {
@@ -51,6 +58,13 @@ test('modal with translucent overlay', function(assert) {
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
     closeSelector: overlaySelector,
+    hasOverlay: true,
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-translucent button',
+    dialogText: 'With Translucent Overlay',
+    closeSelector: dialogCloseButton,
     hasOverlay: true,
   });
 });
@@ -86,7 +100,7 @@ test('alignment target - selector', function(assert) {
     hasOverlay: false,
     tethered: true,
     whileOpen: function(){
-      assert.ok(Ember.$(`${dialogSelector}`).hasClass('ember-tether-target-attached-left'), 'has alignment class name');
+      assert.ok(Ember.$(`${dialogSelector}`).hasClass('ember-modal-dialog-right'), 'has alignment class name');
     }
   });
 });
