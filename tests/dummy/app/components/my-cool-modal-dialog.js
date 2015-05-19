@@ -1,3 +1,4 @@
+// BEGIN-SNIPPET subclass
 import Component from 'ember-modal-dialog/components/modal-dialog';
 
 export default Component.extend({
@@ -5,3 +6,4 @@ export default Component.extend({
   containerClassNames: 'my-cool-modal',
   destinationElementId: 'modal-overlays'
 });
+// END-SNIPPET

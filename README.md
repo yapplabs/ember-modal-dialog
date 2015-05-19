@@ -88,6 +88,51 @@ Property              | Purpose
 `alignment`           | `top|right|left|bottom|center|none` (for use with `alignmentTarget`)
 `alignmentTarget`     | Element selector, element, or Ember View reference for modal position (for use with `alignment`)
 `close`               | The action handler for the dialog's `close` action. This action triggers when the user clicks the modal overlay.
+`attachment`          | A string of the form 'vert-attachment horiz-attachment' (see "Positioning" section below)
+`targetAttachment`    | A string of the form 'vert-attachment horiz-attachment' (see "Positioning" section below)
+
+## Positioning With or Without ~~Bono~~ Ember Tether
+
+This component **optionally** uses our [ember-tether](//github.com/yapplabs/ember-tether) addon to position modal dialogs near another element or view on the page. 
+
+If you include ember-tether as a dependency in your Ember app, ember-modal-dialog will use it. If you do not include the ember-tether dependency, ember-modal-dialog will fallback to its default positioning behavior.
+
+Pros and cons of each approach are detailed below.
+
+### Positioning With Ember Tether
+
+ember-tether provides the ability for attached modals to remain tethered to their targets when users scroll or resize the window.
+
+#### Caveats
+
+Event delegation originating from content inside ember-tether blocks will only work for Ember apps that use Ember's default root element of the `body` tag. This is because the Hubspot Tether library appends its positioned elements to the body tag.
+
+If you are not overriding the default root element, then don't worry and carry on. ember-tether will work just fine for you.
+
+#### How To Position Modal Dialogs Using Ember Tether
+
+- Install ember-tether as a dependency of **your ember app**.
+    
+    `ember install ember-tether`
+
+- Specify the following properties on a `modal-dialog` component:
+
+    - `alignmentTarget`
+    - `attachment`
+    - `targetAttachment`
+
+Note that `attachment` and `targetAttachment` expect a string of the form 'vert-attachment horiz-attachment':
+
+- vert-attachment can be any of 'top', 'middle', 'bottom'
+- horiz-attachment can be any of 'left', 'center', 'right'
+
+Extreme detail can be found on the [Hubspot Tether](http://github.hubspot.com/tether/) site.
+
+### Positioning Without Ember Tether
+
+If you do not carry a dependency on Hubspot Tether, ember-modal-dialog will fallback to its own positioning logic. Just specify the `alignment` and `alignmentTarget` properties as you see fit.
+
+Note that this positioning logic is not nearly as sophisticated as the positioning logic in Ember Tether. That's why we made Ember Tether.
 
 ## Wormholes
 

@@ -13,7 +13,7 @@ function appendContainerElement(rootElementId, id) {
   rootEl.appendChild(modalContainerEl);
 }
 
-export default function(container, application){
+var initialize = function(container, application){
   const emberModalDialog = application.emberModalDialog || {};
   const modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
 
@@ -25,14 +25,24 @@ export default function(container, application){
                      'destinationElementId',
                      'config:modals-container-id');
 
-  const hasEmberTether = Ember.isPresent(container.resolve('component:ember-tether'));
-  application.register('config:has-ember-tether',
-                       hasEmberTether,
-                       { instantiate: false });
+  // const service = application.__container__.lookup('service:modal-dialog');
+  if (!Ember.testing) {
+    // This logic allows the tests to stub the modalDialogService with
+    // hasEmberTether values of true or false while the dummy app
+    // will always get a hasEmberTether value of true
+    application.register('config:has-ember-tether',
+                         true,
+                         { instantiate: false });
 
-  application.inject('service:modal-dialog',
-                     'hasEmberTether',
-                     'config:has-ember-tether');
+    application.inject('service:modal-dialog',
+                       'hasEmberTether',
+                       'config:has-ember-tether');
+  }
 
   appendContainerElement(application.rootElement, modalContainerElId);
-}
+};
+
+export default {
+  name: 'add-modals-container',
+  initialize: initialize
+};

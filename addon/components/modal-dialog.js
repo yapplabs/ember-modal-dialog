@@ -1,11 +1,11 @@
 import Ember from 'ember';
 import template from '../templates/components/modal-dialog';
-var dasherize = Ember.String.dasherize;
+const dasherize = Ember.String.dasherize;
+const computed = Ember.computed;
 
-var injectService = Ember.inject.service;
-var reads = Ember.computed.reads;
-var computed = Ember.computed;
-var computedJoin = function(prop) {
+const injectService = Ember.inject.service;
+const reads = Ember.computed.reads;
+const computedJoin = function(prop) {
   return computed(prop, function(){
     return this.get(prop).join(' ');
   });
@@ -15,9 +15,13 @@ export default Ember.Component.extend({
   tagName: '', // modal-dialog is itself tagless. positioned-container provides
                // the container div
   layout: template,
+  modalService: injectService('modal-dialog'),
+  destinationElementId: reads('modalService.destinationElementId'),
+  hasEmberTether: reads('modalService.hasEmberTether'),
 
-  modalService: injectService("modal-dialog"),
-  destinationElementId: reads("modalService.destinationElementId"),
+  useEmberTether: computed('hasEmberTether', 'alignment', function() {
+    return this.get('hasEmberTether') && (this.get('alignment') !== 'none');
+  }),
 
   'container-class': null, // set this from templates
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
@@ -42,12 +46,66 @@ export default Ember.Component.extend({
     }
   }),
 
-  alignmentTarget: null, // view instance, passed in
   alignment: 'center', // passed in
-  isPositioned: computed.notEmpty('alignmentTarget'),
+  alignmentTarget: null, // element, css selector, or view instance... passed in
+  _alignmentTargetNormalized: computed('alignmentTarget', function() {
+    if (this.get('alignmentTarget')) {
+      return this.get('alignmentTarget');
+    }
+    if (typeof document !== 'undefined') {
+      return document.body;
+    }
+  }),
+  attachment: null, // passed in
+  targetAttachment: null, // passed in
+  targetModifier: null, // passed in
+  _targetModifierNormalized: computed('targetModifier', 'alignment', function() {
+    if (this.get('targetModifier')) {
+      return this.get('targetModifier');
+    }
+    if (this.get('alignment') === 'center') {
+      return 'visible';
+    }
+  }),
+
   hasOverlay: true,
   translucentOverlay: false,
   renderInPlace: false,
+
+  _attachmentNormalized: computed('alignment', 'attachment', function() {
+    if (this.get('attachment')) {
+      return this.get('attachment');
+    }
+    switch(this.get('alignment')) {
+      case 'center':
+        return 'middle center';
+      case 'top':
+        return 'bottom center';
+      case 'right':
+        return 'middle left';
+      case 'bottom':
+        return 'top center';
+      case 'left':
+        return 'middle right';
+    }
+  }),
+  _targetAttachmentNormalized: computed('targetAttachment', '_attachmentNormalized', function() {
+    if (this.get('targetAttachment')) {
+      return this.get('targetAttachment');
+    }
+    switch(this.get('_attachmentNormalized')) {
+      case 'middle center':
+        return 'middle center';
+      case 'top center':
+        return 'bottom center';
+      case 'middle right':
+        return 'middle left';
+      case 'bottom center':
+        return 'top center';
+      case 'middle left':
+        return 'middle right';
+    }
+  }),
 
   actions: {
     close: function() {

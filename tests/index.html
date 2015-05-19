@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="assets/dummy.css">
     <link rel="stylesheet" href="assets/test-support.css">
 
+    <style>
+      .ember-tether.ember-modal-dialog {
+        z-index: 1000000;
+      }
+    </style>
+
     {{content-for 'head-footer'}}
     {{content-for 'test-head-footer'}}
   </head>

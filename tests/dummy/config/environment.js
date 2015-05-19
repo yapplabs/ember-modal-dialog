@@ -7,8 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     sassOptions: {
-      outputFile: 'dummy.css',
-      includePaths: ['examples']
+      outputFile: 'dummy.css'
     },
     EmberENV: {
       FEATURES: {
