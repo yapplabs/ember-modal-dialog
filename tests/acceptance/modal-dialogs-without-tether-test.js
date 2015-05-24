@@ -100,7 +100,7 @@ test('alignment target - selector', function(assert) {
     hasOverlay: false,
     tethered: true,
     whileOpen: function(){
-      assert.ok(Ember.$(`${dialogSelector}`).hasClass('ember-modal-dialog-right'), 'has alignment class name');
+      assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-right'), 'has alignment class name');
     }
   });
 });
@@ -138,7 +138,7 @@ test('subclassed modal', function(assert) {
     closeSelector: overlaySelector,
     hasOverlay: true,
     whileOpen: function(){
-      assert.ok(Ember.$(`${dialogSelector}`).hasClass('my-cool-modal'), 'has provided containerClassNames');
+      assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
   });
 });
@@ -154,6 +154,9 @@ test('in place', function(assert) {
   var inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, ':contains(' + dialogText + ')'].join(' ');
   var inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
   andThen(function() {
+    assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
+    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
+    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
     assert.isAbsent(defaultSelector);
     assert.isPresentOnce(inPlaceSelector);
   });

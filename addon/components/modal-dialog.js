@@ -19,8 +19,8 @@ export default Ember.Component.extend({
   destinationElementId: reads('modalService.destinationElementId'),
   hasEmberTether: reads('modalService.hasEmberTether'),
 
-  useEmberTether: computed('hasEmberTether', 'alignment', function() {
-    return this.get('hasEmberTether') && (this.get('alignment') !== 'none');
+  useEmberTether: computed('hasEmberTether', 'alignment', 'renderInPlace', function() {
+    return this.get('hasEmberTether') && (this.get('alignment') !== 'none') && !this.get('renderInPlace');
   }),
 
   'container-class': null, // set this from templates
@@ -47,6 +47,12 @@ export default Ember.Component.extend({
   }),
 
   alignment: 'center', // passed in
+  _alignmentNormalized: computed('alignment', 'renderInPlace', function() {
+    if (this.get('renderInPlace')) {
+      return 'none';
+    }
+    return this.get('alignment');
+  }),
   alignmentTarget: null, // element, css selector, or view instance... passed in
   _alignmentTargetNormalized: computed('alignmentTarget', function() {
     if (this.get('alignmentTarget')) {

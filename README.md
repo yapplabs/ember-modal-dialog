@@ -90,10 +90,11 @@ Property              | Purpose
 `close`               | The action handler for the dialog's `close` action. This action triggers when the user clicks the modal overlay.
 `attachment`          | A string of the form 'vert-attachment horiz-attachment' (see "Positioning" section below)
 `targetAttachment`    | A string of the form 'vert-attachment horiz-attachment' (see "Positioning" section below)
+`renderInPlace`       | A boolean, when true renders the modal without positioning or DOM position manipulation, useful for including a modal in a style guide
 
 ## Positioning With or Without ~~Bono~~ Ember Tether
 
-This component **optionally** uses our [ember-tether](//github.com/yapplabs/ember-tether) addon to position modal dialogs near another element or view on the page. 
+This component **optionally** uses our [ember-tether](//github.com/yapplabs/ember-tether) addon to position modal dialogs near another element or view on the page.
 
 If you include ember-tether as a dependency in your Ember app, ember-modal-dialog will use it. If you do not include the ember-tether dependency, ember-modal-dialog will fallback to its default positioning behavior.
 
@@ -112,7 +113,7 @@ If you are not overriding the default root element, then don't worry and carry o
 #### How To Position Modal Dialogs Using Ember Tether
 
 - Install ember-tether as a dependency of **your ember app**.
-    
+
     `ember install ember-tether`
 
 - Specify the following properties on a `modal-dialog` component:
@@ -297,7 +298,7 @@ ember install:addon ember-modal-dialog
 
 ## Unit Tests
 
-When running unit tests on components that use ember-modal-dialog it is necessary to create and register the container for  ember-modal-dialog to wormhole itself into.  See this [example](tests/unit/components/component-that-uses-modal-dialog-test.js) for how to set this up in a unit test.
+When running unit tests on components that use ember-modal-dialog it is necessary to create and register the container for ember-modal-dialog to wormhole itself into.  See this [example](tests/unit/components/component-that-uses-modal-dialog-test.js) for how to set this up in a unit test.
 
 ## Building
 
