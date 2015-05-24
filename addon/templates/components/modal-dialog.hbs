@@ -13,7 +13,7 @@
     {{/ember-tether}}
   {{else}}
     {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
-        alignment=alignment
+        alignment=_alignmentNormalized
         alignmentTarget=alignmentTarget
     }}
       {{yield}}
