@@ -5,6 +5,12 @@ The ember-modal-dialog addon provides components to implement modal dialogs thro
 Unlike other modal libraries for Ember, ember-modal-dialog uses our [ember-wormhole](//github.com/yapplabs/ember-wormhole) addon to render a modal as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. (For more info on this,
 see the "Wormhole" section below!)
 
+## Live Demo
+
+View a live demo here: [http://yapplabs.github.io/ember-modal-dialog/](http://yapplabs.github.io/ember-modal-dialog/)
+
+## Test Examples
+
 Test examples are located in `tests/dummy/app/templates/application.hbs` and can be run locally by following the instructions in the "Installation" and "Running" sections below.
 
 ## Including In An Ember Application
