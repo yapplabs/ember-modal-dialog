@@ -1,6 +1,6 @@
 {{#ember-wormhole to=destinationElementId renderInPlace=renderInPlace}}
   {{#if hasOverlay}}
-    <div class="{{overlayClassNamesString}} {{if translucentOverlay 'translucent'}} {{overlay-class}}" {{action 'close'}}></div>
+    <div {{bind-attr class="overlayClassNamesString translucentOverlay:translucent overlay-class"}} {{action 'close'}}></div>
   {{/if}}
   {{#if useEmberTether}}
     {{#ember-tether classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
