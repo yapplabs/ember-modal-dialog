@@ -32,7 +32,7 @@ export default Ember.Component.extend({
     var alignmentTarget = this.get('alignmentTarget');
     if (Ember.typeOf(alignmentTarget) === 'string') {
       alignmentTarget = Ember.$(alignmentTarget)[0];
-    } else if (Ember.View.detectInstance(alignmentTarget)) {
+    } else if (alignmentTarget && alignmentTarget.element) {
       alignmentTarget = alignmentTarget.element;
     }
     var $alignmentTarget = Ember.$(alignmentTarget);

@@ -32,13 +32,14 @@
     "ember-disable-prototype-extensions": "^1.0.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.2",
-    "ember-tether": "^0.1.1",
+    "ember-tether": "^0.1.3",
     "ember-try": "0.0.6",
     "glob": "4.4.0"
   },
   "dependencies": {
     "ember-cli-babel": "^5.0.0",
     "ember-cli-htmlbars": "^0.7.6",
+    "ember-cli-version-checker": "^1.1.0",
     "ember-wormhole": "^0.3.1"
   },
   "keywords": [
