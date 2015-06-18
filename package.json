@@ -37,11 +37,10 @@
     "glob": "4.4.0"
   },
   "dependencies": {
-    "broccoli-stew": "^0.3.1",
     "ember-cli-babel": "^5.0.0",
     "ember-cli-htmlbars": "^0.7.6",
-    "ember-wormhole": "^0.3.1",
-    "semver": "^4.3.6"
+    "ember-cli-version-checker": "^1.1.0",
+    "ember-wormhole": "^0.3.1"
   },
   "keywords": [
     "ember-addon"
