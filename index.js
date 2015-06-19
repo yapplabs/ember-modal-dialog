@@ -14,10 +14,10 @@ module.exports = {
 
     var baseTemplatesPath = path.join(this.root, 'addon/templates');
 
-    if (dep.satisfies('>= 1.13.0')) {
-      return this.treeGenerator(path.join(baseTemplatesPath, 'current'));
-    } else {
+    if (dep.lt('1.13.0-beta.1')) {
       return this.treeGenerator(path.join(baseTemplatesPath, 'lt-1-13'));
+    } else {
+      return this.treeGenerator(path.join(baseTemplatesPath, 'current'));
     }
   }
 };
