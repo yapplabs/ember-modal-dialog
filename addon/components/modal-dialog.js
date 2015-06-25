@@ -74,6 +74,10 @@ export default Ember.Component.extend({
     }
   }),
 
+  tetherClassPrefix: 'ember-tether',
+  offset: null, // passed in
+  targetOffset: null, // passed in
+
   hasOverlay: true,
   translucentOverlay: false,
   renderInPlace: false,
