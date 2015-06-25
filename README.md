@@ -98,6 +98,12 @@ Property              | Purpose
 `targetAttachment`    | A string of the form 'vert-attachment horiz-attachment' (see "Positioning" section below)
 `renderInPlace`       | A boolean, when true renders the modal without positioning or DOM position manipulation, useful for including a modal in a style guide
 
+If using ember-tether, the following additional properties of the modal-dialog component are configurable. Please see [Hubspot Tether](http://github.hubspot.com/tether/) for usage documentation.
+
+- `tetherClassPrefix`
+- `offset`
+- `targetOffset`
+
 ## Positioning With or Without ~~Bono~~ Ember Tether
 
 This component **optionally** uses our [ember-tether](//github.com/yapplabs/ember-tether) addon to position modal dialogs near another element or view on the page.
