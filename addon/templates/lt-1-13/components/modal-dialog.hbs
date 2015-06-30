@@ -1,25 +1,83 @@
 {{#ember-wormhole to=destinationElementId renderInPlace=renderInPlace}}
   {{#if hasOverlay}}
-    <div {{bind-attr class="overlayClassNamesString translucentOverlay:translucent overlay-class"}} {{action 'close'}} data-ember-modal-dialog-overlay></div>
-  {{/if}}
-  {{#if useEmberTether}}
-    {{#ember-tether classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
-        target=_alignmentTargetNormalized
-        attachment=_attachmentNormalized
-        targetAttachment=_targetAttachmentNormalized
-        targetModifier=_targetModifierNormalized
-        classPrefix=tetherClassPrefix
-        offset=offset
-        targetOffset=targetOffset
-    }}
-      {{yield}}
-    {{/ember-tether}}
+    {{#if nestedOverlay}}
+      <div {{bind-attr class='wrapperClassNamesString wrapper-class'}}>
+        {{#ember-modal-dialog-overlay
+          classNameBindings='overlayClassNamesString translucentOverlay:translucent overlay-class'
+          action='close'}}
+          {{#if useEmberTether}}
+            {{#ember-tether
+                classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+                target=_alignmentTargetNormalized
+                attachment=_attachmentNormalized
+                targetAttachment=_targetAttachmentNormalized
+                targetModifier=_targetModifierNormalized
+                classPrefix=tetherClassPrefix
+                offset=offset
+                targetOffset=targetOffset
+            }}
+              {{yield}}
+            {{/ember-tether}}
+          {{else}}
+            {{#ember-modal-dialog-positioned-container
+                classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+                alignment=_alignmentNormalized
+                alignmentTarget=alignmentTarget
+            }}
+              {{yield}}
+            {{/ember-modal-dialog-positioned-container}}
+          {{/if}}
+        {{/ember-modal-dialog-overlay}}
+      </div>
+    {{else}}
+      {{ember-modal-dialog-overlay
+        classNameBindings='overlayClassNamesString translucentOverlay:translucent overlay-class'
+        action='close'}}
+        {{#if useEmberTether}}
+          {{#ember-tether
+              classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+              target=_alignmentTargetNormalized
+              attachment=_attachmentNormalized
+              targetAttachment=_targetAttachmentNormalized
+              targetModifier=_targetModifierNormalized
+              classPrefix=tetherClassPrefix
+              offset=offset
+              targetOffset=targetOffset
+          }}
+            {{yield}}
+          {{/ember-tether}}
+        {{else}}
+          {{#ember-modal-dialog-positioned-container
+              classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+              alignment=_alignmentNormalized
+              alignmentTarget=alignmentTarget
+          }}
+            {{yield}}
+          {{/ember-modal-dialog-positioned-container}}
+        {{/if}}
+    {{/if}}
   {{else}}
-    {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
-        alignment=_alignmentNormalized
-        alignmentTarget=alignmentTarget
-    }}
-      {{yield}}
-    {{/ember-modal-dialog-positioned-container}}
+    {{#if useEmberTether}}
+      {{#ember-tether
+          classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+          target=_alignmentTargetNormalized
+          attachment=_attachmentNormalized
+          targetAttachment=_targetAttachmentNormalized
+          targetModifier=_targetModifierNormalized
+          classPrefix=tetherClassPrefix
+          offset=offset
+          targetOffset=targetOffset
+      }}
+        {{yield}}
+      {{/ember-tether}}
+    {{else}}
+      {{#ember-modal-dialog-positioned-container
+          classNameBindings="containerClassNamesString alignmentClass renderInPlaceClass container-class"
+          alignment=_alignmentNormalized
+          alignmentTarget=alignmentTarget
+      }}
+        {{yield}}
+      {{/ember-modal-dialog-positioned-container}}
+    {{/if}}
   {{/if}}
 {{/ember-wormhole}}
