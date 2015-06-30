@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import inPlaceLayout from '../templates/components/modal-dialog-in-place-positioner';
 import simpleLayout from '../templates/components/modal-dialog-simple-positioner';
+import nestedLayout from '../templates/components/modal-dialog-nested-positioner';
 import tetheredLayout from '../templates/components/modal-dialog-tethered-positioner';
 
 const LAYOUTS = {
@@ -32,7 +33,7 @@ export default Ember.Component.extend({
     }
     return LAYOUTS[strategy];
   }),
-  positioning: 'tethered', // tethered, simple, or in-place
+  positioning: 'tethered', // tethered, simple, nested, or in-place
   modalService: injectService('modal-dialog'),
   destinationElementId: reads('modalService.destinationElementId'),
 
@@ -48,7 +49,11 @@ export default Ember.Component.extend({
   overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
   overlayClassNamesString: computedJoin('overlayClassNames'),
 
-  concatenatedProperties: ['containerClassNames', 'overlayClassNames'],
+  'wrapper-class': null, // set this from templates
+  wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
+  wrapperClassNamesString: computedJoin('wrapperClassNames'),
+
+  concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
 
   alignmentClass: computed('alignment', function() {
     var alignment = this.get('alignment');
@@ -109,4 +114,3 @@ export default Ember.Component.extend({
     }
   }
 });
-
