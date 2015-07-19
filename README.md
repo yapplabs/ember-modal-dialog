@@ -87,6 +87,7 @@ Property              | Purpose
 --------------------- | -------------
 `hasOverlay`          | `true|false` (default: `true`)
 `translucentOverlay`  | `true|false` (default: `false`)
+`clickOutsideToClose` | `true|false` (default: `false`) Allows you to click outside the modal to close without an overlay. Useful if your modal isn't the focus of interaction, and you want hover effects to still work outside the modal.
 `overlay-class`       | CSS class name(s) to append to overlay divs. Set this from template.`)
 `overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
 `container-class`     | CSS class name(s) to append to container divs. Set this from template.`)
