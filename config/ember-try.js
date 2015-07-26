@@ -1,19 +1,39 @@
 module.exports = {
   scenarios: [
+    // // Not needed, since we explicitly test ~1.12.0
+    // {
+    //   name: 'default',
+    //   dependencies: {}
+    // },
     {
-      name: 'default',
-      dependencies: { }
-    },
-    {
-      name: "1.11.3",
+      name: 'ember-1.10',
       dependencies: {
-        "ember": "1.11.3"
+        ember: '~1.10.0',
+        'ember-load-initializers': 'ember-cli/ember-load-initializers#0.0.2'
+      },
+      resolutions: {
+        ember: '~1.10.0',
+        'ember-load-initializers': 'ember-cli/ember-load-initializers#0.0.2'
       }
     },
     {
-      name: "1.10.0",
+      name: 'ember-1.11',
       dependencies: {
-        "ember": "1.10.0"
+        ember: '~1.11.0',
+        'ember-load-initializers': 'ember-cli/ember-load-initializers#0.0.2'
+      },
+      resolutions: {
+        ember: '~1.11.0',
+        'ember-load-initializers': 'ember-cli/ember-load-initializers#0.0.2'
+      }
+    },
+    {
+      name: 'ember-1.12',
+      dependencies: {
+        ember: '~1.12.0'
+      },
+      resolutions: {
+        ember: '~1.12.0'
       }
     },
     {
