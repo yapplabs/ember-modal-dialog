@@ -2,6 +2,8 @@ import Ember from 'ember';
 import template from '../templates/components/modal-dialog';
 const dasherize = Ember.String.dasherize;
 const computed = Ember.computed;
+const get = Ember.get;
+var isIOS = /iPad|iPhone|iPod/.test( navigator.userAgent );
 
 const injectService = Ember.inject.service;
 const reads = Ember.computed.reads;
@@ -115,7 +117,11 @@ export default Ember.Component.extend({
         return 'middle right';
     }
   }),
-
+  makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
+    if (isIOS && get(this, 'hasOverlay')) {
+      Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
+    }
+  }),
   actions: {
     close: function() {
       this.sendAction('close');

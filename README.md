@@ -258,6 +258,10 @@ export default ModalDialog.extend({
 
 View [the library](https://github.com/yapplabs/ember-key-responder) for more information.
 
+## iOS
+
+In order for taps on the overlay to be functional on iOS, a `cursor: pointer` style is added to the `div` when on iOS. If you need to change this behavior, subclass modal-dialog and override `makeOverlayClickableOnIOS`.
+
 ## Custom Modals
 
 If you have various different styles of modal dialog in your app, it can be useful to subclass the dialog as a new component:
