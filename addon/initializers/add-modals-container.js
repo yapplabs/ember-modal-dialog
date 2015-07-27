@@ -25,14 +25,17 @@ export default function(container, application){
                      'destinationElementId',
                      'config:modals-container-id');
 
-  const hasEmberTether = Ember.isPresent(container.resolve('component:ember-tether'));
-  application.register('config:has-ember-tether',
-                       hasEmberTether,
+  var useEmberTether = application.MODAL_DIALOG_USE_TETHER;
+  if (useEmberTether === undefined) {
+    useEmberTether = Ember.isPresent(container.resolve('component:ember-tether'));
+  }
+  application.register('config:use-ember-tether',
+                       useEmberTether,
                        { instantiate: false });
 
   application.inject('service:modal-dialog',
-                     'hasEmberTether',
-                     'config:has-ember-tether');
+                     'useEmberTether',
+                     'config:use-ember-tether');
 
   appendContainerElement(application.rootElement, modalContainerElId);
 }

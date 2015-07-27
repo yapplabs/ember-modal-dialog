@@ -11,13 +11,7 @@ export default function startApp(attrs, cb) {
   attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
 
   Ember.run(function() {
-    application = Application.extend({
-      init() {
-        this._super(...arguments);
-        if (typeof cb === 'function') { cb(this); }
-      }
-    }).create(attributes);
-
+    application = Application.create(attributes);
     application.setupForTesting();
     application.injectTestHelpers();
     registerAssertHelpers();
