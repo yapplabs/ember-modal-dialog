@@ -322,6 +322,10 @@ When running unit tests on components that use ember-modal-dialog it is necessar
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
+## Generating the Changelog
+
+This project uses [https://github.com/skywinder/github-changelog-generator](https://github.com/skywinder/github-changelog-generator) to generate its changelog.
+
 ## Credits
 
 Contributions from @stefanpenner, @krisselden, @chrislopresto, @lukemelia, @raycohen and
