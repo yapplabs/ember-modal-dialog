@@ -234,7 +234,7 @@ export default ModalDialog.extend({
 });
 ```
 
-This can work, but some apps require a more sophisticated approach. One approach, inspired by Cocoa, takes advantage of the [ember-key-responder](https://github.com/yapplabs/ember-key-responder) library. Here's an example:
+If you do subclass the dialog, remember not to overwrite the default component template. This can work, but some apps require a more sophisticated approach. One approach, inspired by Cocoa, takes advantage of the [ember-key-responder](https://github.com/yapplabs/ember-key-responder) library. Here's an example:
 
 ```javascript
 // app/components/modal-dialog.js
