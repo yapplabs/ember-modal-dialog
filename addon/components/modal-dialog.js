@@ -17,10 +17,9 @@ export default Ember.Component.extend({
   layout: template,
   modalService: injectService('modal-dialog'),
   destinationElementId: reads('modalService.destinationElementId'),
-  hasEmberTether: reads('modalService.hasEmberTether'),
 
-  useEmberTether: computed('hasEmberTether', 'alignment', 'renderInPlace', function() {
-    return this.get('hasEmberTether') && (this.get('alignment') !== 'none') && !this.get('renderInPlace');
+  useEmberTether: computed('modalService.useEmberTether', 'alignment', 'renderInPlace', function() {
+    return this.get('modalService.useEmberTether') && (this.get('alignment') !== 'none') && !this.get('renderInPlace');
   }),
 
   'container-class': null, // set this from templates

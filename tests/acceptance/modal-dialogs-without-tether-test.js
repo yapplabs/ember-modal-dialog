@@ -1,7 +1,6 @@
 import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
-import { stubResolver } from '../helpers/container';
 
 var application;
 const modalRootElementSelector = '#modal-overlays';
@@ -9,15 +8,10 @@ const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
-var modalDialogService = Ember.Service.extend({
-  destinationElementId: 'modal-overlays',
-  hasEmberTether: false
-});
-
 module('Acceptance: Display Modal Dialogs Without Tether', {
   beforeEach: function() {
-    application = startApp({}, function(app) {
-      stubResolver(app, 'service:modal-dialog', modalDialogService);
+    application = startApp({
+      MODAL_DIALOG_USE_TETHER: false
     });
   },
 
