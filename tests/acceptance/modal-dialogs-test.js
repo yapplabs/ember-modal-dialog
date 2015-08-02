@@ -49,6 +49,39 @@ test('modal with translucent overlay', function(assert) {
   });
 });
 
+test('modal without overlay', function(assert) {
+  visit('/');
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-without-overlay button',
+    dialogText: 'Without Overlay',
+    closeSelector: '#example-without-overlay button'
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-without-overlay button',
+    dialogText: 'Without Overlay',
+    closeSelector: dialogCloseButton,
+    context: 'body'
+  });
+});
+
+test('modal without overlay click outside to close', function(assert) {
+  visit('/');
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-without-overlay-click-outside-to-close button',
+    dialogText: 'Without Overlay - Click Outside to Close',
+    closeSelector: '#example-without-overlay-click-outside-to-close button'
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-without-overlay-click-outside-to-close button',
+    dialogText: 'Without Overlay - Click Outside to Close',
+    closeSelector: '#example-without-overlay-click-outside-to-close'
+  });
+});
+
 test('modal with custom styles', function(assert) {
   visit('/');
 

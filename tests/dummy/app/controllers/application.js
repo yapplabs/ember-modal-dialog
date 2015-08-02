@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   isShowingBasic: false,
   isShowingTranslucent: false,
+  isShowingWithoutOverlay: false,
+  isShowingWithoutOverlayClickOutsideToClose: false,
   isShowingCustomStyles: false,
   isShowingAlignmentTargetSelector: false,
   isShowingAlignmentTargetView: false,
@@ -45,6 +47,12 @@ export default Ember.Controller.extend({
     },
     toggleTranslucent: function(){
       this.toggleProperty('isShowingTranslucent');
+    },
+    toggleWithoutOverlay: function(){
+      this.toggleProperty('isShowingWithoutOverlay');
+    },
+    toggleWithoutOverlayClickOutsideToClose: function(){
+      this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
     },
     toggleCustomStyles: function(){
       this.toggleProperty('isShowingCustomStyles');

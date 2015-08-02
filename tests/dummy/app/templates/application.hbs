@@ -33,6 +33,39 @@
   {{/if}}
 </div>
 
+<div class='example' id='example-without-overlay'>
+  <h2>Without Overlay</h2>
+  <button {{action 'toggleWithoutOverlay'}}>Do It</button>
+  {{code-snippet name='without-overlay.hbs'}}
+  {{#if isShowingWithoutOverlay}}
+    {{!-- BEGIN-SNIPPET without-overlay --}}
+    {{#modal-dialog close='toggleWithoutOverlay'
+                    hasOverlay=false}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay</p>
+      <button {{action 'toggleWithoutOverlay'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-without-overlay-click-outside-to-close'>
+  <h2>Without Overlay - Click Outside to Close</h2>
+  <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Do It</button>
+  {{code-snippet name='without-overlay-click-outside-to-close.hbs'}}
+  {{#if isShowingWithoutOverlayClickOutsideToClose}}
+    {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close --}}
+    {{#modal-dialog close='toggleWithoutOverlayClickOutsideToClose'
+                    hasOverlay=false
+                    clickOutsideToClose=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay - Click Outside to Close</p>
+      <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
 <div class='example' id='example-custom-styles'>
   <h2>Custom Styles</h2>
   <button {{action 'toggleCustomStyles'}}>Do It</button>

@@ -25,7 +25,7 @@ export default function registerAssertHelpers() {
     message = message || 'Dialog triggered by ' + options.openSelector + ' failed to open and close';
     var dialogContent = [dialogSelector, ':contains(' + options.dialogText + ')'].join('');
     var self = this;
-    return click(options.openSelector).then(function() {
+    return click(options.openSelector, options.context).then(function() {
       if (options.hasOverlay) {
         self.isPresentOnce(overlaySelector);
       }
@@ -40,14 +40,14 @@ export default function registerAssertHelpers() {
         //       the horn and then disappear. This is obviously tightly coupled
         //       to arbitrary demo behavior.
         for(var i = 1; i <= 4; i++) {
-          click(options.openSelector);
+          click(options.openSelector, options.context);
         }
         andThen(function() {
           self.isAbsent(overlaySelector);
           self.isAbsent(dialogContent);
         });
       } else {
-        return click(options.closeSelector).then(function() {
+        return click(options.closeSelector, options.context).then(function() {
           self.isAbsent(overlaySelector);
           self.isAbsent(dialogContent);
         });
@@ -55,4 +55,3 @@ export default function registerAssertHelpers() {
     });
   };
 }
-

@@ -1,12 +1,12 @@
 import Ember from 'ember';
 import template from '../templates/components/modal-dialog';
-const dasherize = Ember.String.dasherize;
-const computed = Ember.computed;
+const { dasherize } = Ember.String;
+const { $, computed } = Ember;
 const get = Ember.get;
 var isIOS = /iPad|iPhone|iPod/.test( navigator.userAgent );
 
 const injectService = Ember.inject.service;
-const reads = Ember.computed.reads;
+const { reads } = computed;
 const computedJoin = function(prop) {
   return computed(prop, function(){
     return this.get(prop).join(' ');
@@ -81,6 +81,7 @@ export default Ember.Component.extend({
 
   hasOverlay: true,
   translucentOverlay: false,
+  clickOutsideToClose: false,
   renderInPlace: false,
 
   _attachmentNormalized: computed('alignment', 'attachment', function() {
@@ -122,6 +123,26 @@ export default Ember.Component.extend({
       Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
     }
   }),
+
+  didInsertElement() {
+    if (!this.get('clickOutsideToClose')) {
+      return;
+    }
+
+    var handleClick = event => {
+      if (!$(event.target).closest('.ember-modal-dialog').length) {
+        this.send('close');
+      }
+    };
+    var registerClick = () => $(document).on('click.ember-modal-dialog', handleClick);
+
+    // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
+    setTimeout(registerClick);
+  },
+  willDestroyElement() {
+    $(document).off('click.ember-modal-dialog');
+  },
+
   actions: {
     close: function() {
       this.sendAction('close');
