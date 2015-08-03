@@ -31,7 +31,9 @@ export default Ember.Component.extend({
   updateAlignment: function() {
     var alignmentTarget = this.get('alignmentTarget');
     if (Ember.typeOf(alignmentTarget) === 'string') {
-      alignmentTarget = Ember.$(alignmentTarget)[0];
+      let alignmentTargetSelector = alignmentTarget;
+      alignmentTarget = Ember.$(alignmentTargetSelector)[0];
+      Ember.assert(`No element found for modal-dialog's alignmentTarget selector '${alignmentTargetSelector}'.`, alignmentTarget);
     } else if (alignmentTarget && alignmentTarget.element) {
       alignmentTarget = alignmentTarget.element;
     }
