@@ -1,6 +1,22 @@
 # Change Log
 
-## [v0.7.6](https://github.com/yapplabs/ember-modal-dialog/tree/v0.7.6)
+## [v0.7.7](https://github.com/yapplabs/ember-modal-dialog/tree/v0.7.7) (2015-08-03)
+
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.6...v0.7.7)
+
+**Closed issues:**
+
+- Hide on click out with hasOverlay=false [\#55](https://github.com/yapplabs/ember-modal-dialog/issues/55)
+- Addon doesn't work with ember-cli \< 0.2.6 [\#53](https://github.com/yapplabs/ember-modal-dialog/issues/53)
+
+**Merged pull requests:**
+
+- refactor `updateAlignment` to make it clear what the different paths are [\#66](https://github.com/yapplabs/ember-modal-dialog/pull/66) ([raycohen](https://github.com/raycohen))
+- assert that specified alignment target exists [\#65](https://github.com/yapplabs/ember-modal-dialog/pull/65) ([kagemusha](https://github.com/kagemusha))
+- Adds the ability to close when clicking anywhere outside the modal without an overlay [\#59](https://github.com/yapplabs/ember-modal-dialog/pull/59) ([kellyselden](https://github.com/kellyselden))
+- Add version check for minimum ember-cli version [\#56](https://github.com/yapplabs/ember-modal-dialog/pull/56) ([lukemelia](https://github.com/lukemelia))
+
+## [v0.7.6](https://github.com/yapplabs/ember-modal-dialog/tree/v0.7.6) (2015-07-27)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.5...v0.7.6)
 
 **Closed issues:**
@@ -12,7 +28,7 @@
 
 - Upgrade to ember-cli 1.13.1 [\#63](https://github.com/yapplabs/ember-modal-dialog/pull/63) ([chrislopresto](https://github.com/chrislopresto))
 - Respect MODAL\_DIALOG\_USE\_TETHER application property [\#62](https://github.com/yapplabs/ember-modal-dialog/pull/62) ([chrislopresto](https://github.com/chrislopresto))
-- Generate a changelog [\#61](https://github.com/yapplabs/ember-modal-dialog/pull/61) ([truenorth](https://github.com/truenorth))
+- Generate a changelog [\#61](https://github.com/yapplabs/ember-modal-dialog/pull/61) ([mike-north](https://github.com/mike-north))
 - Make overlay clicks work on iOS automatically by adding `cursor: pointer` to the overlay div. [\#60](https://github.com/yapplabs/ember-modal-dialog/pull/60) ([lukemelia](https://github.com/lukemelia))
 - Add a changelog. [\#54](https://github.com/yapplabs/ember-modal-dialog/pull/54) ([blimmer](https://github.com/blimmer))
 
