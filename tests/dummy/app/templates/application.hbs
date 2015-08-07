@@ -74,7 +74,8 @@
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles --}}
     {{#modal-dialog close='toggleCustomStyles'
-                    alignment='none'
+                    targetAttachment='none'
+                    structure='simple'
                     container-class=customContainerClassNames
                     overlay-class='custom-styles-modal' }}
       <h1>Stop! Modal Time!</h1>
@@ -85,77 +86,74 @@
   {{/if}}
 </div>
 
-<div class='example' id='example-alignment-target-selector'>
-  <h2>Alignment Target (Selector)</h2>
-  <div class='alignmentTargetContainer'>
-    <button id='alignModalToMe' {{action 'toggleAlignmentTargetSelector'}}>Do It</button>
+<div class='example' id='example-target-selector'>
+  <h2>Target (Selector)</h2>
+  <div class='targetContainer'>
+    <button id='alignModalToMe' {{action 'toggleTargetSelector'}}>Do It</button>
   </div>
-  {{code-snippet name='alignment-target-selector.hbs'}}
-  {{#if isShowingAlignmentTargetSelector}}
-    {{!-- BEGIN-SNIPPET alignment-target-selector --}}
-    {{#modal-dialog close='toggleAlignmentTargetSelector'
+  {{code-snippet name='target-selector.hbs'}}
+  {{#if isShowingTargetSelector}}
+    {{!-- BEGIN-SNIPPET target-selector --}}
+    {{#modal-dialog close='toggleTargetSelector'
                     hasOverlay=false
-                    alignment=alignmentTargetDirection
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    alignmentTarget='#alignModalToMe' }}
+                    target='#alignModalToMe' }}
       <h1>Stop! Modal Time!</h1>
-      <p>Alignment Target - Selector: '#alignModalToMe'</p>
+      <p>Target - Selector: '#alignModalToMe'</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeAlignmentTargetSelector'}}>Close</button>
+      <button {{action 'closeTargetSelector'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
-<div class='example' id='example-alignment-target-view'>
-  <h2>Alignment Target (View)</h2>
-  <div class='alignmentTargetContainer'>
+<div class='example' id='example-target-view'>
+  <h2>Target (View)</h2>
+  <div class='targetContainer'>
     {{#view viewName="buttonWrapper1" tagName="span"}}
-      <button {{action 'toggleAlignmentTargetView'}}>Do It</button>
+      <button {{action 'toggleTargetView'}}>Do It</button>
     {{/view}}
   </div>
-  {{code-snippet name='alignment-target-view.hbs'}}
-  {{#if isShowingAlignmentTargetView}}
-    {{!-- BEGIN-SNIPPET alignment-target-view --}}
-    {{#modal-dialog close='toggleAlignmentTargetView'
+  {{code-snippet name='target-view.hbs'}}
+  {{#if isShowingTargetView}}
+    {{!-- BEGIN-SNIPPET target-view --}}
+    {{#modal-dialog close='toggleTargetView'
                     hasOverlay=false
-                    alignment=alignmentTargetDirection
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    alignmentTarget=view.buttonWrapper1 }}
+                    target=view.buttonWrapper1 }}
       <h1>Stop! Modal Time!</h1>
-      <p>Alignment Target - View: {{view.buttonWrapper1}}</p>
+      <p>Target - View: {{view.buttonWrapper1}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeAlignmentTargetView'}}>Close</button>
+      <button {{action 'closeTargetView'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
 
-<div class='example' id='example-alignment-target-element'>
-  <h2>Alignment Target (Element)</h2>
-  <div class='alignmentTargetContainer'>
+<div class='example' id='example-target-element'>
+  <h2>Target (Element)</h2>
+  <div class='targetContainer'>
     {{#view viewName="buttonWrapper2" tagName="span"}}
-      <button {{action 'toggleAlignmentTargetElement'}}>Do It</button>
+      <button {{action 'toggleTargetElement'}}>Do It</button>
     {{/view}}
   </div>
-  {{code-snippet name='alignment-target-element.hbs'}}
-  {{#if isShowingAlignmentTargetElement}}
-    {{!-- BEGIN-SNIPPET alignment-target-element --}}
-    {{#modal-dialog close='toggleAlignmentTargetElement'
+  {{code-snippet name='target-element.hbs'}}
+  {{#if isShowingTargetElement}}
+    {{!-- BEGIN-SNIPPET target-element --}}
+    {{#modal-dialog close='toggleTargetElement'
                     hasOverlay=false
-                    alignment=alignmentTargetDirection
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    alignmentTarget=view.buttonWrapper2.element }}
+                    target=view.buttonWrapper2.element }}
       <h1>Stop! Modal Time!</h1>
-      <p>Alignment Target - Element{{view.buttonWrapper2.elementId}}</p>
+      <p>Target - Element{{view.buttonWrapper2.elementId}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeAlignmentTargetElement'}}>Close</button>
+      <button {{action 'closeTargetElement'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -186,12 +184,43 @@
     I AM THE CONTAINER
     {{#if isShowingInPlace}}
       {{!-- BEGIN-SNIPPET in-place --}}
-      {{#modal-dialog close='toggleInPlace' renderInPlace=true}}
+      {{#modal-dialog close='toggleInPlace' structure='in-place'}}
         <h1>Stop! Modal Time!</h1>
         <p>In Place</p>
-        <button {{action 'toggleInPlace'}}>Close</button>
+        <button {{action 'close'}}>Close</button>
       {{/modal-dialog}}
       {{!-- END-SNIPPET --}}
     {{/if}}
   </div>
 </div>
+
+<div class='example' id='example-centered-scrolling'>
+  <h2>Centered Scrolling</h2>
+  <button {{action 'toggleCenteredScrolling'}}>Do It</button>
+  {{code-snippet name='centered-scrolling.hbs'}}
+  {{code-snippet name='centered-scrolling.scss'}}
+  <div id='container-centered-scrolling'>
+    {{#if isShowingCenteredScrolling}}
+      {{!-- BEGIN-SNIPPET centered-scrolling --}}
+      {{#modal-dialog
+          close='toggleCenteredScrolling'
+          translucentOverlay=true
+          structure='nested'
+          targetAttachment='none'
+          container-class='centered-scrolling-container'
+          overlay-class='centered-scrolling-overlay'
+          wrapper-class='centered-scrolling-wrapper'
+      }}
+        <h1>Really Long Content To Demonstrate Scrolling</h1>
+        <ul>
+          <li>Hover over modal and scroll</li>
+          <li>Also hover over overlay and scroll</li>
+        </ul>
+        {{lorem-ipsum length=30000}}
+        <button {{action 'toggleCenteredScrolling'}}>Close</button>
+      {{/modal-dialog}}
+      {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>
+

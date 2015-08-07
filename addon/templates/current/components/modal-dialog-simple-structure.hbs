@@ -1,0 +1,14 @@
+{{#ember-wormhole to=destinationElementId}}
+  {{#if hasOverlay}}
+    {{modal-dialog-overlay
+        classNameBindings='overlayClassNamesString translucentOverlay:translucent overlay-class'
+        action='close'
+    }}
+  {{/if}}
+  {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString targetAttachmentClass container-class"
+      targetAttachment=targetAttachment
+      target=target
+  }}
+    {{yield}}
+  {{/ember-modal-dialog-positioned-container}}
+{{/ember-wormhole}}

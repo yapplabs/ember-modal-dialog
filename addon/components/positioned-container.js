@@ -1,68 +1,74 @@
 import Ember from 'ember';
 
-var computed = Ember.computed;
-var observer = Ember.observer;
-var on = Ember.on;
+const { computed, observer, on } = Ember;
+const { capitalize } = Ember.String;
+const SUPPORTED_TARGET_ATTACHMENTS = [
+  'top', 'right', 'bottom', 'left', 'center', 'none'
+];
 
 export default Ember.Component.extend({
 
-  // element selector, element, or Ember View passed in
-  alignmentTarget: null,
+  // target - element selector, element, or Ember View
+  // targetAttachment - top, right, bottom, left, center, or none
+  //   left, right, top, bottom (relative to target)
+  //   center (relative to container)
+  targetAttachment: 'center',
 
-  // passed in; valid values are:
-  // left, right, top, bottom (relative to alignmentTarget)
-  // center (relative to container)
-  alignment: null,
-
-  isPositioned: computed('alignment', 'alignmentTarget', function() {
-    if (this.get('alignmentTarget') && this.get('alignment')) {
+  isPositioned: computed('targetAttachment', 'target', function() {
+    if (this.get('target') && this.get('targetAttachment')) {
       return true;
     }
-    return this.get('alignment') === 'center';
+    const targetAttachment = this.get('targetAttachment');
+    return targetAttachment === 'center' || targetAttachment === 'middle center';
   }),
 
   didGetPositioned: observer('isPositioned', on('didInsertElement', function() {
     if (this._state !== 'inDOM') { return; }
 
     if (this.get('isPositioned')) {
-      this.updateAlignment();
+      this.updateTargetAttachment();
     } else {
       this.$().css('left', '').css('top', '');
     }
   })),
 
-  getWrappedAlignmentElement: function() {
-    var alignmentTarget = this.get('alignmentTarget');
-    if (!alignmentTarget) { return null; }
+  getWrappedTargetAttachmentElement: function() {
+    const target = this.get('target');
+    if (!target) { return null; }
 
-    if (Ember.typeOf(alignmentTarget) === 'string') {
-      let alignmentTargetSelector = alignmentTarget;
-      let wrappedElement = Ember.$(alignmentTargetSelector).eq(0);
-      Ember.assert(`No element found for modal-dialog's alignmentTarget selector '${alignmentTargetSelector}'.`, wrappedElement); // '
+    if (Ember.typeOf(target) === 'string') {
+      const targetSelector = target;
+      const wrappedElement = Ember.$(targetSelector).eq(0);
+      Ember.assert(`No element found for modal-dialog's target selector '${targetSelector}'.`, wrappedElement);
       return wrappedElement;
     }
 
     // passed an ember view or component
-    if (alignmentTarget.element) {
-      return Ember.$(alignmentTarget.element);
+    if (target.element) {
+      return Ember.$(target.element);
     }
 
     // passed an element directly
-    return Ember.$(alignmentTarget);
+    return Ember.$(target);
   },
 
-  // TODO: Add resize and scroll handlers
-  updateAlignment: function() {
-    var alignment = this.get('alignment');
-    var alignmentMethod = 'align' + Ember.String.capitalize(alignment);
-    var alignmentElement = this.getWrappedAlignmentElement();
+  updateTargetAttachment: function() {
+    let targetAttachment = this.get('targetAttachment');
+    // Convert tether-styled values like 'middle right' to 'right'
+    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
+    Ember.assert(
+      `Positioned container supports targetAttachments of ${SUPPORTED_TARGET_ATTACHMENTS.join(', ')}`,
+      SUPPORTED_TARGET_ATTACHMENTS.indexOf(targetAttachment) > -1
+    );
+    const targetAttachmentMethod = 'align' + capitalize(targetAttachment);
+    const targetAttachmentElement = this.getWrappedTargetAttachmentElement();
 
-    this[alignmentMethod](alignmentElement);
+    this[targetAttachmentMethod](targetAttachmentElement);
   },
 
   alignCenter: function() {
-    var elementWidth = this.$().outerWidth();
-    var elementHeight = this.$().outerHeight();
+    const elementWidth = this.$().outerWidth();
+    const elementHeight = this.$().outerHeight();
 
     this.$().css('left', '50%')
       .css('top', '50%')
@@ -70,51 +76,53 @@ export default Ember.Component.extend({
       .css('margin-top', elementHeight * -0.5);
   },
 
-  alignLeft: function(alignmentElement) {
-    Ember.assert('Left alignment requires a target', alignmentElement.length > 0);
+  alignLeft: function(targetAttachmentElement) {
+    Ember.assert('Left targetAttachment requires a target', targetAttachmentElement.length > 0);
 
-    var elementWidth = this.$().outerWidth();
-    var originOffset = alignmentElement.offset();
-    var originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
+    const elementWidth = this.$().outerWidth();
+    const originOffset = targetAttachmentElement.offset();
+    const originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
 
     this.$().css('left', originOffset.left - elementWidth)
       .css('top', originOffsetTop);
   },
 
-  alignRight: function(alignmentElement) {
-    Ember.assert('Right alignment requires a target', alignmentElement.length > 0);
+  alignRight: function(targetAttachmentElement) {
+    Ember.assert('Right targetAttachment requires a target', targetAttachmentElement.length > 0);
 
-    var targetWidth = alignmentElement.outerWidth();
-    var originOffset = alignmentElement.offset();
-    var originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
+    const targetWidth = targetAttachmentElement.outerWidth();
+    const originOffset = targetAttachmentElement.offset();
+    const originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
 
     this.$().css('left', originOffset.left + targetWidth)
       .css('top', originOffsetTop);
   },
 
-  alignTop: function(alignmentElement) {
-    Ember.assert('Top alignment requires a target', alignmentElement.length > 0);
+  alignTop: function(targetAttachmentElement) {
+    Ember.assert('Top targetAttachment requires a target', targetAttachmentElement.length > 0);
 
-    var elementWidth = this.$().outerWidth();
-    var elementHeight = this.$().outerHeight();
-    var originOffset = alignmentElement.offset();
-    var originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
-    var targetWidth = alignmentElement.outerWidth();
+    const elementWidth = this.$().outerWidth();
+    const elementHeight = this.$().outerHeight();
+    const originOffset = targetAttachmentElement.offset();
+    const originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
+    const targetWidth = targetAttachmentElement.outerWidth();
 
     this.$().css('left', (originOffset.left + targetWidth/2 - elementWidth/2))
       .css('top', originOffsetTop - elementHeight);
   },
 
-  alignBottom: function(alignmentElement) {
-    Ember.assert('Bottom alignment requires a target', alignmentElement.length > 0);
+  alignBottom: function(targetAttachmentElement) {
+    Ember.assert('Bottom targetAttachment requires a target', targetAttachmentElement.length > 0);
 
-    var elementWidth = this.$().outerWidth();
-    var originOffset = alignmentElement.offset();
-    var originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
-    var targetWidth = alignmentElement.outerWidth();
-    var targetHeight = alignmentElement.outerHeight();
+    const elementWidth = this.$().outerWidth();
+    const originOffset = targetAttachmentElement.offset();
+    const originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
+    const targetWidth = targetAttachmentElement.outerWidth();
+    const targetHeight = targetAttachmentElement.outerHeight();
 
     this.$().css('left', (originOffset.left + targetWidth/2 - elementWidth/2))
       .css('top', originOffsetTop + targetHeight);
-  }
+  },
+
+  alignNone: function() {}
 });

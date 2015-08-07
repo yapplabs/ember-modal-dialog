@@ -7,7 +7,7 @@
 **Closed issues:**
 
 - Hide on click out with hasOverlay=false [\#55](https://github.com/yapplabs/ember-modal-dialog/issues/55)
-- Addon doesn't work with ember-cli \< 0.2.6 [\#53](https://github.com/yapplabs/ember-modal-dialog/issues/53)
+- Addon doesn't work with ember-cli < 0.2.6 [\#53](https://github.com/yapplabs/ember-modal-dialog/issues/53)
 
 **Merged pull requests:**
 

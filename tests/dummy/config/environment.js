@@ -20,10 +20,12 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
 
-      // Here is how to configure a custom modal root element id
-      // emberModalDialog: {
-      //   modalRootElementId: 'custom-modal-root-element'
-      // }
+      // Here is how to configure a custom defaultStructure and
+      // modalRootElementId
+      emberModalDialog: {
+        defaultStructure: 'tethered'
+        // modalRootElementId: 'custom-modal-root-element'
+      }
     }
   };
 
