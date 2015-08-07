@@ -1,8 +1,16 @@
 import Ember from 'ember';
-import template from '../templates/components/modal-dialog';
+import inPlaceLayout from '../templates/components/modal-dialog-in-place-positioner';
+import simpleLayout from '../templates/components/modal-dialog-simple-positioner';
+import tetheredLayout from '../templates/components/modal-dialog-tethered-positioner';
+
+const LAYOUTS = {
+  inPlace: inPlaceLayout,
+  simple: simpleLayout,
+  tethered: tetheredLayout
+};
+
 const { dasherize } = Ember.String;
-const { $, computed } = Ember;
-const get = Ember.get;
+const { $, computed, get } = Ember;
 var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const injectService = Ember.inject.service;
@@ -16,13 +24,20 @@ const computedJoin = function(prop) {
 export default Ember.Component.extend({
   // modal-dialog is itself tagless. positioned-container provides the container div
   tagName: '',
-
-  layout: template,
+  layout: computed('positioning', 'useEmberTether', function() {
+    let strategy = get(this, 'positioning');
+    let useEmberTether = get(this, 'useEmberTether');
+    if (strategy === 'tethered' && !useEmberTether) {
+      strategy = 'simple';
+    }
+    return LAYOUTS[strategy];
+  }),
+  positioning: 'tethered', // tethered, simple, or in-place
   modalService: injectService('modal-dialog'),
   destinationElementId: reads('modalService.destinationElementId'),
 
-  useEmberTether: computed('modalService.useEmberTether', 'alignment', 'renderInPlace', function() {
-    return this.get('modalService.useEmberTether') && (this.get('alignment') !== 'none') && !this.get('renderInPlace');
+  useEmberTether: computed('modalService.useEmberTether', function() {
+    return this.get('modalService.useEmberTether');
   }),
 
   'container-class': null, // set this from templates
@@ -42,39 +57,18 @@ export default Ember.Component.extend({
     }
   }),
 
-  renderInPlaceClass: computed('renderInPlace', function() {
-    if (this.get('renderInPlace')) {
-      return 'ember-modal-dialog-in-place';
-    }
-  }),
-
   alignment: 'center', // passed in
-  _alignmentNormalized: computed('alignment', 'renderInPlace', function() {
-    if (this.get('renderInPlace')) {
-      return 'none';
-    }
-    return this.get('alignment');
-  }),
   alignmentTarget: null, // element, css selector, or view instance... passed in
-  _alignmentTargetNormalized: computed('alignmentTarget', function() {
-    if (this.get('alignmentTarget')) {
-      return this.get('alignmentTarget');
-    }
-    if (typeof document !== 'undefined') {
-      return document.body;
-    }
+  target: null, // passed in
+  computedTarget: computed('target', 'alignmentTarget', function() {
+    return this.get('target') || this.get('alignmentTarget') || 'body';
   }),
   attachment: null, // passed in
-  targetAttachment: null, // passed in
-  targetModifier: null, // passed in
-  _targetModifierNormalized: computed('targetModifier', 'alignment', function() {
-    if (this.get('targetModifier')) {
-      return this.get('targetModifier');
-    }
-    if (this.get('alignment') === 'center') {
-      return 'visible';
-    }
+  computedAttachment: computed('attachment', function() {
+    return this.get('attachment') || 'middle center';
   }),
+  targetAttachment: null, // passed in
+  targetModifier: 'visible',
 
   tetherClassPrefix: 'ember-tether',
   offset: null, // passed in
@@ -83,42 +77,7 @@ export default Ember.Component.extend({
   hasOverlay: true,
   translucentOverlay: false,
   clickOutsideToClose: false,
-  renderInPlace: false,
 
-  _attachmentNormalized: computed('alignment', 'attachment', function() {
-    if (this.get('attachment')) {
-      return this.get('attachment');
-    }
-    switch (this.get('alignment')) {
-      case 'center':
-        return 'middle center';
-      case 'top':
-        return 'bottom center';
-      case 'right':
-        return 'middle left';
-      case 'bottom':
-        return 'top center';
-      case 'left':
-        return 'middle right';
-    }
-  }),
-  _targetAttachmentNormalized: computed('targetAttachment', '_attachmentNormalized', function() {
-    if (this.get('targetAttachment')) {
-      return this.get('targetAttachment');
-    }
-    switch (this.get('_attachmentNormalized')) {
-      case 'middle center':
-        return 'middle center';
-      case 'top center':
-        return 'bottom center';
-      case 'middle right':
-        return 'middle left';
-      case 'bottom center':
-        return 'top center';
-      case 'middle left':
-        return 'middle right';
-    }
-  }),
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
     if (isIOS && get(this, 'hasOverlay')) {
       Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');

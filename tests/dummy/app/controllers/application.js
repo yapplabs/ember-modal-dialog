@@ -105,6 +105,10 @@ export default Ember.Controller.extend({
     toggleInPlace: function() {
       this.toggleProperty('isShowingInPlace');
     },
+    // HACK to unify pre/post 1.13
+    close: function() {
+      this.toggleProperty('isShowingInPlace');
+    },
     closeAlignmentTargetSelector: function() {
       this.set('isShowingAlignmentTargetSelector', false);
       this.set('exampleTargetAttachment', 'middle left');

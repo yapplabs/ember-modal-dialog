@@ -169,27 +169,23 @@ test('subclassed modal', function(assert) {
   });
 });
 
+// TODO: Reorganize.. uses in-place not simple
 test('in place', function(assert) {
   visit('/');
 
   click('#example-in-place button');
   var dialogText = 'In Place';
-  var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
-  var inPlaceDialogSelector = dialogSelector + '.ember-modal-dialog-in-place';
+  // var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
+  // var inPlaceDialogSelector = dialogSelector + '.ember-modal-dialog-in-place';
   var inPlaceRootSelector = '#container-in-place';
-  var inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, ':contains(' + dialogText + ')'].join(' ');
-  var inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
+  var inPlaceSelector = [inPlaceRootSelector, ':contains(' + dialogText + ')'].join('');
+  var inPlaceCloseButton = [inPlaceRootSelector, 'button'].join(' ');
   andThen(function() {
-    assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
-    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
-    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
-    assert.isAbsent(defaultSelector);
     assert.isPresentOnce(inPlaceSelector);
   });
 
   click(inPlaceCloseButton);
   andThen(function() {
-    assert.isAbsent(defaultSelector);
     assert.isAbsent(inPlaceSelector);
   });
 });

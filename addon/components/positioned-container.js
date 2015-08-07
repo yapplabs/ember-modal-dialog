@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
-var computed = Ember.computed;
-var observer = Ember.observer;
-var on = Ember.on;
+const { computed, observer, on } = Ember;
 
 export default Ember.Component.extend({
 
@@ -18,7 +16,8 @@ export default Ember.Component.extend({
     if (this.get('alignmentTarget') && this.get('alignment')) {
       return true;
     }
-    return this.get('alignment') === 'center';
+    let alignment = this.get('alignment');
+    return alignment === 'center' || alignment === 'middle center';
   }),
 
   didGetPositioned: observer('isPositioned', on('didInsertElement', function() {
@@ -54,6 +53,9 @@ export default Ember.Component.extend({
   // TODO: Add resize and scroll handlers
   updateAlignment: function() {
     var alignment = this.get('alignment');
+    if (alignment === 'middle center') {
+      alignment = 'center';
+    }
     var alignmentMethod = 'align' + Ember.String.capitalize(alignment);
     var alignmentElement = this.getWrappedAlignmentElement();
 
@@ -116,5 +118,7 @@ export default Ember.Component.extend({
 
     this.$().css('left', (originOffset.left + targetWidth/2 - elementWidth/2))
       .css('top', originOffsetTop + targetHeight);
-  }
+  },
+
+  alignNone: function() {}
 });

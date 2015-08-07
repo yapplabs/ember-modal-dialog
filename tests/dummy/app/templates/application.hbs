@@ -75,6 +75,7 @@
     {{!-- BEGIN-SNIPPET custom-styles --}}
     {{#modal-dialog close='toggleCustomStyles'
                     alignment='none'
+                    positioning='simple'
                     container-class=customContainerClassNames
                     overlay-class='custom-styles-modal' }}
       <h1>Stop! Modal Time!</h1>
@@ -186,10 +187,10 @@
     I AM THE CONTAINER
     {{#if isShowingInPlace}}
       {{!-- BEGIN-SNIPPET in-place --}}
-      {{#modal-dialog close='toggleInPlace' renderInPlace=true}}
+      {{#modal-dialog close='toggleInPlace' positioning='in-place'}}
         <h1>Stop! Modal Time!</h1>
         <p>In Place</p>
-        <button {{action 'toggleInPlace'}}>Close</button>
+        <button {{action 'close'}}>Close</button>
       {{/modal-dialog}}
       {{!-- END-SNIPPET --}}
     {{/if}}
