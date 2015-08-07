@@ -1,12 +1,10 @@
 import Ember from 'ember';
-import template from '../templates/components/modal-dialog';
-const { dasherize } = Ember.String;
-const { $, computed } = Ember;
-const get = Ember.get;
-var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+import layout from '../templates/components/modal-dialog';
 
-const injectService = Ember.inject.service;
-const { reads } = computed;
+const { dasherize } = Ember.String;
+const { $, computed, inject } = Ember;
+const { oneWay } = computed;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 const computedJoin = function(prop) {
   return computed(prop, function() {
     return this.get(prop).join(' ');
@@ -14,113 +12,41 @@ const computedJoin = function(prop) {
 };
 
 export default Ember.Component.extend({
-  // modal-dialog is itself tagless. positioned-container provides the container div
   tagName: '',
+  layout: layout,
+  modalService: inject.service('modal-dialog'),
+  destinationElementId: oneWay('modalService.destinationElementId'),
 
-  layout: template,
-  modalService: injectService('modal-dialog'),
-  destinationElementId: reads('modalService.destinationElementId'),
-
-  useEmberTether: computed('modalService.useEmberTether', 'alignment', 'renderInPlace', function() {
-    return this.get('modalService.useEmberTether') && (this.get('alignment') !== 'none') && !this.get('renderInPlace');
-  }),
-
-  'container-class': null, // set this from templates
+  // container-class - set this from templates
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
   containerClassNamesString: computedJoin('containerClassNames'),
 
-  'overlay-class': null, // set this from templates
+  // 'overlay-class - set this from templates
   overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
   overlayClassNamesString: computedJoin('overlayClassNames'),
 
-  concatenatedProperties: ['containerClassNames', 'overlayClassNames'],
+  // 'wrapper-class - set this from templates
+  wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
+  wrapperClassNamesString: computedJoin('wrapperClassNames'),
 
-  alignmentClass: computed('alignment', function() {
-    var alignment = this.get('alignment');
-    if (alignment) {
-      return `ember-modal-dialog-${dasherize(alignment)}`;
-    }
+  concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
+
+  targetAttachmentClass: computed('targetAttachment', function() {
+    let targetAttachment = this.get('targetAttachment') || '';
+    // Convert tether-styled values like 'middle right' to 'right'
+    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
+    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
   }),
 
-  renderInPlaceClass: computed('renderInPlace', function() {
-    if (this.get('renderInPlace')) {
-      return 'ember-modal-dialog-in-place';
-    }
-  }),
+  target: 'body', // element, css selector, or view instance
+  targetAttachment: 'middle center',
 
-  alignment: 'center', // passed in
-  _alignmentNormalized: computed('alignment', 'renderInPlace', function() {
-    if (this.get('renderInPlace')) {
-      return 'none';
-    }
-    return this.get('alignment');
-  }),
-  alignmentTarget: null, // element, css selector, or view instance... passed in
-  _alignmentTargetNormalized: computed('alignmentTarget', function() {
-    if (this.get('alignmentTarget')) {
-      return this.get('alignmentTarget');
-    }
-    if (typeof document !== 'undefined') {
-      return document.body;
-    }
-  }),
-  attachment: null, // passed in
-  targetAttachment: null, // passed in
-  targetModifier: null, // passed in
-  _targetModifierNormalized: computed('targetModifier', 'alignment', function() {
-    if (this.get('targetModifier')) {
-      return this.get('targetModifier');
-    }
-    if (this.get('alignment') === 'center') {
-      return 'visible';
-    }
-  }),
-
-  tetherClassPrefix: 'ember-tether',
-  offset: null, // passed in
-  targetOffset: null, // passed in
-
-  hasOverlay: true,
   translucentOverlay: false,
   clickOutsideToClose: false,
   renderInPlace: false,
 
-  _attachmentNormalized: computed('alignment', 'attachment', function() {
-    if (this.get('attachment')) {
-      return this.get('attachment');
-    }
-    switch (this.get('alignment')) {
-      case 'center':
-        return 'middle center';
-      case 'top':
-        return 'bottom center';
-      case 'right':
-        return 'middle left';
-      case 'bottom':
-        return 'top center';
-      case 'left':
-        return 'middle right';
-    }
-  }),
-  _targetAttachmentNormalized: computed('targetAttachment', '_attachmentNormalized', function() {
-    if (this.get('targetAttachment')) {
-      return this.get('targetAttachment');
-    }
-    switch (this.get('_attachmentNormalized')) {
-      case 'middle center':
-        return 'middle center';
-      case 'top center':
-        return 'bottom center';
-      case 'middle right':
-        return 'middle left';
-      case 'bottom center':
-        return 'top center';
-      case 'middle left':
-        return 'middle right';
-    }
-  }),
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
-    if (isIOS && get(this, 'hasOverlay')) {
+    if (isIOS) {
       Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
     }
   }),
@@ -130,12 +56,12 @@ export default Ember.Component.extend({
       return;
     }
 
-    var handleClick = event => {
+    const handleClick = event => {
       if (!$(event.target).closest('.ember-modal-dialog').length) {
         this.send('close');
       }
     };
-    var registerClick = () => $(document).on('click.ember-modal-dialog', handleClick);
+    const registerClick = () => $(document).on('click.ember-modal-dialog', handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
@@ -145,9 +71,8 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    close: function() {
+    close() {
       this.sendAction('close');
     }
   }
 });
-

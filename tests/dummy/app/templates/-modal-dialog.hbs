@@ -1,0 +1,190 @@
+<div class='example' id='example-basic'>
+<h2>Basic</h2>
+  <button {{action 'toggleBasic'}}>Do It</button>
+  {{code-snippet name='basic-modal-dialog.hbs'}}
+  {{#if isShowingBasic}}
+    {{!-- BEGIN-SNIPPET basic-modal-dialog --}}
+    {{#modal-dialog close='toggleBasic'}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Basic</p>
+      <button {{action 'toggleBasic'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-translucent'>
+  <h2>With Translucent Overlay</h2>
+  <button {{action 'toggleTranslucent'}}>Do It</button>
+  {{code-snippet name='translucent-modal-dialog.hbs'}}
+  {{#if isShowingTranslucent}}
+    {{!-- BEGIN-SNIPPET translucent-modal-dialog --}}
+    {{#modal-dialog close='toggleTranslucent'
+                    translucentOverlay=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>With Translucent Overlay</p>
+      <button {{action 'toggleTranslucent'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-custom-styles'>
+  <h2>Custom Styles</h2>
+  <button {{action 'toggleCustomStyles'}}>Do It</button>
+  {{code-snippet name='custom-styles-modal-dialog.hbs'}}
+  {{code-snippet name='custom-styles.scss'}}
+  {{#if isShowingCustomStyles}}
+    {{!-- BEGIN-SNIPPET custom-styles-modal-dialog --}}
+    {{#modal-dialog close='toggleCustomStyles'
+                    targetAttachment='none'
+                    container-class=customContainerClassNames
+                    overlay-class='custom-styles-modal' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Custom Styles</p>
+      <button {{action 'toggleCustomStyles'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-selector'>
+  <h2>Target (Selector)</h2>
+  <div class='targetContainer'>
+    <button id='alignModalDialogToMe' {{action 'toggleTargetSelector'}}>Do It</button>
+  </div>
+  {{code-snippet name='target-selector-modal-dialog.hbs'}}
+  {{#if isShowingTargetSelector}}
+    {{!-- BEGIN-SNIPPET target-selector-modal-dialog --}}
+    {{#modal-dialog close='toggleTargetSelector'
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    target='#alignModalDialogToMe' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - Selector: '#alignModalDialogToMe'</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetSelector'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-view'>
+  <h2>Target (View)</h2>
+  <div class='targetContainer'>
+    {{#view id="bwmd1" viewName="buttonWrapperModalDialog1" tagName="span"}}
+      <button {{action 'toggleTargetView'}}>Do It</button>
+    {{/view}}
+  </div>
+  {{code-snippet name='target-view-modal-dialog.hbs'}}
+  {{#if isShowingTargetView}}
+    {{!-- BEGIN-SNIPPET target-view-modal-dialog --}}
+    {{#modal-dialog close='toggleTargetView'
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    target=view.buttonWrapperModalDialog1 }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - View: {{view.buttonWrapperModalDialog1}}</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetView'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-element'>
+  <h2>Target (Element)</h2>
+  <div class='targetContainer'>
+    {{#view viewName="buttonWrapperModalDialog2" tagName="span"}}
+      <button {{action 'toggleTargetElement'}}>Do It</button>
+    {{/view}}
+  </div>
+  {{code-snippet name='target-element-modal-dialog.hbs'}}
+  {{#if isShowingTargetElement}}
+    {{!-- BEGIN-SNIPPET target-element-modal-dialog --}}
+    {{#modal-dialog close='toggleTargetElement'
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    target=view.buttonWrapperModalDialog2.element }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - Element{{view.buttonWrapperModalDialog2.elementId}}</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetElement'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-subclass'>
+  <h2>Via Subclass</h2>
+  <button {{action 'toggleSubclassed'}}>Do It</button>
+  {{code-snippet name='subclass.js'}}
+  {{code-snippet name='subclass-modal-dialog.hbs'}}
+  {{#if isShowingSubclassed}}
+    {{!-- BEGIN-SNIPPET subclass-modal-dialog --}}
+    {{#my-cool-modal-dialog close='toggleSubclassed'
+                    translucentOverlay=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Via Subclass</p>
+      <button {{action 'toggleSubclassed'}}>Close</button>
+    {{/my-cool-modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-in-place'>
+<h2>In Place</h2>
+  <button {{action 'toggleInPlace'}}>Do It</button>
+  {{code-snippet name='in-place-modal-dialog.hbs'}}
+  {{code-snippet name='in-place.scss'}}
+  <div id='container-in-place'>
+    I AM THE CONTAINER
+    {{#if isShowingInPlace}}
+      {{!-- BEGIN-SNIPPET in-place-modal-dialog --}}
+      {{#modal-dialog
+          close='toggleInPlace'
+          renderInPlace=true
+          targetAttachment='none'
+          container-class='ember-modal-dialog-in-place'
+          overlay-class='ember-modal-overlay-in-place'
+      }}
+        <h1>Stop! Modal Time!</h1>
+        <p>In Place</p>
+        <button {{action 'toggleInPlace'}}>Close</button>
+      {{/modal-dialog}}
+      {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>
+
+<div class='example' id='example-centered-scrolling'>
+  <h2>Centered Scrolling</h2>
+  <button {{action 'toggleCenteredScrolling'}}>Do It</button>
+  {{code-snippet name='centered-scrolling-modal-dialog.hbs'}}
+  {{code-snippet name='centered-scrolling.scss'}}
+  <div id='container-centered-scrolling'>
+    {{#if isShowingCenteredScrolling}}
+      {{!-- BEGIN-SNIPPET centered-scrolling-modal-dialog --}}
+      {{#modal-dialog
+          close='toggleCenteredScrolling'
+          translucentOverlay=true
+          targetAttachment='none'
+          container-class='centered-scrolling-container'
+          overlay-class='centered-scrolling-overlay'
+          wrapper-class='centered-scrolling-wrapper'
+      }}
+        <h1>Really Long Content To Demonstrate Scrolling</h1>
+        <ul>
+          <li>Hover over modal and scroll</li>
+          <li>Also hover over overlay and scroll</li>
+        </ul>
+        {{lorem-ipsum length=30000}}
+        <button {{action 'toggleCenteredScrolling'}}>Close</button>
+      {{/modal-dialog}}
+      {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>

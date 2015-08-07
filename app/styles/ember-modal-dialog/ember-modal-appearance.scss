@@ -5,7 +5,5 @@
   padding: 10px;
 }
 .ember-modal-overlay.translucent {
-  opacity: 0.77;
-  filter: alpha(opacity=15);
-  background-color: #808080;
+  background-color: rgba(#808080, .77);
 }

@@ -8,11 +8,10 @@ const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
-module('Acceptance: Display Modal Dialogs Without Tether', {
+module('Acceptance: Display Tether Dialogs', {
   beforeEach: function() {
-    application = startApp({
-      MODAL_DIALOG_USE_TETHER: false
-    });
+    application = startApp();
+    visit('/');
   },
 
   afterEach: function() {
@@ -21,10 +20,7 @@ module('Acceptance: Display Modal Dialogs Without Tether', {
 });
 
 test('basic modal', function(assert) {
-  visit('/');
-
   andThen(function() {
-    assert.equal(currentPath(), 'index');
     assert.isPresentOnce(modalRootElementSelector);
     assert.isAbsent(overlaySelector);
     assert.isPresentOnce('#example-basic button');
@@ -36,36 +32,18 @@ test('basic modal', function(assert) {
     closeSelector: overlaySelector,
     hasOverlay: true
   });
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-basic button',
-    dialogText: 'Basic',
-    closeSelector: dialogCloseButton,
-    hasOverlay: true
-  });
 });
 
 test('modal with translucent overlay', function(assert) {
-  visit('/');
-
   assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
     closeSelector: overlaySelector,
     hasOverlay: true
   });
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-translucent button',
-    dialogText: 'With Translucent Overlay',
-    closeSelector: dialogCloseButton,
-    hasOverlay: true
-  });
 });
 
 test('modal without overlay', function(assert) {
-  visit('/');
-
   assert.dialogOpensAndCloses({
     openSelector: '#example-without-overlay button',
     dialogText: 'Without Overlay',
@@ -75,13 +53,12 @@ test('modal without overlay', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-without-overlay button',
     dialogText: 'Without Overlay',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    context: 'body'
   });
 });
 
 test('modal without overlay click outside to close', function(assert) {
-  visit('/');
-
   assert.dialogOpensAndCloses({
     openSelector: '#example-without-overlay-click-outside-to-close button',
     dialogText: 'Without Overlay - Click Outside to Close',
@@ -95,60 +72,33 @@ test('modal without overlay click outside to close', function(assert) {
   });
 });
 
-test('modal with custom styles', function(assert) {
-  visit('/');
-
+test('target - selector', function(assert) {
   assert.dialogOpensAndCloses({
-    openSelector: '#example-custom-styles button',
-    dialogText: 'Custom Styles',
-    closeSelector: overlaySelector,
-    hasOverlay: true,
-    whileOpen: function() {
-      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlay-class');
-      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
-    }
-  });
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-custom-styles button',
-    dialogText: 'Custom Styles',
-    closeSelector: dialogCloseButton,
-    hasOverlay: true
-  });
-});
-
-test('alignment target - selector', function(assert) {
-  visit('/');
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target-selector button',
-    dialogText: 'Alignment Target - Selector',
+    openSelector: '#example-target-selector button',
+    dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true,
     whileOpen: function() {
-      assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-right'), 'has alignment class name');
+      assert.ok(Ember.$(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
   });
 });
 
-test('alignment target - element', function(assert) {
-  visit('/');
-
+test('target - element', function(assert) {
   assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target-element button',
-    dialogText: 'Alignment Target - Element',
+    openSelector: '#example-target-element button',
+    dialogText: 'Target - Element',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true
   });
 });
 
-test('alignment target - view', function(assert) {
-  visit('/');
-
+test('target - view', function(assert) {
   assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target-view button',
-    dialogText: 'Alignment Target - View',
+    openSelector: '#example-target-view button',
+    dialogText: 'Target - View',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true
@@ -156,8 +106,6 @@ test('alignment target - view', function(assert) {
 });
 
 test('subclassed modal', function(assert) {
-  visit('/');
-
   assert.dialogOpensAndCloses({
     openSelector: '#example-subclass button',
     dialogText: 'Via Subclass',
@@ -170,8 +118,6 @@ test('subclassed modal', function(assert) {
 });
 
 test('in place', function(assert) {
-  visit('/');
-
   click('#example-in-place button');
   var dialogText = 'In Place';
   var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
@@ -181,8 +127,8 @@ test('in place', function(assert) {
   var inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
   andThen(function() {
     assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
-    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
-    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
+    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned');
+    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
     assert.isAbsent(defaultSelector);
     assert.isPresentOnce(inPlaceSelector);
   });

@@ -1,2 +1,1 @@
-import Component from 'ember-modal-dialog/components/modal-dialog';
-export default Component;
+export { default } from 'ember-modal-dialog/components/modal-dialog';
