@@ -75,3 +75,30 @@ $theme-color: #0f9d58;
   }
 }
 // END-SNIPPET
+
+// BEGIN-SNIPPET centered-scrolling
+.centered-scrolling-container {
+  background-color: white;
+  min-width: 30em;
+  max-width: 80vw;
+  min-height: 20em;
+  padding: 1em;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
+  height: 100vh;
+  overflow-y: scroll;
+  z-index: 100;
+}
+
+.centered-scrolling-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1em;
+
+  &.translucent {
+    background-color: hsla(0, 0%, 50%, 0.25);
+  }
+}
+// END-SNIPPET

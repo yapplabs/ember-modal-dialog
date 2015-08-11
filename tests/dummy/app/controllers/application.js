@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
   isShowingAlignmentTargetElement: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
+  isShowingCenteredScrolling: false,
   exampleTargetAttachment: 'middle left',
   exampleAttachment: 'middle right',
   alignmentTargetDirection: 'right',
@@ -104,6 +105,9 @@ export default Ember.Controller.extend({
     },
     toggleInPlace: function() {
       this.toggleProperty('isShowingInPlace');
+    },
+    toggleCenteredScrolling: function() {
+      this.toggleProperty('isShowingCenteredScrolling');
     },
     closeAlignmentTargetSelector: function() {
       this.set('isShowingAlignmentTargetSelector', false);

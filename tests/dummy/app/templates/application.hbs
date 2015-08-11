@@ -195,3 +195,27 @@
     {{/if}}
   </div>
 </div>
+
+<div class='example' id='example-centered-scrolling'>
+  <h2>Centered Scrolling</h2>
+  <button {{action 'toggleCenteredScrolling'}}>Do It</button>
+  {{code-snippet name='centered-scrolling.hbs'}}
+  <div id='container-centered-scrolling'>
+    {{#if isShowingCenteredScrolling}}
+      {{!-- BEGIN-SNIPPET centered-scrolling --}}
+      {{#modal-dialog
+          close='toggleCenteredScrolling'
+          hasOverlay=true
+          translucentOverlay=true
+          nestedOverlay=true
+          container-class='centered-scrolling-container'
+          overlay-class='centered-scrolling-overlay'
+          wrapper-class='centered-scrolling-wrapper'
+      }}
+        {{partial 'placeholder-content'}}
+        <button {{action 'toggleCenteredScrolling'}}>Close</button>
+      {{/modal-dialog}}
+      {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>
