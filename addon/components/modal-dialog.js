@@ -3,19 +3,20 @@ import template from '../templates/components/modal-dialog';
 const { dasherize } = Ember.String;
 const { $, computed } = Ember;
 const get = Ember.get;
-var isIOS = /iPad|iPhone|iPod/.test( navigator.userAgent );
+var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const injectService = Ember.inject.service;
 const { reads } = computed;
 const computedJoin = function(prop) {
-  return computed(prop, function(){
+  return computed(prop, function() {
     return this.get(prop).join(' ');
   });
 };
 
 export default Ember.Component.extend({
-  tagName: '', // modal-dialog is itself tagless. positioned-container provides
-               // the container div
+  // modal-dialog is itself tagless. positioned-container provides the container div
+  tagName: '',
+
   layout: template,
   modalService: injectService('modal-dialog'),
   destinationElementId: reads('modalService.destinationElementId'),
@@ -34,7 +35,7 @@ export default Ember.Component.extend({
 
   concatenatedProperties: ['containerClassNames', 'overlayClassNames'],
 
-  alignmentClass: computed('alignment', function(){
+  alignmentClass: computed('alignment', function() {
     var alignment = this.get('alignment');
     if (alignment) {
       return `ember-modal-dialog-${dasherize(alignment)}`;
@@ -88,7 +89,7 @@ export default Ember.Component.extend({
     if (this.get('attachment')) {
       return this.get('attachment');
     }
-    switch(this.get('alignment')) {
+    switch (this.get('alignment')) {
       case 'center':
         return 'middle center';
       case 'top':
@@ -105,7 +106,7 @@ export default Ember.Component.extend({
     if (this.get('targetAttachment')) {
       return this.get('targetAttachment');
     }
-    switch(this.get('_attachmentNormalized')) {
+    switch (this.get('_attachmentNormalized')) {
       case 'middle center':
         return 'middle center';
       case 'top center':

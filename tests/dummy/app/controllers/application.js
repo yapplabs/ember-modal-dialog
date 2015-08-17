@@ -15,8 +15,8 @@ export default Ember.Controller.extend({
   exampleAttachment: 'middle right',
   alignmentTargetDirection: 'right',
   customContainerClassNames: 'custom-styles-modal-container',
-  nextAlignmentTargetDirection: function(){
-    switch(this.alignmentTargetDirection) {
+  nextAlignmentTargetDirection: function() {
+    switch (this.alignmentTargetDirection) {
       case 'right':
         return 'bottom';
       case 'bottom':
@@ -28,8 +28,8 @@ export default Ember.Controller.extend({
     }
     return false;
   },
-  nextAttachment: function(val){
-    switch(val) {
+  nextAttachment: function(val) {
+    switch (val) {
       case 'middle right':
         return 'bottom center';
       case 'bottom center':
@@ -42,22 +42,22 @@ export default Ember.Controller.extend({
     return false;
   },
   actions: {
-    toggleBasic: function(){
+    toggleBasic: function() {
       this.toggleProperty('isShowingBasic');
     },
-    toggleTranslucent: function(){
+    toggleTranslucent: function() {
       this.toggleProperty('isShowingTranslucent');
     },
-    toggleWithoutOverlay: function(){
+    toggleWithoutOverlay: function() {
       this.toggleProperty('isShowingWithoutOverlay');
     },
-    toggleWithoutOverlayClickOutsideToClose: function(){
+    toggleWithoutOverlayClickOutsideToClose: function() {
       this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
     },
-    toggleCustomStyles: function(){
+    toggleCustomStyles: function() {
       this.toggleProperty('isShowingCustomStyles');
     },
-    toggleAlignmentTargetSelector: function(){
+    toggleAlignmentTargetSelector: function() {
       if (this.get('isShowingAlignmentTargetSelector')) {
         var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
@@ -71,7 +71,7 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingAlignmentTargetSelector');
     },
-    toggleAlignmentTargetView: function(){
+    toggleAlignmentTargetView: function() {
       if (this.get('isShowingAlignmentTargetView')) {
         var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
@@ -85,7 +85,7 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingAlignmentTargetView');
     },
-    toggleAlignmentTargetElement: function(){
+    toggleAlignmentTargetElement: function() {
       if (this.get('isShowingAlignmentTargetElement')) {
         var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
@@ -99,7 +99,7 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingAlignmentTargetElement');
     },
-    toggleSubclassed: function(){
+    toggleSubclassed: function() {
       this.toggleProperty('isShowingSubclassed');
     },
     toggleInPlace: function() {

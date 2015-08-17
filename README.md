@@ -68,7 +68,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   isShowingModal: false,
   actions: {
-    toggleModal: function(){
+    toggleModal: function() {
       this.toggleProperty('isShowingModal');
     }
   }
@@ -243,11 +243,11 @@ import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
 
 export default ModalDialog.extend({
   acceptsKeyResponder: true,
-  becomeKeyResponderWhenInserted: function(){
+  becomeKeyResponderWhenInserted: function() {
     this.becomeKeyResponder();
   }.on('didInsertElement'),
 
-  resignKeyResponderWhenDestroyed: function(){
+  resignKeyResponderWhenDestroyed: function() {
     this.resignKeyResponder();
   }.on('willDestroyElement'),
 
