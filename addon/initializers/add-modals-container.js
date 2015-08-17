@@ -13,7 +13,7 @@ function appendContainerElement(rootElementId, id) {
   rootEl.appendChild(modalContainerEl);
 }
 
-export default function(container, application){
+export default function(container, application) {
   const emberModalDialog = application.emberModalDialog || {};
   const modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
 

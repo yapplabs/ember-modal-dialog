@@ -34,14 +34,14 @@ test('basic modal', function(assert) {
     openSelector: '#example-basic button',
     dialogText: 'Basic',
     closeSelector: overlaySelector,
-    hasOverlay: true,
+    hasOverlay: true
   });
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-basic button',
     dialogText: 'Basic',
     closeSelector: dialogCloseButton,
-    hasOverlay: true,
+    hasOverlay: true
   });
 });
 
@@ -52,14 +52,14 @@ test('modal with translucent overlay', function(assert) {
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
     closeSelector: overlaySelector,
-    hasOverlay: true,
+    hasOverlay: true
   });
 
   assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
     closeSelector: dialogCloseButton,
-    hasOverlay: true,
+    hasOverlay: true
   });
 });
 
@@ -103,7 +103,7 @@ test('modal with custom styles', function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     hasOverlay: true,
-    whileOpen: function(){
+    whileOpen: function() {
       assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlay-class');
       assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
     }
@@ -112,7 +112,7 @@ test('modal with custom styles', function(assert) {
     openSelector: '#example-custom-styles button',
     dialogText: 'Custom Styles',
     closeSelector: dialogCloseButton,
-    hasOverlay: true,
+    hasOverlay: true
   });
 });
 
@@ -125,7 +125,7 @@ test('alignment target - selector', function(assert) {
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true,
-    whileOpen: function(){
+    whileOpen: function() {
       assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-right'), 'has alignment class name');
     }
   });
@@ -163,7 +163,7 @@ test('subclassed modal', function(assert) {
     dialogText: 'Via Subclass',
     closeSelector: overlaySelector,
     hasOverlay: true,
-    whileOpen: function(){
+    whileOpen: function() {
       assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
   });

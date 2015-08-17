@@ -6,11 +6,15 @@ var on = Ember.on;
 
 export default Ember.Component.extend({
 
-  alignmentTarget: null, // element selector, element, or Ember View passed in
-  alignment: null, // passed in; valid values are:
-                   // left, right, top, bottom (relative to alignmentTarget)
-                   // center (relative to container)
-  isPositioned: computed('alignment', 'alignmentTarget', function(){
+  // element selector, element, or Ember View passed in
+  alignmentTarget: null,
+
+  // passed in; valid values are:
+  // left, right, top, bottom (relative to alignmentTarget)
+  // center (relative to container)
+  alignment: null,
+
+  isPositioned: computed('alignment', 'alignmentTarget', function() {
     if (this.get('alignmentTarget') && this.get('alignment')) {
       return true;
     }
@@ -47,7 +51,7 @@ export default Ember.Component.extend({
     return Ember.$(alignmentTarget);
   },
 
-  //TODO: Add resize and scroll handlers
+  // TODO: Add resize and scroll handlers
   updateAlignment: function() {
     var alignment = this.get('alignment');
     var alignmentMethod = 'align' + Ember.String.capitalize(alignment);

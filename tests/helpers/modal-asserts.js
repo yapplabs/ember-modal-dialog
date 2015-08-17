@@ -39,7 +39,7 @@ export default function registerAssertHelpers() {
         // HACK: Click open button 4 more times to let the modal go around
         //       the horn and then disappear. This is obviously tightly coupled
         //       to arbitrary demo behavior.
-        for(var i = 1; i <= 4; i++) {
+        for (var i = 1; i <= 4; i++) {
           click(options.openSelector, options.context);
         }
         andThen(function() {
