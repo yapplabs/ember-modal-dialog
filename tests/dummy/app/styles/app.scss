@@ -75,3 +75,42 @@ $theme-color: #0f9d58;
   }
 }
 // END-SNIPPET
+
+// BEGIN-SNIPPET centered-scrolling
+.centered-scrolling-wrapper {
+  position: fixed;
+  z-index: 99;
+  height: 100vh;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow-y: scroll;
+}
+
+.centered-scrolling-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1em;
+}
+
+.ember-modal-overlay.translucent {
+  background-color: hsla(0, 0%, 50%, 0.25);
+}
+
+/* basic modal style (an example, this is not necessary for the centering) */
+.centered-scrolling-container {
+  background-color: lime;
+  min-width: 30em;
+  max-width: 80vw;
+  min-height: 20em;
+  padding: 1em;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
+
+  // Had to add the following two rules to make modal content scrollable
+  overflow-y: scroll;
+  height: 100vh;
+}
+// END-SNIPPET

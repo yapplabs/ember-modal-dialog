@@ -7,6 +7,7 @@ import tetheredLayout from '../templates/components/modal-dialog-tethered-positi
 const LAYOUTS = {
   inPlace: inPlaceLayout,
   simple: simpleLayout,
+  nested: nestedLayout,
   tethered: tetheredLayout
 };
 
