@@ -94,10 +94,8 @@ $theme-color: #0f9d58;
   min-height: 100vh;
   padding: 1em;
 
-  // reset to default (only needed in dummy, because of inheritance)
-  height:initial;
-  position:initial;
-
+  height: initial;
+  position: initial;
 }
 
 .ember-modal-overlay.translucent {
@@ -114,7 +112,7 @@ $theme-color: #0f9d58;
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
 
-  position:initial; // reset to default (only needed in dummy, because of inheritance)
-  margin-left:50em; // cosmetics, only needed in dummy
+  position: initial;
+  margin-left: 50em;
 }
 // END-SNIPPET
