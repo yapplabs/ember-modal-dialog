@@ -112,6 +112,14 @@ export default Ember.Controller.extend({
     },
     toggleCenteredScrolling: function() {
       this.toggleProperty('isShowingCenteredScrolling');
+
+      if (this.get('isShowingCenteredScrolling')) {
+        Ember.$('#modal-overlays').addClass('active');
+        Ember.$('body').addClass('centered-modal-showing');
+      } else {
+        Ember.$('#modal-overlays').removeClass('active');
+        Ember.$('body').removeClass('centered-modal-showing');
+      }
     },
     closeAlignmentTargetSelector: function() {
       this.set('isShowingAlignmentTargetSelector', false);

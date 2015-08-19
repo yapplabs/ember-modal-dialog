@@ -77,6 +77,9 @@ $theme-color: #0f9d58;
 // END-SNIPPET
 
 // BEGIN-SNIPPET centered-scrolling
+body.centered-modal-showing {
+  overflow: hidden;
+}
 .centered-scrolling-wrapper {
   position: fixed;
   z-index: 99;
@@ -89,30 +92,30 @@ $theme-color: #0f9d58;
 
 .centered-scrolling-overlay {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   min-height: 100vh;
   padding: 1em;
-
-  height: initial;
-  position: initial;
+  position: relative;
+  height: auto;
 }
 
 .ember-modal-overlay.translucent {
-  background-color: hsla(0, 0%, 50%, 0.25);
+  background-color: rgba(0,0,0,0.5);
+  opacity: 1;
 }
 
 /* basic modal style (an example, this is not necessary for the centering) */
 .centered-scrolling-container {
-  background-color: lime;
+  position: relative;
+  background-color: white;
   min-width: 30em;
-  max-width: 80vw;
+  max-width: 650px;
   min-height: 20em;
-  padding: 1em;
+  padding: 3em;
+  margin-top: 30px;
+  margin-bottom: 30px;
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
-
-  position: initial;
-  margin-left: 50em;
 }
 // END-SNIPPET
