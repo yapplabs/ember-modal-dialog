@@ -1,0 +1,19 @@
+{{#ember-wormhole to=destinationElementId}}
+  {{#if hasOverlay}}
+    {{modal-dialog-overlay
+        classNameBindings='overlayClassNamesString translucentOverlay:translucent overlay-class'
+        action='close'
+    }}
+  {{/if}}
+{{/ember-wormhole}}
+{{#ember-tether classNameBindings="containerClassNamesString container-class"
+    target=target
+    attachment=attachment
+    targetAttachment=targetAttachment
+    targetModifier=targetModifier
+    classPrefix=tetherClassPrefix
+    offset=offset
+    targetOffset=targetOffset
+}}
+  {{yield}}
+{{/ember-tether}}

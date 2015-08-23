@@ -11,7 +11,9 @@ const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 module('Acceptance: Display Modal Dialogs Without Tether', {
   beforeEach: function() {
     application = startApp({
-      MODAL_DIALOG_USE_TETHER: false
+      emberModalDialog: {
+        defaultStructure: 'simple'
+      }
     });
   },
 
@@ -116,39 +118,39 @@ test('modal with custom styles', function(assert) {
   });
 });
 
-test('alignment target - selector', function(assert) {
+test('target - selector', function(assert) {
   visit('/');
 
   assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target-selector button',
-    dialogText: 'Alignment Target - Selector',
+    openSelector: '#example-target-selector button',
+    dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true,
     whileOpen: function() {
-      assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-right'), 'has alignment class name');
+      assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
     }
   });
 });
 
-test('alignment target - element', function(assert) {
+test('target - element', function(assert) {
   visit('/');
 
   assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target-element button',
-    dialogText: 'Alignment Target - Element',
+    openSelector: '#example-target-element button',
+    dialogText: 'Target - Element',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true
   });
 });
 
-test('alignment target - view', function(assert) {
+test('target - view', function(assert) {
   visit('/');
 
   assert.dialogOpensAndCloses({
-    openSelector: '#example-alignment-target-view button',
-    dialogText: 'Alignment Target - View',
+    openSelector: '#example-target-view button',
+    dialogText: 'Target - View',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true
@@ -169,27 +171,23 @@ test('subclassed modal', function(assert) {
   });
 });
 
+// TODO: Reorganize.. uses in-place not simple
 test('in place', function(assert) {
   visit('/');
 
   click('#example-in-place button');
   var dialogText = 'In Place';
-  var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
-  var inPlaceDialogSelector = dialogSelector + '.ember-modal-dialog-in-place';
+  // var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
+  // var inPlaceDialogSelector = dialogSelector + '.ember-modal-dialog-in-place';
   var inPlaceRootSelector = '#container-in-place';
-  var inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, ':contains(' + dialogText + ')'].join(' ');
-  var inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
+  var inPlaceSelector = [inPlaceRootSelector, ':contains(' + dialogText + ')'].join('');
+  var inPlaceCloseButton = [inPlaceRootSelector, 'button'].join(' ');
   andThen(function() {
-    assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
-    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
-    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
-    assert.isAbsent(defaultSelector);
     assert.isPresentOnce(inPlaceSelector);
   });
 
   click(inPlaceCloseButton);
   andThen(function() {
-    assert.isAbsent(defaultSelector);
     assert.isAbsent(inPlaceSelector);
   });
 });
