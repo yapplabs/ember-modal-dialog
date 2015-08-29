@@ -16,16 +16,9 @@ Here is the simplest way to get started with ember-modal-dialog:
 
 ```sh
 ember install ember-modal-dialog
-ember install ember-cli-sass
 ```
 
 *Note:* Ember CLI versions < 0.2.3 should use `ember install:addon` instead of `ember install`
-
-**app.scss**
-```scss
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-```
 
 **application.hbs**
 ```htmlbars
@@ -186,23 +179,7 @@ module.exports = function(environment) {
 
 ## Configuring Styles
 
-The addon packages default styles for modal structure and appearance. To use these styles, install ember-cli-sass and import the relevant SCSS file(s) in `app.scss`.
-
-```sh
-> ember install ember-cli-sass
-```
-
-Or, in Ember CLI versions < 0.2.3:
-
-```sh
-ember install:addon ember-cli-sass
-```
-
-**app.scss**
-```scss
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-```
+The addon packages default styles for modal structure and appearance, see `addon.css`.
 
 ## Keyboard shortcuts
 
