@@ -29,7 +29,6 @@
     "ember-cli-lorem-ipsum": "0.0.2",
     "ember-cli-qunit": "0.3.15",
     "ember-cli-release": "0.2.5",
-    "ember-cli-sass": "3.1.1",
     "ember-cli-uglify": "^1.0.1",
     "ember-code-snippet": "1.1.0",
     "ember-disable-prototype-extensions": "^1.0.0",
