@@ -1,0 +1,198 @@
+<div class='example' id='example-basic'>
+<h2>Basic</h2>
+  <button {{action 'toggleBasic'}}>Do It</button>
+  {{code-snippet name='basic-tether-dialog.hbs'}}
+  {{#if isShowingBasic}}
+    {{!-- BEGIN-SNIPPET basic-tether-dialog --}}
+    {{#tether-dialog close='toggleBasic'}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Basic</p>
+      <button {{action 'toggleBasic'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-translucent'>
+  <h2>With Translucent Overlay</h2>
+  <button {{action 'toggleTranslucent'}}>Do It</button>
+  {{code-snippet name='translucent-tether-dialog.hbs'}}
+  {{#if isShowingTranslucent}}
+    {{!-- BEGIN-SNIPPET translucent-tether-dialog --}}
+    {{#tether-dialog close='toggleTranslucent'
+                    translucentOverlay=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>With Translucent Overlay</p>
+      <button {{action 'toggleTranslucent'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-without-overlay'>
+  <h2>Without Overlay</h2>
+  <button {{action 'toggleWithoutOverlay'}}>Do It</button>
+  {{code-snippet name='without-overlay-tether-dialog.hbs'}}
+  {{#if isShowingWithoutOverlay}}
+    {{!-- BEGIN-SNIPPET without-overlay-tether-dialog --}}
+    {{#tether-dialog close='toggleWithoutOverlay'
+                    hasOverlay=false}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay</p>
+      <button {{action 'toggleWithoutOverlay'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-without-overlay-click-outside-to-close'>
+  <h2>Without Overlay - Click Outside to Close</h2>
+  <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Do It</button>
+  {{code-snippet name='without-overlay-click-outside-to-close-tether-dialog.hbs'}}
+  {{#if isShowingWithoutOverlayClickOutsideToClose}}
+    {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-tether-dialog --}}
+    {{#tether-dialog close='toggleWithoutOverlayClickOutsideToClose'
+                    hasOverlay=false
+                    clickOutsideToClose=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay - Click Outside to Close</p>
+      <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-custom-styles'>
+  <h2>Custom Styles</h2>
+  <button {{action 'toggleCustomStyles'}}>Do It</button>
+  {{code-snippet name='custom-styles-tether-dialog.hbs'}}
+  {{code-snippet name='custom-styles.scss'}}
+  {{#if isShowingCustomStyles}}
+    {{!-- BEGIN-SNIPPET custom-styles-tether-dialog --}}
+    {{#tether-dialog close='toggleCustomStyles'
+                    targetAttachment='top right'
+                    attachment='top right'
+                    container-class=customContainerClassNames
+                    overlay-class='custom-styles-modal' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Custom Styles</p>
+      <button {{action 'toggleCustomStyles'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-selector'>
+  <h2>Target (Selector)</h2>
+  <div class='targetContainer'>
+    <button id='alignTetherDialogToMe' {{action 'toggleTargetSelector'}}>Do It</button>
+  </div>
+  {{code-snippet name='target-selector-tether-dialog.hbs'}}
+  {{#if isShowingTargetSelector}}
+    {{!-- BEGIN-SNIPPET target-selector-tether-dialog --}}
+    {{#tether-dialog close='toggleTargetSelector'
+                    hasOverlay=false
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    target='#alignTetherDialogToMe' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - Selector: '#alignTetherDialogToMe'</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetSelector'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-view'>
+  <h2>Target (View)</h2>
+  <div class='targetContainer'>
+    {{#view viewName="bwtdv" tagName="span"}}
+      <button {{action 'toggleTargetView'}}>Do It</button>
+    {{/view}}
+  </div>
+  {{code-snippet name='target-view-tether-dialog.hbs'}}
+  {{#if isShowingTargetView}}
+    {{!-- BEGIN-SNIPPET target-view-tether-dialog --}}
+    {{#tether-dialog close='toggleTargetView'
+                    hasOverlay=false
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    target=view.bwtdv }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - View: {{view.bwtdv}}</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetView'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-element'>
+  <h2>Target (Element)</h2>
+  <div class='targetContainer'>
+    {{#view viewName="bwtde" tagName="span"}}
+      <button {{action 'toggleTargetElement'}}>Do It</button>
+    {{/view}}
+  </div>
+  {{code-snippet name='target-element-tether-dialog.hbs'}}
+  {{#if isShowingTargetElement}}
+    {{!-- BEGIN-SNIPPET target-element-tether-dialog --}}
+    {{#tether-dialog close='toggleTargetElement'
+                    hasOverlay=false
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    target=view.bwtde.element }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - Element{{view.bwtde.elementId}}</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetElement'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-subclass'>
+  <h2>Via Subclass</h2>
+  <button {{action 'toggleSubclassed'}}>Do It</button>
+  {{code-snippet name='subclass.js'}}
+  {{code-snippet name='subclass-tether-dialog.hbs'}}
+  {{#if isShowingSubclassed}}
+    {{!-- BEGIN-SNIPPET subclass-tether-dialog --}}
+    {{#my-cool-modal-dialog close='toggleSubclassed'
+                    translucentOverlay=true}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Via Subclass</p>
+      <button {{action 'toggleSubclassed'}}>Close</button>
+    {{/my-cool-modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-in-place'>
+<h2>In Place</h2>
+  <button {{action 'toggleInPlace'}}>Do It</button>
+  {{code-snippet name='in-place-tether-dialog.hbs'}}
+  {{code-snippet name='in-place.scss'}}
+  <div id='container-in-place'>
+    I AM THE CONTAINER
+    {{#if isShowingInPlace}}
+      {{!-- BEGIN-SNIPPET in-place-tether-dialog --}}
+      {{#tether-dialog
+          close='toggleInPlace'
+          renderInPlace=true
+          targetAttachment='none'
+          container-class='ember-modal-dialog-in-place'
+          overlay-class='ember-modal-overlay-in-place'
+      }}
+        <h1>Stop! Modal Time!</h1>
+        <p>In Place</p>
+        <button {{action 'toggleInPlace'}}>Close</button>
+      {{/tether-dialog}}
+      {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>

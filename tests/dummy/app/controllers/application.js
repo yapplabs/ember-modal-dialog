@@ -1,33 +1,24 @@
 import Ember from 'ember';
+const { get, set } = Ember;
 
 export default Ember.Controller.extend({
+  queryParams: ['activeComponent'],
+  activeComponent: 'tether-dialog',
   isShowingBasic: false,
   isShowingTranslucent: false,
   isShowingWithoutOverlay: false,
   isShowingWithoutOverlayClickOutsideToClose: false,
   isShowingCustomStyles: false,
-  isShowingAlignmentTargetSelector: false,
-  isShowingAlignmentTargetView: false,
-  isShowingAlignmentTargetElement: false,
+  isShowingTargetSelector: false,
+  isShowingTargetView: false,
+  isShowingTargetElement: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
+  isInPlace: true,
+  isShowingCenteredScrolling: false,
   exampleTargetAttachment: 'middle left',
   exampleAttachment: 'middle right',
-  alignmentTargetDirection: 'right',
   customContainerClassNames: 'custom-styles-modal-container',
-  nextAlignmentTargetDirection: function() {
-    switch (this.alignmentTargetDirection) {
-      case 'right':
-        return 'bottom';
-      case 'bottom':
-        return 'left';
-      case 'left':
-        return 'top';
-      case 'top':
-        return 'right';
-    }
-    return false;
-  },
   nextAttachment: function(val) {
     switch (val) {
       case 'middle right':
@@ -42,6 +33,13 @@ export default Ember.Controller.extend({
     return false;
   },
   actions: {
+    toggleActiveComponent() {
+      if (get(this, 'activeComponent') === 'modal-dialog') {
+        set(this, 'activeComponent', 'tether-dialog');
+      } else {
+        set(this, 'activeComponent', 'modal-dialog');
+      }
+    },
     toggleBasic: function() {
       this.toggleProperty('isShowingBasic');
     },
@@ -57,47 +55,41 @@ export default Ember.Controller.extend({
     toggleCustomStyles: function() {
       this.toggleProperty('isShowingCustomStyles');
     },
-    toggleAlignmentTargetSelector: function() {
-      if (this.get('isShowingAlignmentTargetSelector')) {
+    toggleTargetSelector: function() {
+      if (this.get('isShowingTargetSelector')) {
         var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
-        var newAlignment = this.nextAlignmentTargetDirection();
-        this.set('alignmentTargetDirection', newAlignment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
           return;
         }
       }
-      this.toggleProperty('isShowingAlignmentTargetSelector');
+      this.toggleProperty('isShowingTargetSelector');
     },
-    toggleAlignmentTargetView: function() {
-      if (this.get('isShowingAlignmentTargetView')) {
+    toggleTargetView: function() {
+      if (this.get('isShowingTargetView')) {
         var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
-        var newAlignment = this.nextAlignmentTargetDirection();
-        this.set('alignmentTargetDirection', newAlignment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
           return;
         }
       }
-      this.toggleProperty('isShowingAlignmentTargetView');
+      this.toggleProperty('isShowingTargetView');
     },
-    toggleAlignmentTargetElement: function() {
-      if (this.get('isShowingAlignmentTargetElement')) {
+    toggleTargetElement: function() {
+      if (this.get('isShowingTargetElement')) {
         var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
-        var newAlignment = this.nextAlignmentTargetDirection();
-        this.set('alignmentTargetDirection', newAlignment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
           return;
         }
       }
-      this.toggleProperty('isShowingAlignmentTargetElement');
+      this.toggleProperty('isShowingTargetElement');
     },
     toggleSubclassed: function() {
       this.toggleProperty('isShowingSubclassed');
@@ -105,18 +97,32 @@ export default Ember.Controller.extend({
     toggleInPlace: function() {
       this.toggleProperty('isShowingInPlace');
     },
-    closeAlignmentTargetSelector: function() {
-      this.set('isShowingAlignmentTargetSelector', false);
+    toggleIsInPlace: function() {
+      this.toggleProperty('isInPlace');
+    },
+    toggleCenteredScrolling: function() {
+      this.toggleProperty('isShowingCenteredScrolling');
+
+      if (this.get('isShowingCenteredScrolling')) {
+        Ember.$('#modal-overlays').addClass('active');
+        Ember.$('body').addClass('centered-modal-showing');
+      } else {
+        Ember.$('#modal-overlays').removeClass('active');
+        Ember.$('body').removeClass('centered-modal-showing');
+      }
+    },
+    closeTargetSelector: function() {
+      this.set('isShowingTargetSelector', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },
-    closeAlignmentTargetView: function() {
-      this.set('isShowingAlignmentTargetView', false);
+    closeTargetView: function() {
+      this.set('isShowingTargetView', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },
-    closeAlignmentTargetElement: function() {
-      this.set('isShowingAlignmentTargetElement', false);
+    closeTargetElement: function() {
+      this.set('isShowingTargetElement', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     }
