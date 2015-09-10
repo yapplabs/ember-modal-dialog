@@ -33,7 +33,11 @@ export default Ember.Component.extend({
   overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
   overlayClassNamesString: computedJoin('overlayClassNames'),
 
-  concatenatedProperties: ['containerClassNames', 'overlayClassNames'],
+  'wrapper-class': null, // set this from templates
+  wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
+  wrapperClassNamesString: computedJoin('wrapperClassNames'),
+
+  concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
 
   alignmentClass: computed('alignment', function() {
     var alignment = this.get('alignment');
@@ -81,6 +85,7 @@ export default Ember.Component.extend({
   targetOffset: null, // passed in
 
   hasOverlay: true,
+  nestedOverlay: false,
   translucentOverlay: false,
   clickOutsideToClose: false,
   renderInPlace: false,
@@ -150,4 +155,3 @@ export default Ember.Component.extend({
     }
   }
 });
-
