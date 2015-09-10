@@ -1,13 +1,34 @@
 # Change Log
 
-## [v0.7.7](https://github.com/yapplabs/ember-modal-dialog/tree/v0.7.7) (2015-08-03)
+## [0.8.0](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.0) (2015-09-10)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.7...0.8.0)
 
+**Fixed bugs:**
+
+- Opening modal fails in Ember 1.13.7+ [\#71](https://github.com/yapplabs/ember-modal-dialog/issues/71)
+
+**Closed issues:**
+
+- Custom modal template [\#69](https://github.com/yapplabs/ember-modal-dialog/issues/69)
+- Modal positioning fails after browser resizing [\#68](https://github.com/yapplabs/ember-modal-dialog/issues/68)
+- Enter KeyboardEvent [\#67](https://github.com/yapplabs/ember-modal-dialog/issues/67)
+- modal-dialog template disjunction in \>0.7.3 breaks dependency setup [\#52](https://github.com/yapplabs/ember-modal-dialog/issues/52)
+- scrolling behavior for large modals [\#11](https://github.com/yapplabs/ember-modal-dialog/issues/11)
+
+**Merged pull requests:**
+
+- Create separate modal-dialog and tether-dialog components [\#79](https://github.com/yapplabs/ember-modal-dialog/pull/79) ([chrislopresto](https://github.com/chrislopresto))
+- Update css for center scrolling example [\#74](https://github.com/yapplabs/ember-modal-dialog/pull/74) ([samselikoff](https://github.com/samselikoff))
+- Make centered scrolling example work [\#73](https://github.com/yapplabs/ember-modal-dialog/pull/73) ([sandstrom](https://github.com/sandstrom))
+- introduce ember-suave [\#72](https://github.com/yapplabs/ember-modal-dialog/pull/72) ([raycohen](https://github.com/raycohen))
+
+## [v0.7.7](https://github.com/yapplabs/ember-modal-dialog/tree/v0.7.7) (2015-08-04)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.6...v0.7.7)
 
 **Closed issues:**
 
 - Hide on click out with hasOverlay=false [\#55](https://github.com/yapplabs/ember-modal-dialog/issues/55)
-- Addon doesn't work with ember-cli < 0.2.6 [\#53](https://github.com/yapplabs/ember-modal-dialog/issues/53)
+- Addon doesn't work with ember-cli \< 0.2.6 [\#53](https://github.com/yapplabs/ember-modal-dialog/issues/53)
 
 **Merged pull requests:**
 
