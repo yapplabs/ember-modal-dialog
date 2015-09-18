@@ -51,7 +51,16 @@ export default Ember.Component.extend({
     }
   }),
 
+  focusOnOpen() {
+    let focusSelector = this.get('focusSelector');
+    if (this.get('focusSelector')) {
+      Ember.$(focusSelector).focus();
+    }
+  },
+
   didInsertElement() {
+    this.focusOnOpen();
+
     if (!this.get('clickOutsideToClose')) {
       return;
     }

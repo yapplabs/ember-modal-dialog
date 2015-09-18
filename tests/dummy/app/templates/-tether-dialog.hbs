@@ -196,3 +196,32 @@
     {{/if}}
   </div>
 </div>
+
+<div class='example' id='example-form'>
+  <h2>Focus in a Form Modal</h2>
+  Using the <strong>focusSelector</strong> property<br/>
+  <button {{action 'toggleForm'}}>Do It</button>
+  {{code-snippet name='form-focus-tether-dialog.hbs'}}
+  <div id='form-scrolling'>
+    {{#if isShowingForm}}
+    {{!-- BEGIN-SNIPPET form-focus-tether-dialog --}}
+      {{#tether-dialog
+          focusSelector='#email'
+          close='toggleForm'
+      }}
+        <h1>Focus in a form </h1>
+        <p>
+          <label>Email</label>
+          {{input id='email' value='' placeholder='email'}}
+        </p>
+        <p>
+          <label>Name</label>
+          {{input id='name' value='' placeholder='name'}}
+        </p>
+        <button {{action 'toggleForm'}}>Close</button>
+      {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>
+

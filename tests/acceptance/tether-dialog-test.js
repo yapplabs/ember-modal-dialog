@@ -139,3 +139,12 @@ test('in place', function(assert) {
     assert.isAbsent(inPlaceSelector);
   });
 });
+
+test('autofocus field', function(assert) {
+  var focusedField = '#email';
+
+  click('#example-form button');
+  andThen(function() {
+    assert.equal($(focusedField)[0], document.activeElement);
+  });
+});

@@ -16,6 +16,7 @@ export default Ember.Controller.extend({
   isShowingInPlace: false,
   isInPlace: true,
   isShowingCenteredScrolling: false,
+  isShowingForm: false,
   exampleTargetAttachment: 'middle left',
   exampleAttachment: 'middle right',
   customContainerClassNames: 'custom-styles-modal-container',
@@ -110,6 +111,9 @@ export default Ember.Controller.extend({
         Ember.$('#modal-overlays').removeClass('active');
         Ember.$('body').removeClass('centered-modal-showing');
       }
+    },
+    toggleForm: function() {
+      this.toggleProperty('isShowingForm');
     },
     closeTargetSelector: function() {
       this.set('isShowingTargetSelector', false);
