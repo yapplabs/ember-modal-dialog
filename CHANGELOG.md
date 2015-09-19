@@ -1,7 +1,21 @@
 # Change Log
 
-## [0.8.0](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.0) (2015-09-10)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.7...0.8.0)
+## [0.8.1](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.1) (2015-09-18)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.0...0.8.1)
+
+**Closed issues:**
+
+- How to pass along close action from inner component? [\#84](https://github.com/yapplabs/ember-modal-dialog/issues/84)
+- Acceptance testing the tether-dialog when input is in the block? [\#81](https://github.com/yapplabs/ember-modal-dialog/issues/81)
+- Alignment 'none' issue in positioned container [\#75](https://github.com/yapplabs/ember-modal-dialog/issues/75)
+
+**Merged pull requests:**
+
+- add additional learning resource [\#85](https://github.com/yapplabs/ember-modal-dialog/pull/85) ([jeffreybiles](https://github.com/jeffreybiles))
+- Made the initializer ember 1.13/2.0/2.1 friendly [\#82](https://github.com/yapplabs/ember-modal-dialog/pull/82) ([toranb](https://github.com/toranb))
+
+## [v0.8.0](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.0) (2015-09-10)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.7...v0.8.0)
 
 **Fixed bugs:**
 
