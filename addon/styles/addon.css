@@ -1,0 +1,24 @@
+.ember-modal-dialog {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 10px #222;
+  padding: 10px;
+}
+.ember-modal-overlay.translucent {
+  background-color: rgba(#808080, .77);
+}
+.ember-modal-overlay {
+  height: 100vh;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 50;
+}
+.ember-modal-dialog {
+  z-index: 50;
+  position: fixed;
+}
+.ember-modal-dialog.ember-modal-dialog-in-place {
+  position: relative;
+}

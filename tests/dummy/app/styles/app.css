@@ -1,6 +1,4 @@
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-@import "tomorrow-night-eighties";
+@import url("_tomorrow-night-eighties.css");
 
 body {
   font-family: sans-serif;
@@ -51,11 +49,9 @@ h2 {
   padding: 40px;
 }
 
-// BEGIN-SNIPPET custom-styles
-$theme-color: #0f9d58;
-
+/* BEGIN-SNIPPET custom-styles */
 .custom-styles-modal {
-  background-color: rgba($theme-color, .77);
+  background-color: rgba(#0f9d58, .77);
 }
 
 .custom-styles-modal-container {
@@ -67,12 +63,12 @@ $theme-color: #0f9d58;
   width: 300px;
 
   h1 {
-    color: $theme-color;
+    color: #0f9d58;
   }
 }
-// END-SNIPPET
+/* END-SNIPPET */
 
-// BEGIN-SNIPPET in-place
+/* BEGIN-SNIPPET in-place */
 .ember-modal-overlay-in-place {
   height: initial;
   opacity: initial;
@@ -82,9 +78,9 @@ $theme-color: #0f9d58;
 .ember-modal-dialog-in-place {
   position: initial;
 }
-// END-SNIPPET
+/* END-SNIPPET */
 
-// BEGIN-SNIPPET centered-scrolling
+/* BEGIN-SNIPPET centered-scrolling */
 body.centered-modal-showing {
   overflow: hidden;
 }
@@ -129,4 +125,4 @@ body.centered-modal-showing {
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
 }
-// END-SNIPPET
+/* END-SNIPPET */
