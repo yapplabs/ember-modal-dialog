@@ -73,7 +73,7 @@
 <div class='example' id='example-target-view'>
   <h2>Target (View)</h2>
   <div class='targetContainer'>
-    {{#view id="bwmd1" viewName="buttonWrapperModalDialog1" tagName="span"}}
+    {{#view viewName="bwmdv" tagName="span"}}
       <button {{action 'toggleTargetView'}}>Do It</button>
     {{/view}}
   </div>
@@ -83,9 +83,9 @@
     {{#modal-dialog close='toggleTargetView'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target=view.buttonWrapperModalDialog1 }}
+                    target=view.bwmdv }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - View: {{view.buttonWrapperModalDialog1}}</p>
+      <p>Target - View: {{view.bwmdv}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetView'}}>Close</button>
@@ -97,7 +97,7 @@
 <div class='example' id='example-target-element'>
   <h2>Target (Element)</h2>
   <div class='targetContainer'>
-    {{#view viewName="buttonWrapperModalDialog2" tagName="span"}}
+    {{#view viewName="bwmde" tagName="span"}}
       <button {{action 'toggleTargetElement'}}>Do It</button>
     {{/view}}
   </div>
@@ -107,9 +107,9 @@
     {{#modal-dialog close='toggleTargetElement'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target=view.buttonWrapperModalDialog2.element }}
+                    target=view.bwmde.element }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - Element{{view.buttonWrapperModalDialog2.elementId}}</p>
+      <p>Target - Element{{view.bwmde.elementId}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetElement'}}>Close</button>
