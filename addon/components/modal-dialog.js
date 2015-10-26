@@ -65,9 +65,11 @@ export default Ember.Component.extend({
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
+    this._super(...arguments);
   },
   willDestroyElement() {
     $(document).off('click.ember-modal-dialog');
+    this._super(...arguments);
   },
 
   actions: {
