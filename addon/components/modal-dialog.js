@@ -56,7 +56,7 @@ export default Ember.Component.extend({
       return;
     }
 
-    const handleClick = event => {
+    const handleClick = (event) => {
       if (!$(event.target).closest('.ember-modal-dialog').length) {
         this.send('close');
       }

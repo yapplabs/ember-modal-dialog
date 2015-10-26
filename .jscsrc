@@ -1,4 +1,5 @@
 {
+  "preset": "ember-suave",
   "disallowVar": null,
   "requireBlocksOnNewline": null,
   "requireEnhancedObjectLiterals": null,
