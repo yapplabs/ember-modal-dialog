@@ -1,7 +1,14 @@
 # Change Log
 
-## [0.8.1](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.1) (2015-09-18)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.0...0.8.1)
+## [0.8.2](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.2) (2015-10-26)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.1...0.8.2)
+
+**Merged pull requests:**
+
+- Update to Ember CLI 1.13.8 [\#90](https://github.com/yapplabs/ember-modal-dialog/pull/90) ([chrislopresto](https://github.com/chrislopresto))
+
+## [v0.8.1](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.1) (2015-09-19)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.0...v0.8.1)
 
 **Closed issues:**
 
