@@ -223,7 +223,7 @@ export default ModalDialog.extend({
 
   teardown: function() {
     Ember.$('body').off('keyup.modal-dialog');
-  }.on('willDestroyElement'),
+  }.on('willDestroyElement')
 });
 ```
 
