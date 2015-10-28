@@ -92,6 +92,7 @@ Property              | Purpose
 `overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
 `wrapper-class`       | CSS class name(s) to append to wrapper divs. Set this from template.
 `wrapperClassNames`   | CSS class names to append to wrapper divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-wrapper'`. If you subclass this component, you may define this in your subclass.)
+`focusSelector`       | If you would like an element to get focus when the dialog opens, set this property to the element's selector. 
 
 ### tether-dialog
 

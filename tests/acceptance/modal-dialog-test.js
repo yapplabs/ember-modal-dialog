@@ -134,3 +134,14 @@ test('in place', function(assert) {
     assert.isAbsent(inPlaceSelector);
   });
 });
+
+test('autofocus field', function(assert) {
+  var focusedField = '#email';
+
+  click('#example-form button');
+  andThen(function() {
+    // :focus selector doesn't work in phantom as explained here:
+    // https://github.com/ariya/phantomjs/issues/10427
+    assert.equal($(focusedField)[0], document.activeElement);
+  });
+});
