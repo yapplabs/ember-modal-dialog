@@ -51,7 +51,7 @@ h2 {
 
 /* BEGIN-SNIPPET custom-styles */
 .custom-styles-modal {
-  background-color: rgba(#0f9d58, .77);
+  background-color: rgba(15, 157, 88, .77);
 }
 
 .custom-styles-modal-container {
@@ -108,7 +108,7 @@ body.centered-modal-showing {
 }
 
 .centered-scrolling-overlay.translucent {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, .5);
   opacity: 1;
 }
 
@@ -123,6 +123,6 @@ body.centered-modal-showing {
   margin-top: 30px;
   margin-bottom: 30px;
   box-sizing: border-box;
-  box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
+  box-shadow: 0px 4px 25px 4px rgba(0, 0, 0, .30);
 }
 /* END-SNIPPET */
