@@ -281,7 +281,7 @@ This can then be used like so:
 ## Dependencies
 
 * Requires Ember CLI >= 0.2.0
-* Requires Ember >= 1.10.0 (Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See #71)
+* Requires Ember >= 1.10.0 (Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See [issue #71](https://github.com/yapplabs/ember-modal-dialog/issues/71))
 
 ## Installation
 
