@@ -7,6 +7,8 @@ const SUPPORTED_TARGET_ATTACHMENTS = [
 ];
 
 export default Ember.Component.extend({
+  attributeBindings: ['emberModalDismissId:data-ember-modal-dismiss-id'],
+  emberModalDismissId: null,
 
   // target - element selector, element, or Ember View
   // targetAttachment - top, right, bottom, left, center, or none

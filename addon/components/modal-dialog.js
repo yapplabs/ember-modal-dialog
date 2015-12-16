@@ -2,7 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
 
 const { dasherize } = Ember.String;
-const { $, computed, inject } = Ember;
+const { $, computed, observer, inject } = Ember;
 const { oneWay } = computed;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 const computedJoin = function(prop) {
@@ -43,7 +43,10 @@ export default Ember.Component.extend({
 
   translucentOverlay: false,
   clickOutsideToClose: false,
+  outsideClickHandler: null,
   renderInPlace: false,
+
+  emberModalDismissId: oneWay('elementId'),
 
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
     if (isIOS) {
@@ -51,24 +54,43 @@ export default Ember.Component.extend({
     }
   }),
 
-  didInsertElement() {
+  _registerClickHandler() {
     if (!this.get('clickOutsideToClose')) {
       return;
     }
 
     const handleClick = (event) => {
-      if (!$(event.target).closest('.ember-modal-dialog').length) {
-        this.send('close');
-      }
+      if (!$(event.target).hasClass('ember-modal-dialog')) { return; }
+      this.send('close');
     };
-    const registerClick = () => $(document).on('click.ember-modal-dialog', handleClick);
+    this.set('outsideClickHandler', handleClick);
 
-    // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
-    setTimeout(registerClick);
+    // Run next so the click handler will not catch the click that spawned this modal dialog
+    Ember.run.next(this, () => {
+      $(document).on(`click[data-ember-modal-dismiss-id="${this.get('elementId')}"]`, null, null, handleClick);
+    });
+  },
+
+  _removeClickHandler() {
+    $(document).off(`click[data-ember-modal-dismiss-id="${this.get('elementId')}"]`, null, this.get('outsideClickHandler'));
+    this.set('outsideClickHandler', null);
+  },
+
+  updateClickHandler: Ember.on('init', observer('clickOutsideToClose', function() {
+    if (this.get('clickOutsideToClose')) {
+      this._registerClickHandler();
+    } else {
+      this._removeClickHandler();
+    }
+  })),
+
+  didInsertElement() {
+    this._registerClickHandler();
     this._super(...arguments);
   },
+
   willDestroyElement() {
-    $(document).off('click.ember-modal-dialog');
+    $(document).off(`click[data-ember-modal-dismiss-id="${this.get('elementId')}"]`);
     this._super(...arguments);
   },
 
