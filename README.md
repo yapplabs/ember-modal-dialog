@@ -103,8 +103,9 @@ Property              | Purpose
 `tetherClassPrefix`   | Proxies to Hubspot Tether*
 `offset`              | Proxies to Hubspot Tether*
 `targetOffset`        | Proxies to Hubspot Tether*
+`constraints`         | Proxies to Hubspot Tether*
 
-* Please see [Hubspot Tether](http://github.hubspot.com/tether/) for usage documentation.
+\* Please see [Hubspot Tether](http://github.hubspot.com/tether/) for usage documentation.
 
 
 ## Which Component Should I Use?
