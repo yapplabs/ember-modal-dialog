@@ -13,7 +13,7 @@ const computedJoin = function(prop) {
 
 export default Ember.Component.extend({
   tagName: '',
-  layout: layout,
+  layout,
   modalService: inject.service('modal-dialog'),
   destinationElementId: oneWay('modalService.destinationElementId'),
 

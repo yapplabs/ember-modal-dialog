@@ -2,19 +2,19 @@ import Ember from 'ember';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
-var application;
+let application;
 const modalRootElementSelector = '#modal-overlays';
 const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
 module('Acceptance: Display Tether Dialogs', {
-  beforeEach: function() {
+  beforeEach() {
     application = startApp();
     visit('/');
   },
 
-  afterEach: function() {
+  afterEach() {
     Ember.run(application, 'destroy');
   }
 });
@@ -79,7 +79,7 @@ test('target - selector', function(assert) {
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     tethered: true,
-    whileOpen: function() {
+    whileOpen() {
       assert.ok(Ember.$(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
   });
@@ -111,7 +111,7 @@ test('subclassed modal', function(assert) {
     dialogText: 'Via Subclass',
     closeSelector: overlaySelector,
     hasOverlay: true,
-    whileOpen: function() {
+    whileOpen() {
       assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
   });
@@ -119,12 +119,12 @@ test('subclassed modal', function(assert) {
 
 test('in place', function(assert) {
   click('#example-in-place button');
-  var dialogText = 'In Place';
-  var defaultSelector = [modalRootElementSelector, dialogSelector, ':contains(' + dialogText + ')'].join(' ');
-  var inPlaceDialogSelector = dialogSelector + '.ember-modal-dialog-in-place';
-  var inPlaceRootSelector = '#container-in-place';
-  var inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, ':contains(' + dialogText + ')'].join(' ');
-  var inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
+  let dialogText = 'In Place';
+  let defaultSelector = [modalRootElementSelector, dialogSelector, `:contains(${dialogText})`].join(' ');
+  let inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
+  let inPlaceRootSelector = '#container-in-place';
+  let inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, `:contains(${dialogText})`].join(' ');
+  let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
   andThen(function() {
     assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
     assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned');

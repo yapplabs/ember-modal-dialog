@@ -7,7 +7,7 @@ const { computed, get } = Ember;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 export default ModalDialog.extend({
-  layout: layout,
+  layout,
 
   targetAttachmentClass: computed('targetAttachment', function() {
     let targetAttachment = this.get('targetAttachment') || '';
