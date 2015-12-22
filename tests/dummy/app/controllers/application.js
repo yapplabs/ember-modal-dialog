@@ -19,7 +19,7 @@ export default Ember.Controller.extend({
   exampleTargetAttachment: 'middle left',
   exampleAttachment: 'middle right',
   customContainerClassNames: 'custom-styles-modal-container',
-  nextAttachment: function(val) {
+  nextAttachment(val) {
     switch (val) {
       case 'middle right':
         return 'bottom center';
@@ -40,25 +40,25 @@ export default Ember.Controller.extend({
         set(this, 'activeComponent', 'modal-dialog');
       }
     },
-    toggleBasic: function() {
+    toggleBasic() {
       this.toggleProperty('isShowingBasic');
     },
-    toggleTranslucent: function() {
+    toggleTranslucent() {
       this.toggleProperty('isShowingTranslucent');
     },
-    toggleWithoutOverlay: function() {
+    toggleWithoutOverlay() {
       this.toggleProperty('isShowingWithoutOverlay');
     },
-    toggleWithoutOverlayClickOutsideToClose: function() {
+    toggleWithoutOverlayClickOutsideToClose() {
       this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
     },
-    toggleCustomStyles: function() {
+    toggleCustomStyles() {
       this.toggleProperty('isShowingCustomStyles');
     },
-    toggleTargetSelector: function() {
+    toggleTargetSelector() {
       if (this.get('isShowingTargetSelector')) {
-        var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
-        var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
+        let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
+        let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
@@ -67,10 +67,10 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingTargetSelector');
     },
-    toggleTargetView: function() {
+    toggleTargetView() {
       if (this.get('isShowingTargetView')) {
-        var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
-        var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
+        let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
+        let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
@@ -79,10 +79,10 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingTargetView');
     },
-    toggleTargetElement: function() {
+    toggleTargetElement() {
       if (this.get('isShowingTargetElement')) {
-        var newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
-        var newAttachment = this.nextAttachment(this.get('exampleAttachment'));
+        let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
+        let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
@@ -91,16 +91,16 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingTargetElement');
     },
-    toggleSubclassed: function() {
+    toggleSubclassed() {
       this.toggleProperty('isShowingSubclassed');
     },
-    toggleInPlace: function() {
+    toggleInPlace() {
       this.toggleProperty('isShowingInPlace');
     },
-    toggleIsInPlace: function() {
+    toggleIsInPlace() {
       this.toggleProperty('isInPlace');
     },
-    toggleCenteredScrolling: function() {
+    toggleCenteredScrolling() {
       this.toggleProperty('isShowingCenteredScrolling');
 
       if (this.get('isShowingCenteredScrolling')) {
@@ -111,17 +111,17 @@ export default Ember.Controller.extend({
         Ember.$('body').removeClass('centered-modal-showing');
       }
     },
-    closeTargetSelector: function() {
+    closeTargetSelector() {
       this.set('isShowingTargetSelector', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },
-    closeTargetView: function() {
+    closeTargetView() {
       this.set('isShowingTargetView', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },
-    closeTargetElement: function() {
+    closeTargetElement() {
       this.set('isShowingTargetElement', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');

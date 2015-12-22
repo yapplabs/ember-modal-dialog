@@ -4,9 +4,9 @@ import config from '../../config/environment';
 import registerAssertHelpers from './modal-asserts';
 
 export default function startApp(attrs) {
-  var application;
+  let application;
 
-  var attributes = Ember.merge({}, config.APP);
+  let attributes = Ember.merge({}, config.APP);
   attributes = Ember.merge(attributes, attrs); // use defaults, but you can override;
 
   Ember.run(function() {

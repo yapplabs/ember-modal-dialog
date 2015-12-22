@@ -3,10 +3,10 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   isShowingModalDialog: false,
   actions: {
-    openModalDialog: function() {
+    openModalDialog() {
       this.set('isShowingModalDialog', true);
     },
-    closeModalDialog: function() {
+    closeModalDialog() {
       this.set('isShowingModalDialog', false);
     }
   }

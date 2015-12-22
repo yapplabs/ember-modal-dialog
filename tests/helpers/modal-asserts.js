@@ -2,29 +2,29 @@ import Ember from 'ember';
 import QUnit from 'qunit';
 
 export default function registerAssertHelpers() {
-  const assert = QUnit.assert;
+  const { assert } = QUnit;
   const overlaySelector = '.ember-modal-overlay';
   const dialogSelector = '.ember-modal-dialog';
 
   assert.isPresentOnce = function(selector, message) {
-    message = message || selector + ' is present in DOM once';
+    message = message || `${selector} is present in DOM once`;
     return this.equal(Ember.$(selector).length, 1, message);
   };
 
   assert.isAbsent = function(selector, message) {
-    message = message || selector + ' is absent from DOM';
+    message = message || `${selector} is absent from DOM`;
     return this.equal(find(selector).length, 0, message);
   };
 
   assert.isVisible = function(selector, message) {
-    message = message || selector + ' is not visible';
+    message = message || `${selector} is not visible`;
     return this.ok(findWithAssert(selector).is(':visible'), message);
   };
 
   assert.dialogOpensAndCloses = function(options, message) {
-    message = message || 'Dialog triggered by ' + options.openSelector + ' failed to open and close';
-    var dialogContent = [dialogSelector, ':contains(' + options.dialogText + ')'].join('');
-    var self = this;
+    message = message || `Dialog triggered by ${options.openSelector} failed to open and close`;
+    const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
+    const self = this;
     return click(options.openSelector, options.context).then(function() {
       if (options.hasOverlay) {
         self.isPresentOnce(overlaySelector);
@@ -39,7 +39,7 @@ export default function registerAssertHelpers() {
         // HACK: Click open button 4 more times to let the modal go around
         //       the horn and then disappear. This is obviously tightly coupled
         //       to arbitrary demo behavior.
-        for (var i = 1; i <= 4; i++) {
+        for (let i = 1; i <= 4; i++) {
           click(options.openSelector, options.context);
         }
         andThen(function() {
