@@ -1,7 +1,26 @@
 # Change Log
 
-## [0.8.2](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.2) (2015-10-26)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.1...0.8.2)
+## [0.8.3](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.3) (2015-12-22)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.2...0.8.3)
+
+**Closed issues:**
+
+- Introduction to ember-modal-dialog at Global Ember Meetup [\#105](https://github.com/yapplabs/ember-modal-dialog/issues/105)
+- allow click outside to close with overlay [\#101](https://github.com/yapplabs/ember-modal-dialog/issues/101)
+- Simple install doesn't work [\#100](https://github.com/yapplabs/ember-modal-dialog/issues/100)
+- alignment properties don't seem to make a difference [\#98](https://github.com/yapplabs/ember-modal-dialog/issues/98)
+- Deprecation warning with Ember CLI 1.13.12 [\#96](https://github.com/yapplabs/ember-modal-dialog/issues/96)
+- Deprecation warning on Ember CLI master [\#89](https://github.com/yapplabs/ember-modal-dialog/issues/89)
+
+**Merged pull requests:**
+
+- Perform a big JSCS suave cleanup [\#110](https://github.com/yapplabs/ember-modal-dialog/pull/110) ([chrislopresto](https://github.com/chrislopresto))
+- Add tether-dialog `constraints` property [\#109](https://github.com/yapplabs/ember-modal-dialog/pull/109) ([chrislopresto](https://github.com/chrislopresto))
+- update suave so tests pass on master [\#108](https://github.com/yapplabs/ember-modal-dialog/pull/108) ([hmcq6](https://github.com/hmcq6))
+- Fixing a small typo. [\#91](https://github.com/yapplabs/ember-modal-dialog/pull/91) ([kiwiupover](https://github.com/kiwiupover))
+
+## [v0.8.2](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.2) (2015-10-26)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.1...v0.8.2)
 
 **Merged pull requests:**
 
@@ -13,8 +32,6 @@
 **Closed issues:**
 
 - How to pass along close action from inner component? [\#84](https://github.com/yapplabs/ember-modal-dialog/issues/84)
-- Acceptance testing the tether-dialog when input is in the block? [\#81](https://github.com/yapplabs/ember-modal-dialog/issues/81)
-- Alignment 'none' issue in positioned container [\#75](https://github.com/yapplabs/ember-modal-dialog/issues/75)
 
 **Merged pull requests:**
 
@@ -23,10 +40,6 @@
 
 ## [v0.8.0](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.0) (2015-09-10)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.7.7...v0.8.0)
-
-**Fixed bugs:**
-
-- Opening modal fails in Ember 1.13.7+ [\#71](https://github.com/yapplabs/ember-modal-dialog/issues/71)
 
 **Closed issues:**
 

@@ -319,6 +319,8 @@ For more information on using ember-cli, visit [http://www.ember-cli.com/](http:
 
 This project uses [https://github.com/skywinder/github-changelog-generator](https://github.com/skywinder/github-changelog-generator) to generate its changelog.
 
+`github_changelog_generator --future-release=x.y.z`
+
 ## Additional Resources
 
 * [Screencast on using ember-modal-dialog](https://www.emberscreencasts.com/posts/74-ember-modal-dialog)
