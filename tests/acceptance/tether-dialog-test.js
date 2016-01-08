@@ -108,9 +108,10 @@ test('target - view', function(assert) {
 test('subclassed modal', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-subclass button',
-    dialogText: 'Via Subclass',
+    dialogText: 'Via TetherDialog Subclass',
     closeSelector: overlaySelector,
-    hasOverlay: true,
+    hasOverlay: false,
+    tethered: true,
     whileOpen() {
       assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }

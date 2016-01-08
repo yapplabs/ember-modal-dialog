@@ -157,17 +157,21 @@
 
 <div class='example' id='example-subclass'>
   <h2>Via Subclass</h2>
-  <button {{action 'toggleSubclassed'}}>Do It</button>
-  {{code-snippet name='subclass.js'}}
+  <button id='target' {{action 'toggleSubclassed'}}>Do It</button>
+  {{code-snippet name='subclass-tether-dialog-component.js'}}
   {{code-snippet name='subclass-tether-dialog.hbs'}}
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-tether-dialog --}}
-    {{#my-cool-modal-dialog close='toggleSubclassed'
-                    translucentOverlay=true}}
+    {{#my-cool-tether-dialog close='toggleSubclassed'
+                    translucentOverlay=true
+                    containerClassNames='foo'
+                    target='#target'
+                    targetAttachment='bottom right'
+                    attachment='top left'}}
       <h1>Stop! Modal Time!</h1>
-      <p>Via Subclass</p>
+      <p>Via TetherDialog Subclass</p>
       <button {{action 'toggleSubclassed'}}>Close</button>
-    {{/my-cool-modal-dialog}}
+    {{/my-cool-tether-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>

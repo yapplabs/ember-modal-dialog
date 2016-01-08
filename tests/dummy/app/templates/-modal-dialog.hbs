@@ -121,14 +121,14 @@
 <div class='example' id='example-subclass'>
   <h2>Via Subclass</h2>
   <button {{action 'toggleSubclassed'}}>Do It</button>
-  {{code-snippet name='subclass.js'}}
+  {{code-snippet name='subclass-modal-dialog-component.js'}}
   {{code-snippet name='subclass-modal-dialog.hbs'}}
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog --}}
     {{#my-cool-modal-dialog close='toggleSubclassed'
                     translucentOverlay=true}}
       <h1>Stop! Modal Time!</h1>
-      <p>Via Subclass</p>
+      <p>Via ModalDialog Subclass</p>
       <button {{action 'toggleSubclassed'}}>Close</button>
     {{/my-cool-modal-dialog}}
     {{!-- END-SNIPPET --}}
