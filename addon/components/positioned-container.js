@@ -70,14 +70,34 @@ export default Ember.Component.extend({
     this[targetAttachmentMethod](targetAttachmentElement);
   },
 
-  alignCenter() {
+  alignCenter(targetAttachmentElement) {
     const elementWidth = this.$().outerWidth();
     const elementHeight = this.$().outerHeight();
 
+    let widthOffset = elementWidth * -0.5;
+    let heightOffset = elementHeight * -0.5;
+
+    let constrainTo = this.get('constrainTo');
+    if(constrainTo) {
+      constrainTo = constrainTo === 'window' ? window : constrainTo;
+      constrainTo = constrainTo === 'scrollParent' ? this.$().scrollParent() : constrainTo;
+      const constrainElement = Ember.$(constrainTo);
+      Ember.assert(`Constrain Element ${constrainTo} not found in DOM.`, constrainElement.length > 0);
+      const constrainedWidth = constrainElement.width();
+      const constrainedHeight = constrainElement.height();
+
+      if(elementWidth > constrainedWidth) {
+        widthOffset = constrainedWidth * -0.5;
+      }
+      if(elementHeight > constrainedHeight) {
+        heightOffset = constrainedHeight * -0.5;
+      }
+    }
+
     this.$().css('left', '50%')
       .css('top', '50%')
-      .css('margin-left', elementWidth * -0.5)
-      .css('margin-top', elementHeight * -0.5);
+      .css('margin-left', widthOffset)
+      .css('margin-top', heightOffset);
   },
 
   alignLeft(targetAttachmentElement) {
