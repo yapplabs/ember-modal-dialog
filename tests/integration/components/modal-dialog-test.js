@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
@@ -31,6 +30,5 @@ test('has aria role', function(assert) {
 
   modalDialogAriaRole = this.$('.ember-modal-dialog').attr('role');
 
-  assert.ok(modalDialogAriaRole);
   assert.equal(modalDialogAriaRole, 'dialog');
 });
