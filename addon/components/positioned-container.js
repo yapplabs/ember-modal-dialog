@@ -15,6 +15,7 @@ export default Ember.Component.extend({
   targetAttachment: 'center',
 
   ariaRole: 'dialog',
+  attributeBindings: ['aria-labelledby', 'aria-describedby'],
 
   isPositioned: computed('targetAttachment', 'target', function() {
     if (this.get('target') && this.get('targetAttachment')) {
