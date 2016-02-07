@@ -2,17 +2,12 @@ import Ember from 'ember';
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 
-// Stub the modal dialog service and set the destinationElementId prop
-const modalDialogServiceStub = Ember.Service.extend({
-  destinationElementId: 'test-modal-destination'
-});
-
 moduleForComponent('modal-dialog', 'Integration | Component | modal dialog', {
   integration: true,
 
   beforeEach() {
-    this.register('service:modal-dialog', modalDialogServiceStub);
-    this.inject.service('modal-dialog', { as: 'modalService' });
+    let modalDialogService = this.container.lookup('service:modal-dialog');
+    modalDialogService.set('destinationElementId', 'test-modal-destination');
   }
 });
 
