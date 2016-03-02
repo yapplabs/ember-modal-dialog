@@ -8,7 +8,6 @@
     "ember-qunit": "0.4.15",
     "ember-qunit-notifications": "0.0.7",
     "ember-resolver": "~0.1.18",
-    "tether": "~0.7.2",
     "jquery": "1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
     "qunit": "~1.19.0"
