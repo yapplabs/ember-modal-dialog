@@ -10,6 +10,8 @@ View a live demo here: [http://yapplabs.github.io/ember-modal-dialog/](http://ya
 
 Test examples are located in `tests/dummy/app/templates/application.hbs` and can be run locally by following the instructions in the "Installation" and "Running" sections below.
 
+[![Video image](https://i.vimeocdn.com/video/558401687_640x360.jpg)](https://vimeo.com/157192323)
+
 ## Including In An Ember Application
 
 Here is the simplest way to get started with ember-modal-dialog:
