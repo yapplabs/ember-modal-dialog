@@ -73,6 +73,11 @@ export default Ember.Component.extend({
   },
 
   actions: {
+    clickedOverlay() {
+      if (this.get('clickOutsideToClose')) {
+        this.sendAction('close');
+      }
+    },
     close() {
       this.sendAction('close');
     }
