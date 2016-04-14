@@ -105,56 +105,6 @@
   {{/if}}
 </div>
 
-<div class='example' id='example-target-view'>
-  <h2>Target (View)</h2>
-  <div class='targetContainer'>
-    {{#view viewName="bwtdv" tagName="span"}}
-      <button {{action 'toggleTargetView'}}>Do It</button>
-    {{/view}}
-  </div>
-  {{code-snippet name='target-view-tether-dialog.hbs'}}
-  {{#if isShowingTargetView}}
-    {{!-- BEGIN-SNIPPET target-view-tether-dialog --}}
-    {{#tether-dialog close='toggleTargetView'
-                    hasOverlay=false
-                    targetAttachment=exampleTargetAttachment
-                    attachment=exampleAttachment
-                    target=view.bwtdv }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - View: {{view.bwtdv}}</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeTargetView'}}>Close</button>
-    {{/tether-dialog}}
-    {{!-- END-SNIPPET --}}
-  {{/if}}
-</div>
-
-<div class='example' id='example-target-element'>
-  <h2>Target (Element)</h2>
-  <div class='targetContainer'>
-    {{#view viewName="bwtde" tagName="span"}}
-      <button {{action 'toggleTargetElement'}}>Do It</button>
-    {{/view}}
-  </div>
-  {{code-snippet name='target-element-tether-dialog.hbs'}}
-  {{#if isShowingTargetElement}}
-    {{!-- BEGIN-SNIPPET target-element-tether-dialog --}}
-    {{#tether-dialog close='toggleTargetElement'
-                    hasOverlay=false
-                    targetAttachment=exampleTargetAttachment
-                    attachment=exampleAttachment
-                    target=view.bwtde.element }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - Element{{view.bwtde.elementId}}</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeTargetElement'}}>Close</button>
-    {{/tether-dialog}}
-    {{!-- END-SNIPPET --}}
-  {{/if}}
-</div>
-
 <div class='example' id='example-subclass'>
   <h2>Via Subclass</h2>
   <button {{action 'toggleSubclassed'}}>Do It</button>
