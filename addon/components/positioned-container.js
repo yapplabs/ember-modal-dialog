@@ -14,7 +14,10 @@ export default Ember.Component.extend({
   //   center (relative to container)
   targetAttachment: 'center',
 
-  isPositioned: computed('targetAttachment', 'target', function() {
+  isPositioned: computed('targetAttachment', 'target', 'renderInPlace', function() {
+    if (this.get('renderInPlace')) {
+      return false;
+    }
     if (this.get('target') && this.get('targetAttachment')) {
       return true;
     }

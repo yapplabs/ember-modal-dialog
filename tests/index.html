@@ -18,6 +18,12 @@
       .ember-tether.ember-modal-dialog {
         z-index: 1000000;
       }
+
+      #ember-testing-container {
+        /* Set position static to short-circuit Hubspot Tether's positioning */
+        /* https://github.com/HubSpot/tether/pull/98/ */
+        position: static !important;
+      }
     </style>
 
     {{content-for 'head-footer'}}

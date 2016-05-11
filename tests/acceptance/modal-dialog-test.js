@@ -76,7 +76,6 @@ test('target - selector', function(assert) {
     openSelector: '#example-target-selector button',
     dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
-    tethered: true,
     whileOpen() {
       assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
     }
@@ -87,8 +86,7 @@ test('target - element', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-target-element button',
     dialogText: 'Target - Element',
-    closeSelector: dialogCloseButton,
-    tethered: true
+    closeSelector: dialogCloseButton
   });
 });
 
@@ -96,8 +94,7 @@ test('target - view', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-target-view button',
     dialogText: 'Target - View',
-    closeSelector: dialogCloseButton,
-    tethered: true
+    closeSelector: dialogCloseButton
   });
 });
 
