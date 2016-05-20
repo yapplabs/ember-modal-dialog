@@ -1,21 +1,25 @@
 /*globals document */
-const hasDOM = typeof document !== 'undefined';
+let hasDOM = typeof document !== 'undefined';
 
 function appendContainerElement(rootElementId, id) {
   if (!hasDOM) {
     return;
   }
 
-  const rootEl = document.querySelector(rootElementId);
-  const modalContainerEl = document.createElement('div');
+  if (document.getElementById(id)) {
+    return;
+  }
+
+  let rootEl = document.querySelector(rootElementId);
+  let modalContainerEl = document.createElement('div');
   modalContainerEl.id = id;
   rootEl.appendChild(modalContainerEl);
 }
 
 export default function() {
-  const application = arguments[1] || arguments[0];
-  const emberModalDialog = application.emberModalDialog || {};
-  const modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
+  let application = arguments[1] || arguments[0];
+  let emberModalDialog = application.emberModalDialog || {};
+  let modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
 
   application.register('config:modals-container-id',
                        modalContainerElId,

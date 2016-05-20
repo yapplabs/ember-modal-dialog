@@ -12,6 +12,7 @@ export default Ember.Controller.extend({
   isShowingTargetSelector: false,
   isShowingTargetView: false,
   isShowingTargetElement: false,
+  isShowingMouseleaveToClose: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
   isInPlace: true,
@@ -91,6 +92,9 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingTargetElement');
     },
+    toggleMouseleaveToClose() {
+      this.toggleProperty('isShowingMouseleaveToClose');
+    },
     toggleSubclassed() {
       this.toggleProperty('isShowingSubclassed');
     },
@@ -123,6 +127,11 @@ export default Ember.Controller.extend({
     },
     closeTargetElement() {
       this.set('isShowingTargetElement', false);
+      this.set('exampleTargetAttachment', 'middle left');
+      this.set('exampleAttachment', 'middle right');
+    },
+    closeMouseleaveToClose() {
+      this.set('isShowingMouseleaveToClose', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     }

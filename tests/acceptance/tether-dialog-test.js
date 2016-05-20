@@ -105,6 +105,27 @@ test('target - view', function(assert) {
   });
 });
 
+test('mouseleaveToClose', function(assert) {
+  const openSelector = '#targetedMouseleaveToClose';
+  const dialogText = 'Target w/ mouseleaveToClose';
+
+  assert.dialogOpensAndCloses({
+    openSelector,
+    dialogText,
+    closeSelector: dialogCloseButton,
+    hasOverlay: false,
+    tethered: true
+  });
+
+  click(openSelector).then(() => {
+    assert.closesOnMouseleave(dialogSelector, dialogText);
+  });
+
+  click(openSelector).then(() => {
+    assert.closesOnMouseleave(openSelector, dialogText);
+  });
+});
+
 test('subclassed modal', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-subclass button',
