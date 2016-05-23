@@ -126,13 +126,15 @@ test('mouseleaveToClose', function(assert) {
     tethered: true
   });
 
-  click(openSelector).then(() => {
-    assert.closesOnMouseleave(dialogSelector, dialogText);
-  });
-
-  click(openSelector).then(() => {
-    assert.closesOnMouseleave(openSelector, dialogText);
-  });
+  click(openSelector)
+    .then(() => {
+      return assert.closesOnMouseleave(dialogSelector, dialogText);
+    })
+    .then(() => {
+      click(openSelector).then(() => {
+        assert.closesOnMouseleave(openSelector, dialogText);
+      });
+    });
 });
 
 test('subclassed modal', function(assert) {
