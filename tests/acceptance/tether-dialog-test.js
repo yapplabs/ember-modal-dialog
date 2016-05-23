@@ -32,6 +32,12 @@ test('basic modal', function(assert) {
     closeSelector: overlaySelector,
     hasOverlay: true
   });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-basic button',
+    dialogText: 'Basic',
+    closeSelector: dialogCloseButton
+  });
 });
 
 test('modal with translucent overlay', function(assert) {
@@ -40,6 +46,12 @@ test('modal with translucent overlay', function(assert) {
     dialogText: 'With Translucent Overlay',
     closeSelector: overlaySelector,
     hasOverlay: true
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-translucent button',
+    dialogText: 'With Translucent Overlay',
+    closeSelector: dialogCloseButton
   });
 });
 
@@ -78,7 +90,6 @@ test('target - selector', function(assert) {
     dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
     hasOverlay: false,
-    tethered: true,
     whileOpen() {
       assert.ok(Ember.$(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
@@ -90,8 +101,7 @@ test('target - element', function(assert) {
     openSelector: '#example-target-element button',
     dialogText: 'Target - Element',
     closeSelector: dialogCloseButton,
-    hasOverlay: false,
-    tethered: true
+    hasOverlay: false
   });
 });
 
@@ -100,8 +110,7 @@ test('target - view', function(assert) {
     openSelector: '#example-target-view button',
     dialogText: 'Target - View',
     closeSelector: dialogCloseButton,
-    hasOverlay: false,
-    tethered: true
+    hasOverlay: false
   });
 });
 
