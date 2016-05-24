@@ -39,7 +39,7 @@ export default ModalDialog.extend({
     this._super(...arguments);
 
     if (this.get('mouseleaveToClose')) {
-      this._eventListenerNameSpace = `ember-modal-dialog.${this._mouseLeaveEventId}`;
+      this._eventListenerNameSpace = `ember-modal-dialog.${this.elementId}`;
 
       Ember.$('.ember-modal-dialog').on(`mouseleave.${this._eventListenerNameSpace}`, (event) => {
         // DON'T close if the mouse is leaving the target and entering the target
