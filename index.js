@@ -9,6 +9,7 @@ module.exports = {
   name: 'ember-modal-dialog',
 
   init: function() {
+    this._super.init && this._super.init.apply(this, arguments);
     var checker = new VersionChecker(this);
     if (!checker.for('ember-cli', 'npm').isAbove('0.2.6')) {
       console.warn("Warning: ember-modal-dialog requires ember-cli >= 0.2.6 "
