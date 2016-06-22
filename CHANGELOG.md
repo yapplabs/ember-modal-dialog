@@ -1,7 +1,19 @@
 # Change Log
 
-## [0.8.4](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.4) (2016-05-11)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.3...0.8.4)
+## [0.8.5](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.5) (2016-06-22)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.4...0.8.5)
+
+**Closed issues:**
+
+- Problem with subclassing [\#131](https://github.com/yapplabs/ember-modal-dialog/issues/131)
+- Doesn't work with custom fonts [\#17](https://github.com/yapplabs/ember-modal-dialog/issues/17)
+
+**Merged pull requests:**
+
+- Call `this.\_super.init` to avoid ember-cli deprecation [\#132](https://github.com/yapplabs/ember-modal-dialog/pull/132) ([ascot21](https://github.com/ascot21))
+
+## [v0.8.4](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.4) (2016-05-11)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.3...v0.8.4)
 
 **Closed issues:**
 
@@ -235,8 +247,8 @@
 
 **Merged pull requests:**
 
-- Remove orphan overlay component [\#13](https://github.com/yapplabs/ember-modal-dialog/pull/13) ([ofbriggs](https://github.com/ofbriggs))
-- Updating ember-cli version to fix build errors on windows [\#12](https://github.com/yapplabs/ember-modal-dialog/pull/12) ([ofbriggs](https://github.com/ofbriggs))
+- Remove orphan overlay component [\#13](https://github.com/yapplabs/ember-modal-dialog/pull/13) ([olivia](https://github.com/olivia))
+- Updating ember-cli version to fix build errors on windows [\#12](https://github.com/yapplabs/ember-modal-dialog/pull/12) ([olivia](https://github.com/olivia))
 - Clarify key-responder is about keyboard shortcuts [\#10](https://github.com/yapplabs/ember-modal-dialog/pull/10) ([samselikoff](https://github.com/samselikoff))
 
 ## [0.2.0](https://github.com/yapplabs/ember-modal-dialog/tree/0.2.0) (2015-04-05)
