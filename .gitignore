@@ -3,6 +3,8 @@
 # compiled output
 /dist
 /tmp
+app/styles/ember-modal-dialog/ember-modal-appearance.css
+app/styles/ember-modal-dialog/ember-modal-structure.css
 
 # dependencies
 /node_modules

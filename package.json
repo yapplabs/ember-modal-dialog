@@ -9,12 +9,18 @@
   "scripts": {
     "start": "ember server",
     "build": "ember build",
-    "test": "ember test"
+    "test": "ember test",
+    "prepublish": "npm run compile-sass",
+    "compile-sass": "node_modules/node-sass/bin/node-sass app/styles/ember-modal-dialog -o app/styles/ember-modal-dialog"
   },
   "repository": "https://github.com/yapplabs/ember-modal-dialog",
   "engines": {
     "node": ">= 0.10.0"
   },
+  "style": [
+    "app/styles/ember-modal-dialog/ember-modal-appearance.css",
+    "app/styles/ember-modal-dialog/ember-modal-structure.css"
+  ],
   "author": "",
   "license": "MIT",
   "devDependencies": {
@@ -42,6 +48,7 @@
     "ember-tether": "^0.3.1",
     "ember-truth-helpers": "1.2.0",
     "ember-try": "0.0.6",
+    "node-sass": "^3.4.0",
     "glob": "4.4.0"
   },
   "dependencies": {
