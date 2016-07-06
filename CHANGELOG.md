@@ -1,7 +1,14 @@
 # Change Log
 
-## [0.8.5](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.5) (2016-06-22)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.4...0.8.5)
+## [0.8.6](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.6) (2016-07-05)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.5...0.8.6)
+
+**Merged pull requests:**
+
+- Bump ember-cli-htmlbars to 1.0.3 [\#123](https://github.com/yapplabs/ember-modal-dialog/pull/123) ([sohara](https://github.com/sohara))
+
+## [v0.8.5](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.5) (2016-06-22)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.4...v0.8.5)
 
 **Closed issues:**
 
