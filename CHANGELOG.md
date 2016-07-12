@@ -1,7 +1,14 @@
 # Change Log
 
-## [0.8.6](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.6) (2016-07-05)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.5...0.8.6)
+## [v0.8.7](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.7) (2016-07-12)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.6...v0.8.7)
+
+**Merged pull requests:**
+
+- Avoid deprecation warning by updating ember-cli-htmlbars [\#134](https://github.com/yapplabs/ember-modal-dialog/pull/134) ([mdentremont](https://github.com/mdentremont))
+
+## [v0.8.6](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.6) (2016-07-05)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.5...v0.8.6)
 
 **Merged pull requests:**
 
