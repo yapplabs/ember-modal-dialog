@@ -303,7 +303,7 @@ ember install:addon ember-modal-dialog
 
 ## Running Tests
 
-* `ember try:testall`
+* `ember try:each`
 * `ember test`
 * `ember test --server`
 
