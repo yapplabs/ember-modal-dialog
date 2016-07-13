@@ -1,5 +1,12 @@
 # Change Log
 
+## [0.8.8](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.8) (2016-07-12)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.7...0.8.8)
+
+**Merged pull requests:**
+
+- Move back to ember-wormhole 0.3.6 to retain support for older Ember versions [\#135](https://github.com/yapplabs/ember-modal-dialog/pull/135) ([lukemelia](https://github.com/lukemelia))
+
 ## [v0.8.7](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.7) (2016-07-12)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.6...v0.8.7)
 
