@@ -230,29 +230,28 @@ export default ModalDialog.extend({
 });
 ```
 
-This can work, but some apps require a more sophisticated approach. One approach, inspired by Cocoa, takes advantage of the [ember-key-responder](https://github.com/yapplabs/ember-key-responder) library. Here's an example:
+This can work, but some apps require a more sophisticated approach. One approach takes advantage of the [ember-keyboard](https://github.com/null-null-null/ember-keyboard) library. Here's an example:
 
 ```javascript
 // app/components/modal-dialog.js
+import Ember from 'ember';
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
+import { EKMixin as EmberKeyboardMixin, keyDown } from 'ember-keyboard';
 
-export default ModalDialog.extend({
-  acceptsKeyResponder: true,
-  becomeKeyResponderWhenInserted: function() {
-    this.becomeKeyResponder();
-  }.on('didInsertElement'),
-
-  resignKeyResponderWhenDestroyed: function() {
-    this.resignKeyResponder();
-  }.on('willDestroyElement'),
-
-  cancel: function() {
-    this.sendAction('close');
+export default ModalDialog.extend(EmberKeyboardMixin, {
+  init() {
+    this._super(...arguments);
+    
+    this.set('keyboardActivated', true);
   }
+
+  closeOnEsc: Ember.on(keyDown('Escape'), function() {
+    this.sendAction('close');
+  })
 });
 ```
 
-View [the library](https://github.com/yapplabs/ember-key-responder) for more information.
+View [the library](https://github.com/null-null-null/ember-keyboard) for more information.
 
 ## iOS
 
