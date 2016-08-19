@@ -241,7 +241,7 @@ import { EKMixin as EmberKeyboardMixin, keyDown } from 'ember-keyboard';
 export default ModalDialog.extend(EmberKeyboardMixin, {
   init() {
     this._super(...arguments);
-    
+
     this.set('keyboardActivated', true);
   }
 
@@ -308,7 +308,8 @@ ember install:addon ember-modal-dialog
 
 ## Unit Tests
 
-When running unit tests on components that use ember-modal-dialog it is necessary to create and register the container for ember-modal-dialog to wormhole itself into.  See this [example](tests/unit/components/component-that-uses-modal-dialog-test.js) for how to set this up in a unit test.
+When running unit tests on components that use ember-modal-dialog, modals will be
+attached to the `#ember-testing` div.
 
 ## Building
 
