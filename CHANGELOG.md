@@ -1,7 +1,16 @@
 # Change Log
 
-## [0.8.8](https://github.com/yapplabs/ember-modal-dialog/tree/0.8.8) (2016-07-12)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.7...0.8.8)
+## [v0.9.0](https://github.com/yapplabs/ember-modal-dialog/tree/v0.9.0) (2016-08-19)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.8...v0.9.0)
+
+**Merged pull requests:**
+
+- Support unit and integration tests out of the box. [\#142](https://github.com/yapplabs/ember-modal-dialog/pull/142) ([blimmer](https://github.com/blimmer))
+- Update README to change usage of `ember-key-responder` to `ember-keyboard` [\#141](https://github.com/yapplabs/ember-modal-dialog/pull/141) ([SaladFork](https://github.com/SaladFork))
+- Update ember-cli and use ember try's versionCompatibility [\#136](https://github.com/yapplabs/ember-modal-dialog/pull/136) ([lukemelia](https://github.com/lukemelia))
+
+## [v0.8.8](https://github.com/yapplabs/ember-modal-dialog/tree/v0.8.8) (2016-07-13)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.7...v0.8.8)
 
 **Merged pull requests:**
 
