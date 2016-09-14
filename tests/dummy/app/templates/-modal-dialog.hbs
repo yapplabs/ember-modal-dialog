@@ -191,9 +191,9 @@
 
 <div class='example'>
   <h2>Element Center</h2>
-  {{#view viewName='elementCenter' tagName="span"}}
+  <span id='elementCenter'>
     <button {{action 'toggleElementCenterModal'}}>Element Center</button>
-  {{/view}}
+  </span>
   {{code-snippet name='element-centered-modal-dialog.hbs'}}
   {{#if isShowingElementCenterModal}}
   {{!-- BEGIN-SNIPPET element-centered-modal-dialog --}}
@@ -202,7 +202,7 @@
         elementId=elementId
         translucentOverlay=true
         targetAttachment='elementCenter'
-        target=view.elementCenter.element
+        target='#elementCenter'
     }}
       <p>Centered on element.</p>
     {{/modal-dialog}}
