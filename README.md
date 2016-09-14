@@ -124,7 +124,7 @@ Various modal use cases are best supported by different DOM structures. Ember Mo
 
 ## Positioning
 
-Ember Modal Dialog provides `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. To provide consistency with Hubspot Tether, Ember Modal Dialog uses the same syntax for these properties: "top|middle|bottom left|center|right"... e.g. `'middle left'`
+Ember Modal Dialog provides `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. To provide consistency with Hubspot Tether, Ember Modal Dialog uses the same syntax for these properties: "top|middle|bottom left|center|right|elementCenter"... e.g. `'middle left'`
 
 ### Positioning tether-dialog Components
 
@@ -155,7 +155,7 @@ If you are not overriding the default root element, then don't worry and carry o
 
 The modal-dialog component uses an internal ember-modal-dialog-positioned-container component to position modals near their targets. This is a good option if you do not wish to use Ember Tether + Hubspot Tether. Just know that this positioning logic is not nearly as sophisticated as the positioning logic in Ember Tether. That's why we made Ember Tether.
 
-NOTE: The {{ember-modal-dialog-positioned-container}} component only respects the horizontal value for `targetAttachment`. So, for example,`'top left'`, `'middle left'`, and `'bottom left'` will all be interpreted simply as `'left'`. We will gladly accept [PRs](https://github.com/yapplabs/ember-modal-dialog/pulls) for improvements here.
+NOTE: The {{ember-modal-dialog-positioned-container}} component only respects the horizontal value for `targetAttachment`. So, for example,`'top left'`, `'middle left'`, and `'bottom left'` will all be interpreted simply as `'left'`. Additionally, `'elementCenter'` will center the modal above the clicked element. We will gladly accept [PRs](https://github.com/yapplabs/ember-modal-dialog/pulls) for improvements here.
 
 ## Wormholes
 

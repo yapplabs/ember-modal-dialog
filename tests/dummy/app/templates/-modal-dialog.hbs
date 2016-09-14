@@ -188,3 +188,24 @@
     {{/if}}
   </div>
 </div>
+
+<div class='example'>
+  <h2>Element Center</h2>
+  {{#view viewName='elementCenter' tagName="span"}}
+    <button {{action 'toggleElementCenterModal'}}>Element Center</button>
+  {{/view}}
+  {{code-snippet name='element-centered-modal-dialog.hbs'}}
+  {{#if isShowingElementCenterModal}}
+  {{!-- BEGIN-SNIPPET element-centered-modal-dialog --}}
+    {{#modal-dialog
+        close='toggleElementCenterModal'
+        elementId=elementId
+        translucentOverlay=true
+        targetAttachment='elementCenter'
+        target=view.elementCenter.element
+    }}
+      <p>Centered on element.</p>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
