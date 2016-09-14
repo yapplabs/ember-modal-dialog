@@ -108,9 +108,9 @@
 <div class='example' id='example-target-view'>
   <h2>Target (View)</h2>
   <div class='targetContainer'>
-    {{#view viewName="bwtdv" tagName="span"}}
+    <span id="bwtdv">
       <button {{action 'toggleTargetView'}}>Do It</button>
-    {{/view}}
+    </span>
   </div>
   {{code-snippet name='target-view-tether-dialog.hbs'}}
   {{#if isShowingTargetView}}
@@ -119,9 +119,9 @@
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target=view.bwtdv }}
+                    target="#bwtdv" }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - View: {{view.bwtdv}}</p>
+      <p>Target - View: bwtdv</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetView'}}>Close</button>
@@ -133,9 +133,9 @@
 <div class='example' id='example-target-element'>
   <h2>Target (Element)</h2>
   <div class='targetContainer'>
-    {{#view viewName="bwtde" tagName="span"}}
+    <span id="bwtde">
       <button {{action 'toggleTargetElement'}}>Do It</button>
-    {{/view}}
+    </span>
   </div>
   {{code-snippet name='target-element-tether-dialog.hbs'}}
   {{#if isShowingTargetElement}}
@@ -144,7 +144,7 @@
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target=view.bwtde.element }}
+                    target="#bwtde" }}
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element{{view.bwtde.elementId}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
