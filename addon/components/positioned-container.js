@@ -3,7 +3,7 @@ import Ember from 'ember';
 const { computed, observer, on } = Ember;
 const { capitalize } = Ember.String;
 const SUPPORTED_TARGET_ATTACHMENTS = [
-  'top', 'right', 'bottom', 'left', 'center', 'none'
+  'top', 'right', 'bottom', 'left', 'center', 'elementCenter', 'none'
 ];
 
 export default Ember.Component.extend({
@@ -129,6 +129,20 @@ export default Ember.Component.extend({
 
     this.$().css('left', (originOffset.left + targetWidth / 2 - elementWidth / 2))
       .css('top', originOffsetTop + targetHeight);
+  },
+
+  alignElementCenter(targetAttachmentElement) {
+    Ember.assert('ElementCenter targetAttachment requires a target', targetAttachmentElement.length > 0);
+
+    const elementWidth = this.$().outerWidth();
+    const originOffset = targetAttachmentElement.offset();
+    const originOffsetTop = originOffset.top - Ember.$(window).scrollTop();
+    const targetWidth = targetAttachmentElement.outerWidth();
+    const targetHeight = targetAttachmentElement.outerHeight();
+    const elementHeight = this.$().outerHeight();
+
+    this.$().css('left', (originOffset.left + targetWidth / 2 - elementWidth / 2))
+      .css('top', originOffsetTop + targetHeight / 2 - elementHeight / 2);
   },
 
   alignNone() {}
