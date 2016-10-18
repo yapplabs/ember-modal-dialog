@@ -8,7 +8,7 @@ const SUPPORTED_TARGET_ATTACHMENTS = [
 
 export default Ember.Component.extend({
 
-  // target - element selector, element, or Ember View
+  // target - element selector, element, or component
   // targetAttachment - top, right, bottom, left, center, or none
   //   left, right, top, bottom (relative to target)
   //   center (relative to container)
@@ -50,7 +50,7 @@ export default Ember.Component.extend({
       return wrappedElement;
     }
 
-    // passed an ember view or component
+    // passed a component instance
     if (target.element) {
       return Ember.$(target.element);
     }

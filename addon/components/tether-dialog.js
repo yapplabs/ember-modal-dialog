@@ -17,7 +17,7 @@ export default ModalDialog.extend({
   targetAttachment: 'middle center',
   attachment: 'middle center',
   hasOverlay: true,
-  target: 'viewport', // element, css selector, view instance, 'viewport', or 'scroll-handle'
+  target: 'viewport', // element, css selector, component instance, 'viewport', or 'scroll-handle'
 
   tetherClassPrefix: 'ember-tether',
   // offset - passed in
