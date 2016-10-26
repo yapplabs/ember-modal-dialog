@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
   isShowingTranslucent: false,
   isShowingWithoutOverlay: false,
   isShowingWithoutOverlayClickOutsideToClose: false,
+  isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
   isShowingCustomStyles: false,
   isShowingTargetSelector: false,
   isShowingTargetView: false,
@@ -52,6 +53,9 @@ export default Ember.Controller.extend({
     },
     toggleWithoutOverlayClickOutsideToClose() {
       this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
+    },
+    toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
+      this.toggleProperty('isShowingWithoutOverlayClickOutsideToCloseAnotherOne');
     },
     toggleCustomStyles() {
       this.toggleProperty('isShowingCustomStyles');

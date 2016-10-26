@@ -2,7 +2,7 @@ import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
 
 const { dasherize } = Ember.String;
-const { $, computed, inject } = Ember;
+const { $, computed, guidFor, inject } = Ember;
 const { oneWay } = computed;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 const computedJoin = function(prop) {
@@ -61,14 +61,14 @@ export default Ember.Component.extend({
         this.send('close');
       }
     };
-    const registerClick = () => $(document).on('click.ember-modal-dialog', handleClick);
+    const registerClick = () => $(document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
     this._super(...arguments);
   },
   willDestroyElement() {
-    $(document).off('click.ember-modal-dialog');
+    $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
     this._super(...arguments);
   },
 
