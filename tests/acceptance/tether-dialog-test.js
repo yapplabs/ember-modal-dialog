@@ -82,6 +82,23 @@ test('modal without overlay click outside to close', function(assert) {
     dialogText: 'Without Overlay - Click Outside to Close',
     closeSelector: '#example-without-overlay-click-outside-to-close'
   });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-without-overlay-click-outside-to-close button:nth-of-type(2)',
+    dialogText: 'Without Overlay Another One - Click Outside to Close',
+    closeSelector: '#example-without-overlay-click-outside-to-close button:nth-of-type(1)'
+  });
+
+  assert.dialogOpensAndCloses({
+    openSelector: '#example-without-overlay-click-outside-to-close button:nth-of-type(2)',
+    dialogText: 'Without Overlay Another One - Click Outside to Close',
+    closeSelector: '#example-without-overlay-click-outside-to-close'
+  });
+
+  andThen(function() {
+    assert.equal(Ember.$(dialogSelector).length, 0, 'All modals are absent');
+  });
+
 });
 
 test('target - selector', function(assert) {

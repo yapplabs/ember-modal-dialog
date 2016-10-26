@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
 import registerAssertHelpers from './modal-asserts';
+import './acceptance-helpers';
 
 export default function startApp(attrs) {
   let application;

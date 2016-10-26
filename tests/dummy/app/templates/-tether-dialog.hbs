@@ -48,6 +48,8 @@
 <div class='example' id='example-without-overlay-click-outside-to-close'>
   <h2>Without Overlay - Click Outside to Close</h2>
   <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Do It</button>
+  <button id="without-overlay-another-one-button"
+    {{action 'toggleWithoutOverlayClickOutsideToCloseAnotherOne'}}>Another one</button>
   {{code-snippet name='without-overlay-click-outside-to-close-tether-dialog.hbs'}}
   {{#if isShowingWithoutOverlayClickOutsideToClose}}
     {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-tether-dialog --}}
@@ -60,6 +62,17 @@
     {{/tether-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
+  {{#if isShowingWithoutOverlayClickOutsideToCloseAnotherOne}}
+    {{#tether-dialog close='toggleWithoutOverlayClickOutsideToCloseAnotherOne'
+                    hasOverlay=false
+                    clickOutsideToClose=true
+                    offset='100px 0'}}
+      <h1>Stop! Another modal!</h1>
+      <p>Without Overlay Another One - Click Outside to Close</p>
+      <button {{action 'toggleWithoutOverlayClickOutsideToCloseAnotherOne'}}>Close</button>
+    {{/tether-dialog}}
+  {{/if}}
+
 </div>
 
 <div class='example' id='example-custom-styles'>

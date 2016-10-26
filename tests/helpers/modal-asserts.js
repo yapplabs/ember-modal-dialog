@@ -25,7 +25,7 @@ export default function registerAssertHelpers() {
     message = message || `Dialog triggered by ${options.openSelector} failed to open and close`;
     const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
     const self = this;
-    return click(options.openSelector, options.context).then(function() {
+    return nativeClick(options.openSelector, options.context).then(function() {
       if (options.hasOverlay) {
         self.isPresentOnce(overlaySelector);
       }
@@ -33,7 +33,7 @@ export default function registerAssertHelpers() {
       if (options.whileOpen) {
         options.whileOpen();
       }
-      return click(options.closeSelector, options.context).then(function() {
+      return nativeClick(options.closeSelector, options.context).then(function() {
         self.isAbsent(overlaySelector);
         self.isAbsent(dialogContent);
       });
