@@ -8,6 +8,7 @@ export default Ember.Controller.extend({
   isShowingTranslucent: false,
   isShowingWithoutOverlay: false,
   isShowingWithoutOverlayClickOutsideToClose: false,
+  isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
   isShowingCustomStyles: false,
   isShowingTargetSelector: false,
   isShowingTargetView: false,
@@ -16,6 +17,7 @@ export default Ember.Controller.extend({
   isShowingInPlace: false,
   isInPlace: true,
   isShowingCenteredScrolling: false,
+  isShowingElementCenterModal: false,
   exampleTargetAttachment: 'middle left',
   exampleAttachment: 'middle right',
   customContainerClassNames: 'custom-styles-modal-container',
@@ -51,6 +53,9 @@ export default Ember.Controller.extend({
     },
     toggleWithoutOverlayClickOutsideToClose() {
       this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
+    },
+    toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
+      this.toggleProperty('isShowingWithoutOverlayClickOutsideToCloseAnotherOne');
     },
     toggleCustomStyles() {
       this.toggleProperty('isShowingCustomStyles');
@@ -109,6 +114,14 @@ export default Ember.Controller.extend({
       } else {
         Ember.$('#modal-overlays').removeClass('active');
         Ember.$('body').removeClass('centered-modal-showing');
+      }
+    },
+    toggleElementCenterModal() {
+      this.toggleProperty('isShowingElementCenterModal');
+      if (this.get('isShowingElementCenterModal')) {
+        this.set('targetAttachment', 'elementCenter');
+        this.set('exampleTargetAttachment', 'elementCenter');
+        this.set('exampleAttachment', 'elementCenter');
       }
     },
     closeTargetSelector() {

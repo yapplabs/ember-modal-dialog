@@ -16,12 +16,13 @@ export default ModalDialog.extend({
 
   targetAttachment: 'middle center',
   attachment: 'middle center',
-  targetModifier: 'visible',
   hasOverlay: true,
+  target: 'viewport', // element, css selector, view instance, 'viewport', or 'scroll-handle'
 
   tetherClassPrefix: 'ember-tether',
   // offset - passed in
   // targetOffset - passed in
+  // targetModifier - passed in
 
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
     if (isIOS && get(this, 'hasOverlay')) {

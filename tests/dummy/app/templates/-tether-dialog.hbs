@@ -48,6 +48,8 @@
 <div class='example' id='example-without-overlay-click-outside-to-close'>
   <h2>Without Overlay - Click Outside to Close</h2>
   <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Do It</button>
+  <button id="without-overlay-another-one-button"
+    {{action 'toggleWithoutOverlayClickOutsideToCloseAnotherOne'}}>Another one</button>
   {{code-snippet name='without-overlay-click-outside-to-close-tether-dialog.hbs'}}
   {{#if isShowingWithoutOverlayClickOutsideToClose}}
     {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-tether-dialog --}}
@@ -60,6 +62,17 @@
     {{/tether-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
+  {{#if isShowingWithoutOverlayClickOutsideToCloseAnotherOne}}
+    {{#tether-dialog close='toggleWithoutOverlayClickOutsideToCloseAnotherOne'
+                    hasOverlay=false
+                    clickOutsideToClose=true
+                    offset='100px 0'}}
+      <h1>Stop! Another modal!</h1>
+      <p>Without Overlay Another One - Click Outside to Close</p>
+      <button {{action 'toggleWithoutOverlayClickOutsideToCloseAnotherOne'}}>Close</button>
+    {{/tether-dialog}}
+  {{/if}}
+
 </div>
 
 <div class='example' id='example-custom-styles'>
@@ -108,9 +121,9 @@
 <div class='example' id='example-target-view'>
   <h2>Target (View)</h2>
   <div class='targetContainer'>
-    {{#view viewName="bwtdv" tagName="span"}}
+    <span id="bwtdv">
       <button {{action 'toggleTargetView'}}>Do It</button>
-    {{/view}}
+    </span>
   </div>
   {{code-snippet name='target-view-tether-dialog.hbs'}}
   {{#if isShowingTargetView}}
@@ -119,9 +132,9 @@
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target=view.bwtdv }}
+                    target="#bwtdv" }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - View: {{view.bwtdv}}</p>
+      <p>Target - View: bwtdv</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetView'}}>Close</button>
@@ -133,9 +146,9 @@
 <div class='example' id='example-target-element'>
   <h2>Target (Element)</h2>
   <div class='targetContainer'>
-    {{#view viewName="bwtde" tagName="span"}}
+    <span id="bwtde">
       <button {{action 'toggleTargetElement'}}>Do It</button>
-    {{/view}}
+    </span>
   </div>
   {{code-snippet name='target-element-tether-dialog.hbs'}}
   {{#if isShowingTargetElement}}
@@ -144,7 +157,7 @@
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target=view.bwtde.element }}
+                    target="#bwtde" }}
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element{{view.bwtde.elementId}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>

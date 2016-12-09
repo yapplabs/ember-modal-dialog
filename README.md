@@ -10,6 +10,8 @@ View a live demo here: [http://yapplabs.github.io/ember-modal-dialog/](http://ya
 
 Test examples are located in `tests/dummy/app/templates/application.hbs` and can be run locally by following the instructions in the "Installation" and "Running" sections below.
 
+[![Video image](https://i.vimeocdn.com/video/558401687_640x360.jpg)](https://vimeo.com/157192323)
+
 ## Including In An Ember Application
 
 Here is the simplest way to get started with ember-modal-dialog:
@@ -122,7 +124,7 @@ Various modal use cases are best supported by different DOM structures. Ember Mo
 
 ## Positioning
 
-Ember Modal Dialog provides `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. To provide consistency with Hubspot Tether, Ember Modal Dialog uses the same syntax for these properties: "top|middle|bottom left|center|right"... e.g. `'middle left'`
+Ember Modal Dialog provides `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. To provide consistency with Hubspot Tether, Ember Modal Dialog uses the same syntax for these properties: "top|middle|bottom left|center|right|elementCenter"... e.g. `'middle left'`
 
 ### Positioning tether-dialog Components
 
@@ -153,7 +155,7 @@ If you are not overriding the default root element, then don't worry and carry o
 
 The modal-dialog component uses an internal ember-modal-dialog-positioned-container component to position modals near their targets. This is a good option if you do not wish to use Ember Tether + Hubspot Tether. Just know that this positioning logic is not nearly as sophisticated as the positioning logic in Ember Tether. That's why we made Ember Tether.
 
-NOTE: The {{ember-modal-dialog-positioned-container}} component only respects the horizontal value for `targetAttachment`. So, for example,`'top left'`, `'middle left'`, and `'bottom left'` will all be interpreted simply as `'left'`. We will gladly accept [PRs](https://github.com/yapplabs/ember-modal-dialog/pulls) for improvements here.
+NOTE: The {{ember-modal-dialog-positioned-container}} component only respects the horizontal value for `targetAttachment`. So, for example,`'top left'`, `'middle left'`, and `'bottom left'` will all be interpreted simply as `'left'`. Additionally, `'elementCenter'` will center the modal above the clicked element. We will gladly accept [PRs](https://github.com/yapplabs/ember-modal-dialog/pulls) for improvements here.
 
 ## Wormholes
 
@@ -228,29 +230,28 @@ export default ModalDialog.extend({
 });
 ```
 
-This can work, but some apps require a more sophisticated approach. One approach, inspired by Cocoa, takes advantage of the [ember-key-responder](https://github.com/yapplabs/ember-key-responder) library. Here's an example:
+This can work, but some apps require a more sophisticated approach. One approach takes advantage of the [ember-keyboard](https://github.com/null-null-null/ember-keyboard) library. Here's an example:
 
 ```javascript
 // app/components/modal-dialog.js
+import Ember from 'ember';
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
+import { EKMixin as EmberKeyboardMixin, keyDown } from 'ember-keyboard';
 
-export default ModalDialog.extend({
-  acceptsKeyResponder: true,
-  becomeKeyResponderWhenInserted: function() {
-    this.becomeKeyResponder();
-  }.on('didInsertElement'),
+export default ModalDialog.extend(EmberKeyboardMixin, {
+  init() {
+    this._super(...arguments);
 
-  resignKeyResponderWhenDestroyed: function() {
-    this.resignKeyResponder();
-  }.on('willDestroyElement'),
-
-  cancel: function() {
-    this.sendAction('close');
+    this.set('keyboardActivated', true);
   }
+
+  closeOnEsc: Ember.on(keyDown('Escape'), function() {
+    this.sendAction('close');
+  })
 });
 ```
 
-View [the library](https://github.com/yapplabs/ember-key-responder) for more information.
+View [the library](https://github.com/null-null-null/ember-keyboard) for more information.
 
 ## iOS
 
@@ -301,13 +302,14 @@ ember install:addon ember-modal-dialog
 
 ## Running Tests
 
-* `ember try:testall`
+* `ember try:each`
 * `ember test`
 * `ember test --server`
 
 ## Unit Tests
 
-When running unit tests on components that use ember-modal-dialog it is necessary to create and register the container for ember-modal-dialog to wormhole itself into.  See this [example](tests/unit/components/component-that-uses-modal-dialog-test.js) for how to set this up in a unit test.
+When running unit tests on components that use ember-modal-dialog, modals will be
+attached to the `#ember-testing` div.
 
 ## Building
 

@@ -25,7 +25,7 @@ export default function registerAssertHelpers() {
     message = message || `Dialog triggered by ${options.openSelector} failed to open and close`;
     const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
     const self = this;
-    return click(options.openSelector, options.context).then(function() {
+    return nativeClick(options.openSelector, options.context).then(function() {
       if (options.hasOverlay) {
         self.isPresentOnce(overlaySelector);
       }
@@ -33,25 +33,10 @@ export default function registerAssertHelpers() {
       if (options.whileOpen) {
         options.whileOpen();
       }
-      // TODO: Craft a better approach for testing the tethered modals that
-      //       tether appends to the body tag
-      if (options.tethered) {
-        // HACK: Click open button 4 more times to let the modal go around
-        //       the horn and then disappear. This is obviously tightly coupled
-        //       to arbitrary demo behavior.
-        for (let i = 1; i <= 4; i++) {
-          click(options.openSelector, options.context);
-        }
-        andThen(function() {
-          self.isAbsent(overlaySelector);
-          self.isAbsent(dialogContent);
-        });
-      } else {
-        return click(options.closeSelector, options.context).then(function() {
-          self.isAbsent(overlaySelector);
-          self.isAbsent(dialogContent);
-        });
-      }
+      return nativeClick(options.closeSelector, options.context).then(function() {
+        self.isAbsent(overlaySelector);
+        self.isAbsent(dialogContent);
+      });
     });
   };
 }
