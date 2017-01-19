@@ -74,13 +74,11 @@ export default Ember.Component.extend({
   },
 
   alignCenter() {
-    const elementWidth = this.$().outerWidth();
-    const elementHeight = this.$().outerHeight();
-
-    this.$().css('left', '50%')
+    this.$().css('position', 'relative')
       .css('top', '50%')
-      .css('margin-left', elementWidth * -0.5)
-      .css('margin-top', elementHeight * -0.5);
+      .css('transform', 'translateY(-50%)')
+      .css('margin', '0 auto')
+      .css('display', 'table');
   },
 
   alignLeft(targetAttachmentElement) {
