@@ -48,7 +48,7 @@
     "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.8",
     "ember-cli-version-checker": "^1.1.6",
-    "ember-wormhole": "~0.3.6"
+    "ember-wormhole": "~0.5.1"
   },
   "keywords": [
     "ember-addon"
