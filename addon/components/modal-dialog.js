@@ -65,10 +65,18 @@ export default Ember.Component.extend({
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
+
+    if (isIOS) {
+      const registerTouch = () => $(document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
+      setTimeout(registerTouch);
+    }
     this._super(...arguments);
   },
   willDestroyElement() {
     $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
+    if (isIOS) {
+      $(document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
+    }
     this._super(...arguments);
   },
 
