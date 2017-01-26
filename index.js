@@ -8,7 +8,11 @@ var VersionChecker = require('ember-cli-version-checker');
 module.exports = {
   name: 'ember-modal-dialog',
 
-  init: function() {
+  init: function(app) {
+    // Needed in order to work with Ember Engines
+    if (app.app) {
+      app = app.app; 
+    }
     this._super.init && this._super.init.apply(this, arguments);
     var checker = new VersionChecker(this);
     if (!checker.for('ember-cli', 'npm').isAbove('0.2.6')) {
