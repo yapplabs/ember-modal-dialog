@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
   isShowingCustomStyles: false,
   isShowingTargetSelector: false,
-  isShowingTargetView: false,
+  isShowingTargetComponent: false,
   isShowingTargetElement: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
@@ -72,8 +72,8 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingTargetSelector');
     },
-    toggleTargetView() {
-      if (this.get('isShowingTargetView')) {
+    toggleTargetComponent() {
+      if (this.get('isShowingTargetComponent')) {
         let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
         let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
         this.set('exampleTargetAttachment', newTargetAttachment);
@@ -82,7 +82,7 @@ export default Ember.Controller.extend({
           return;
         }
       }
-      this.toggleProperty('isShowingTargetView');
+      this.toggleProperty('isShowingTargetComponent');
     },
     toggleTargetElement() {
       if (this.get('isShowingTargetElement')) {
@@ -129,8 +129,8 @@ export default Ember.Controller.extend({
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },
-    closeTargetView() {
-      this.set('isShowingTargetView', false);
+    closeTargetComponent() {
+      this.set('isShowingTargetComponent', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },
@@ -138,6 +138,12 @@ export default Ember.Controller.extend({
       this.set('isShowingTargetElement', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
+    },
+    registerComponentForExampleTargetComponent(componentInstance) {
+      this.set('exampleComponentForExampleTargetComponent', componentInstance);
+    },
+    registerComponentForExampleTargetElement(componentInstance) {
+      this.set('exampleComponentForExampleTargetElement', componentInstance);
     }
   }
 });

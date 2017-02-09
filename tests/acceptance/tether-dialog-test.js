@@ -122,10 +122,10 @@ test('target - element', function(assert) {
   });
 });
 
-test('target - view', function(assert) {
+test('target - component', function(assert) {
   assert.dialogOpensAndCloses({
-    openSelector: '#example-target-view button',
-    dialogText: 'Target - View',
+    openSelector: '#example-target-component button',
+    dialogText: 'Target - Component',
     closeSelector: dialogCloseButton,
     hasOverlay: false
   });
@@ -153,7 +153,6 @@ test('in place', function(assert) {
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
   andThen(function() {
     assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
-    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned');
     assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
     assert.isAbsent(defaultSelector);
     assert.isPresentOnce(inPlaceSelector);

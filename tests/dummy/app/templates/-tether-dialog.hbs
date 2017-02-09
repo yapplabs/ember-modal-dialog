@@ -118,26 +118,26 @@
   {{/if}}
 </div>
 
-<div class='example' id='example-target-view'>
-  <h2>Target (View)</h2>
+<div class='example' id='example-target-component'>
+  <h2>Target (Component)</h2>
   <div class='targetContainer'>
-    <span id="bwtdv">
-      <button {{action 'toggleTargetView'}}>Do It</button>
-    </span>
+    {{#example-component registerComponent="registerComponentForExampleTargetComponent"}}
+      <button {{action 'toggleTargetComponent'}}>Do It</button>
+    {{/example-component}}
   </div>
   {{code-snippet name='target-view-tether-dialog.hbs'}}
-  {{#if isShowingTargetView}}
+  {{#if isShowingTargetComponent}}
     {{!-- BEGIN-SNIPPET target-view-tether-dialog --}}
-    {{#tether-dialog close='toggleTargetView'
+    {{#tether-dialog close='toggleTargetComponent'
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target="#bwtdv" }}
+                    target=exampleComponentForExampleTargetComponent }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - View: bwtdv</p>
+      <p>Target - Component: {{exampleComponentForExampleTargetComponent}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeTargetView'}}>Close</button>
+      <button {{action 'closeTargetComponent'}}>Close</button>
     {{/tether-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -146,9 +146,9 @@
 <div class='example' id='example-target-element'>
   <h2>Target (Element)</h2>
   <div class='targetContainer'>
-    <span id="bwtde">
+    {{#example-component registerComponent="registerComponentForExampleTargetElement"}}
       <button {{action 'toggleTargetElement'}}>Do It</button>
-    </span>
+    {{/example-component}}
   </div>
   {{code-snippet name='target-element-tether-dialog.hbs'}}
   {{#if isShowingTargetElement}}
@@ -157,9 +157,9 @@
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target="#bwtde" }}
+                    target=exampleComponentForExampleTargetElement }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - Element{{view.bwtde.elementId}}</p>
+      <p>Target - Element{{exampleComponentForExampleTargetElement.elementId}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetElement'}}>Close</button>

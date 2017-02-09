@@ -70,25 +70,25 @@
   {{/if}}
 </div>
 
-<div class='example' id='example-target-view'>
-  <h2>Target (View)</h2>
+<div class='example' id='example-target-component'>
+  <h2>Target (Component)</h2>
   <div class='targetContainer'>
-    <span id="bwmdv">
-      <button {{action 'toggleTargetView'}}>Do It</button>
-    </span>
+    {{#example-component registerComponent="registerComponentForExampleTargetComponent"}}
+      <button {{action 'toggleTargetComponent'}}>Do It</button>
+    {{/example-component}}
   </div>
-  {{code-snippet name='target-view-modal-dialog.hbs'}}
-  {{#if isShowingTargetView}}
+  {{code-snippet name='target-component-modal-dialog.hbs'}}
+  {{#if isShowingTargetComponent}}
     {{!-- BEGIN-SNIPPET target-view-modal-dialog --}}
-    {{#modal-dialog close='toggleTargetView'
+    {{#modal-dialog close='toggleTargetComponent'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target="#bwmdv" }}
+                    target=exampleComponentForExampleTargetComponent }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - View: {{view.bwmdv}}</p>
+      <p>Target - Component: {{exampleComponentForExampleTargetComponent}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeTargetView'}}>Close</button>
+      <button {{action 'closeTargetComponent'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -97,9 +97,9 @@
 <div class='example' id='example-target-element'>
   <h2>Target (Element)</h2>
   <div class='targetContainer'>
-    <span id="bwmde">
+    {{#example-component registerComponent="registerComponentForExampleTargetElement"}}
       <button {{action 'toggleTargetElement'}}>Do It</button>
-    </span>
+    {{/example-component}}
   </div>
   {{code-snippet name='target-element-modal-dialog.hbs'}}
   {{#if isShowingTargetElement}}
@@ -107,9 +107,9 @@
     {{#modal-dialog close='toggleTargetElement'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target="#bwmde" }}
+                    target=exampleComponentForExampleTargetElement }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - Element{{view.bwmde.elementId}}</p>
+      <p>Target - Element{{exampleComponentForExampleTargetElement.elementId}}</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetElement'}}>Close</button>

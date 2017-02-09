@@ -38,7 +38,7 @@ export default Ember.Component.extend({
     return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
   }),
 
-  target: 'body', // element, css selector, or view instance
+  target: 'body', // element or css selector
   targetAttachment: 'middle center',
 
   translucentOverlay: false,
