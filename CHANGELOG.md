@@ -1,5 +1,14 @@
 # Change Log
 
+## [v0.9.1](https://gethub.com/yapplabs/ember-modal-dialog/tree/v0.9.1) (2017-02-14)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.9.0...v0.9.1)
+
+**Merged pull requests:**
+
+- Touch event handling on IOS for clickOutsideToClose. [\#161](https://github.com/yapplabs/ember-modal-dialog/pull/161) ([Chee7ah](https://github.com/Chee7ah))
+- Register unique clickOutsideToClose click handlers. [\#129](https://github.com/yapplabs/ember-modal-dialog/pull/129) ([oscarni](https://github.com/oscarni))
+- Add element center to positioned container. [\#144](https://github.com/yapplabs/ember-modal-dialog/pull/144) ([wandertosee](https://github.com/blimmer))
+
 ## [v0.9.0](https://github.com/yapplabs/ember-modal-dialog/tree/v0.9.0) (2016-08-19)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.8.8...v0.9.0)
 
