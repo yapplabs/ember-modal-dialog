@@ -11,6 +11,6 @@
   position: fixed;
 
   &.ember-modal-dialog-in-place {
-    position: relative;
+    position: static;
   }
 }

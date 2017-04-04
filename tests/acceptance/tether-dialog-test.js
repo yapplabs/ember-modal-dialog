@@ -170,7 +170,7 @@ test('in place', function(assert) {
   let inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, `:contains(${dialogText})`].join(' ');
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
   andThen(function() {
-    assert.equal(Ember.$(dialogSelector).css('position'), 'relative', 'not absolutely positioned');
+    assert.equal(Ember.$(dialogSelector).css('position'), 'static', 'not absolutely positioned');
     assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned');
     assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
     assert.isAbsent(defaultSelector);
