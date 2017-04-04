@@ -131,6 +131,37 @@ test('target - view', function(assert) {
   });
 });
 
+test('mouseleaveToClose functions with manual close button', function(assert) {
+  const openSelector = '#targetedMouseleaveToClose';
+  const dialogText = 'Target w/ mouseleaveToClose';
+
+  assert.dialogOpensAndCloses({
+    openSelector,
+    dialogText,
+    closeSelector: dialogCloseButton,
+    hasOverlay: false,
+    tethered: true
+  });
+});
+
+test('mouseleaveToClose closes when a mouseleave event occurs on the dialog', function(assert) {
+  const openSelector = '#targetedMouseleaveToClose';
+  const dialogText = 'Target w/ mouseleaveToClose';
+
+  click(openSelector).then(() => {
+    return assert.closesOnMouseleave(dialogSelector, dialogText);
+  });
+});
+
+test('mouseleaveToClose closes when a mouseleave event occurs on the element used to open', function(assert) {
+  const openSelector = '#targetedMouseleaveToClose';
+  const dialogText = 'Target w/ mouseleaveToClose';
+
+  click(openSelector).then(() => {
+    return assert.closesOnMouseleave(openSelector, dialogText);
+  });
+});
+
 test('subclassed modal', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-subclass button',

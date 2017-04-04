@@ -39,4 +39,12 @@ export default function registerAssertHelpers() {
       });
     });
   };
+
+  assert.closesOnMouseleave = function(mouseLeaveSelector, dialogText) {
+    const dialogContent = [dialogSelector, `:contains(${dialogText})`].join('');
+
+    return triggerEvent(mouseLeaveSelector, 'mouseleave').then(() => {
+      this.isAbsent(dialogContent);
+    });
+  };
 }

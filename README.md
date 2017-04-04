@@ -102,6 +102,7 @@ The tether-dialog component supports all of the modal-dialog properties specifie
 Property              | Purpose
 --------------------- | -------------
 `hasOverlay`          | Toggles presence of overlay div in DOM
+`mouseleaveToClose`     | Closes the dialog on a `mouseleave` event. Useful when providing 'pop-out' modal functionality for a specific area of the page. (default: `false`)
 `tetherClassPrefix`   | Proxies to Hubspot Tether*
 `offset`              | Proxies to Hubspot Tether*
 `targetOffset`        | Proxies to Hubspot Tether*

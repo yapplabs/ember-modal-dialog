@@ -168,6 +168,30 @@
   {{/if}}
 </div>
 
+<div class='example' id='example-targeted-mouseleave-to-close'>
+  <h2>Close w/ mouseleave</h2>
+  <div class='targetContainer'>
+    <button id='targetedMouseleaveToClose' {{action 'toggleMouseleaveToClose'}}>Do It</button>
+  </div>
+  {{code-snippet name='target-selector-tether-dialog.hbs'}}
+  {{#if isShowingMouseleaveToClose}}
+    {{!-- BEGIN-SNIPPET target-element-tether-dialog --}}
+    {{#tether-dialog close='toggleMouseleaveToClose'
+                    hasOverlay=false
+                    targetAttachment=exampleTargetAttachment
+                    attachment=exampleAttachment
+                    mouseleaveToClose=true
+                    target='#targetedMouseleaveToClose' }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target w/ mouseleaveToClose - Selector: '#targetedMouseleaveToClose'</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeMouseleaveToClose'}}>Close</button>
+    {{/tether-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
 <div class='example' id='example-subclass'>
   <h2>Via Subclass</h2>
   <button {{action 'toggleSubclassed'}}>Do It</button>
