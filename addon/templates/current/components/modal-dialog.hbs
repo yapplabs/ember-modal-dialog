@@ -2,7 +2,7 @@
   <div class="{{wrapperClassNamesString}} {{wrapper-class}}">
     {{#modal-dialog-overlay
         classNameBindings='overlayClassNamesString translucentOverlay:translucent overlay-class'
-        action='close'
+        action='clickedOverlay'
     }}
       {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString targetAttachmentClass container-class"
           targetAttachment=targetAttachment

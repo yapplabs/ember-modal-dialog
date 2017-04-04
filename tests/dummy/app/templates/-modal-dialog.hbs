@@ -29,6 +29,23 @@
   {{/if}}
 </div>
 
+<div class='example' id='example-translucent-with-callback'>
+  <h2>Translucent Overlay with Callback</h2>
+  <button {{action 'toggleTranslucentWithCallback'}}>Do It</button>
+  {{code-snippet name='translucent-modal-dialog-with-callback.hbs'}}
+  {{#if isShowingTranslucentWithCallback}}
+    {{!-- BEGIN-SNIPPET translucent-modal-dialog-with-callback --}}
+    {{#modal-dialog close='toggleTranslucentWithCallback'
+                    translucentOverlay=true
+                    onClickOverlay='clickedTranslucentOverlay'}}
+      <h1>Stop! Modal Time!</h1>
+      <p>Translucent Overlay with Callback</p>
+      <button {{action 'toggleTranslucentWithCallback'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
 <div class='example' id='example-custom-styles'>
   <h2>Custom Styles</h2>
   <button {{action 'toggleCustomStyles'}}>Do It</button>

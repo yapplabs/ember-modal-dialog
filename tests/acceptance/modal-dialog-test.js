@@ -54,6 +54,24 @@ test('modal with translucent overlay', function(assert) {
   });
 });
 
+test('clicking translucent overlay triggers callback', function(assert) {
+  window.onClickOverlayCallbackCalled = false;
+
+  click('#example-translucent-with-callback button');
+  click(overlaySelector);
+
+  andThen(function() {
+    assert.isPresentOnce(overlaySelector);
+    assert.ok(window.onClickOverlayCallbackCalled);
+  });
+
+  click(dialogCloseButton);
+
+  andThen(function() {
+    assert.isAbsent(overlaySelector);
+  });
+});
+
 test('modal with custom styles', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-custom-styles button',
