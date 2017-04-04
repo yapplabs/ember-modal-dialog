@@ -19,5 +19,18 @@ module.exports = {
         + "version of ember-modal-dialog if you are stuck on an "
         + "older ember-cli.");
     }
+  },
+
+  treeForAddonTemplates: function treeForAddonTemplates (tree) {
+    var checker = new VersionChecker(this);
+    var emberVersion = checker.forEmber();
+
+    var baseTemplatesPath = path.join(this.root, 'addon/templates');
+
+    if (emberVersion.lt('1.13.0-beta.1')) {
+      return this.treeGenerator(path.join(baseTemplatesPath, 'lt-1-13'));
+    } else {
+      return this.treeGenerator(path.join(baseTemplatesPath, 'current'));
+    }
   }
 };
