@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   activeComponent: 'tether-dialog',
   isShowingBasic: false,
   isShowingTranslucent: false,
+  isShowingTranslucentWithCallback: false,
   isShowingWithoutOverlay: false,
   isShowingWithoutOverlayClickOutsideToClose: false,
   isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
@@ -47,6 +48,9 @@ export default Ember.Controller.extend({
     },
     toggleTranslucent() {
       this.toggleProperty('isShowingTranslucent');
+    },
+    toggleTranslucentWithCallback() {
+      this.toggleProperty('isShowingTranslucentWithCallback');
     },
     toggleWithoutOverlay() {
       this.toggleProperty('isShowingWithoutOverlay');
@@ -138,6 +142,9 @@ export default Ember.Controller.extend({
       this.set('isShowingTargetElement', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
+    },
+    clickedTranslucentOverlay() {
+      window.onClickOverlayCallbackCalled = true;
     }
   }
 });
