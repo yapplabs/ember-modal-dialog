@@ -1,3 +1,4 @@
+/* global nativeClick */
 import Ember from 'ember';
 import QUnit from 'qunit';
 
@@ -21,11 +22,11 @@ export default function registerAssertHelpers() {
     return this.ok(findWithAssert(selector).is(':visible'), message);
   };
 
-  assert.dialogOpensAndCloses = function(options, message) {
-    message = message || `Dialog triggered by ${options.openSelector} failed to open and close`;
+  assert.dialogOpensAndCloses = function(options) {
     const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
     const self = this;
-    return nativeClick(options.openSelector, options.context).then(function() {
+    nativeClick(options.openSelector, options.context);
+    andThen(function() {
       if (options.hasOverlay) {
         self.isPresentOnce(overlaySelector);
       }
@@ -33,10 +34,11 @@ export default function registerAssertHelpers() {
       if (options.whileOpen) {
         options.whileOpen();
       }
-      return nativeClick(options.closeSelector, options.context).then(function() {
-        self.isAbsent(overlaySelector);
-        self.isAbsent(dialogContent);
-      });
+    });
+    nativeClick(options.closeSelector, options.context);
+    andThen(function() {
+      self.isAbsent(overlaySelector);
+      self.isAbsent(dialogContent);
     });
   };
 }

@@ -11,13 +11,7 @@ function fireNativeMouseEvent(eventType, selectorOrDomElement, context) {
   Ember.run(() => target.dispatchEvent(event));
 }
 
-export default function acceptanceTestHelpers() {
 
-  Ember.Test.registerAsyncHelper('nativeClick', function(app, selectorOrDomElement, context) {
-    fireNativeMouseEvent('click', selectorOrDomElement, context);
-    wait();
-  });
-
-}
-
-export default acceptanceTestHelpers();
+Ember.Test.registerAsyncHelper('nativeClick', function(app, selectorOrDomElement, context) {
+  fireNativeMouseEvent('click', selectorOrDomElement, context);
+});

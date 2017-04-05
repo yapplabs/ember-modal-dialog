@@ -1,12 +1,12 @@
 export default {
   after: 'add-modals-container',
   name: 'custom-modals',
-  initialize(_, application) {
+  initialize(App) {
     let customModals = ['my-cool-modal-dialog'];
     customModals.forEach(function(customModal) {
-      application.inject(`component:${customModal}`,
-                         'destinationElementId',
-                         'config:modals-container-id');
+      App.inject(`component:${customModal}`,
+                 'destinationElementId',
+                 'config:modals-container-id');
     });
   }
 };
