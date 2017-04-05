@@ -1,7 +1,5 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
-var path = require('path');
-var fs = require('fs');
 
 module.exports = {
   name: 'ember-modal-dialog'

@@ -1,14 +1,11 @@
-/* jshint node: true */
+/* eslint-env node */
 
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'dummy',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'auto',
-    sassOptions: {
-      outputFile: 'dummy.css'
-    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -28,7 +25,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'production') {
-    ENV.baseURL = '/ember-modal-dialog'; // for gh-pages live demo
+    ENV.rootURL = '/ember-modal-dialog'; // for gh-pages live demo
   }
 
   if (environment === 'development') {
@@ -41,7 +38,6 @@ module.exports = function(environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/';
     ENV.locationType = 'none';
 
     // keep test console output quieter
@@ -49,6 +45,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+  }
+
+  if (environment === 'production') {
+
   }
 
   return ENV;
