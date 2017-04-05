@@ -21,8 +21,6 @@ ember install ember-modal-dialog
 ember install ember-cli-sass
 ```
 
-*Note:* Ember CLI versions < 0.2.3 should use `ember install:addon` instead of `ember install`
-
 **app.scss**
 ```scss
 @import "ember-modal-dialog/ember-modal-structure";
@@ -196,17 +194,13 @@ The addon packages default styles for modal structure and appearance. To use the
 > ember install ember-cli-sass
 ```
 
-Or, in Ember CLI versions < 0.2.3:
-
-```sh
-ember install:addon ember-cli-sass
-```
-
 **app.scss**
 ```scss
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 ```
+
+If you would prefer not to use Sass, just grab the contents of these files and adapt them for your needs -- there is not much there.
 
 ## Keyboard shortcuts
 
@@ -283,20 +277,14 @@ This can then be used like so:
 
 ## Dependencies
 
-* Requires Ember CLI >= 0.2.0
-* Requires Ember >= 1.10.0 (Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See #71)
+* For Ember versions >= 2.4, use the latest published version
+* For Ember versions >= 1.10 and < 2.4, use ember-modal-dialog 1.0.0 _(Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See #71)_
 
 ## Installation
 
 * `ember install ember-modal-dialog`
 
-Or, in Ember CLI versions < 0.2.3:
-
-```sh
-ember install:addon ember-modal-dialog
-```
-
-## Running
+## Running the dummy app
 
 * `ember server`
 * Visit your app at http://localhost:4200.
@@ -330,5 +318,5 @@ This project uses [https://github.com/skywinder/github-changelog-generator](http
 
 ## Credits
 
-Contributions from @stefanpenner, @krisselden, @chrislopresto, @lukemelia, @raycohen and
+Contributions from @stefanpenner, @krisselden, @chrislopresto, @lukemelia, @raycohen, @andrewhavens, @samselikoff and
 others. [Yapp Labs](http://yapplabs.com) is an Ember.js consultancy based in NYC.

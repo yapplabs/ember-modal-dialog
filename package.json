@@ -14,7 +14,7 @@
   },
   "repository": "https://github.com/yapplabs/ember-modal-dialog",
   "engines": {
-    "node": ">= 0.10.0"
+    "node": ">= 4"
   },
   "author": "",
   "license": "MIT",
@@ -36,7 +36,6 @@
     "ember-disable-prototype-extensions": "^1.1.0",
     "ember-disable-proxy-controllers": "^1.0.0",
     "ember-export-application-global": "^1.0.5",
-    "ember-legacy-views": "0.2.0",
     "ember-load-initializers": "^0.5.1",
     "ember-resolver": "^2.0.3",
     "ember-suave": "1.2.3",
@@ -47,7 +46,6 @@
   "dependencies": {
     "ember-cli-babel": "^5.1.6",
     "ember-cli-htmlbars": "^1.0.8",
-    "ember-cli-version-checker": "^1.2.0",
     "ember-wormhole": "~0.3.6"
   },
   "keywords": [
@@ -57,7 +55,7 @@
     "configPath": "tests/dummy/config",
     "demoURL": "http://yapplabs.github.io/ember-modal-dialog/",
     "versionCompatibility": {
-      "ember": ">1.11.0"
+      "ember": "~2.4.0 || > 2.8.0"
     }
   }
 }
