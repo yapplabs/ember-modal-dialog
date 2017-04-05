@@ -284,7 +284,7 @@ This can then be used like so:
 
 * `ember install ember-modal-dialog`
 
-## Running the dumy app
+## Running the dummy app
 
 * `ember server`
 * Visit your app at http://localhost:4200.

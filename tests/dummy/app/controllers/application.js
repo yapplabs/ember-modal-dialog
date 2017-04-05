@@ -12,7 +12,6 @@ export default Ember.Controller.extend({
   isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
   isShowingCustomStyles: false,
   isShowingTargetSelector: false,
-  isShowingTargetView: false,
   isShowingTargetElement: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
@@ -76,18 +75,6 @@ export default Ember.Controller.extend({
       }
       this.toggleProperty('isShowingTargetSelector');
     },
-    toggleTargetView() {
-      if (this.get('isShowingTargetView')) {
-        let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
-        let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
-        this.set('exampleTargetAttachment', newTargetAttachment);
-        this.set('exampleAttachment', newAttachment);
-        if (newTargetAttachment !== 'middle left') {
-          return;
-        }
-      }
-      this.toggleProperty('isShowingTargetView');
-    },
     toggleTargetElement() {
       if (this.get('isShowingTargetElement')) {
         let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
@@ -130,11 +117,6 @@ export default Ember.Controller.extend({
     },
     closeTargetSelector() {
       this.set('isShowingTargetSelector', false);
-      this.set('exampleTargetAttachment', 'middle left');
-      this.set('exampleAttachment', 'middle right');
-    },
-    closeTargetView() {
-      this.set('isShowingTargetView', false);
       this.set('exampleTargetAttachment', 'middle left');
       this.set('exampleAttachment', 'middle right');
     },

@@ -108,14 +108,6 @@ test('target - element', function(assert) {
   });
 });
 
-test('target - view', function(assert) {
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-target-view button',
-    dialogText: 'Target - View',
-    closeSelector: dialogCloseButton
-  });
-});
-
 test('subclassed modal', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-subclass button',

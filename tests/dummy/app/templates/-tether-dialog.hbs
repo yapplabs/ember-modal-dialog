@@ -135,31 +135,6 @@
   {{/if}}
 </div>
 
-<div class='example' id='example-target-view'>
-  <h2>Target (View)</h2>
-  <div class='targetContainer'>
-    <span id="bwtdv">
-      <button {{action 'toggleTargetView'}}>Do It</button>
-    </span>
-  </div>
-  {{code-snippet name='target-view-tether-dialog.hbs'}}
-  {{#if isShowingTargetView}}
-    {{!-- BEGIN-SNIPPET target-view-tether-dialog --}}
-    {{#tether-dialog close='toggleTargetView'
-                    hasOverlay=false
-                    targetAttachment=exampleTargetAttachment
-                    attachment=exampleAttachment
-                    target="#bwtdv" }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - View: bwtdv</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action 'closeTargetView'}}>Close</button>
-    {{/tether-dialog}}
-    {{!-- END-SNIPPET --}}
-  {{/if}}
-</div>
-
 <div class='example' id='example-target-element'>
   <h2>Target (Element)</h2>
   <div class='targetContainer'>
@@ -176,7 +151,7 @@
                     attachment=exampleAttachment
                     target="#bwtde" }}
       <h1>Stop! Modal Time!</h1>
-      <p>Target - Element{{view.bwtde.elementId}}</p>
+      <p>Target - Element #bwtde</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetElement'}}>Close</button>
