@@ -1,5 +1,14 @@
 # Change Log
 
+## [v2.0.0-beta.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.0.0-beta.0) (2017-04-05)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v1.0.0...v2.0.0-beta.0)
+
+**Merged pull requests:**
+
+- Update ember-cli and other tooling dependencies. [\#174](https://github.com/yapplabs/ember-modal-dialog/pull/174) ([lukemelia](https://github.com/lukemelia))
+- Update ember-wormhole dependency and ember-tether devDependency [\#173](https://github.com/yapplabs/ember-modal-dialog/pull/173) ([lukemelia](https://github.com/lukemelia))
+- Drop support for Ember versions older than 2.4 [\#172](https://github.com/yapplabs/ember-modal-dialog/pull/172) ([lukemelia](https://github.com/lukemelia))
+
 ## [v1.0.0](https://github.com/yapplabs/ember-modal-dialog/tree/v1.0.0) (2017-04-05)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v0.9.1...v1.0.0)
 
