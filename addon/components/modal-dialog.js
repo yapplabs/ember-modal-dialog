@@ -4,7 +4,8 @@ import layout from '../templates/components/modal-dialog';
 const { dasherize } = Ember.String;
 const { $, computed, guidFor, inject } = Ember;
 const { oneWay } = computed;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const { navigator: { userAgent } } = window;
+const isIOS = /iPad|iPhone|iPod/.test(userAgent);
 const computedJoin = function(prop) {
   return computed(prop, function() {
     return this.get(prop).join(' ');
