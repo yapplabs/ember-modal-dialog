@@ -2,7 +2,7 @@
 
 The ember-modal-dialog addon provides components to implement modal dialogs throughout an Ember application using a simple, consistent pattern.
 
-Unlike other modal libraries for Ember, ember-modal-dialog uses our [ember-wormhole](//github.com/yapplabs/ember-wormhole) addon to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
+Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions like [ember-wormhole](//github.com/yapplabs/ember-wormhole) to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
 
 ## Live Demo and Test Examples
 
@@ -79,35 +79,55 @@ The modal-dialog component supports the following properties:
 
 Property              | Purpose
 --------------------- | -------------
+`hasOverlay`          | Toggles presence of overlay div in DOM
 `translucentOverlay`  | Indicates translucence of overlay, toggles presence of `translucent` CSS selector
-`target`              | Element selector, element, or Ember View reference for that serves as the reference for modal position (default: `'body'`)
-`close`               | The action handler for the dialog's `close` action. This action triggers when the user clicks the modal overlay.
+`onClose`               | The action handler for the dialog's `close` action. This action triggers when the user clicks the modal overlay.
 `renderInPlace`       | A boolean, when true renders the modal without wormholing or tethering, useful for including a modal in a style guide
 `clickOutsideToClose` | Indicates whether clicking outside a modal *without* an overlay should close the modal. Useful if your modal isn't the focus of interaction, and you want hover effects to still work outside the modal.
 `onClickOverlay`      | An action to be called when the overlay is clicked. This action will be called instead of closing the modal when the overlay is clicked.
-`attachment`          | A string of the form 'vert-attachment horiz-attachment', e.g. `'middle left'` (see "Positioning" section below)
-`targetAttachment`    | A string of the form 'vert-attachment horiz-attachment', e.g. `'middle left'` (see "Positioning" section below)
-`container-class`     | CSS class name(s) to append to container divs. Set this from template.
+`containerClass`      | CSS class name(s) to append to container divs. Set this from template.
 `containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
-`overlay-class`       | CSS class name(s) to append to overlay divs. Set this from template.
+`overlayClass`        | CSS class name(s) to append to overlay divs. Set this from template.
 `overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
-`wrapper-class`       | CSS class name(s) to append to wrapper divs. Set this from template.
+`wrapperClass`        | CSS class name(s) to append to wrapper divs. Set this from template.
 `wrapperClassNames`   | CSS class names to append to wrapper divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-wrapper'`. If you subclass this component, you may define this in your subclass.)
+`animatable`          | A boolean, when false prevents the component from using liquid-wormhole or liquid-tether to make itself animatable by liquid-fire.
 
-### tether-dialog
+The above properties of the `modal-dialog` component can be used without any additional  dependencies.
 
-The tether-dialog component supports all of the modal-dialog properties specified above as well as the following properties:
+#### Tethering
+
+If you specify a `tetherTarget`, you are opting into "tethering" behavior, and you must have either `ember-tether` or `liquid-tether` installed.
 
 Property              | Purpose
 --------------------- | -------------
-`hasOverlay`          | Toggles presence of overlay div in DOM
-`tetherClassPrefix`   | Proxies to Hubspot Tether*
-`offset`              | Proxies to Hubspot Tether*
-`targetOffset`        | Proxies to Hubspot Tether*
-`constraints`         | Proxies to Hubspot Tether*
+`tetherTarget`        | Element selector or element reference for that serves as the reference for modal position
+
+We use the amazing [Tether.js](http://tether.io/) library (via [ember-tether](https://github.com/yapplabs/ember-tether)) to let you position your dialog relative to other elements in the DOM.
 
 \* Please see [Hubspot Tether](http://github.hubspot.com/tether/) for usage documentation.
 
+When tethering scenario, you may also pass the following properties, which are passed through to Tether:
+
+Property              | Purpose
+--------------------- | -------------
+`attachment`          | Delegates to Hubspot Tether*
+`targetAttachment`    | Delegates to Hubspot Tether*
+`tetherClassPrefix`   | Delegates to Hubspot Tether*
+`offset`              | Delegates to Hubspot Tether*
+`targetOffset`        | Delegates to Hubspot Tether*
+`constraints`         | Delegates to Hubspot Tether*
+
+#### Animation
+
+This component supports animation when certain addons are present (liquid-wormhole, liquid-tether). Detection is automatic. To suppress this behavior when you have one of these addons installed, pass `animatable=false`.
+
+### Optional dependencies
+
+`ember install ember-tether` [Docs](//github.com/yapplabs/ember-tether/)
+`ember install liquid-wormhole` [Docs](//pzuraq.github.io/liquid-wormhole/)
+`ember install liquid-tether` [Docs](//pzuraq.github.io/liquid-tether/)
+`ember install liquid-fire` [Docs](//ember-animation.github.io/liquid-fire/)
 
 ## Which Component Should I Use?
 
@@ -121,40 +141,21 @@ Various modal use cases are best supported by different DOM structures. Ember Mo
 
     ![](tests/dummy/public/tether-dialog.png)
 
-## Positioning
+### Positioning Your Modal Dialog
 
-Ember Modal Dialog provides `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. To provide consistency with Hubspot Tether, Ember Modal Dialog uses the same syntax for these properties: "top|middle|bottom left|center|right|elementCenter"... e.g. `'middle left'`
+With the default SCSS provided, your modal will be centered in the viewport. By adjusting the CSS, you can adjust this logic.
 
-### Positioning tether-dialog Components
-
-The tether-dialog component uses our [ember-tether](//github.com/yapplabs/ember-tether) addon, which in turn uses [Hubspot Tether](http://github.hubspot.com/tether/). This enables modals to remain positioned near their targets when users scroll or resize the window.
+Pass a `tetherTarget` in order to position our modal in relation to the target and enable your modal remain positioned near their targets when users scroll or resize the window.
 
 To enable this behavior, install ember-tether as a dependency of **your ember app**.
 
     `ember install ember-tether`
-
-Then use the tether-dialog component for any modals you wish to position this way:
-
-```htmlbars
-{{#tether-dialog
-  target='#target-element-id'
-  targetAttachment='middle right'
-  attachment='middle left'}}
-  I am a modal that will remain tethered to the right of the element with id 'target-element-id'
-{{/tether-dialog}}
-```
 
 #### Caveats
 
 Event delegation originating from content inside ember-tether blocks will only work for Ember apps that use Ember's default root element of the `body` tag. This is because the Hubspot Tether library appends its positioned elements to the body tag.
 
 If you are not overriding the default root element, then don't worry and carry on. ember-tether will work just fine for you.
-
-### Positioning modal-dialog Components
-
-The modal-dialog component uses an internal ember-modal-dialog-positioned-container component to position modals near their targets. This is a good option if you do not wish to use Ember Tether + Hubspot Tether. Just know that this positioning logic is not nearly as sophisticated as the positioning logic in Ember Tether. That's why we made Ember Tether.
-
-NOTE: The {{ember-modal-dialog-positioned-container}} component only respects the horizontal value for `targetAttachment`. So, for example,`'top left'`, `'middle left'`, and `'bottom left'` will all be interpreted simply as `'left'`. Additionally, `'elementCenter'` will center the modal above the clicked element. We will gladly accept [PRs](https://github.com/yapplabs/ember-modal-dialog/pulls) for improvements here.
 
 ## Wormholes
 

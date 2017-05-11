@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import BasicDialog from './basic-dialog';
-import layout from '../templates/components/tether-dialog';
+import layout from '../templates/components/liquid-tether-dialog';
 
 const { dasherize } = Ember.String;
 const { computed } = Ember;
@@ -24,9 +24,10 @@ export default BasicDialog.extend({
       this.set('targetAttachment', 'middle center');
     }
     if (!this.get('tetherClassPrefix')) {
-      this.set('tetherClassPrefix', 'ember-tether');
+      this.set('tetherClassPrefix', 'liquid-tether');
     }
   },
+  hasOverlay: true,
   tetherTarget: null, // element, css selector, view instance, 'viewport', or 'scroll-handle'
   tetherClassPrefix: null, // passed in
   // offset - passed in

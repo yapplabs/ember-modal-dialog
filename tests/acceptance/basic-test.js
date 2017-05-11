@@ -8,7 +8,7 @@ const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
-module('Acceptance: Display Tether Dialogs', {
+module('Acceptance: modal-dialog | no animation, no tether', {
   beforeEach() {
     application = startApp();
     visit('/');
@@ -29,8 +29,7 @@ test('basic modal', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-basic button',
     dialogText: 'Basic',
-    closeSelector: overlaySelector,
-    hasOverlay: true
+    closeSelector: overlaySelector
   });
 
   assert.dialogOpensAndCloses({
@@ -44,8 +43,7 @@ test('modal with translucent overlay', function(assert) {
   assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
-    closeSelector: overlaySelector,
-    hasOverlay: true
+    closeSelector: overlaySelector
   });
 
   assert.dialogOpensAndCloses({
@@ -73,70 +71,20 @@ test('clicking translucent overlay triggers callback', function(assert) {
   });
 });
 
-test('modal without overlay', function(assert) {
+test('modal with custom styles', function(assert) {
   assert.dialogOpensAndCloses({
-    openSelector: '#example-without-overlay button',
-    dialogText: 'Without Overlay',
-    closeSelector: '#example-without-overlay button'
-  });
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-without-overlay button',
-    dialogText: 'Without Overlay',
-    closeSelector: dialogCloseButton,
-    context: 'body'
-  });
-});
-
-test('modal without overlay click outside to close', function(assert) {
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-without-overlay-click-outside-to-close button',
-    dialogText: 'Without Overlay - Click Outside to Close',
-    closeSelector: '#example-without-overlay-click-outside-to-close button'
-  });
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-without-overlay-click-outside-to-close button',
-    dialogText: 'Without Overlay - Click Outside to Close',
-    closeSelector: '#example-without-overlay-click-outside-to-close'
-  });
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-without-overlay-click-outside-to-close button:nth-of-type(2)',
-    dialogText: 'Without Overlay Another One - Click Outside to Close',
-    closeSelector: '#example-without-overlay-click-outside-to-close button:nth-of-type(1)'
-  });
-
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-without-overlay-click-outside-to-close button:nth-of-type(2)',
-    dialogText: 'Without Overlay Another One - Click Outside to Close',
-    closeSelector: '#example-without-overlay-click-outside-to-close'
-  });
-
-  andThen(function() {
-    assert.equal(Ember.$(dialogSelector).length, 0, 'All modals are absent');
-  });
-
-});
-
-test('target - selector', function(assert) {
-  assert.dialogOpensAndCloses({
-    openSelector: '#example-target-selector button',
-    dialogText: 'Target - Selector',
-    closeSelector: dialogCloseButton,
-    hasOverlay: false,
+    openSelector: '#example-custom-styles button',
+    dialogText: 'Custom Styles',
+    closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok(Ember.$(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
+      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlayClass');
+      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided containerClass');
     }
   });
-});
-
-test('target - element', function(assert) {
   assert.dialogOpensAndCloses({
-    openSelector: '#example-target-element button',
-    dialogText: 'Target - Element',
-    closeSelector: dialogCloseButton,
-    hasOverlay: false
+    openSelector: '#example-custom-styles button',
+    dialogText: 'Custom Styles',
+    closeSelector: dialogCloseButton
   });
 });
 
@@ -145,7 +93,6 @@ test('subclassed modal', function(assert) {
     openSelector: '#example-subclass button',
     dialogText: 'Via Subclass',
     closeSelector: overlaySelector,
-    hasOverlay: true,
     whileOpen() {
       assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
@@ -156,14 +103,14 @@ test('in place', function(assert) {
   click('#example-in-place button');
   let dialogText = 'In Place';
   let defaultSelector = [modalRootElementSelector, dialogSelector, `:contains(${dialogText})`].join(' ');
-  let inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
+  let inPlaceDialogSelector = `${dialogSelector}.emd-in-place`;
   let inPlaceRootSelector = '#container-in-place';
   let inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, `:contains(${dialogText})`].join(' ');
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
   andThen(function() {
     assert.equal(Ember.$(dialogSelector).css('position'), 'static', 'not absolutely positioned');
-    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned');
-    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
+    assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
+    assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
     assert.isAbsent(defaultSelector);
     assert.isPresentOnce(inPlaceSelector);
   });

@@ -1,12 +1,18 @@
 import Ember from 'ember';
-import Service from 'ember-modal-dialog/services/modal-dialog';
 import ENV from '../config/environment';
 
-const {
-  computed
-} = Ember;
+const { computed, Service } = Ember;
+
+function computedFromConfig(prop) {
+  return computed(function(){
+    return ENV['ember-modal-dialog'][prop];
+  });
+}
 
 export default Service.extend({
+  hasEmberTether: computedFromConfig('hasEmberTether'),
+  hasLiquidWormhole: computedFromConfig('hasLiquidWormhole'),
+  hasLiquidTether: computedFromConfig('hasLiquidTether'),
   destinationElementId: computed(function() {
     /*
       everywhere except test, this property will be overwritten

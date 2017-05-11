@@ -1,4 +1,4 @@
-/* global nativeClick */
+/* global nativeClick, wait */
 import Ember from 'ember';
 import QUnit from 'qunit';
 
@@ -26,6 +26,7 @@ export default function registerAssertHelpers() {
     const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
     const self = this;
     nativeClick(options.openSelector, options.context);
+    wait(); // needed for animating dialogs
     andThen(function() {
       if (options.hasOverlay) {
         self.isPresentOnce(overlaySelector);
@@ -36,6 +37,7 @@ export default function registerAssertHelpers() {
       }
     });
     nativeClick(options.closeSelector, options.context);
+    wait(); // needed for animating dialogs
     andThen(function() {
       self.isAbsent(overlaySelector);
       self.isAbsent(dialogContent);
