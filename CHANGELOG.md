@@ -1,5 +1,12 @@
 # Change Log
 
+## [v2.0.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.0.0) (2017-05-12)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.0.0-beta.0...v2.0.0)
+
+**Merged pull requests:**
+
+- Update to Babel 6. [\#175](https://github.com/yapplabs/ember-modal-dialog/pull/175) ([rwjblue](https://github.com/rwjblue))
+
 ## [v2.0.0-beta.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.0.0-beta.0) (2017-04-05)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v1.0.0...v2.0.0-beta.0)
 
