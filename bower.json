@@ -1,6 +1,5 @@
 {
   "name": "ember-modal-dialog",
   "dependencies": {
-    "ember": "~2.4.6"
   }
 }
