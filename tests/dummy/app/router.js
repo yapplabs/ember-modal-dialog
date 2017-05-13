@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('tether-dialog'); //deprecated
 });
 
 export default Router;

@@ -1,21 +1,11 @@
-{{#if (eq activeComponent 'modal-dialog')}}
-  <h1 id="title">Modal Dialog</h1>
-  <p>
-    Ember Modal Dialog provides two different modal components. You are
-    currently looking at examples for {{activeComponent}}.
-
-    <button {{action 'toggleActiveComponent'}}>Change to tether-dialog</button>
+<div class="ApplicationRoute">
+  <p class="ApplicationRoute-summary">
+    Ember Modal Dialog provides two different modal components.
   </p>
+  <ul class="ApplicationRoute-nav">
+    <li>{{#link-to 'index'}}modal-dialog{{/link-to}}</li>
+    <li>{{#link-to 'tether-dialog'}}tether-dialog{{/link-to}}</li>
+  </ul>
 
-  {{partial 'modal-dialog'}}
-{{else}}
-  <h1 id="title">Tether Dialog</h1>
-  <p>
-    Ember Modal Dialog provides two different modal components. You are
-    currently looking at examples for {{activeComponent}}.
-
-    <button {{action 'toggleActiveComponent'}}>Change to modal-dialog</button>
-  </p>
-
-  {{partial 'tether-dialog'}}
-{{/if}}
+  {{outlet}}
+</div>

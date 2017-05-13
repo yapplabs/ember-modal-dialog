@@ -12,7 +12,7 @@ const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 module('Acceptance: Display Tether Dialogs', {
   async beforeEach() {
     application = startApp();
-    await visit('/');
+    await visit('/tether-dialog');
   },
 
   afterEach() {

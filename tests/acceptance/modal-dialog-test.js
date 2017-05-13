@@ -14,7 +14,6 @@ module('Acceptance: Display Modal Dialogs', {
   async beforeEach() {
     application = startApp();
     await visit('/');
-    await click((findContains('button', 'Change to modal-dialog')));
   },
 
   afterEach() {
