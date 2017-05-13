@@ -13,7 +13,7 @@
   {{code-snippet name='basic-tether-dialog.hbs'}}
   {{#if isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-tether-dialog --}}
-    {{#tether-dialog close='toggleBasic'}}
+    {{#tether-dialog onClose='toggleBasic'}}
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
       <button {{action 'toggleBasic'}}>Close</button>
@@ -28,7 +28,7 @@
   {{code-snippet name='translucent-tether-dialog.hbs'}}
   {{#if isShowingTranslucent}}
     {{!-- BEGIN-SNIPPET translucent-tether-dialog --}}
-    {{#tether-dialog close='toggleTranslucent'
+    {{#tether-dialog onClose='toggleTranslucent'
                     translucentOverlay=true}}
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay</p>
@@ -44,7 +44,7 @@
   {{code-snippet name='translucent-tether-dialog-with-callback.hbs'}}
   {{#if isShowingTranslucentWithCallback}}
     {{!-- BEGIN-SNIPPET translucent-tether-dialog-with-callback --}}
-    {{#tether-dialog close='toggleTranslucentWithCallback'
+    {{#tether-dialog onClose='toggleTranslucentWithCallback'
                     translucentOverlay=true
                     onClickOverlay='clickedTranslucentOverlay'}}
       <h1>Stop! Modal Time!</h1>
@@ -61,7 +61,7 @@
   {{code-snippet name='without-overlay-tether-dialog.hbs'}}
   {{#if isShowingWithoutOverlay}}
     {{!-- BEGIN-SNIPPET without-overlay-tether-dialog --}}
-    {{#tether-dialog close='toggleWithoutOverlay'
+    {{#tether-dialog onClose='toggleWithoutOverlay'
                     hasOverlay=false}}
       <h1>Stop! Modal Time!</h1>
       <p>Without Overlay</p>
@@ -79,7 +79,7 @@
   {{code-snippet name='without-overlay-click-outside-to-close-tether-dialog.hbs'}}
   {{#if isShowingWithoutOverlayClickOutsideToClose}}
     {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-tether-dialog --}}
-    {{#tether-dialog close='toggleWithoutOverlayClickOutsideToClose'
+    {{#tether-dialog onClose='toggleWithoutOverlayClickOutsideToClose'
                     hasOverlay=false
                     clickOutsideToClose=true}}
       <h1>Stop! Modal Time!</h1>
@@ -89,7 +89,7 @@
     {{!-- END-SNIPPET --}}
   {{/if}}
   {{#if isShowingWithoutOverlayClickOutsideToCloseAnotherOne}}
-    {{#tether-dialog close='toggleWithoutOverlayClickOutsideToCloseAnotherOne'
+    {{#tether-dialog onClose='toggleWithoutOverlayClickOutsideToCloseAnotherOne'
                     hasOverlay=false
                     clickOutsideToClose=true
                     offset='100px 0'}}
@@ -108,7 +108,7 @@
   {{code-snippet name='custom-styles.scss'}}
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-tether-dialog --}}
-    {{#tether-dialog close='toggleCustomStyles'
+    {{#tether-dialog onClose='toggleCustomStyles'
                     targetAttachment='top right'
                     attachment='top right'
                     container-class=customContainerClassNames
@@ -129,7 +129,7 @@
   {{code-snippet name='target-selector-tether-dialog.hbs'}}
   {{#if isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-tether-dialog --}}
-    {{#tether-dialog close='toggleTargetSelector'
+    {{#tether-dialog onClose='toggleTargetSelector'
                     hasOverlay=false
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
@@ -196,7 +196,7 @@
     {{#if isShowingInPlace}}
       {{!-- BEGIN-SNIPPET in-place-tether-dialog --}}
       {{#tether-dialog
-          close='toggleInPlace'
+          onClose='toggleInPlace'
           renderInPlace=true
           targetAttachment='none'
           container-class='ember-modal-dialog-in-place'

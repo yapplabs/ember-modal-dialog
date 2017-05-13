@@ -44,7 +44,7 @@ Here is a more useful example of how to conditionally display a modal based on a
 <button {{action "toggleModal"}}>Toggle Modal</button>
 
 {{#if isShowingModal}}
-  {{#modal-dialog close="toggleModal"
+  {{#modal-dialog onClose="toggleModal"
                   targetAttachment="center"
                   translucentOverlay=true}}
     Oh hai there!
@@ -81,10 +81,10 @@ Property              | Purpose
 --------------------- | -------------
 `translucentOverlay`  | Indicates translucence of overlay, toggles presence of `translucent` CSS selector
 `target`              | Element selector, element, or Ember View reference for that serves as the reference for modal position (default: `'body'`)
-`close`               | The action handler for the dialog's `close` action. This action triggers when the user clicks the modal overlay.
-`renderInPlace`       | A boolean, when true renders the modal without wormholing or tethering, useful for including a modal in a style guide
+`onClose`               | The action handler for the dialog's `onClose` action. This action triggers when the user clicks the modal overlay.
+`onClickOverlay`      | An action to be called when the overlay is clicked. If this action is specified, clicking the overlay will invoke it instead of `onClose`.
 `clickOutsideToClose` | Indicates whether clicking outside a modal *without* an overlay should close the modal. Useful if your modal isn't the focus of interaction, and you want hover effects to still work outside the modal.
-`onClickOverlay`      | An action to be called when the overlay is clicked. This action will be called instead of closing the modal when the overlay is clicked.
+`renderInPlace`       | A boolean, when true renders the modal without wormholing or tethering, useful for including a modal in a style guide
 `attachment`          | A string of the form 'vert-attachment horiz-attachment', e.g. `'middle left'` (see "Positioning" section below)
 `targetAttachment`    | A string of the form 'vert-attachment horiz-attachment', e.g. `'middle left'` (see "Positioning" section below)
 `containerClass`     | CSS class name(s) to append to container divs. Set this from template.

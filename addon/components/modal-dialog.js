@@ -18,6 +18,21 @@ export default Ember.Component.extend({
   modalService: inject.service('modal-dialog'),
   destinationElementId: oneWay('modalService.destinationElementId'),
 
+  // onClose - set this from templates
+  close: computed('onClose', {
+    get() {
+      return this.get('onClose');
+    },
+    set(key, value) {
+      deprecate(
+        'Specifying the `close` action for a modal-dialog/tether-dialog is deprecated in favor of `onClose`. Will be removed in 3.0.0.',
+        false,
+        { id: 'ember-modal-dialog.close-action', until: '3.0.0' }
+      );
+      this.set('onClose', value);
+    },
+  }),
+
   // containerClass - set this from templates
   "container-class": computed('containerClass', {
     get() {
@@ -98,7 +113,7 @@ export default Ember.Component.extend({
 
     const handleClick = (event) => {
       if (!$(event.target).closest('.ember-modal-dialog').length) {
-        this.send('close');
+        this.sendAction('onClose');
       }
     };
     const registerClick = () => $(document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
@@ -122,13 +137,13 @@ export default Ember.Component.extend({
 
   actions: {
     close() {
-      this.sendAction('close');
+      this.sendAction('onClose');
     },
     clickedOverlay() {
       if (this.get('onClickOverlay')) {
         this.sendAction('onClickOverlay');
       } else {
-        this.sendAction('close');
+        this.sendAction('onClose');
       }
     }
   }
