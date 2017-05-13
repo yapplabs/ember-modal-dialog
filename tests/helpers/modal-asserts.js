@@ -1,6 +1,10 @@
-/* global nativeClick */
+import { click, findAll } from 'ember-native-dom-helpers';
 import Ember from 'ember';
 import QUnit from 'qunit';
+
+export function findContains(selector, text) {
+  return [].slice.apply(findAll(selector)).filter((e) => e.textContent.trim().indexOf(text) > -1)[0];
+}
 
 export default function registerAssertHelpers() {
   const { assert } = QUnit;
@@ -22,23 +26,19 @@ export default function registerAssertHelpers() {
     return this.ok(findWithAssert(selector).is(':visible'), message);
   };
 
-  assert.dialogOpensAndCloses = function(options) {
+  assert.dialogOpensAndCloses = async function(options) {
     const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
     const self = this;
-    nativeClick(options.openSelector, options.context);
-    andThen(function() {
-      if (options.hasOverlay) {
-        self.isPresentOnce(overlaySelector);
-      }
-      self.isPresentOnce(dialogContent);
-      if (options.whileOpen) {
-        options.whileOpen();
-      }
-    });
-    nativeClick(options.closeSelector, options.context);
-    andThen(function() {
-      self.isAbsent(overlaySelector);
-      self.isAbsent(dialogContent);
-    });
+    await click(options.openSelector, options.context);
+    if (options.hasOverlay) {
+      self.isPresentOnce(overlaySelector);
+    }
+    self.isPresentOnce(dialogContent);
+    if (options.whileOpen) {
+      await options.whileOpen();
+    }
+    await click(options.closeSelector, options.context);
+    self.isAbsent(overlaySelector);
+    self.isAbsent(dialogContent);
   };
 }
