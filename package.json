@@ -48,7 +48,6 @@
     "ember-source": "~2.13.0",
     "ember-tether": "^1.0.0-beta.0",
     "ember-truth-helpers": "^1.3.0",
-    "install": "^0.10.1",
     "loader.js": "^4.4.0"
   },
   "engines": {
