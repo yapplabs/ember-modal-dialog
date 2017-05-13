@@ -78,7 +78,7 @@ test('modal with custom styles', function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlay-class');
+      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlayClass');
       assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
     }
   });
