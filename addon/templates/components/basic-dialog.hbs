@@ -1,0 +1,18 @@
+{{#ember-wormhole to=destinationElementId}}
+  <div class="{{wrapperClassNamesString}} {{wrapperClass}}">
+    {{#if hasOverlay}}
+      {{#modal-dialog-overlay
+          classNameBindings='overlayClassNamesString translucentOverlay:translucent overlayClass'
+          action=onClickOverlay
+      }}
+        <div class={{concat containerClassNamesString ' ' targetAttachmentClass ' ' containerClass}}>
+          {{yield}}
+        </div>
+      {{/modal-dialog-overlay}}
+    {{else}}
+      <div class={{concat containerClassNamesString ' ' targetAttachmentClass ' ' containerClass}}>
+        {{yield}}
+      </div>
+    {{/if}}
+  </div>
+{{/ember-wormhole}}

@@ -45,6 +45,9 @@
     "ember-resolver": "^2.0.3",
     "ember-tether": "^0.4.1",
     "ember-truth-helpers": "^1.3.0",
+    "liquid-fire": "^0.27.3",
+    "liquid-tether": "^2.0.4",
+    "liquid-wormhole": "^2.0.5",
     "loader.js": "^4.2.3"
   },
   "engines": {

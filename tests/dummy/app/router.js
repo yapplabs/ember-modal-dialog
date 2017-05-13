@@ -7,6 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('tethered');
+  this.route('animatable');
+  this.route('tethered-animatable');
 });
 
 export default Router;

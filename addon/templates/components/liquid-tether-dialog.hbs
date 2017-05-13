@@ -1,13 +1,14 @@
 {{#if hasOverlay}}
-  {{#ember-wormhole to=destinationElementId}}
+  {{#liquid-wormhole stack='modal-overlay' class="liquid-dialog-container"}}
     {{modal-dialog-overlay
         classNameBindings='overlayClassNamesString translucentOverlay:translucent overlayClass'
         action=onClickOverlay
     }}
-  {{/ember-wormhole}}
+  {{/liquid-wormhole}}
 {{/if}}
-{{#ember-tether
+{{#liquid-tether
     class=(concat containerClassNamesString ' ' attachmentClass ' ' containerClass)
+    stack='modal-dialog'
     target=tetherTarget
     attachment=attachment
     targetAttachment=targetAttachment
@@ -18,4 +19,4 @@
     constraints=constraints
 }}
   {{yield}}
-{{/ember-tether}}
+{{/liquid-tether}}

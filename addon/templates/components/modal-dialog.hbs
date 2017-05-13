@@ -1,15 +1,24 @@
-{{#ember-wormhole to=destinationElementId renderInPlace=renderInPlace}}
-  <div class="{{wrapperClassNamesString}} {{wrapper-class}}">
-    {{#modal-dialog-overlay
-        classNameBindings='overlayClassNamesString translucentOverlay:translucent overlay-class'
-        action='clickedOverlay'
-    }}
-      {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString targetAttachmentClass container-class"
-          targetAttachment=targetAttachment
-          target=target
-      }}
-        {{yield}}
-      {{/ember-modal-dialog-positioned-container}}
-    {{/modal-dialog-overlay}}
-  </div>
-{{/ember-wormhole}}
+{{#component modalDialogComponentName
+    wrapperClass=wrapperClass
+    overlayClass=overlayClass
+    containerClass=containerClass
+    hasOverlay=hasOverlay
+    translucentOverlay=translucentOverlay
+    clickOutsideToClose=clickOutsideToClose
+    destinationElementId=destinationElementId
+
+    tetherTarget=tetherTarget
+    attachment=attachment
+    targetAttachment=targetAttachment
+    targetModifier=targetModifier
+    targetOffset=targetOffset
+    offset=offset
+    tetherClassPrefix=tetherClassPrefix
+    constraints=constraints
+    attachmentClass=attachmentClass
+
+    onClickOverlay=(action 'onClickOverlay')
+    onClose=(action 'onClose')
+}}
+  {{yield}}
+{{/component}}

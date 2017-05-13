@@ -1,0 +1,117 @@
+<h1 id="title">Tethered &amp; animated examples of the <code>modal-dialog</code> component</h1>
+<p>
+  These examples specify a <code>tetherTarget</code> property, as well as demonstrate
+  animation via <code>liquid-fire</code>. If requires that you install
+  <a href="http://pzuraq.github.io/liquid-tether/"><code>liquid-tether</code></a>
+  into your app. Once installed, this component will detect it, and will
+  automatically become animatable.
+</p>
+<p>
+  If a <code>tetherTarget</code> is specified and neither <code>ember-tether</code>
+  nor <code>liquid-tether</code> is installed, an error will be raised.
+</p>
+<p>
+  If you have <code>liquid-tether</code> installed, but want to opt out of using
+  <code>liquid-tether</code> in favor of <code>ember-tether</code>, you can pass
+  <code>animatable=false</code>.
+</p>
+
+<div class='example'>
+  <h3>app/transitions.js for these examples</h3>
+  {{code-snippet name='animated-with-tether-transitions.js'}}
+</div>
+
+<div class='example' id='example-custom-styles'>
+  <h2>Custom Styles</h2>
+  <button {{action 'toggleCustomStyles'}}>Do It</button>
+  {{code-snippet name='custom-styles-modal-dialog-liquid-tether.hbs'}}
+  {{code-snippet name='custom-styles.scss'}}
+  {{#if isShowingCustomStyles}}
+    {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether --}}
+    {{#modal-dialog
+        onClose='toggleCustomStyles'
+        tetherTarget='body'
+        targetAttachment='top right'
+        targetModifier='visible'
+        attachment='top right'
+        containerClass=customContainerClassNames
+        overlayClass='custom-styles-modal'
+    }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Custom Styles</p>
+      <button {{action 'toggleCustomStyles'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-selector'>
+  <h2>Target (Selector)</h2>
+  <div class='targetContainer'>
+    <button id='alignTetherDialogToMe' {{action 'toggleTargetSelector'}}>Do It</button>
+  </div>
+  {{code-snippet name='target-selector-modal-dialog-liquid-tether.hbs'}}
+  {{#if isShowingTargetSelector}}
+    {{!-- BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether --}}
+    {{#modal-dialog
+      onClose='toggleTargetSelector'
+      hasOverlay=false
+      targetAttachment=exampleTargetAttachment
+      attachment=exampleAttachment
+      tetherTarget='#alignTetherDialogToMe'
+    }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - Selector: '#alignTetherDialogToMe'</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetSelector'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example' id='example-target-element'>
+  <h2>Target (Element)</h2>
+  <div class='targetContainer'>
+    <span id="bwtde">
+      <button {{action 'toggleTargetElement'}}>Do It</button>
+    </span>
+  </div>
+  {{code-snippet name='target-element-modal-dialog-liquid-tether.hbs'}}
+  {{#if isShowingTargetElement}}
+    {{!-- BEGIN-SNIPPET target-element-modal-dialog-liquid-tether --}}
+    {{#modal-dialog
+        onClose='toggleTargetElement'
+        hasOverlay=false
+        targetAttachment=exampleTargetAttachment
+        attachment=exampleAttachment
+        tetherTarget="#bwtde"
+    }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Target - Element #bwtde</p>
+      <p>Target Attachment: {{exampleTargetAttachment}}</p>
+      <p>Attachment: {{exampleAttachment}}</p>
+      <button {{action 'closeTargetElement'}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class='example'>
+  <h2>Element Center</h2>
+  <span id='elementCenter'>
+    <button {{action 'toggleElementCenterModal'}}>Element Center</button>
+  </span>
+  {{code-snippet name='element-centered-modal-dialog-liquid-tether.hbs'}}
+  {{#if isShowingElementCenterModal}}
+  {{!-- BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether --}}
+    {{#modal-dialog
+        onClose='toggleElementCenterModal'
+        translucentOverlay=true
+        tetherTarget='#elementCenter'
+    }}
+      <p>Centered on element.</p>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>

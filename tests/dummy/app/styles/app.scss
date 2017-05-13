@@ -5,6 +5,29 @@
 body {
   font-family: sans-serif;
   font-size: 12px;
+  margin: 0;
+}
+.ApplicationRoute {
+  margin: 20px;
+  &-summary {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+  }
+  &-nav {
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  &-nav > li {
+    display: inline-block;
+    &::after {
+      content: ' | ';
+    }
+    &:last-child {
+      &::after {
+        content: '';
+      }
+    }
+  }
 }
 
 .example {
@@ -57,14 +80,15 @@ $theme-color: #0f9d58;
 
 .custom-styles-modal {
   background-color: rgba($theme-color, .77);
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
 .custom-styles-modal-container {
   background: #222;
   color: white;
-  position: fixed;
   right: 10px;
-  top: 10px;
+  margin-top: 10px;
   width: 300px;
 
   h1 {
@@ -80,7 +104,7 @@ $theme-color: #0f9d58;
   position: initial;
 }
 
-.ember-modal-dialog-in-place {
+.emd-in-place {
   position: initial;
 }
 // END-SNIPPET
@@ -90,31 +114,18 @@ body.centered-modal-showing {
   overflow: hidden;
 }
 .centered-scrolling-wrapper {
-  position: fixed;
-  z-index: 99;
-  height: 100vh;
-  left: 0;
-  right: 0;
-  top: 0;
   overflow-y: scroll;
+  display: block;
 }
 
 .centered-scrolling-overlay {
-  display: flex;
-  display: -webkit-flex;
-  align-items: flex-start;
-  -webkit-align-items: flex-start;
-  justify-content: center;
-  -webkit-justify-content: center;
-  min-height: 100vh;
-  padding: 1em;
   position: relative;
   height: auto;
-}
-
-.centered-scrolling-overlay.translucent {
-  background-color: rgba(0,0,0,0.5);
-  opacity: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1em;
 }
 
 /* basic modal style (an example, this is not necessary for the centering) */

@@ -1,94 +1,48 @@
 import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
-
+const { computed, inject } = Ember;
 const { dasherize } = Ember.String;
-const { $, computed, guidFor, inject } = Ember;
-const { oneWay } = computed;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-const computedJoin = function(prop) {
-  return computed(prop, function() {
-    return this.get(prop).join(' ');
-  });
-};
 
 export default Ember.Component.extend({
   tagName: '',
   layout,
   modalService: inject.service('modal-dialog'),
-  destinationElementId: oneWay('modalService.destinationElementId'),
-
-  // container-class - set this from templates
-  containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
-  containerClassNamesString: computedJoin('containerClassNames'),
-
-  // 'overlay-class - set this from templates
-  overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
-  overlayClassNamesString: computedJoin('overlayClassNames'),
-
-  // 'wrapper-class - set this from templates
-  wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
-  wrapperClassNamesString: computedJoin('wrapperClassNames'),
-
-  concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
-
-  targetAttachmentClass: computed('targetAttachment', function() {
-    let targetAttachment = this.get('targetAttachment') || '';
-    // Convert tether-styled values like 'middle right' to 'right'
-    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
+  destinationElementId: computed.oneWay('modalService.destinationElementId'),
+  modalDialogComponentName: computed('renderInPlace', 'animatable', 'tetherTarget', 'hasLiquidTether', function(){
+    if (this.get('renderInPlace')) {
+      return 'ember-modal-dialog/-in-place-dialog';
+    } else if (this.get('tetherTarget') && this.get('hasLiquidTether') && this.get('animatable')) {
+      return 'ember-modal-dialog/-liquid-tether-dialog';
+    } else if (this.get('tetherTarget')) {
+      return 'ember-modal-dialog/-tether-dialog';
+    } else if (this.get('animatable')) {
+      return 'ember-modal-dialog/-liquid-dialog';
+    }
+    return 'ember-modal-dialog/-basic-dialog';
   }),
-
-  target: 'body', // element, css selector, or view instance
-  targetAttachment: 'middle center',
-
+  hasOverlay: true,
   translucentOverlay: false,
   clickOutsideToClose: false,
   renderInPlace: false,
-
-  makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
-    if (isIOS) {
-      Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
-    }
+  tetherTarget: null,
+  targetAttachment: null,
+  animatable: computed.oneWay('modalService.hasLiquidWormhole'),
+  hasLiquidTether: computed.readOnly('modalService.hasLiquidTether'),
+  attachmentClass: computed('attachment', function() {
+    let attachment = this.get('attachment') || '';
+    return attachment.split(' ').map((attachmentPart) => {
+      return `emd-attachment-${dasherize(attachmentPart)}`;
+    }).join(' ');
   }),
-
-  didInsertElement() {
-    if (!this.get('clickOutsideToClose')) {
-      return;
-    }
-
-    const handleClick = (event) => {
-      if (!$(event.target).closest('.ember-modal-dialog').length) {
-        this.send('close');
-      }
-    };
-    const registerClick = () => $(document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
-
-    // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
-    setTimeout(registerClick);
-
-    if (isIOS) {
-      const registerTouch = () => $(document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
-      setTimeout(registerTouch);
-    }
-    this._super(...arguments);
-  },
-  willDestroyElement() {
-    $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
-    if (isIOS) {
-      $(document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
-    }
-    this._super(...arguments);
-  },
-
   actions: {
-    close() {
-      this.sendAction('close');
+    onClose() {
+      this.sendAction('onClose');
     },
-    clickedOverlay() {
+    onClickOverlay() {
       if (this.get('onClickOverlay')) {
         this.sendAction('onClickOverlay');
       } else {
-        this.sendAction('close');
+        this.sendAction('onClose');
       }
     }
   }

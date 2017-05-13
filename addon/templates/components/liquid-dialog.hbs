@@ -1,0 +1,16 @@
+{{#liquid-wormhole stack='overlay' class=(concat 'liquid-dialog-container ' wrapperClassNamesString ' ' wrapperClass)}}
+  {{#if hasOverlay}}
+    {{#modal-dialog-overlay
+        classNameBindings='overlayClassNamesString translucentOverlay:translucent overlayClass'
+        action=onClickOverlay
+    }}
+      <div class={{concat containerClassNamesString ' ' containerClass}}>
+        {{yield}}
+      </div>
+    {{/modal-dialog-overlay}}
+  {{else}}
+    <div class={{concat containerClassNamesString ' ' containerClass}}>
+      {{yield}}
+    </div>
+  {{/if}}
+{{/liquid-wormhole}}
