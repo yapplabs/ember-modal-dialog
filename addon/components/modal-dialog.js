@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
+import { deprecate } from '@ember/debug';
 
 const { dasherize } = Ember.String;
 const { $, computed, guidFor, inject } = Ember;
@@ -17,15 +18,54 @@ export default Ember.Component.extend({
   modalService: inject.service('modal-dialog'),
   destinationElementId: oneWay('modalService.destinationElementId'),
 
-  // container-class - set this from templates
+  // containerClass - set this from templates
+  "container-class": computed('containerClass', {
+    get() {
+      return this.get('containerClass');
+    },
+    set(key, value) {
+      deprecate(
+        'Passing `container-class` (kebab-case) is deprecated in favor of `containerClass` (camelCase). Will be removed in 3.0.0.',
+        false,
+        { id: 'ember-modal-dialog.kebab-props', until: '3.0.0' }
+      );
+      this.set('containerClass', value);
+    },
+  }),
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
   containerClassNamesString: computedJoin('containerClassNames'),
 
-  // 'overlay-class - set this from templates
+  // overlayClass - set this from templates
+  "overlay-class": computed('overlayClass', {
+    get() {
+      return this.get('overlayClass');
+    },
+    set(key, value) {
+      deprecate(
+        'Passing `overlay-class` (kebab-case) is deprecated in favor of `overlayClass` (camelCase). Will be removed in 3.0.0.',
+        false,
+        { id: 'ember-modal-dialog.kebab-props', until: '3.0.0' }
+      );
+      this.set('overlayClass', value);
+    },
+  }),
   overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
   overlayClassNamesString: computedJoin('overlayClassNames'),
 
-  // 'wrapper-class - set this from templates
+  // wrapperClass - set this from templates
+  "wrapper-class": computed('wrapperClass', {
+    get() {
+      return this.get('wrapperClass');
+    },
+    set(key, value) {
+      deprecate(
+        'Passing `wrapper-class` (kebab-case) is deprecated in favor of `wrapperClass` (camelCase). Will be removed in 3.0.0.',
+        false,
+        { id: 'ember-modal-dialog.kebab-props', until: '3.0.0' }
+      );
+      this.set('wrapperClass', value);
+    },
+  }),
   wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
   wrapperClassNamesString: computedJoin('wrapperClassNames'),
 
