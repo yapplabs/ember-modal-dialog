@@ -14,7 +14,7 @@
   {{code-snippet name='basic-modal-dialog.hbs'}}
   {{#if isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-modal-dialog --}}
-    {{#modal-dialog close='toggleBasic'}}
+    {{#modal-dialog onClose='toggleBasic'}}
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
       <button {{action 'toggleBasic'}}>Close</button>
@@ -45,7 +45,7 @@
   {{code-snippet name='translucent-modal-dialog-with-callback.hbs'}}
   {{#if isShowingTranslucentWithCallback}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-with-callback --}}
-    {{#modal-dialog close='toggleTranslucentWithCallback'
+    {{#modal-dialog onClose='toggleTranslucentWithCallback'
                     translucentOverlay=true
                     onClickOverlay='clickedTranslucentOverlay'}}
       <h1>Stop! Modal Time!</h1>
@@ -63,7 +63,7 @@
   {{code-snippet name='custom-styles.scss'}}
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog --}}
-    {{#modal-dialog close='toggleCustomStyles'
+    {{#modal-dialog onClose='toggleCustomStyles'
                     targetAttachment='none'
                     containerClass=customContainerClassNames
                     overlayClass='custom-styles-modal' }}
@@ -83,7 +83,7 @@
   {{code-snippet name='target-selector-modal-dialog.hbs'}}
   {{#if isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog --}}
-    {{#modal-dialog close='toggleTargetSelector'
+    {{#modal-dialog onClose='toggleTargetSelector'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
                     target='#alignModalDialogToMe' }}
@@ -107,7 +107,7 @@
   {{code-snippet name='target-element-modal-dialog.hbs'}}
   {{#if isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog --}}
-    {{#modal-dialog close='toggleTargetElement'
+    {{#modal-dialog onClose='toggleTargetElement'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
                     target="#bwmde" }}
@@ -128,7 +128,7 @@
   {{code-snippet name='subclass-modal-dialog.hbs'}}
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog --}}
-    {{#my-cool-modal-dialog close='toggleSubclassed'
+    {{#my-cool-modal-dialog onClose='toggleSubclassed'
                     translucentOverlay=true}}
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
@@ -148,7 +148,7 @@
     {{#if isShowingInPlace}}
       {{!-- BEGIN-SNIPPET in-place-modal-dialog --}}
       {{#modal-dialog
-          close='toggleInPlace'
+          onClose='toggleInPlace'
           renderInPlace=true
           targetAttachment='none'
           containerClass='ember-modal-dialog-in-place'
@@ -172,7 +172,7 @@
     {{#if isShowingCenteredScrolling}}
       {{!-- BEGIN-SNIPPET centered-scrolling-modal-dialog --}}
       {{#modal-dialog
-          close='toggleCenteredScrolling'
+          onClose='toggleCenteredScrolling'
           translucentOverlay=true
           targetAttachment='none'
           container-class='centered-scrolling-container'
@@ -201,7 +201,7 @@
   {{#if isShowingElementCenterModal}}
   {{!-- BEGIN-SNIPPET element-centered-modal-dialog --}}
     {{#modal-dialog
-        close='toggleElementCenterModal'
+        onClose='toggleElementCenterModal'
         elementId=elementId
         translucentOverlay=true
         targetAttachment='elementCenter'
