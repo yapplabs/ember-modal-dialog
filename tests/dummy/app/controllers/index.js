@@ -2,8 +2,6 @@ import Ember from 'ember';
 const { get, set } = Ember;
 
 export default Ember.Controller.extend({
-  queryParams: ['activeComponent'],
-  activeComponent: 'tether-dialog',
   isShowingBasic: false,
   isShowingTranslucent: false,
   isShowingTranslucentWithCallback: false,
