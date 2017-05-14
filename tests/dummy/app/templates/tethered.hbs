@@ -27,7 +27,6 @@
         attachment='top right'
         containerClass='custom-styles-modal-container'
         overlayClass='custom-styles-overlay'
-        animatable=false
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
@@ -51,7 +50,6 @@
       targetAttachment=exampleTargetAttachment
       attachment=exampleAttachment
       tetherTarget='#alignTetherDialogToMe'
-      animatable=false
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Target - Selector: '#alignTetherDialogToMe'</p>
@@ -79,7 +77,6 @@
         targetAttachment=exampleTargetAttachment
         attachment=exampleAttachment
         tetherTarget="#bwtde"
-        animatable=false
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element #bwtde</p>
@@ -94,7 +91,7 @@
 <div class='example'>
   <h2>Element Center</h2>
   <span id='elementCenter'>
-    <button {{action 'toggleElementCenterModal'}}>Element Center</button>
+    <button onclick={{action (mut isShowingElementCenterModal) true}}>Element Center</button>
   </span>
   {{code-snippet name='element-centered-modal-dialog-tethered.hbs'}}
   {{#if isShowingElementCenterModal}}
@@ -102,8 +99,7 @@
     {{#modal-dialog
         translucentOverlay=true
         tetherTarget='#elementCenter'
-        onClose='toggleElementCenterModal'
-        animatable=false
+        onClose=(action (mut isShowingElementCenterModal) false)
     }}
       <p>Centered on element.</p>
     {{/modal-dialog}}
