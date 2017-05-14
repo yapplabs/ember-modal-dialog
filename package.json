@@ -21,6 +21,7 @@
   "dependencies": {
     "ember-cli-babel": "^6.1.0",
     "ember-cli-htmlbars": "^2.0.1",
+    "ember-ignore-children-helper": "^1.0.0",
     "ember-wormhole": "^0.5.1"
   },
   "devDependencies": {

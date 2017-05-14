@@ -1,6 +1,15 @@
 import Ember from 'ember';
+import { deprecate } from '@ember/debug';
 
 export default Ember.Component.extend({
+  init(){
+    this._super(...arguments);
+    deprecate(
+      'The modal-dialog-overlay component is deprecated. Use a div with an onclick handler instead. Will be removed in 3.0.0',
+      false,
+      { id: 'ember-modal-dialog.modal-dialog-overlay', until: '3.0.0' }
+    );
+  },
   attributeBindings: ['data-ember-modal-dialog-overlay'],
   'data-ember-modal-dialog-overlay': true,
 
