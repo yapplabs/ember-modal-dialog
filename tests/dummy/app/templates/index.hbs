@@ -10,14 +10,16 @@
 
 <div class='example' id='example-basic'>
 <h2>Basic</h2>
-  <button {{action 'toggleBasic'}}>Do It</button>
+  <button onclick={{action (mut isShowingBasic) true}}>Do It</button>
   {{code-snippet name='basic-modal-dialog.hbs'}}
   {{#if isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-modal-dialog --}}
-    {{#modal-dialog onClose='toggleBasic'}}
+    {{#modal-dialog
+        onClose=(action (mut isShowingBasic) false)
+    }}
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
-      <button {{action 'toggleBasic'}}>Close</button>
+      <button onclick={{action (mut isShowingBasic) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -25,15 +27,17 @@
 
 <div class='example' id='example-translucent'>
   <h2>With Translucent Overlay</h2>
-  <button {{action 'toggleTranslucent'}}>Do It</button>
+  <button onclick={{action (mut isShowingTranslucent) true}}>Do It</button>
   {{code-snippet name='translucent-modal-dialog.hbs'}}
   {{#if isShowingTranslucent}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog --}}
-    {{#modal-dialog close='toggleTranslucent'
-                    translucentOverlay=true}}
+    {{#modal-dialog
+        onClose=(action (mut isShowingTranslucent) false)
+        translucentOverlay=true
+    }}
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay</p>
-      <button {{action 'toggleTranslucent'}}>Close</button>
+      <button onclick={{action (mut isShowingTranslucent) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -41,16 +45,18 @@
 
 <div class='example' id='example-translucent-with-callback'>
   <h2>Translucent Overlay with Callback</h2>
-  <button {{action 'toggleTranslucentWithCallback'}}>Do It</button>
+  <button onclick={{action (mut isShowingTranslucentWithCallback) true}}>Do It</button>
   {{code-snippet name='translucent-modal-dialog-with-callback.hbs'}}
   {{#if isShowingTranslucentWithCallback}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-with-callback --}}
-    {{#modal-dialog onClose='toggleTranslucentWithCallback'
-                    translucentOverlay=true
-                    onClickOverlay='clickedTranslucentOverlay'}}
+    {{#modal-dialog
+        onClose=(action (mut isShowingTranslucentWithCallback) false)
+        translucentOverlay=true
+        onClickOverlay='clickedTranslucentOverlay'
+    }}
       <h1>Stop! Modal Time!</h1>
       <p>Translucent Overlay with Callback</p>
-      <button {{action 'toggleTranslucentWithCallback'}}>Close</button>
+      <button onclick={{action (mut isShowingTranslucentWithCallback) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -58,18 +64,20 @@
 
 <div class='example' id='example-custom-styles'>
   <h2>Custom Styles</h2>
-  <button {{action 'toggleCustomStyles'}}>Do It</button>
+  <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
   {{code-snippet name='custom-styles-modal-dialog.hbs'}}
   {{code-snippet name='custom-styles.scss'}}
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog --}}
-    {{#modal-dialog onClose='toggleCustomStyles'
-                    targetAttachment='none'
-                    containerClass=customContainerClassNames
-                    overlayClass='custom-styles-modal' }}
+    {{#modal-dialog
+      onClose=(action (mut isShowingCustomStyles) false)
+        targetAttachment='none'
+        containerClass=customContainerClassNames
+        overlayClass='custom-styles-modal'
+    }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button {{action 'toggleCustomStyles'}}>Close</button>
+      <button onclick={{action (mut isShowingCustomStyles) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -123,16 +131,18 @@
 
 <div class='example' id='example-subclass'>
   <h2>Via Subclass</h2>
-  <button {{action 'toggleSubclassed'}}>Do It</button>
+  <button onclick={{action (mut isShowingSubclassed) true}}>Do It</button>
   {{code-snippet name='subclass.js'}}
   {{code-snippet name='subclass-modal-dialog.hbs'}}
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog --}}
-    {{#my-cool-modal-dialog onClose='toggleSubclassed'
-                    translucentOverlay=true}}
+    {{#my-cool-modal-dialog
+        onClose=(action (mut isShowingSubclassed) false)
+        translucentOverlay=true
+    }}
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
-      <button {{action 'toggleSubclassed'}}>Close</button>
+      <button onclick={{action (mut isShowingSubclassed) false}}>Close</button>
     {{/my-cool-modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -140,7 +150,7 @@
 
 <div class='example' id='example-in-place'>
 <h2>In Place</h2>
-  <button {{action 'toggleInPlace'}}>Do It</button>
+  <button onclick={{action (mut isShowingInPlace) true}}>Do It</button>
   {{code-snippet name='in-place-modal-dialog.hbs'}}
   {{code-snippet name='in-place.scss'}}
   <div id='container-in-place'>
@@ -148,7 +158,7 @@
     {{#if isShowingInPlace}}
       {{!-- BEGIN-SNIPPET in-place-modal-dialog --}}
       {{#modal-dialog
-          onClose='toggleInPlace'
+          onClose=(action (mut isShowingSubclassed) false)
           renderInPlace=true
           targetAttachment='none'
           containerClass='ember-modal-dialog-in-place'
@@ -156,7 +166,7 @@
       }}
         <h1>Stop! Modal Time!</h1>
         <p>In Place</p>
-        <button {{action 'toggleInPlace'}}>Close</button>
+        <button onclick={{action (mut isShowingInPlace) false}}>Close</button>
       {{/modal-dialog}}
       {{!-- END-SNIPPET --}}
     {{/if}}
@@ -195,13 +205,13 @@
 <div class='example'>
   <h2>Element Center</h2>
   <span id='elementCenter'>
-    <button {{action 'toggleElementCenterModal'}}>Element Center</button>
+    <button onclick={{action (mut isShowingElementCenterModal) true}}>Do It</button>
   </span>
   {{code-snippet name='element-centered-modal-dialog.hbs'}}
   {{#if isShowingElementCenterModal}}
   {{!-- BEGIN-SNIPPET element-centered-modal-dialog --}}
     {{#modal-dialog
-        onClose='toggleElementCenterModal'
+        onClose=(action (mut isShowingElementCenterModal) false)
         elementId=elementId
         translucentOverlay=true
         targetAttachment='elementCenter'

@@ -1,5 +1,4 @@
 import Ember from 'ember';
-const { get, set } = Ember;
 
 export default Ember.Controller.extend({
   isShowingBasic: false,
@@ -13,8 +12,6 @@ export default Ember.Controller.extend({
   isShowingTargetElement: false,
   isShowingSubclassed: false,
   isShowingInPlace: false,
-  isInPlace: true,
-  isShowingCenteredScrolling: false,
   isShowingElementCenterModal: false,
   exampleTargetAttachment: 'middle left',
   exampleAttachment: 'middle right',
@@ -33,13 +30,6 @@ export default Ember.Controller.extend({
     return false;
   },
   actions: {
-    toggleActiveComponent() {
-      if (get(this, 'activeComponent') === 'modal-dialog') {
-        set(this, 'activeComponent', 'tether-dialog');
-      } else {
-        set(this, 'activeComponent', 'modal-dialog');
-      }
-    },
     toggleBasic() {
       this.toggleProperty('isShowingBasic');
     },
@@ -90,20 +80,6 @@ export default Ember.Controller.extend({
     },
     toggleInPlace() {
       this.toggleProperty('isShowingInPlace');
-    },
-    toggleIsInPlace() {
-      this.toggleProperty('isInPlace');
-    },
-    toggleCenteredScrolling() {
-      this.toggleProperty('isShowingCenteredScrolling');
-
-      if (this.get('isShowingCenteredScrolling')) {
-        Ember.$('#modal-overlays').addClass('active');
-        Ember.$('body').addClass('centered-modal-showing');
-      } else {
-        Ember.$('#modal-overlays').removeClass('active');
-        Ember.$('body').removeClass('centered-modal-showing');
-      }
     },
     toggleElementCenterModal() {
       this.toggleProperty('isShowingElementCenterModal');
