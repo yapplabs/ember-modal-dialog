@@ -13,6 +13,9 @@ export default Ember.Component.extend({
     if (this.get('renderInPlace')) {
       return 'ember-modal-dialog/-in-place-dialog';
     } else if (this.get('tetherTarget')) {
+      if (!this.get('modalService.hasEmberTether')) {
+        throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
+      }
       return 'ember-modal-dialog/-tether-dialog';
     }
     return 'ember-modal-dialog/-basic-dialog';

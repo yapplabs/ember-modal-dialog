@@ -278,6 +278,27 @@ This can then be used like so:
   Custom modal contents
 {{/full-screen-modal}}
 ```
+## Using as a nested addon
+
+If you create an addon that you want to depend on ember-modal-dialog, you need to provide for ember-modal-dialog's config hook to run. You do this in the config hook of your addon. Example:
+
+```js
+// index.js
+
+module.exports = {
+  name: 'my-addon',
+  config: function(environment, appConfig) {
+    let initialConfig = _.merge({}, appConfig);
+    let updatedConfig = this.addons.reduce((config, addon) => {
+      if (addon.config) {
+        _.merge(config, addon.config(environment, config));
+      }
+      return config;
+    }, initialConfig);
+    return updatedConfig;
+  }
+};
+```
 
 ## Dependencies
 
