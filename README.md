@@ -2,7 +2,7 @@
 
 The ember-modal-dialog addon provides components to implement modal dialogs throughout an Ember application using a simple, consistent pattern.
 
-Unlike other modal libraries for Ember, ember-modal-dialog uses our [ember-wormhole](//github.com/yapplabs/ember-wormhole) addon to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
+Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions like [ember-wormhole](//github.com/yapplabs/ember-wormhole) to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
 
 ## Live Demo and Test Examples
 
@@ -84,11 +84,11 @@ Property              | Purpose
 `onClickOverlay`      | An action to be called when the overlay is clicked. If this action is specified, clicking the overlay will invoke it instead of `onClose`.
 `clickOutsideToClose` | Indicates whether clicking outside a modal *without* an overlay should close the modal. Useful if your modal isn't the focus of interaction, and you want hover effects to still work outside the modal.
 `renderInPlace`       | A boolean, when true renders the modal without wormholing or tethering, useful for including a modal in a style guide
-`containerClass`     | CSS class name(s) to append to container divs. Set this from template.
+`containerClass`      | CSS class name(s) to append to container divs. Set this from template.
 `containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
-`overlayClass`       | CSS class name(s) to append to overlay divs. Set this from template.
+`overlayClass`        | CSS class name(s) to append to overlay divs. Set this from template.
 `overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
-`wrapperClass`       | CSS class name(s) to append to wrapper divs. Set this from template.
+`wrapperClass`        | CSS class name(s) to append to wrapper divs. Set this from template.
 `wrapperClassNames`   | CSS class names to append to wrapper divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-wrapper'`. If you subclass this component, you may define this in your subclass.)
 
 The above properties of the `modal-dialog` component can be used without any additional  dependencies.
@@ -105,7 +105,7 @@ We use the amazing [Tether.js](http://tether.io/) library (via [ember-tether](ht
 
 \* Please see [Hubspot Tether](http://github.hubspot.com/tether/) for usage documentation.
 
-When tethering scenario, you may also pass the following properties, which are passed through to Tether:
+When in a tethering scenario, you may also pass the following properties, which are passed through to Tether:
 
 Property              | Purpose
 --------------------- | -------------
