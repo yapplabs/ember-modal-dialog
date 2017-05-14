@@ -10,7 +10,7 @@ const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
-module('Acceptance: Display Modal Dialogs', {
+module('Acceptance: modal-dialog | not tethered', {
   async beforeEach() {
     application = startApp();
     await visit('/');
