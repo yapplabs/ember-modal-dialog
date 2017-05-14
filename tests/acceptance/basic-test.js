@@ -67,6 +67,34 @@ test('modal without overlay', async function(assert) {
   });
 });
 
+test('modal with overlay', async function(assert) {
+  await assert.dialogOpensAndCloses({
+    openSelector: '#example-translucent button',
+    dialogText: 'With Translucent Overlay',
+    closeSelector: overlaySelector
+  });
+
+  await assert.dialogOpensAndCloses({
+    openSelector: '#example-translucent button',
+    dialogText: 'With Translucent Overlay',
+    closeSelector: dialogCloseButton
+  });
+});
+
+test('modal with sibling overlay', async function(assert) {
+  await assert.dialogOpensAndCloses({
+    openSelector: '#example-overlay-sibling button',
+    dialogText: 'With Translucent Overlay as Sibling',
+    closeSelector: overlaySelector
+  });
+
+  await assert.dialogOpensAndCloses({
+    openSelector: '#example-overlay-sibling button',
+    dialogText: 'With Translucent Overlay as Sibling',
+    closeSelector: dialogCloseButton
+  });
+});
+
 test('clicking translucent overlay triggers callback', async function(assert) {
   window.onClickOverlayCallbackCalled = false;
 

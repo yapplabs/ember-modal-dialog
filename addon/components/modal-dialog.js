@@ -2,7 +2,10 @@ import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
 const { computed, inject, isEmpty } = Ember;
 const { dasherize } = Ember.String;
-import { deprecate } from '@ember/debug';
+import { deprecate, warn } from '@ember/debug';
+import { DEBUG } from '@glimmer/env';
+
+const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
 
 export default Ember.Component.extend({
   tagName: '',
@@ -20,7 +23,22 @@ export default Ember.Component.extend({
     }
     return 'ember-modal-dialog/-basic-dialog';
   }),
-
+  didReceiveAttrs() {
+    this._super(...arguments);
+    if (DEBUG) {
+      this.validateProps();
+    }
+  },
+  validateProps() {
+    let overlayPosition = this.get('overlayPosition');
+    if (VALID_OVERLAY_POSITIONS.indexOf(overlayPosition) === -1) {
+      warn(
+        `overlayPosition value '${overlayPosition}' is not valid (valid values [${VALID_OVERLAY_POSITIONS.join(', ')}])`,
+        false,
+        { id: 'ember-modal-dialog.validate-overlay-position'}
+      );
+    }
+  },
   // onClose - set this from templates
   close: computed('onClose', {
     get() {
@@ -88,6 +106,7 @@ export default Ember.Component.extend({
 
   hasOverlay: true,
   translucentOverlay: false,
+  overlayPosition: 'parent', // `parent` or `sibling`
   clickOutsideToClose: false,
   renderInPlace: false,
   tetherTarget: null,
