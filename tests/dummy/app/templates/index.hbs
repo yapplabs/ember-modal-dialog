@@ -62,6 +62,25 @@
   {{/if}}
 </div>
 
+<div class='example' id='example-without-overlay'>
+  <h2>Without Overlay</h2>
+  <button onclick={{action (mut isShowingWithoutOverlay) true}}>Do It</button>
+  {{code-snippet name='modal-dialog-without-overlay.hbs'}}
+  {{#if isShowingWithoutOverlay}}
+    {{!-- BEGIN-SNIPPET modal-dialog-without-overlay --}}
+    {{#modal-dialog
+        onClose=(action (mut isShowingWithoutOverlay) false)
+        hasOverlay=false
+        clickOutsideToClose=true
+    }}
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay</p>
+      <button onclick={{action (mut isShowingWithoutOverlay) false}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
 <div class='example' id='example-custom-styles'>
   <h2>Custom Styles</h2>
   <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>

@@ -79,6 +79,7 @@ The modal-dialog component supports the following properties:
 
 Property              | Purpose
 --------------------- | -------------
+`hasOverlay`          | Toggles presence of overlay div in DOM
 `translucentOverlay`  | Indicates translucence of overlay, toggles presence of `translucent` CSS selector
 `onClose`               | The action handler for the dialog's `onClose` action. This action triggers when the user clicks the modal overlay.
 `onClickOverlay`      | An action to be called when the overlay is clicked. If this action is specified, clicking the overlay will invoke it instead of `onClose`.
