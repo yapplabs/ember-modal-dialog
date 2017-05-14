@@ -9,7 +9,7 @@ const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
-module('Acceptance: Display Tether Dialogs', {
+module('Acceptance: tether-dialog (deprecated)', {
   async beforeEach() {
     application = startApp();
     await visit('/tether-dialog');
@@ -129,18 +129,6 @@ test('target - element', async function(assert) {
     dialogText: 'Target - Element',
     closeSelector: dialogCloseButton,
     hasOverlay: false
-  });
-});
-
-test('subclassed modal', async function(assert) {
-  await assert.dialogOpensAndCloses({
-    openSelector: '#example-subclass button',
-    dialogText: 'Via Subclass',
-    closeSelector: overlaySelector,
-    hasOverlay: true,
-    whileOpen() {
-      assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
-    }
   });
 });
 

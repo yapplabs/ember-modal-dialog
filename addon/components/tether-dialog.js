@@ -1,12 +1,11 @@
 import Ember from 'ember';
-import ModalDialog from './modal-dialog';
+import BasicDialog from './basic-dialog';
 import layout from '../templates/components/tether-dialog';
 
 const { dasherize } = Ember.String;
-const { computed, get } = Ember;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const { computed } = Ember;
 
-export default ModalDialog.extend({
+export default BasicDialog.extend({
   layout,
 
   targetAttachmentClass: computed('targetAttachment', function() {
@@ -14,20 +13,29 @@ export default ModalDialog.extend({
     return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
   }),
 
-  targetAttachment: 'middle center',
-  attachment: 'middle center',
-  hasOverlay: true,
-  target: 'viewport', // element, css selector, view instance, 'viewport', or 'scroll-handle'
-
-  tetherClassPrefix: 'ember-tether',
+  targetAttachment: null,
+  attachment: null,
+  didReceiveAttrs() {
+    this._super(...arguments);
+    if (!this.get('attachment')) {
+      this.set('attachment', 'middle center');
+    }
+    if (!this.get('targetAttachment')) {
+      this.set('targetAttachment', 'middle center');
+    }
+  },
+  tetherTarget: null, // element, css selector, view instance, 'viewport', or 'scroll-handle'
+  tetherClassPrefix: computed({
+    get() {
+      return 'ember-tether';
+    }, set(key, val) {
+      if (val) {
+        return val;
+      }
+      return 'ember-tether';
+    }
+  }),
   // offset - passed in
   // targetOffset - passed in
   // targetModifier - passed in
-
-  makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
-    if (isIOS && get(this, 'hasOverlay')) {
-      Ember.$('div[data-emd-overlay]').css('cursor', 'pointer');
-    }
-  })
-
 });

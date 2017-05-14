@@ -1,0 +1,29 @@
+{{#ember-wormhole to=destinationElementId renderInPlace=renderInPlace}}
+  {{#if hasOverlay}}
+    <div class={{overlayClassNamesString}} onclick={{action (action 'onClickOverlay')}} tabindex="-1" data-emd-overlay></div>
+  {{/if}}
+{{/ember-wormhole}}
+{{#if renderInPlace}}
+  {{#ember-modal-dialog-positioned-container
+      class=containerClassNamesString
+      targetAttachment=targetAttachment
+      target=target
+      renderInPlace=renderInPlace
+  }}
+    {{yield}}
+  {{/ember-modal-dialog-positioned-container}}
+{{else}}
+  {{#ember-tether
+      class=containerClassNamesString
+      target=target
+      attachment=attachment
+      targetAttachment=targetAttachment
+      targetModifier=targetModifier
+      classPrefix=tetherClassPrefix
+      offset=offset
+      targetOffset=targetOffset
+      constraints=constraints
+  }}
+    {{yield}}
+  {{/ember-tether}}
+{{/if}}

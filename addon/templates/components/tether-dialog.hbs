@@ -1,27 +1,18 @@
-{{#ember-wormhole to=destinationElementId renderInPlace=renderInPlace}}
-  {{#if hasOverlay}}
-    <div class={{concat overlayClassNamesString ' ' (if translucentOverlay 'translucent') ' ' overlayClass}} onclick={{action (action 'clickedOverlay')}} tabindex="-1" data-emd-overlay></div>
-  {{/if}}
-{{/ember-wormhole}}
-{{#if renderInPlace}}
-  {{#ember-modal-dialog-positioned-container classNameBindings="containerClassNamesString targetAttachmentClass containerClass"
-      targetAttachment=targetAttachment
-      target=target
-      renderInPlace=renderInPlace
-  }}
-    {{yield}}
-  {{/ember-modal-dialog-positioned-container}}
-{{else}}
-  {{#ember-tether classNameBindings="containerClassNamesString containerClass"
-      target=target
-      attachment=attachment
-      targetAttachment=targetAttachment
-      targetModifier=targetModifier
-      classPrefix=tetherClassPrefix
-      offset=offset
-      targetOffset=targetOffset
-      constraints=constraints
-  }}
-    {{yield}}
-  {{/ember-tether}}
+{{#if hasOverlay}}
+  {{#ember-wormhole to=destinationElementId}}
+    <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
+  {{/ember-wormhole}}
 {{/if}}
+{{#ember-tether
+    class=containerClassNamesString
+    target=tetherTarget
+    attachment=attachment
+    targetAttachment=targetAttachment
+    targetModifier=targetModifier
+    classPrefix=tetherClassPrefix
+    offset=offset
+    targetOffset=targetOffset
+    constraints=constraints
+}}
+  {{yield}}
+{{/ember-tether}}

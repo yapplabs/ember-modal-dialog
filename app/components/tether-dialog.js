@@ -1,1 +1,1 @@
-export { default } from 'ember-modal-dialog/components/tether-dialog';
+export { default } from 'ember-modal-dialog/components/deprecated-tether-dialog';

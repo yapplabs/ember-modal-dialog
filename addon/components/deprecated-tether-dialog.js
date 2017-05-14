@@ -1,22 +1,24 @@
 import Ember from 'ember';
-import layout from '../templates/components/modal-dialog';
-const { computed, inject, isEmpty } = Ember;
-const { dasherize } = Ember.String;
+import BasicDialog from './basic-dialog';
+import layout from '../templates/components/deprecated-tether-dialog';
 import { deprecate } from '@ember/debug';
 
-export default Ember.Component.extend({
-  tagName: '',
+const { dasherize } = Ember.String;
+const { computed, get, inject } = Ember;
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+export default BasicDialog.extend({
   layout,
+  init() {
+    this._super(...arguments);
+    deprecate(
+      'Direct usage of `tether-dialog` is deprecated in favor of opting into tethering behavior by passing a `tetherTarget` to `modal-dialog`. Will be removed in 3.0.0.',
+      false,
+      { id: 'ember-modal-dialog.tether-dialog', until: '3.0.0' }
+    );
+  },
   modalService: inject.service('modal-dialog'),
   destinationElementId: computed.oneWay('modalService.destinationElementId'),
-  modalDialogComponentName: computed('renderInPlace', 'tetherTarget', function(){
-    if (this.get('renderInPlace')) {
-      return 'ember-modal-dialog/-in-place-dialog';
-    } else if (this.get('tetherTarget')) {
-      return 'ember-modal-dialog/-tether-dialog';
-    }
-    return 'ember-modal-dialog/-basic-dialog';
-  }),
 
   // onClose - set this from templates
   close: computed('onClose', {
@@ -83,41 +85,25 @@ export default Ember.Component.extend({
 
   concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
 
-  hasOverlay: true,
-  translucentOverlay: false,
-  clickOutsideToClose: false,
-  renderInPlace: false,
-  tetherTarget: null,
-  target: computed({ // element, css selector, or view instance
-    get() {
-      return 'body';
-    },
-    set(key, value) {
-      deprecate(
-        'Specifying a `target` on `modal-dialog` is deprecated in favor of padding `tetherTarget`, which will trigger ember-tether usage. Support for `target` will be removed in 3.0.0.',
-        false,
-        { id: 'ember-modal-dialog.modal-dialog-target', until: '3.0.0' }
-      );
-      return value;
-    },
+  targetAttachmentClass: computed('targetAttachment', function() {
+    let targetAttachment = this.get('targetAttachment') || '';
+    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
   }),
 
   targetAttachment: 'middle center',
-  tetherClassPrefix: null,
-  attachmentClass: computed('attachment', function() {
-    let attachment = this.get('attachment');
-    if (isEmpty(attachment)) {
-      return;
+  attachment: 'middle center',
+  hasOverlay: true,
+  target: 'viewport', // element, css selector, view instance, 'viewport', or 'scroll-handle'
+
+  tetherClassPrefix: 'ember-tether',
+  // offset - passed in
+  // targetOffset - passed in
+  // targetModifier - passed in
+
+  makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
+    if (isIOS && get(this, 'hasOverlay')) {
+      Ember.$('div[data-emd-overlay]').css('cursor', 'pointer');
     }
-    return attachment.split(' ').map((attachmentPart) => {
-      return `emd-attachment-${dasherize(attachmentPart)}`;
-    }).join(' ');
-  }),
-  targetAttachmentClass: computed('targetAttachment', function() {
-    let targetAttachment = this.get('targetAttachment') || '';
-    // Convert tether-styled values like 'middle right' to 'right'
-    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
   }),
 
   actions: {
@@ -133,4 +119,5 @@ export default Ember.Component.extend({
       }
     }
   }
+
 });
