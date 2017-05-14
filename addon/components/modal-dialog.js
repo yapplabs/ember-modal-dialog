@@ -102,7 +102,7 @@ export default Ember.Component.extend({
 
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
     if (isIOS) {
-      Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
+      Ember.$('div[data-emd-overlay]').css('cursor', 'pointer');
     }
   }),
 

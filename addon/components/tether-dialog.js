@@ -26,7 +26,7 @@ export default ModalDialog.extend({
 
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
     if (isIOS && get(this, 'hasOverlay')) {
-      Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
+      Ember.$('div[data-emd-overlay]').css('cursor', 'pointer');
     }
   })
 

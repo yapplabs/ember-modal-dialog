@@ -1,9 +1,6 @@
 {{#ember-wormhole to=destinationElementId renderInPlace=renderInPlace}}
   {{#if hasOverlay}}
-    {{modal-dialog-overlay
-        classNameBindings='overlayClassNamesString translucentOverlay:translucent overlayClass'
-        action='clickedOverlay'
-    }}
+    <div class={{concat overlayClassNamesString ' ' (if translucentOverlay 'translucent') ' ' overlayClass}} onclick={{action (action 'clickedOverlay')}} tabindex="-1" data-emd-overlay></div>
   {{/if}}
 {{/ember-wormhole}}
 {{#if renderInPlace}}
