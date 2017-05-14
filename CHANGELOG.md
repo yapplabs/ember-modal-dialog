@@ -1,5 +1,23 @@
 # Change Log
 
+## [v2.1.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.1.0) (2017-05-14)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.0.0...v2.1.0)
+
+**Merged pull requests:**
+
+- Detect ember-tether and throw an error early if not present and tetherTarget is passed. [\#189](https://github.com/yapplabs/ember-modal-dialog/pull/189) ([lukemelia](https://github.com/lukemelia))
+- Make tests more robust with waitUntil [\#188](https://github.com/yapplabs/ember-modal-dialog/pull/188) ([lukemelia](https://github.com/lukemelia))
+- Simplify dummy app a bit [\#187](https://github.com/yapplabs/ember-modal-dialog/pull/187) ([lukemelia](https://github.com/lukemelia))
+- Unify `modal-dialog` and `tether-dialog` into one `modal-dialog` component [\#186](https://github.com/yapplabs/ember-modal-dialog/pull/186) ([lukemelia](https://github.com/lukemelia))
+- Replace `modal-dialog-overlay` component with a div and deprecate it. [\#185](https://github.com/yapplabs/ember-modal-dialog/pull/185) ([lukemelia](https://github.com/lukemelia))
+- Update title of dummy app [\#184](https://github.com/yapplabs/ember-modal-dialog/pull/184) ([lukemelia](https://github.com/lukemelia))
+- Rename `close` action to `onClose` and deprecate `close`. [\#183](https://github.com/yapplabs/ember-modal-dialog/pull/183) ([lukemelia](https://github.com/lukemelia))
+- Switch dummy app/tests to use routes instead of query params [\#182](https://github.com/yapplabs/ember-modal-dialog/pull/182) ([lukemelia](https://github.com/lukemelia))
+- install was installed inadvertently, so let's uninstall the inadvertent install of install [\#181](https://github.com/yapplabs/ember-modal-dialog/pull/181) ([lukemelia](https://github.com/lukemelia))
+- Use ember-native-dom-helpers and async/await [\#180](https://github.com/yapplabs/ember-modal-dialog/pull/180) ([lukemelia](https://github.com/lukemelia))
+- Upgrade ember-cli, ember-cli-babel, and friends [\#179](https://github.com/yapplabs/ember-modal-dialog/pull/179) ([lukemelia](https://github.com/lukemelia))
+- Use camelCase properties, deprecate public kebab case properties [\#178](https://github.com/yapplabs/ember-modal-dialog/pull/178) ([lukemelia](https://github.com/lukemelia))
+
 ## [v2.0.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.0.0) (2017-05-12)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.0.0-beta.0...v2.0.0)
 
