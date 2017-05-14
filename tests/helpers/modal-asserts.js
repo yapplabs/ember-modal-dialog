@@ -1,4 +1,4 @@
-import { click, findAll } from 'ember-native-dom-helpers';
+import { click, findAll, waitUntil } from 'ember-native-dom-helpers';
 import Ember from 'ember';
 import QUnit from 'qunit';
 
@@ -27,18 +27,21 @@ export default function registerAssertHelpers() {
   };
 
   assert.dialogOpensAndCloses = async function(options) {
-    const dialogContent = [dialogSelector, `:contains(${options.dialogText})`].join('');
     const self = this;
     await click(options.openSelector, options.context);
+    await waitUntil(function() {
+      return findContains(dialogSelector, options.dialogText);
+    });
     if (options.hasOverlay) {
       self.isPresentOnce(overlaySelector);
     }
-    self.isPresentOnce(dialogContent);
     if (options.whileOpen) {
       await options.whileOpen();
     }
     await click(options.closeSelector, options.context);
+    await waitUntil(function() {
+      return !findContains(dialogSelector, options.dialogText);
+    });
     self.isAbsent(overlaySelector);
-    self.isAbsent(dialogContent);
   };
 }
