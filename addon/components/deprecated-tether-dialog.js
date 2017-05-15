@@ -4,7 +4,7 @@ import layout from '../templates/components/deprecated-tether-dialog';
 import { deprecate } from '@ember/debug';
 
 const { dasherize } = Ember.String;
-const { computed, get, inject } = Ember;
+const { computed, get, inject, isEmpty } = Ember;
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 export default BasicDialog.extend({
@@ -50,6 +50,15 @@ export default BasicDialog.extend({
     },
   }),
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
+  containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', 'renderInPlace', function() {
+    return [
+      this.get('containerClassNames').join(' '),
+      this.get('targetAttachmentClass'),
+      this.get('attachmentClass'),
+      this.get('containerClass'),
+      this.get('renderInPlace') ? 'ember-modal-dialog-in-place emd-in-place' : null
+    ].filter((className) => !isEmpty(className)).join(' ');
+  }),
 
   // overlayClass - set this from templates
   "overlay-class": computed('overlayClass', {

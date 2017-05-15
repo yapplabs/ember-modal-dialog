@@ -5,7 +5,9 @@
 </p>
 <p>
   It requires no additional dependencies because <code>ember-wormhole</code> is included with
-  this addon.
+  this addon. If <code>liquid-wormhole</code> is installed, this component will detect it,
+  and will become {{#link-to 'animatable'}}animatable{{/link-to}} if
+  <code>animatable=true</code> is passed.
 </p>
 
 <div class='example' id='example-basic'>
@@ -111,7 +113,7 @@
       onClose=(action (mut isShowingCustomStyles) false)
         targetAttachment='none'
         containerClass=customContainerClassNames
-        overlayClass='custom-styles-modal'
+        overlayClass='custom-styles-overlay'
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
@@ -172,6 +174,7 @@
   <button onclick={{action (mut isShowingSubclassed) true}}>Do It</button>
   {{code-snippet name='subclass.js'}}
   {{code-snippet name='subclass-modal-dialog.hbs'}}
+  {{code-snippet name='subclass-styles.scss'}}
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog --}}
     {{#my-cool-modal-dialog

@@ -1,37 +1,37 @@
-<h1 id="title">Tethered examples of the <code>modal-dialog</code> component</h1>
+<h1 id="title">Tethered &amp; animated examples of the <code>modal-dialog</code> component</h1>
 <p>
-  These examples specify a <code>tetherTarget</code> property, which makes the
-  component attempt to use <code>ember-tether</code> to be positioned relative
-  to the <code>tetherTarget</code> element and sit in a layer above the rest of the
-  document. It requires that you install
-  <a href="https://github.com/yapplabs/ember-tether"><code>ember-tether</code></a>
-  into your app.
-</p>
-<p>
-  If <a href="http://pzuraq.github.io/liquid-tether/"><code>liquid-tether</code></a>
-  is installed and `animated=true` is passed, this component will become
-  {{#link-to 'tethered-animatable'}}animatable{{/link-to}}.
+  These examples specify a <code>tetherTarget</code> property, as well as demonstrate
+  animation via <code>liquid-fire</code>. If requires that you install
+  <a href="http://pzuraq.github.io/liquid-tether/"><code>liquid-tether</code></a>
+  into your app. Once installed and `animatable=true` is passed, the component will
+  automatically become animatable using <code>liquid-fire</code>.
 </p>
 <p>
   If a <code>tetherTarget</code> is specified and neither <code>ember-tether</code>
   nor <code>liquid-tether</code> is installed, an error will be raised.
 </p>
 
+<div class='example'>
+  <h3>app/transitions.js for these examples</h3>
+  {{code-snippet name='animated-with-tether-transitions.js'}}
+</div>
+
 <div class='example' id='example-custom-styles'>
   <h2>Custom Styles</h2>
   <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
-  {{code-snippet name='custom-styles-modal-dialog-tethered.hbs'}}
+  {{code-snippet name='custom-styles-modal-dialog-liquid-tether.hbs'}}
   {{code-snippet name='custom-styles.scss'}}
   {{#if isShowingCustomStyles}}
-    {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-tethered --}}
+    {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether --}}
     {{#modal-dialog
         onClose=(action (mut isShowingCustomStyles) false)
         tetherTarget='body'
-        targetModifier='visible'
         targetAttachment='top right'
+        targetModifier='visible'
         attachment='top right'
         containerClass='custom-styles-modal-container'
         overlayClass='custom-styles-overlay'
+        animatable=true
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
@@ -46,15 +46,16 @@
   <div class='targetContainer'>
     <button id='alignTetherDialogToMe' {{action 'toggleTargetSelector'}}>Do It</button>
   </div>
-  {{code-snippet name='target-selector-modal-dialog-tethered.hbs'}}
+  {{code-snippet name='target-selector-modal-dialog-liquid-tether.hbs'}}
   {{#if isShowingTargetSelector}}
-    {{!-- BEGIN-SNIPPET target-selector-modal-dialog-tethered --}}
+    {{!-- BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether --}}
     {{#modal-dialog
       onClose='toggleTargetSelector'
       hasOverlay=false
       targetAttachment=exampleTargetAttachment
       attachment=exampleAttachment
       tetherTarget='#alignTetherDialogToMe'
+      animatable=true
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Target - Selector: '#alignTetherDialogToMe'</p>
@@ -73,15 +74,16 @@
       <button {{action 'toggleTargetElement'}}>Do It</button>
     </span>
   </div>
-  {{code-snippet name='target-element-modal-dialog-tethered.hbs'}}
+  {{code-snippet name='target-element-modal-dialog-liquid-tether.hbs'}}
   {{#if isShowingTargetElement}}
-    {{!-- BEGIN-SNIPPET target-element-modal-dialog-tethered --}}
+    {{!-- BEGIN-SNIPPET target-element-modal-dialog-liquid-tether --}}
     {{#modal-dialog
         onClose='toggleTargetElement'
         hasOverlay=false
         targetAttachment=exampleTargetAttachment
         attachment=exampleAttachment
         tetherTarget="#bwtde"
+        animatable=true
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element #bwtde</p>
@@ -96,15 +98,16 @@
 <div class='example'>
   <h2>Element Center</h2>
   <span id='elementCenter'>
-    <button onclick={{action (mut isShowingElementCenterModal) true}}>Element Center</button>
+    <button {{action 'toggleElementCenterModal'}}>Element Center</button>
   </span>
-  {{code-snippet name='element-centered-modal-dialog-tethered.hbs'}}
+  {{code-snippet name='element-centered-modal-dialog-liquid-tether.hbs'}}
   {{#if isShowingElementCenterModal}}
-  {{!-- BEGIN-SNIPPET element-centered-modal-dialog-tethered --}}
+  {{!-- BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether --}}
     {{#modal-dialog
+        onClose='toggleElementCenterModal'
         translucentOverlay=true
         tetherTarget='#elementCenter'
-        onClose=(action (mut isShowingElementCenterModal) false)
+        animatable=true
     }}
       <p>Centered on element.</p>
     {{/modal-dialog}}

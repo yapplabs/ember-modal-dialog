@@ -13,7 +13,7 @@ export default Ember.Component.extend({
   layout,
 
   containerClass: null, // passed in
-  containerClassNames: ['ember-modal-dialog', 'emd-in-place'], // set this in a subclass definition
+  containerClassNames: ['ember-modal-dialog', 'ember-modal-dialog-in-place', 'emd-in-place'], // set this in a subclass definition
   containerClassNamesString: computedJoin('containerClassNames'),
 
   concatenatedProperties: ['containerClassNames']

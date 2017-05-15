@@ -18,11 +18,17 @@ export default Ember.Component.extend({
     if (this.get('renderInPlace')) {
       return false;
     }
-    if (this.get('target') && this.get('targetAttachment')) {
+    let target = this.get('target');
+    let targetAttachment = this.get('targetAttachment');
+    if (target === 'body' && (targetAttachment === 'center' || targetAttachment === 'middle center')) {
+      return false;
+    }
+
+    if (target && targetAttachment) {
       return true;
     }
-    const targetAttachment = this.get('targetAttachment');
-    return targetAttachment === 'center' || targetAttachment === 'middle center';
+
+    return false;
   }),
 
   didGetPositioned: observer('isPositioned', on('didInsertElement', function() {

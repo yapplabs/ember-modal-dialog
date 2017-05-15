@@ -1,0 +1,26 @@
+{{#if isOverlaySibling}}
+  {{#liquid-wormhole stack='overlay' class=(concat 'liquid-dialog-container ' wrapperClassNamesString ' ' wrapperClass)}}
+    <div class="{{wrapperClassNamesString}} {{wrapperClass}}">
+      {{#if hasOverlay}}
+        <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
+      {{/if}}
+      <div class={{containerClassNamesString}}>
+        {{yield}}
+      </div>
+    </div>
+  {{/liquid-wormhole}}
+{{else}}
+  {{#liquid-wormhole stack='overlay' class=(concat 'liquid-dialog-container ' wrapperClassNamesString ' ' wrapperClass)}}
+    {{#if hasOverlay}}
+      <div class={{overlayClassNamesString}} onclick={{action (ignore-children onClickOverlay)}} tabindex="-1" data-emd-overlay>
+        <div class={{containerClassNamesString}}>
+          {{yield}}
+        </div>
+      </div>
+    {{else}}
+      <div class={{containerClassNamesString}}>
+        {{yield}}
+      </div>
+    {{/if}}
+  {{/liquid-wormhole}}
+{{/if}}
