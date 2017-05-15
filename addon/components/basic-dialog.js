@@ -27,10 +27,10 @@ export default Ember.Component.extend({
       this.get('overlayClass')
     ].filter((className) => !isEmpty(className)).join(' ');
   }),
-  wrapperClassNamesString: computed('wrapperClassNames.[]', 'isCentered', 'variantWrapperClass', 'wrapperClass', function(){
+  wrapperClassNamesString: computed('wrapperClassNames.[]', 'targetAttachmentClass', 'variantWrapperClass', 'wrapperClass', function(){
     return [
       this.get('wrapperClassNames').join(' '),
-      this.get('isCentered') ? 'emd-centered' : null,
+      this.get('targetAttachmentClass').replace('emd-', 'emd-wrapper-'),
       this.get('variantWrapperClass'),
       this.get('wrapperClass')
     ].filter((className) => !isEmpty(className)).join(' ');

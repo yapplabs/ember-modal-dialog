@@ -11,6 +11,8 @@ function computedFromConfig(prop) {
 
 export default Service.extend({
   hasEmberTether: computedFromConfig('hasEmberTether'),
+  hasLiquidWormhole: computedFromConfig('hasLiquidWormhole'),
+  hasLiquidTether: computedFromConfig('hasLiquidTether'),
   destinationElementId: computed(function() {
     /*
       everywhere except test, this property will be overwritten

@@ -10,7 +10,7 @@ const overlaySelector = '.ember-modal-overlay';
 const dialogSelector = '.ember-modal-dialog';
 const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
-module('Acceptance: modal-dialog | not tethered', {
+module('Acceptance: modal-dialog | no animation, no tether', {
   async beforeEach() {
     application = startApp();
     await visit('/');
@@ -115,7 +115,7 @@ test('modal with custom styles', async function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-modal'), 'has provided overlayClass');
+      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-overlay'), 'has provided overlayClass');
       assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
     }
   });

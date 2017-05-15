@@ -92,6 +92,7 @@ Property              | Purpose
 `overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
 `wrapperClass`        | CSS class name(s) to append to wrapper divs. Set this from template.
 `wrapperClassNames`   | CSS class names to append to wrapper divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-wrapper'`. If you subclass this component, you may define this in your subclass.)
+`animatable`          | A boolean, when `true` makes modal animatable using `liquid-fire` (requires `liquid-wormhole` to be installed, and for tethering situations `liquid-tether`. Having these optional dependencies installed and NOT explicitly specifying `animatable` is deprecated in 2.x and is equivalent to `animatable=false` for backwards compatibility. As of 3.x, the implicit default will be `animatable=true` when the optional `liquid-wormhole`/`liquid-tether` dependency is present.
 
 The above properties of the `modal-dialog` component can be used without any additional  dependencies.
 
@@ -117,6 +118,21 @@ Property              | Purpose
 `offset`              | Delegates to Hubspot Tether*
 `targetOffset`        | Delegates to Hubspot Tether*
 `constraints`         | Delegates to Hubspot Tether*
+
+#### Animation
+
+This component supports animation when certain addons are present (liquid-wormhole, liquid-tether).
+
+_Current 2.x behavior:_  Having these optional dependencies installed and NOT explicitly specifying `animatable` is deprecated in 2.x and is equivalent to `animatable=false` for backwards compatibility. To get animation, pass `animatable=true` and install `liquid-wormhole` for non-tethering usage and `liquid-tether` for tethering usage.
+
+_Upcoming 3.x behavior:_ Detection will be automatic. To opt out of using animatable features when you have these `liquid-*` addons installed, pass `animatable=false`.
+
+### Optional dependencies
+
+`ember install ember-tether` [Docs](//github.com/yapplabs/ember-tether/)
+`ember install liquid-wormhole` [Docs](//pzuraq.github.io/liquid-wormhole/)
+`ember install liquid-tether` [Docs](//pzuraq.github.io/liquid-tether/)
+`ember install liquid-fire` [Docs](//ember-animation.github.io/liquid-fire/)
 
 
 ## Which Component Should I Use?

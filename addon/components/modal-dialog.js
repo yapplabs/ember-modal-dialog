@@ -1,28 +1,62 @@
 import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
-const { computed, inject, isEmpty } = Ember;
+const { computed, inject, isEmpty, isNone } = Ember;
 const { dasherize } = Ember.String;
 import { deprecate, warn } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
 
+function deprecateImplicitAnimatableWithLiquidTetherPresent() {
+  deprecate(
+    'Rendering modal-dialog with a tetherTarget and liquid-tether installed, and NOT explicitly specifying `animatable` will change behavior in 3.0.0 to use liquid-tether. Pass `animatable=false` to maintain current behavior and remove this message.',
+    false,
+    { id: 'ember-modal-dialog.implicit-animatable', until: '3.0.0' }
+  );
+}
+
+function deprecateImplicitAnimatableWithLiquidWormholePresent() {
+  deprecate(
+    'Rendering modal-dialog with liquid-wormhole installed, and NOT explicitly specifying `animatable` will change behavior in 3.0.0 to use liquid-wormhole. Pass `animatable=false` to maintain current behavior and remove this message.',
+    false,
+    { id: 'ember-modal-dialog.implicit-animatable', until: '3.0.0' }
+  );
+}
+
 export default Ember.Component.extend({
   tagName: '',
   layout,
   modalService: inject.service('modal-dialog'),
   destinationElementId: computed.oneWay('modalService.destinationElementId'),
-  modalDialogComponentName: computed('renderInPlace', 'tetherTarget', function(){
+  modalDialogComponentName: computed('renderInPlace', 'tetherTarget', 'animatable', 'hasLiquidWormhole', 'hasLiquidTether', function(){
+    let tetherTarget = this.get('tetherTarget');
+    let hasLiquidTether = this.get('hasLiquidTether');
+    let hasLiquidWormhole = this.get('hasLiquidWormhole');
+    let animatable = this.get('animatable');
+
     if (this.get('renderInPlace')) {
       return 'ember-modal-dialog/-in-place-dialog';
-    } else if (this.get('tetherTarget')) {
-      if (!this.get('modalService.hasEmberTether')) {
-        throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
-      }
+    } else if (tetherTarget && hasLiquidTether && hasLiquidWormhole && isNone(animatable)) {
+      deprecateImplicitAnimatableWithLiquidTetherPresent();
+      this.ensureEmberTetherPresent();
       return 'ember-modal-dialog/-tether-dialog';
+    } else if (tetherTarget && hasLiquidTether && hasLiquidWormhole && animatable === true) {
+      return 'ember-modal-dialog/-liquid-tether-dialog';
+    } else if (tetherTarget) {
+      this.ensureEmberTetherPresent();
+      return 'ember-modal-dialog/-tether-dialog';
+    } else if (hasLiquidWormhole && isNone(animatable)) {
+      deprecateImplicitAnimatableWithLiquidWormholePresent();
+      return 'ember-modal-dialog/-basic-dialog';
+    } else if (hasLiquidWormhole && animatable === true) {
+      return 'ember-modal-dialog/-liquid-dialog';
     }
     return 'ember-modal-dialog/-basic-dialog';
   }),
+  animatable: null,
+  hasLiquidWormhole: computed.readOnly('modalService.hasLiquidWormhole'),
+  hasLiquidTether: computed.readOnly('modalService.hasLiquidTether'),
+
   didReceiveAttrs() {
     this._super(...arguments);
     if (DEBUG) {
@@ -139,9 +173,13 @@ export default Ember.Component.extend({
     let targetAttachment = this.get('targetAttachment') || '';
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
+    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
   }),
-
+  ensureEmberTetherPresent() {
+    if (!this.get('modalService.hasEmberTether')) {
+      throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
+    }
+  },
   actions: {
     onClose() {
       this.sendAction('onClose');
