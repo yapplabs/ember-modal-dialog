@@ -42,9 +42,9 @@ export default Ember.Component.extend({
   clickOutsideToClose: false,
   hasOverlay: true,
   isCentered: true,
-  overlayDOMPosition: null,
-  isOverlaySibling: computed('overlayDOMPosition', function() {
-    return this.get('overlayDOMPosition') === 'sibling';
+  overlayPosition: null,
+  isOverlaySibling: computed('overlayPosition', function() {
+    return this.get('overlayPosition') === 'sibling';
   }),
 
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {

@@ -81,6 +81,25 @@
   {{/if}}
 </div>
 
+<div class='example' id='example-overlay-sibling'>
+  <h2>With Overlay as a Sibling in the DOM</h2>
+  <button onclick={{action (mut isShowingSibling) true}}>Do It</button>
+  {{code-snippet name='translucent-modal-dialog-sibling.hbs'}}
+  {{#if isShowingSibling}}
+    {{!-- BEGIN-SNIPPET translucent-modal-dialog-sibling --}}
+    {{#modal-dialog
+        onClose=(action (mut isShowingSibling) false)
+        translucentOverlay=true
+        overlayPosition='sibling'
+    }}
+      <h1>Stop! Modal Time!</h1>
+      <p>With Translucent Overlay as Sibling</p>
+      <button onclick={{action (mut isShowingSibling) false}}>Close</button>
+    {{/modal-dialog}}
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
 <div class='example' id='example-custom-styles'>
   <h2>Custom Styles</h2>
   <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
@@ -204,9 +223,9 @@
           onClose='toggleCenteredScrolling'
           translucentOverlay=true
           targetAttachment='none'
-          container-class='centered-scrolling-container'
-          overlay-class='centered-scrolling-overlay'
-          wrapper-class='centered-scrolling-wrapper'
+          containerClass='centered-scrolling-container'
+          overlayClass='centered-scrolling-overlay'
+          wrapperClass='centered-scrolling-wrapper'
       }}
         <h1>Really Long Content To Demonstrate Scrolling</h1>
         <ul>

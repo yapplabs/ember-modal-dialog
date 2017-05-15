@@ -85,6 +85,7 @@ Property              | Purpose
 `onClickOverlay`      | An action to be called when the overlay is clicked. If this action is specified, clicking the overlay will invoke it instead of `onClose`.
 `clickOutsideToClose` | Indicates whether clicking outside a modal *without* an overlay should close the modal. Useful if your modal isn't the focus of interaction, and you want hover effects to still work outside the modal.
 `renderInPlace`       | A boolean, when true renders the modal without wormholing or tethering, useful for including a modal in a style guide
+`overlayPosition`     | either `'parent'` or `'sibling'`,  to control whether the overlay div is rendered as a parent element of the container div or as a sibling to it (default: `'parent'`)
 `containerClass`      | CSS class name(s) to append to container divs. Set this from template.
 `containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
 `overlayClass`        | CSS class name(s) to append to overlay divs. Set this from template.
@@ -120,44 +121,44 @@ Property              | Purpose
 
 ## Which Component Should I Use?
 
-Various modal use cases are best supported by different DOM structures. Ember Modal Dialog provides the following components:
+Various modal use cases are best supported by different DOM structures. Ember Modal Dialog's `modal-dialog` component provides the following capabilities:
 
-- modal-dialog: Uses ember-wormhole to append the following nested divs to the destination element: wrapper div > overlay div > container div
+- modal-dialog without passing a `tetherTarget`: Uses ember-wormhole to append the following parent divs to the destination element: wrapper div > overlay div > container div
 
     ![](tests/dummy/public/modal-dialog.png)
 
-- tether-dialog: Uses ember-tether to display modal container div. Uses ember-wormhole to append optional overlay div to the destination element. Requires separate installation of [ember-tether](//github.com/yapplabs/ember-tether) dependency.
+This can be customized (see `overlayPosition`).
+
+- modal-dialog, with a `tetherTarget` provided: Uses ember-tether to display modal container div. Uses ember-wormhole to append optional overlay div to the destination element. Requires separate installation of [ember-tether](//github.com/yapplabs/ember-tether) dependency.
 
     ![](tests/dummy/public/tether-dialog.png)
 
 ## Positioning
 
-Ember Modal Dialog provides `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. To provide consistency with Hubspot Tether, Ember Modal Dialog uses the same syntax for these properties: "top|middle|bottom left|center|right|elementCenter"... e.g. `'middle left'`
-
-### Positioning Your Modal Dialog
-
 With the default SCSS provided, your modal will be centered in the viewport. By adjusting the CSS, you can adjust this logic.
 
 Pass a `tetherTarget` in order to position our modal in relation to the target and enable your modal remain positioned near their targets when users scroll or resize the window.
+
+Use `attachment` and `targetAttachment` properties to configure positioning of the modal dialog near its target. Ember Modal Dialog uses the syntax from Hubspot Tether for these properties: "top|middle|bottom left|center|right|elementCenter"... e.g. `'middle left'`
 
 To enable this behavior, install ember-tether as a dependency of **your ember app**.
 
     `ember install ember-tether`
 
-Then use the tether-dialog component for any modals you wish to position this way:
+Then pass a selector as `tetherTarget` for the modal you wish to position this way:
 
 ```htmlbars
-{{#tether-dialog
-  target='#target-element-id'
+{{#modal-dialog
+  tetherTarget='#target-element-id'
   targetAttachment='middle right'
   attachment='middle left'}}
   I am a modal that will remain tethered to the right of the element with id 'target-element-id'
-{{/tether-dialog}}
+{{/modal-dialog}}
 ```
 
 #### Caveats
 
-Event delegation originating from content inside ember-tether blocks will only work for Ember apps that use Ember's default root element of the `body` tag. This is because the Hubspot Tether library appends its positioned elements to the body tag.
+Event delegation originating from content inside ember-tether blocks will only work for Ember apps that use Ember's default root element of the `body` tag. This is because, generally speaking, the Hubspot Tether library appends its positioned elements to the body element.
 
 If you are not overriding the default root element, then don't worry and carry on. ember-tether will work just fine for you.
 
