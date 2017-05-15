@@ -1,5 +1,15 @@
 # Change Log
 
+## [v2.2.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.2.0) (2017-05-15)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.1.0...v2.2.0)
+
+**Merged pull requests:**
+
+- Make modal-dialog component animatable via liquid-fire [\#193](https://github.com/yapplabs/ember-modal-dialog/pull/193) ([lukemelia](https://github.com/lukemelia))
+- Add support for an `overlayPosition` property which supports values of `'parent'` or `'sibling'` [\#192](https://github.com/yapplabs/ember-modal-dialog/pull/192) ([lukemelia](https://github.com/lukemelia))
+- Allow specifying `hasOverlay=false` to suppress output of the overlay div. [\#191](https://github.com/yapplabs/ember-modal-dialog/pull/191) ([lukemelia](https://github.com/lukemelia))
+- Minor README cleanup [\#190](https://github.com/yapplabs/ember-modal-dialog/pull/190) ([lukemelia](https://github.com/lukemelia))
+
 ## [v2.1.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.1.0) (2017-05-14)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.0.0...v2.1.0)
 
