@@ -1,5 +1,15 @@
 # Change Log
 
+## [v2.3.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.3.0) (2017-06-23)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.2.0...v2.3.0)
+
+**Merged pull requests:**
+
+- Don't fail if ENV\['ember-modal-dialog'\] is not defined [\#202](https://github.com/yapplabs/ember-modal-dialog/pull/202) ([lukemelia](https://github.com/lukemelia))
+- Pass `stack` and `value` properties through to liquid-wormhole/liquid-tether [\#201](https://github.com/yapplabs/ember-modal-dialog/pull/201) ([lukemelia](https://github.com/lukemelia))
+- Fix modals in FastBoot [\#200](https://github.com/yapplabs/ember-modal-dialog/pull/200) ([sandydoo](https://github.com/sandydoo))
+- Typo: missing comma [\#197](https://github.com/yapplabs/ember-modal-dialog/pull/197) ([jacobq](https://github.com/jacobq))
+
 ## [v2.2.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.2.0) (2017-05-15)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.1.0...v2.2.0)
 
