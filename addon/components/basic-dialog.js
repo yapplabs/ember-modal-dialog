@@ -2,7 +2,6 @@ import Ember from 'ember';
 import layout from '../templates/components/basic-dialog';
 
 const { $, computed, guidFor, inject, isEmpty } = Ember;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 export default Ember.Component.extend({
   tagName: '',
@@ -47,8 +46,12 @@ export default Ember.Component.extend({
     return this.get('overlayPosition') === 'sibling';
   }),
 
+  isIOS: computed(function() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent);
+  }),
+
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
-    if (isIOS) {
+    if (this.get('isIOS')) {
       Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
     }
   }),
@@ -79,7 +82,7 @@ export default Ember.Component.extend({
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
 
-    if (isIOS) {
+    if (this.get('isIOS')) {
       const registerTouch = () => $(document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
       setTimeout(registerTouch);
     }
@@ -88,7 +91,7 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
-    if (isIOS) {
+    if (this.get('isIOS')) {
       $(document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
     }
     this._super(...arguments);

@@ -4,8 +4,7 @@ import layout from '../templates/components/deprecated-tether-dialog';
 import { deprecate } from '@ember/debug';
 
 const { dasherize } = Ember.String;
-const { computed, get, inject, isEmpty } = Ember;
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+const { computed, inject, isEmpty } = Ember;
 
 export default BasicDialog.extend({
   layout,
@@ -109,8 +108,12 @@ export default BasicDialog.extend({
   // targetOffset - passed in
   // targetModifier - passed in
 
+  isIOS: computed(function() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent);
+  }),
+
   makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
-    if (isIOS && get(this, 'hasOverlay')) {
+    if (this.get('isIOS') && this.get('hasOverlay')) {
       Ember.$('div[data-emd-overlay]').css('cursor', 'pointer');
     }
   }),
