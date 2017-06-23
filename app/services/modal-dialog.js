@@ -5,7 +5,7 @@ const { computed, Service } = Ember;
 
 function computedFromConfig(prop) {
   return computed(function(){
-    return ENV['ember-modal-dialog'][prop];
+    return ENV['ember-modal-dialog'] && ENV['ember-modal-dialog'][prop];
   });
 }
 
