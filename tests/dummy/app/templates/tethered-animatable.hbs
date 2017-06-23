@@ -114,3 +114,61 @@
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
+
+<div class='example'>
+  <h2>Separate Stacks</h2>
+  <button id='separateStacksButton1' onclick={{action (mut isShowingSeparateStacksModal1) true}}>Show Modal 1 (modal-stack-a)</button>
+  <button id='separateStacksButton2' onclick={{action (mut isShowingSeparateStacksModal2) true}}>Show Modal 2 (modal-stack-b)</button>
+  <button id='separateStacksButton3' onclick={{action (mut isShowingSeparateStacksModal3) true}}>Show Modal 3 (modal-stack-b)</button>
+  <p>If you open 1, then 2 (different stacks), #1 should animate closed, and #2 should animate open.</p>
+  <p>If you open 2, then 3, the #2 should animate to #3's spot.</p>
+  {{code-snippet name='separate-stacks-modal-dialog-liquid-tether.hbs'}}
+  {{!-- BEGIN-SNIPPET separate-stacks-modal-dialog-liquid-tether --}}
+    {{#if isShowingSeparateStacksModal1}}
+      {{#modal-dialog
+          stack="modal-stack-a"
+          containerClass='modal-stack'
+          onClose=(action (mut isShowingSeparateStacksModal1 false))
+          hasOverlay=false
+          clickOutsideToClose=true
+          tetherTarget='#separateStacksButton1'
+          targetAttachment="bottom center"
+          attachment="top center"
+          animatable=true
+      }}
+        <p>I am modal 1.</p>
+      {{/modal-dialog}}
+    {{/if}}
+    {{#if isShowingSeparateStacksModal2}}
+      {{#modal-dialog
+          stack="modal-stack-b"
+          value=2
+          containerClass='modal-stack'
+          onClose=(action (mut isShowingSeparateStacksModal2) false)
+          hasOverlay=false
+          clickOutsideToClose=true
+          tetherTarget='#separateStacksButton2'
+          targetAttachment="top center"
+          attachment="bottom center"
+          animatable=true
+      }}
+        <p>I am modal 2.</p>
+      {{/modal-dialog}}
+    {{/if}}
+    {{#if isShowingSeparateStacksModal3}}
+      {{#modal-dialog
+          stack="modal-stack-b"
+          value=2
+          containerClass='modal-stack'
+          onClose=(action (mut isShowingSeparateStacksModal3) false)
+          hasOverlay=false
+          clickOutsideToClose=true
+          tetherTarget='#separateStacksButton3'
+          targetAttachment="middle right"
+          attachment="middle left"
+          animatable=true
+      }}
+        <p>I am modal 3.</p>
+      {{/modal-dialog}}
+    {{/if}}  {{!-- END-SNIPPET --}}
+</div>
