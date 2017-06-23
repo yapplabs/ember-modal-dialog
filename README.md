@@ -127,6 +127,12 @@ _Current 2.x behavior:_  Having these optional dependencies installed and NOT ex
 
 _Upcoming 3.x behavior:_ Detection will be automatic. To opt out of using animatable features when you have these `liquid-*` addons installed, pass `animatable=false`.
 
+When in an animatable scenario, you may also pass the following properties, which are passed through to liquid-wormhole or liquid-tether:
+
+Property              | Purpose
+--------------------- | -------------
+`stack`               | Delegates to liquid-wormhole/liquid-tether
+
 ### Optional dependencies
 
 `ember install ember-tether` [Docs](//github.com/yapplabs/ember-tether/)

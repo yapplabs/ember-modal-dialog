@@ -30,5 +30,17 @@ export default function() {
     this.use('to-up'),
     this.reverse('to-down')
   );
+
+  this.transition(
+    this.matchSelector('.modal-stack'),
+    this.toValue((toValue, fromValue) => toValue === null || fromValue === null),
+    this.use('to-up'),
+    this.reverse('to-down')
+  );
+
+  this.transition(
+    this.matchSelector('#modal-stack-b'),
+    this.use('fly-to', { movingSide: 'new' })
+  );
   // END-SNIPPET
 }

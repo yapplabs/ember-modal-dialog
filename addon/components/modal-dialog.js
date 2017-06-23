@@ -144,6 +144,8 @@ export default Ember.Component.extend({
   clickOutsideToClose: false,
   renderInPlace: false,
   tetherTarget: null,
+  stack: computed.oneWay('elementId'), // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
+  value: 0, // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
   target: computed({ // element, css selector, or view instance
     get() {
       return 'body';
