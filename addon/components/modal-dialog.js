@@ -2,7 +2,8 @@ import Ember from 'ember';
 import layout from '../templates/components/modal-dialog';
 const { computed, inject, isEmpty, isNone } = Ember;
 const { dasherize } = Ember.String;
-import { deprecate, warn } from '@ember/debug';
+import { deprecate } from 'ember-deprecations';
+import { warn } from 'ember-debug';
 import { DEBUG } from '@glimmer/env';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];

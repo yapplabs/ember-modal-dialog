@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { deprecate } from '@ember/debug';
+import { deprecate } from 'ember-deprecations';
 
 export default Ember.Component.extend({
   init(){

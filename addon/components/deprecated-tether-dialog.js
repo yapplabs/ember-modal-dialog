@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/deprecated-tether-dialog';
-import { deprecate } from '@ember/debug';
+import { deprecate } from 'ember-deprecations';
 
 const { dasherize } = Ember.String;
 const { computed, inject, isEmpty } = Ember;
