@@ -238,18 +238,26 @@ A quick-and-dirty way to implement keyboard shortcuts (e.g. to dismiss your moda
 // app/components/modal-dialog.js
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
 
-export default ModalDialog.extend({
-  setup: function() {
-    Ember.$('body').on('keyup.modal-dialog', (e) => {
-      if (e.keyCode === 27) {
-        this.sendAction('close');
-      }
-    });
-  }.on('didInsertElement'),
+const ESC_KEY = 27;
 
-  teardown: function() {
+export default ModalDialog.extend({
+  didInsertElement() {
+    this._super(...arguments);
+    this._initEscListener();
+  },
+
+  willDestroyElement(){
+    this._super(...arguments);
     Ember.$('body').off('keyup.modal-dialog');
-  }.on('willDestroyElement')
+  },
+
+  _initEscListener() {
+    const closeOnEscapeKey = (ev) => {
+      if (ev.keyCode === ESC_KEY) { this.get('closeAction')(); }
+    };
+
+    Ember.$('body').on('keyup.modal-dialog', closeOnEscapeKey);
+  },
 });
 ```
 
