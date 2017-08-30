@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 
@@ -13,7 +14,7 @@ module('Acceptance: modal-dialog | tethered', {
   },
 
   afterEach() {
-    Ember.run(application, 'destroy');
+    run(application, 'destroy');
   }
 });
 
@@ -24,7 +25,7 @@ test('target - selector', function(assert) {
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     whileOpen() {
-      assert.ok(Ember.$(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
+      assert.ok($(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
   });
 });

@@ -1,13 +1,17 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import Component from '@ember/component';
+import $ from 'jquery';
+import { computed } from '@ember/object';
+import { guidFor } from '@ember/object/internals';
+import { isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 import layout from '../templates/components/basic-dialog';
 
-const { $, computed, guidFor, inject, isEmpty } = Ember;
-
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: '',
   layout,
 
-  modalService: inject.service('modal-dialog'),
+  modalService: service('modal-dialog'),
   destinationElementId: computed.oneWay('modalService.destinationElementId'),
 
   variantWrapperClass: 'emd-static',
@@ -50,9 +54,9 @@ export default Ember.Component.extend({
     return /iPad|iPhone|iPod/.test(navigator.userAgent);
   }),
 
-  makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
+  makeOverlayClickableOnIOS: on('didInsertElement', function() {
     if (this.get('isIOS')) {
-      Ember.$('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
+      $('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
     }
   }),
 

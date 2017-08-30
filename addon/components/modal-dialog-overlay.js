@@ -1,7 +1,7 @@
-import Ember from 'ember';
-import { deprecate } from 'ember-deprecations';
+import Component from '@ember/component';
+import { deprecate } from '@ember/debug';
 
-export default Ember.Component.extend({
+export default Component.extend({
   init(){
     this._super(...arguments);
     deprecate(

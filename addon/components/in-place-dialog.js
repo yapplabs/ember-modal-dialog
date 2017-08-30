@@ -1,14 +1,14 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import layout from '../templates/components/in-place-dialog';
 
-const { computed } = Ember;
 const computedJoin = function(prop) {
   return computed(prop, function() {
     return this.get(prop).join(' ');
   });
 };
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: '',
   layout,
 

@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Service from '@ember/service';
 import ENV from '../config/environment';
-
-const { computed, Service } = Ember;
 
 function computedFromConfig(prop) {
   return computed(function(){

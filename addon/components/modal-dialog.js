@@ -1,9 +1,10 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { dasherize } from '@ember/string';
+import { computed } from '@ember/object';
+import { isNone, isEmpty } from '@ember/utils';
+import { inject as service } from '@ember/service';
 import layout from '../templates/components/modal-dialog';
-const { computed, inject, isEmpty, isNone } = Ember;
-const { dasherize } = Ember.String;
-import { deprecate } from 'ember-deprecations';
-import { warn } from 'ember-debug';
+import { deprecate, warn } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
@@ -24,10 +25,10 @@ function deprecateImplicitAnimatableWithLiquidWormholePresent() {
   );
 }
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: '',
   layout,
-  modalService: inject.service('modal-dialog'),
+  modalService: service('modal-dialog'),
   destinationElementId: computed.oneWay('modalService.destinationElementId'),
   modalDialogComponentName: computed('renderInPlace', 'tetherTarget', 'animatable', 'hasLiquidWormhole', 'hasLiquidTether', function(){
     let tetherTarget = this.get('tetherTarget');
