@@ -165,7 +165,7 @@ Use `attachment` and `targetAttachment` properties to configure positioning of t
 
 To enable this behavior, install ember-tether as a dependency of **your ember app**.
 
-    `ember install ember-tether`
+    ember install ember-tether
 
 Then pass a selector as `tetherTarget` for the modal you wish to position this way:
 
