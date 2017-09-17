@@ -1,9 +1,7 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import { dasherize } from '@ember/string';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/liquid-tether-dialog';
-
-const { dasherize } = Ember.String;
-const { computed } = Ember;
 
 export default BasicDialog.extend({
   layout,

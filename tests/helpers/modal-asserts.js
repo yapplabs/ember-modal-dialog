@@ -1,5 +1,5 @@
+import $ from 'jquery';
 import { click, findAll, waitUntil } from 'ember-native-dom-helpers';
-import Ember from 'ember';
 import QUnit from 'qunit';
 
 export function findContains(selector, text) {
@@ -13,7 +13,7 @@ export default function registerAssertHelpers() {
 
   assert.isPresentOnce = function(selector, message) {
     message = message || `${selector} is present in DOM once`;
-    return this.equal(Ember.$(selector).length, 1, message);
+    return this.equal($(selector).length, 1, message);
   };
 
   assert.isAbsent = function(selector, message) {

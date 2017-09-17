@@ -1,10 +1,12 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { on } from '@ember/object/evented';
+import { computed } from '@ember/object';
+import { isEmpty } from '@ember/utils';
+import { dasherize } from '@ember/string';
+import { inject as service } from '@ember/service';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/deprecated-tether-dialog';
 import { deprecate } from 'ember-deprecations';
-
-const { dasherize } = Ember.String;
-const { computed, inject, isEmpty } = Ember;
 
 export default BasicDialog.extend({
   layout,
@@ -16,7 +18,7 @@ export default BasicDialog.extend({
       { id: 'ember-modal-dialog.tether-dialog', until: '3.0.0' }
     );
   },
-  modalService: inject.service('modal-dialog'),
+  modalService: service('modal-dialog'),
   destinationElementId: computed.oneWay('modalService.destinationElementId'),
 
   // onClose - set this from templates
@@ -112,9 +114,9 @@ export default BasicDialog.extend({
     return /iPad|iPhone|iPod/.test(navigator.userAgent);
   }),
 
-  makeOverlayClickableOnIOS: Ember.on('didInsertElement', function() {
+  makeOverlayClickableOnIOS: on('didInsertElement', function() {
     if (this.get('isIOS') && this.get('hasOverlay')) {
-      Ember.$('div[data-emd-overlay]').css('cursor', 'pointer');
+      $('div[data-emd-overlay]').css('cursor', 'pointer');
     }
   }),
 

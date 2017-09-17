@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 import { visit, click } from 'ember-native-dom-helpers';
@@ -17,7 +18,7 @@ module('Acceptance: modal-dialog | no animation, no tether', {
   },
 
   afterEach() {
-    Ember.run(application, 'destroy');
+    run(application, 'destroy');
   }
 });
 
@@ -115,8 +116,8 @@ test('modal with custom styles', async function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok(Ember.$(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-overlay'), 'has provided overlayClass');
-      assert.ok(Ember.$(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
+      assert.ok($(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-overlay'), 'has provided overlayClass');
+      assert.ok($(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
     }
   });
   await assert.dialogOpensAndCloses({
@@ -132,7 +133,7 @@ test('target - selector', async function(assert) {
     dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
     whileOpen() {
-      assert.ok(Ember.$(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
+      assert.ok($(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
     }
   });
 });
@@ -151,7 +152,7 @@ test('subclassed modal', async function(assert) {
     dialogText: 'Via Subclass',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok(Ember.$(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
+      assert.ok($(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
     }
   });
 });
@@ -162,9 +163,9 @@ test('in place', async function(assert) {
   let inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
   let inPlaceRootSelector = '#container-in-place';
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
-  assert.equal(Ember.$(dialogSelector).css('position'), 'static', 'not absolutely positioned');
-  assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
-  assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
+  assert.equal($(dialogSelector).css('position'), 'static', 'not absolutely positioned');
+  assert.equal($(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
+  assert.equal($(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
   assert.equal(findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText), undefined, 'dialog is not open');
   assert.ok(findContains(`${inPlaceRootSelector} ${dialogSelector}`, dialogText), 'dialog rendered in place, once');
 

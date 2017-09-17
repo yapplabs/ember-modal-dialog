@@ -19,7 +19,7 @@
     "test": "ember try:each"
   },
   "dependencies": {
-    "ember-cli-babel": "^6.1.0",
+    "ember-cli-babel": "^6.8.2",
     "ember-cli-htmlbars": "^2.0.1",
     "ember-ignore-children-helper": "^1.0.0",
     "ember-wormhole": "^0.5.1"
@@ -49,6 +49,7 @@
     "ember-source": "~2.13.0",
     "ember-tether": "^1.0.0-beta.0",
     "ember-truth-helpers": "^1.3.0",
+    "eslint-plugin-ember": "^4.3.0",
     "liquid-fire": "^0.27.3",
     "liquid-tether": "^2.0.4",
     "liquid-wormhole": "^2.0.5",

@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import $ from 'jquery';
+import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
 import { visit, click } from 'ember-native-dom-helpers';
@@ -16,7 +17,7 @@ module('Acceptance: tether-dialog (deprecated)', {
   },
 
   afterEach() {
-    Ember.run(application, 'destroy');
+    run(application, 'destroy');
   }
 });
 
@@ -108,7 +109,7 @@ test('modal without overlay click outside to close', async function(assert) {
     closeSelector: '#example-without-overlay-click-outside-to-close'
   });
 
-  assert.equal(Ember.$(dialogSelector).length, 0, 'All modals are absent');
+  assert.equal($(dialogSelector).length, 0, 'All modals are absent');
 });
 
 test('target - selector', async function(assert) {
@@ -118,7 +119,7 @@ test('target - selector', async function(assert) {
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     whileOpen() {
-      assert.ok(Ember.$(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
+      assert.ok($(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
   });
 });
@@ -141,9 +142,9 @@ test('in place', async function(assert) {
   let inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, `:contains(${dialogText})`].join(' ');
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
 
-  assert.equal(Ember.$(dialogSelector).css('position'), 'static', 'not absolutely positioned');
-  assert.equal(Ember.$(dialogSelector).css('left'), 'auto', 'should not be positioned');
-  assert.equal(Ember.$(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
+  assert.equal($(dialogSelector).css('position'), 'static', 'not absolutely positioned');
+  assert.equal($(dialogSelector).css('left'), 'auto', 'should not be positioned');
+  assert.equal($(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
   assert.isAbsent(defaultSelector);
   assert.isPresentOnce(inPlaceSelector);
 
