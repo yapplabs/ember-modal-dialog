@@ -11,6 +11,10 @@ export default Component.extend({
   tagName: '',
   layout,
 
+  containerClassNames: null,
+  overlayClassNames: null,
+  wrapperClassNames: null,
+
   modalService: service('modal-dialog'),
   destinationElementId: computed.oneWay('modalService.destinationElementId'),
 
