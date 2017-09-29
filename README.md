@@ -133,12 +133,14 @@ Property              | Purpose
 --------------------- | -------------
 `stack`               | Delegates to liquid-wormhole/liquid-tether
 
-### Optional dependencies
+### Optional Dependencies
 
-`ember install ember-tether` [Docs](//github.com/yapplabs/ember-tether/)
-`ember install liquid-wormhole` [Docs](//pzuraq.github.io/liquid-wormhole/)
-`ember install liquid-tether` [Docs](//pzuraq.github.io/liquid-tether/)
-`ember install liquid-fire` [Docs](//ember-animation.github.io/liquid-fire/)
+Dependency                      | Documentation
+--------------------------------|------------
+`ember install ember-tether`    | [Docs](//github.com/yapplabs/ember-tether/)
+`ember install liquid-wormhole` | [Docs](//pzuraq.github.io/liquid-wormhole/)
+`ember install liquid-tether`   | [Docs](//pzuraq.github.io/liquid-tether/)
+`ember install liquid-fire`     | [Docs](//ember-animation.github.io/liquid-fire/)
 
 
 ## Which Component Should I Use?
