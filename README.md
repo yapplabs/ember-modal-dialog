@@ -94,8 +94,6 @@ Property              | Purpose
 `wrapperClassNames`   | CSS class names to append to wrapper divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-wrapper'`. If you subclass this component, you may define this in your subclass.)
 `animatable`          | A boolean, when `true` makes modal animatable using `liquid-fire` (requires `liquid-wormhole` to be installed, and for tethering situations `liquid-tether`. Having these optional dependencies installed and NOT explicitly specifying `animatable` is deprecated in 2.x and is equivalent to `animatable=false` for backwards compatibility. As of 3.x, the implicit default will be `animatable=true` when the optional `liquid-wormhole`/`liquid-tether` dependency is present.
 
-The above properties of the `modal-dialog` component can be used without any additional  dependencies.
-
 #### Tethering
 
 If you specify a `tetherTarget`, you are opting into "tethering" behavior, and you must have either `ember-tether` or `liquid-tether` installed.
