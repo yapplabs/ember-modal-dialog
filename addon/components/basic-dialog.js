@@ -81,22 +81,26 @@ export default Component.extend({
 
       this.sendAction('onClose');
     };
-    const registerClick = () => $(document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
-
-    // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
-    setTimeout(registerClick);
-
-    if (this.get('isIOS')) {
-      const registerTouch = () => $(document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
-      setTimeout(registerTouch);
-    }
+    // run next so that the opening click doesn't immediately close us
+    Ember.run.next(() => {
+      if (!this.get("isDestroying") && !this.get("isDestroyed")) {
+        const document = $(document);
+        const guid = guidFor(this);
+        document.on(`click.ember-modal-dialog-${guid}`, handleClick);
+        if (this.get('isIOS')) {
+          document.on(`touchend.ember-modal-dialog-${guid}`, handleClick);
+        }
+      }
+    });
     this._super(...arguments);
   },
 
   willDestroyElement() {
-    $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
+    const document = $(document);
+    const guid = guidFor(this);
+    document.off(`click.ember-modal-dialog-${guid}`);
     if (this.get('isIOS')) {
-      $(document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
+      document.off(`touchend.ember-modal-dialog-${guid}`);
     }
     this._super(...arguments);
   }
