@@ -22,9 +22,11 @@
         overlayPosition='sibling'
         clickOutsideToClose=true
         animatable=true
+        aria-labelledby='example-basic-title'
+        aria-describedby='example-basic-desc'
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Basic</p>
+      <h1 id="example-basic-title">Stop! Modal Time!</h1>
+      <p id="example-basic-desc">Basic</p>
       <button {{action 'toggleBasic'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -43,9 +45,12 @@
         overlayPosition='sibling'
         clickOutsideToClose=true
         animatable=true
+        aria-labelledby='example-translucent-title'
+        aria-describedby='example-translucent-desc'
+
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>With Translucent Overlay</p>
+      <h1 id="example-translucent-title">Stop! Modal Time!</h1>
+      <p id="example-translucent-desc">With Translucent Overlay</p>
       <button {{action 'toggleTranslucent'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -62,9 +67,11 @@
         onClose='toggleWithoutOverlay'
         hasOverlay=false
         animatable=true
+        aria-labelledby='example-without-overlay-title'
+        aria-describedby='example-without-overlay-desc'
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Without Overlay</p>
+      <h1 id="example-without-overlay-title">Stop! Modal Time!</h1>
+      <p id="example-without-overlay-desc">Without Overlay</p>
       <button {{action 'toggleWithoutOverlay'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -84,9 +91,11 @@
           hasOverlay=false
           clickOutsideToClose=true
           animatable=true
+          aria-labelledby='example-without-overlay-click-outside-to-close-title'
+          aria-describedby='example-without-overlay-click-outside-to-close-desc'
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Without Overlay - Click Outside to Close</p>
+      <h1 id="example-without-overlay-click-outside-to-close-title">Stop! Modal Time!</h1>
+      <p id="example-without-overlay-click-outside-to-close-desc">Without Overlay - Click Outside to Close</p>
       <button {{action 'toggleWithoutOverlayClickOutsideToClose'}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -98,9 +107,11 @@
         clickOutsideToClose=true
         offset='100px 0'
         animatable=true
+        aria-labelledby='example-without-overlay-click-outside-to-close-another-title'
+        aria-describedby='example-without-overlay-click-outside-to-close-another-desc'
     }}
-      <h1>Stop! Another modal!</h1>
-      <p>Without Overlay Another One - Click Outside to Close</p>
+      <h1 id="example-without-overlay-click-outside-to-close-another-title">Stop! Another modal!</h1>
+      <p id="example-without-overlay-click-outside-to-close-another-desc">Without Overlay Another One - Click Outside to Close</p>
       <button {{action 'toggleWithoutOverlayClickOutsideToCloseAnotherOne'}}>Close</button>
     {{/modal-dialog}}
   {{/if}}
@@ -123,9 +134,12 @@
         clickOutsideToClose=true
         targetAttachment='none'
         animatable=true
+        aria-labelledby='example-custom-styles-title'
+        aria-describedby='example-custom-styles-desc'
+
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Custom Styles</p>
+      <h1 id="example-custom-styles-title">Stop! Modal Time!</h1>
+      <p id="example-custom-styles-desc">Custom Styles</p>
       <button {{action (action (mut isShowingCustomStyles false))}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -144,8 +158,8 @@
          onClose='toggleSubclassed'
          animatable=true
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Via Subclass</p>
+      <h1 id="my-cool-title">Stop! Modal Time!</h1>
+      <p id="my-cool-desc">Via Subclass</p>
       <button {{action 'toggleSubclassed'}}>Close</button>
     {{/my-cool-modal-dialog}}
     {{!-- END-SNIPPET --}}

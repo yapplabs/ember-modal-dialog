@@ -147,6 +147,7 @@ test('in place', async function(assert) {
   assert.equal($(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
   assert.isAbsent(defaultSelector);
   assert.isPresentOnce(inPlaceSelector);
+  assert.isAccessibleDialog(dialogSelector);
 
   await click(inPlaceCloseButton);
   assert.isAbsent(defaultSelector);

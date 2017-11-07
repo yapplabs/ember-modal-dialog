@@ -1,6 +1,6 @@
   {{#if isShowingModalDialog}}
-    {{#modal-dialog}}
-      <h1>Stop! Modal Time!</h1>
+    {{#modal-dialog aria-labelledby="component-modal-title"}}
+      <h1 id="component-modal-title">Stop! Modal Time!</h1>
       <button class="close" {{action 'closeModalDialog'}}>Close</button>
     {{/modal-dialog}}
   {{/if}}

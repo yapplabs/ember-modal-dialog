@@ -30,13 +30,17 @@ test('basic modal', async function(assert) {
   await assert.dialogOpensAndCloses({
     openSelector: '#example-basic button',
     dialogText: 'Basic',
-    closeSelector: overlaySelector
+    closeSelector: overlaySelector,
+    ariaLabelId: 'example-basic-title',
+    ariaDescriptionId: 'example-basic-desc'
   });
 
   await assert.dialogOpensAndCloses({
     openSelector: '#example-basic button',
     dialogText: 'Basic',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: 'example-basic-title',
+    ariaDescriptionId: 'example-basic-desc'
   });
 });
 
@@ -44,13 +48,17 @@ test('modal with translucent overlay', async function(assert) {
   await assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
-    closeSelector: overlaySelector
+    closeSelector: overlaySelector,
+    ariaLabelId: 'example-translucent-title',
+    ariaDescriptionId: 'example-translucent-desc'
   });
 
   await assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: 'example-translucent-title',
+    ariaDescriptionId: 'example-translucent-desc'
   });
 });
 
@@ -58,13 +66,17 @@ test('modal without overlay', async function(assert) {
   await assert.dialogOpensAndCloses({
     openSelector: '#example-without-overlay button',
     dialogText: 'Without Overlay',
-    closeSelector: '#example-without-overlay'
+    closeSelector: '#example-without-overlay',
+    ariaLabelId: 'example-without-overlay-title',
+    ariaDescriptionId: 'example-without-overlay-desc'
   });
 
   await assert.dialogOpensAndCloses({
     openSelector: '#example-without-overlay button',
     dialogText: 'Without Overlay',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: 'example-without-overlay-title',
+    ariaDescriptionId: 'example-without-overlay-desc'
   });
 });
 
@@ -72,13 +84,17 @@ test('modal with overlay', async function(assert) {
   await assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
-    closeSelector: overlaySelector
+    closeSelector: overlaySelector,
+    ariaLabelId: 'example-translucent-title',
+    ariaDescriptionId: 'example-translucent-desc'
   });
 
   await assert.dialogOpensAndCloses({
     openSelector: '#example-translucent button',
     dialogText: 'With Translucent Overlay',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: 'example-translucent-title',
+    ariaDescriptionId: 'example-translucent-desc'
   });
 });
 
@@ -86,13 +102,17 @@ test('modal with sibling overlay', async function(assert) {
   await assert.dialogOpensAndCloses({
     openSelector: '#example-overlay-sibling button',
     dialogText: 'With Translucent Overlay as Sibling',
-    closeSelector: overlaySelector
+    closeSelector: overlaySelector,
+    ariaLabelId: 'example-overlay-sibling-title',
+    ariaDescriptionId: 'example-overlay-sibling-desc'
   });
 
   await assert.dialogOpensAndCloses({
     openSelector: '#example-overlay-sibling button',
     dialogText: 'With Translucent Overlay as Sibling',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: 'example-overlay-sibling-title',
+    ariaDescriptionId: 'example-overlay-sibling-desc'
   });
 });
 
@@ -118,12 +138,16 @@ test('modal with custom styles', async function(assert) {
     whileOpen() {
       assert.ok($(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-overlay'), 'has provided overlayClass');
       assert.ok($(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
-    }
+    },
+    ariaLabelId: "example-custom-styles-title",
+    ariaDescriptionId: "example-custom-styles-desc"
   });
   await assert.dialogOpensAndCloses({
     openSelector: '#example-custom-styles button',
     dialogText: 'Custom Styles',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: "example-custom-styles-title",
+    ariaDescriptionId: "example-custom-styles-desc"
   });
 });
 
@@ -134,7 +158,9 @@ test('target - selector', async function(assert) {
     closeSelector: dialogCloseButton,
     whileOpen() {
       assert.ok($(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
-    }
+    },
+    ariaLabelId: "example-target-selector-title",
+    ariaDescriptionId: "example-target-selector-desc"
   });
 });
 
@@ -142,7 +168,9 @@ test('target - element', async function(assert) {
   await assert.dialogOpensAndCloses({
     openSelector: '#example-target-element button',
     dialogText: 'Target - Element',
-    closeSelector: dialogCloseButton
+    closeSelector: dialogCloseButton,
+    ariaLabelId: "example-target-element-title",
+    ariaDescriptionId: "example-target-element-desc"
   });
 });
 
@@ -153,7 +181,9 @@ test('subclassed modal', async function(assert) {
     closeSelector: overlaySelector,
     whileOpen() {
       assert.ok($(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
-    }
+    },
+    ariaLabelId: 'my-cool-title',
+    ariaDescriptionId: 'my-cool-desc'
   });
 });
 
@@ -168,6 +198,9 @@ test('in place', async function(assert) {
   assert.equal($(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
   assert.equal(findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText), undefined, 'dialog is not open');
   assert.ok(findContains(`${inPlaceRootSelector} ${dialogSelector}`, dialogText), 'dialog rendered in place, once');
+  assert.isAccessibleDialog(dialogSelector);
+  assert.hasAccessibleLabel(dialogSelector, 'example-in-place-title');
+  assert.hasAccessibleDescription(dialogSelector, 'example-in-place-desc');
 
   await click(inPlaceCloseButton);
   assert.equal(findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText), undefined, 'dialog is not open');

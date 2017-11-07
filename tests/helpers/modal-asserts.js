@@ -38,10 +38,32 @@ export default function registerAssertHelpers() {
     if (options.whileOpen) {
       await options.whileOpen();
     }
+    if (options.ariaLabelId) {
+      assert.isAccessibleDialog(dialogSelector);
+      assert.hasAccessibleLabel(dialogSelector, options.ariaLabelId);
+    }
+    if (options.ariaDescriptionId) {
+      assert.hasAccessibleDescription(dialogSelector, options.ariaDescriptionId);
+    }
     await click(options.closeSelector, options.context);
     await waitUntil(function() {
       return !findContains(dialogSelector, options.dialogText);
     });
     self.isAbsent(overlaySelector);
   };
+
+  assert.isAccessibleDialog = function(selector, message) {
+    message = message || `${selector} has aria dialog role`;
+    return this.equal(find(selector).attr('role'), 'dialog', message);
+  }
+
+  assert.hasAccessibleLabel = function(selector, labelId, message) {
+    message = message || `${selector} has aria dialog label`;
+    return this.equal(find(selector).attr('aria-labelledby'), labelId, message);
+  }
+
+  assert.hasAccessibleDescription = function(selector, descriptionId, message) {
+    message = message || `${selector} has aria dialog describes`;
+    return this.equal(find(selector).attr('aria-describedby'), descriptionId, message);
+  }
 }
