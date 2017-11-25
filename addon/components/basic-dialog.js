@@ -85,22 +85,22 @@ export default Component.extend({
 
       this.sendAction('onClose');
     };
-    const registerClick = () => $(document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
+    const registerClick = () => $(window.document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
 
     if (this.get('isIOS')) {
-      const registerTouch = () => $(document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
+      const registerTouch = () => $(window.document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
       setTimeout(registerTouch);
     }
     this._super(...arguments);
   },
 
   willDestroyElement() {
-    $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
+    $(window.document).off(`click.ember-modal-dialog-${guidFor(this)}`);
     if (this.get('isIOS')) {
-      $(document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
+      $(window.document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
     }
     this._super(...arguments);
   }
