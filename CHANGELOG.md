@@ -1,7 +1,15 @@
 # Change Log
 
-## [2.4.0](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.0) (2017-11-21)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.3.0...2.4.0)
+## [2.4.1](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.1) (2017-12-05)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.0...2.4.1)
+
+**Merged pull requests:**
+
+- Revert modules update to file in app directory [\#232](https://github.com/yapplabs/ember-modal-dialog/pull/232) ([Dhaulagiri](https://github.com/Dhaulagiri))
+- handle global document being undefined [\#230](https://github.com/yapplabs/ember-modal-dialog/pull/230) ([BryanCrotaz](https://github.com/BryanCrotaz))
+
+## [v2.4.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.0) (2017-11-21)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.3.0...v2.4.0)
 
 **Merged pull requests:**
 
