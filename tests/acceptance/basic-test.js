@@ -1,8 +1,7 @@
-import $ from 'jquery';
 import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
-import { visit, click } from 'ember-native-dom-helpers';
+import { visit, click, find } from 'ember-native-dom-helpers';
 import { findContains } from '../helpers/modal-asserts';
 
 let application;
@@ -116,8 +115,8 @@ test('modal with custom styles', async function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok($(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-overlay'), 'has provided overlayClass');
-      assert.ok($(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
+      assert.ok(find(`${modalRootElementSelector} ${overlaySelector}`).classList.contains('custom-styles-overlay'), 'has provided overlayClass');
+      assert.ok(find(`${modalRootElementSelector} ${dialogSelector}`).classList.contains('custom-styles-modal-container'), 'has provided container-class');
     }
   });
   await assert.dialogOpensAndCloses({
@@ -133,7 +132,7 @@ test('target - selector', async function(assert) {
     dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
     whileOpen() {
-      assert.ok($(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
+      assert.ok(find(dialogSelector).classList.contains('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
     }
   });
 });
@@ -152,7 +151,7 @@ test('subclassed modal', async function(assert) {
     dialogText: 'Via Subclass',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok($(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
+      assert.ok(find(dialogSelector).classList.contains('my-cool-modal'), 'has provided containerClassNames');
     }
   });
 });
@@ -163,9 +162,11 @@ test('in place', async function(assert) {
   let inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
   let inPlaceRootSelector = '#container-in-place';
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
-  assert.equal($(dialogSelector).css('position'), 'static', 'not absolutely positioned');
-  assert.equal($(dialogSelector).css('left'), 'auto', 'should not be positioned (left)');
-  assert.equal($(dialogSelector).css('margin-left'), '0px', 'should not be positioned (margin-left)');
+  let dialogElement = find(dialogSelector);
+
+  assert.equal(getComputedStyle(dialogElement).getPropertyValue('position'), 'static', 'not absolutely positioned');
+  assert.equal(getComputedStyle(dialogElement).getPropertyValue('left'), 'auto', 'should not be positioned (left)');
+  assert.equal(getComputedStyle(dialogElement).getPropertyValue('margin-left'), '0px', 'should not be positioned (margin-left)');
   assert.equal(findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText), undefined, 'dialog is not open');
   assert.ok(findContains(`${inPlaceRootSelector} ${dialogSelector}`, dialogText), 'dialog rendered in place, once');
 

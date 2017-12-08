@@ -1,5 +1,4 @@
 import { assert } from '@ember/debug';
-import $ from 'jquery';
 import { typeOf } from '@ember/utils';
 import Component from '@ember/component';
 import { capitalize } from '@ember/string';
@@ -42,7 +41,8 @@ export default Component.extend({
     if (this.get('isPositioned')) {
       this.updateTargetAttachment();
     } else {
-      this.$().css('left', '').css('top', '');
+      this.element.style.left = '';
+      this.element.style.top = '';
     }
   })),
 
@@ -54,18 +54,18 @@ export default Component.extend({
 
     if (typeOf(target) === 'string') {
       const targetSelector = target;
-      const wrappedElement = $(targetSelector).eq(0);
+      const wrappedElement = document.querySelector(targetSelector);
       assert(`No element found for modal-dialog's target selector '${targetSelector}'.`, wrappedElement);
       return wrappedElement;
     }
 
     // passed an ember view or component
     if (target.element) {
-      return $(target.element);
+      return target.element;
     }
 
     // passed an element directly
-    return $(target);
+    return target;
   },
 
   updateTargetAttachment() {
@@ -83,75 +83,76 @@ export default Component.extend({
   },
 
   alignCenter() {
-    const elementWidth = this.$().outerWidth();
-    const elementHeight = this.$().outerHeight();
+    const elementWidth = this.element.offsetWidth;
+    const elementHeight = this.element.offsetHeight;
 
-    this.$().css('left', '50%')
-      .css('top', '50%')
-      .css('margin-left', elementWidth * -0.5)
-      .css('margin-top', elementHeight * -0.5);
+    this.element.style.left = '50%';
+    this.element.style.top = '50%';
+    this.element.style.marginLeft = `${elementWidth * -0.5}px`;
+    this.element.style.marginTop = `${elementHeight * -0.5}px`;
   },
 
   alignLeft(targetAttachmentElement) {
-    assert('Left targetAttachment requires a target', targetAttachmentElement.length > 0);
+    assert('Left targetAttachment requires a target', targetAttachmentElement);
 
-    const elementWidth = this.$().outerWidth();
-    const originOffset = targetAttachmentElement.offset();
-    const originOffsetTop = originOffset.top - $(window).scrollTop();
+    const elementWidth = this.element.offsetWidth;
+    const originOffset = targetAttachmentElement.getBoundingClientRect();
+    const originOffsetTop = originOffset.top;
 
-    this.$().css('left', originOffset.left - elementWidth)
-      .css('top', originOffsetTop);
+    this.element.style.left = `${originOffset.left - elementWidth}px`;
+    this.element.style.top = `${originOffsetTop}px`;
   },
 
   alignRight(targetAttachmentElement) {
-    assert('Right targetAttachment requires a target', targetAttachmentElement.length > 0);
+    assert('Right targetAttachment requires a target', targetAttachmentElement);
 
-    const targetWidth = targetAttachmentElement.outerWidth();
-    const originOffset = targetAttachmentElement.offset();
-    const originOffsetTop = originOffset.top - $(window).scrollTop();
+    const targetWidth = targetAttachmentElement.offsetWidth;
+    const originOffset = targetAttachmentElement.getBoundingClientRect();
+    const originOffsetTop = originOffset.top;
 
-    this.$().css('left', originOffset.left + targetWidth)
-      .css('top', originOffsetTop);
+
+    this.element.style.left = `${originOffset.left + targetWidth}px`;
+    this.element.style.top = `${originOffsetTop}px`;
   },
 
   alignTop(targetAttachmentElement) {
-    assert('Top targetAttachment requires a target', targetAttachmentElement.length > 0);
+    assert('Top targetAttachment requires a target', targetAttachmentElement);
 
-    const elementWidth = this.$().outerWidth();
-    const elementHeight = this.$().outerHeight();
-    const originOffset = targetAttachmentElement.offset();
-    const originOffsetTop = originOffset.top - $(window).scrollTop();
-    const targetWidth = targetAttachmentElement.outerWidth();
+    const elementWidth = this.element.offsetWidth;
+    const elementHeight = this.element.offsetHeight;
+    const originOffset = targetAttachmentElement.getBoundingClientRect();
+    const originOffsetTop = originOffset.top;
+    const targetWidth = targetAttachmentElement.offsetWidth;
 
-    this.$().css('left', (originOffset.left + targetWidth / 2 - elementWidth / 2))
-      .css('top', originOffsetTop - elementHeight);
+    this.element.style.left = `${originOffset.left + targetWidth / 2 - elementWidth / 2}px`;
+    this.element.style.top = `${originOffsetTop - elementHeight}px`;
   },
 
   alignBottom(targetAttachmentElement) {
-    assert('Bottom targetAttachment requires a target', targetAttachmentElement.length > 0);
+    assert('Bottom targetAttachment requires a target', targetAttachmentElement);
 
-    const elementWidth = this.$().outerWidth();
-    const originOffset = targetAttachmentElement.offset();
-    const originOffsetTop = originOffset.top - $(window).scrollTop();
-    const targetWidth = targetAttachmentElement.outerWidth();
-    const targetHeight = targetAttachmentElement.outerHeight();
+    const elementWidth = this.element.offsetWidth;
+    const originOffset = targetAttachmentElement.getBoundingClientRect();
+    const originOffsetTop = originOffset.top;
+    const targetWidth = targetAttachmentElement.offsetWidth;
+    const targetHeight = targetAttachmentElement.offsetHeight;
 
-    this.$().css('left', (originOffset.left + targetWidth / 2 - elementWidth / 2))
-      .css('top', originOffsetTop + targetHeight);
+    this.element.style.left = `${originOffset.left + targetWidth / 2 - elementWidth / 2}px`;
+    this.element.style.top = `${originOffsetTop + targetHeight}px`;
   },
 
   alignElementCenter(targetAttachmentElement) {
-    assert('ElementCenter targetAttachment requires a target', targetAttachmentElement.length > 0);
+    assert('ElementCenter targetAttachment requires a target', targetAttachmentElement);
 
-    const elementWidth = this.$().outerWidth();
-    const originOffset = targetAttachmentElement.offset();
-    const originOffsetTop = originOffset.top - $(window).scrollTop();
-    const targetWidth = targetAttachmentElement.outerWidth();
-    const targetHeight = targetAttachmentElement.outerHeight();
-    const elementHeight = this.$().outerHeight();
+    const elementWidth = this.element.offsetWidth;
+    const originOffset = targetAttachmentElement.getBoundingClientRect();
+    const originOffsetTop = originOffset.top;
+    const targetWidth = targetAttachmentElement.offsetWidth;
+    const targetHeight = targetAttachmentElement.offsetHeight;
+    const elementHeight = this.element.offsetHeight;
 
-    this.$().css('left', (originOffset.left + targetWidth / 2 - elementWidth / 2))
-      .css('top', originOffsetTop + targetHeight / 2 - elementHeight / 2);
+    this.element.style.left = `${originOffset.left + targetWidth / 2 - elementWidth / 2}px`;
+    this.element.style.top = `${originOffsetTop + targetHeight / 2 - elementHeight / 2}px`;
   },
 
   alignNone() {}
