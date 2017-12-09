@@ -1,3 +1,4 @@
+import { oneWay } from '@ember/object/computed';
 import { on } from '@ember/object/evented';
 import Component from '@ember/component';
 import $ from 'jquery';
@@ -16,7 +17,7 @@ export default Component.extend({
   wrapperClassNames: null,
 
   modalService: service('modal-dialog'),
-  destinationElementId: computed.oneWay('modalService.destinationElementId'),
+  destinationElementId: oneWay('modalService.destinationElementId'),
 
   variantWrapperClass: 'emd-static',
   containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', function() {

@@ -1,3 +1,4 @@
+import { oneWay } from '@ember/object/computed';
 import $ from 'jquery';
 import { on } from '@ember/object/evented';
 import { computed } from '@ember/object';
@@ -19,7 +20,7 @@ export default BasicDialog.extend({
     );
   },
   modalService: service('modal-dialog'),
-  destinationElementId: computed.oneWay('modalService.destinationElementId'),
+  destinationElementId: oneWay('modalService.destinationElementId'),
 
   // onClose - set this from templates
   close: computed('onClose', {
