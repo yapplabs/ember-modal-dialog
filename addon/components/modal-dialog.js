@@ -148,19 +148,6 @@ export default Component.extend({
   tetherTarget: null,
   stack: computed.oneWay('elementId'), // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
   value: 0, // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
-  target: computed({ // element, css selector, or view instance
-    get() {
-      return 'body';
-    },
-    set(key, value) {
-      deprecate(
-        'Specifying a `target` on `modal-dialog` is deprecated in favor of padding `tetherTarget`, which will trigger ember-tether usage. Support for `target` will be removed in 3.0.0.',
-        false,
-        { id: 'ember-modal-dialog.modal-dialog-target', until: '3.0.0' }
-      );
-      return value;
-    },
-  }),
 
   targetAttachment: 'middle center',
   tetherClassPrefix: null,
