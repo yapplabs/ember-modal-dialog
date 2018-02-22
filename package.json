@@ -1,6 +1,6 @@
 {
   "name": "ember-modal-dialog",
-  "version": "2.4.1",
+  "version": "2.4.2",
   "description": "An ember-cli addon for implementing modal dialogs",
   "keywords": [
     "ember-addon"

@@ -1,7 +1,17 @@
 # Change Log
 
-## [2.4.1](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.1) (2017-12-05)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.0...2.4.1)
+## [2.4.2](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.2) (2018-02-22)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.1...2.4.2)
+
+**Merged pull requests:**
+
+- Update version compatibility \(which controls ember:try version targets\) [\#243](https://github.com/yapplabs/ember-modal-dialog/pull/243) ([lukemelia](https://github.com/lukemelia))
+- Fix bug with clickOutsideToClose when specifying a stack [\#242](https://github.com/yapplabs/ember-modal-dialog/pull/242) ([andrewhavens](https://github.com/andrewhavens))
+- Removing jQuery [\#234](https://github.com/yapplabs/ember-modal-dialog/pull/234) ([gmurphey](https://github.com/gmurphey))
+- Confusing sentence [\#223](https://github.com/yapplabs/ember-modal-dialog/pull/223) ([Dan-Ste](https://github.com/Dan-Ste))
+
+## [v2.4.1](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.1) (2017-12-05)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.0...v2.4.1)
 
 **Merged pull requests:**
 
