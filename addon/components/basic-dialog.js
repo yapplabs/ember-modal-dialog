@@ -74,8 +74,13 @@ export default Component.extend({
         return;
       }
 
+      let modalSelector = '.ember-modal-dialog';
+      if (this.get('stack')) {
+        modalSelector = '#' + this.get('stack') + modalSelector;
+      }
+
       // if the click is within the dialog, do nothing
-      if (document.querySelector('.ember-modal-dialog').contains(target)) {
+      if (document.querySelector(modalSelector).contains(target)) {
         return;
       }
 
