@@ -63,7 +63,7 @@
     "configPath": "tests/dummy/config",
     "demoURL": "http://yapplabs.github.io/ember-modal-dialog/",
     "versionCompatibility": {
-      "ember": "~2.4.0 || > 2.8.0"
+      "ember": "~2.4.0 || ~2.8.0 || ~2.12.0 || ~2.16.0 || ~2.18.0 || ~3.0.0 || > 3.0.0"
     }
   }
 }
