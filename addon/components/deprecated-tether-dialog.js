@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { on } from '@ember/object/evented';
 import { computed } from '@ember/object';
 import { isEmpty } from '@ember/utils';
@@ -116,7 +115,7 @@ export default BasicDialog.extend({
 
   makeOverlayClickableOnIOS: on('didInsertElement', function() {
     if (this.get('isIOS') && this.get('hasOverlay')) {
-      $('div[data-emd-overlay]').css('cursor', 'pointer');
+      document.querySelector('div[data-emd-overlay]').style.cursor = 'pointer';
     }
   }),
 

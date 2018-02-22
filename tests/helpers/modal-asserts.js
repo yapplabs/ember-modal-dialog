@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import { click, findAll, waitUntil } from 'ember-native-dom-helpers';
 import QUnit from 'qunit';
 
@@ -13,12 +12,12 @@ export default function registerAssertHelpers() {
 
   assert.isPresentOnce = function(selector, message) {
     message = message || `${selector} is present in DOM once`;
-    return this.equal($(selector).length, 1, message);
+    return this.equal(findAll(selector).length, 1, message);
   };
 
   assert.isAbsent = function(selector, message) {
     message = message || `${selector} is absent from DOM`;
-    return this.equal(find(selector).length, 0, message);
+    return this.equal(findAll(selector).length, 0, message);
   };
 
   assert.isVisible = function(selector, message) {

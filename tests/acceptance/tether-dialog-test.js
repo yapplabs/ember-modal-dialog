@@ -1,8 +1,7 @@
-import $ from 'jquery';
 import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
-import { visit, click } from 'ember-native-dom-helpers';
+import { visit, click, find, findAll } from 'ember-native-dom-helpers';
 
 let application;
 const modalRootElementSelector = '#modal-overlays';
@@ -109,7 +108,7 @@ test('modal without overlay click outside to close', async function(assert) {
     closeSelector: '#example-without-overlay-click-outside-to-close'
   });
 
-  assert.equal($(dialogSelector).length, 0, 'All modals are absent');
+  assert.equal(findAll(dialogSelector).length, 0, 'All modals are absent');
 });
 
 test('target - selector', async function(assert) {
@@ -119,7 +118,7 @@ test('target - selector', async function(assert) {
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     whileOpen() {
-      assert.ok($(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
+      assert.ok(find(dialogSelector).classList.contains('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
   });
 });
@@ -135,16 +134,16 @@ test('target - element', async function(assert) {
 
 test('in place', async function(assert) {
   await click('#example-in-place button');
-  let dialogText = 'In Place';
-  let defaultSelector = [modalRootElementSelector, dialogSelector, `:contains(${dialogText})`].join(' ');
+  let defaultSelector = [modalRootElementSelector, dialogSelector].join(' ');
   let inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
   let inPlaceRootSelector = '#container-in-place';
-  let inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector, `:contains(${dialogText})`].join(' ');
+  let inPlaceSelector = [inPlaceRootSelector, inPlaceDialogSelector].join(' ');
   let inPlaceCloseButton = [inPlaceRootSelector, inPlaceDialogSelector, 'button'].join(' ');
+  let dialogElement = find(dialogSelector);
 
-  assert.equal($(dialogSelector).css('position'), 'static', 'not absolutely positioned');
-  assert.equal($(dialogSelector).css('left'), 'auto', 'should not be positioned');
-  assert.equal($(dialogSelector).css('margin-left'), '0px', 'should not be positioned');
+  assert.equal(getComputedStyle(dialogElement).getPropertyValue('position'), 'static', 'not absolutely positioned');
+  assert.equal(getComputedStyle(dialogElement).getPropertyValue('left'), 'auto', 'should not be positioned');
+  assert.equal(getComputedStyle(dialogElement).getPropertyValue('margin-left'), '0px', 'should not be positioned');
   assert.isAbsent(defaultSelector);
   assert.isPresentOnce(inPlaceSelector);
 

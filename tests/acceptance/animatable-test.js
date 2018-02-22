@@ -1,7 +1,7 @@
-import $ from 'jquery';
 import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
+import { find } from 'ember-native-dom-helpers';
 
 let application;
 const modalRootElementSelector = '#modal-overlays';
@@ -59,8 +59,8 @@ test('modal with custom styles', async function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok($(overlaySelector).hasClass('custom-styles-overlay'), 'has provided overlayClass');
-      assert.ok($(dialogSelector).hasClass('custom-styles-modal-container'), 'has provided containerClass');
+      assert.ok(find(overlaySelector).classList.contains('custom-styles-overlay'), 'has provided overlayClass');
+      assert.ok(find(dialogSelector).classList.contains('custom-styles-modal-container'), 'has provided containerClass');
     }
   });
   await assert.dialogOpensAndCloses({
@@ -76,7 +76,7 @@ test('subclassed modal', async function(assert) {
     dialogText: 'Via Subclass',
     closeSelector: overlaySelector,
     whileOpen() {
-      assert.ok($(dialogSelector).hasClass('my-cool-modal'), 'has provided containerClassNames');
+      assert.ok(find(dialogSelector).classList.contains('my-cool-modal'), 'has provided containerClassNames');
     }
   });
 });

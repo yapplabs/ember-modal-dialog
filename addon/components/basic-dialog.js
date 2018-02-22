@@ -1,8 +1,6 @@
 import { on } from '@ember/object/evented';
 import Component from '@ember/component';
-import $ from 'jquery';
 import { computed } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
 import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/basic-dialog';
@@ -60,7 +58,7 @@ export default Component.extend({
 
   makeOverlayClickableOnIOS: on('didInsertElement', function() {
     if (this.get('isIOS')) {
-      $('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
+      document.querySelector('div[data-ember-modal-dialog-overlay]').style.cursor = 'pointer';
     }
   }),
 
@@ -69,12 +67,10 @@ export default Component.extend({
       return;
     }
 
-    const handleClick = (event) => {
-      let $eventTarget = $(event.target);
-
+    this.handleClick = ({ target }) => {
       // if the click has already resulted in the target
       // being removed or hidden, do nothing
-      if (!$eventTarget.is(':visible')) {
+      if (target.offsetWidth === 0 && target.offsetHeight === 0) {
         return;
       }
 
@@ -84,28 +80,29 @@ export default Component.extend({
       }
 
       // if the click is within the dialog, do nothing
-      if ($eventTarget.closest(modalSelector).length) {
+      if (document.querySelector(modalSelector).contains(target)) {
         return;
       }
 
       this.sendAction('onClose');
     };
-    const registerClick = () => $(window.document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
+
+    const registerClick = () => document.addEventListener('click', this.handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
 
     if (this.get('isIOS')) {
-      const registerTouch = () => $(window.document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
+      const registerTouch = () => document.addEventListener.on('touchend', this.handleClick);
       setTimeout(registerTouch);
     }
     this._super(...arguments);
   },
 
   willDestroyElement() {
-    $(window.document).off(`click.ember-modal-dialog-${guidFor(this)}`);
+    document.removeEventListener('click', this.handleClick);
     if (this.get('isIOS')) {
-      $(window.document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
+      document.removeEventListener('touchend', this.handleClick);
     }
     this._super(...arguments);
   }

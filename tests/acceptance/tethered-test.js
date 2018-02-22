@@ -1,7 +1,7 @@
-import $ from 'jquery';
 import { run } from '@ember/runloop';
 import { module, test } from 'qunit';
 import startApp from '../helpers/start-app';
+import { find } from 'ember-native-dom-helpers';
 
 let application;
 const dialogSelector = '.ember-modal-dialog';
@@ -25,7 +25,7 @@ test('target - selector', function(assert) {
     closeSelector: dialogCloseButton,
     hasOverlay: false,
     whileOpen() {
-      assert.ok($(dialogSelector).hasClass('ember-tether-target-attached-left'), 'has targetAttachment class name');
+      assert.ok(find(dialogSelector).classList.contains('ember-tether-target-attached-left'), 'has targetAttachment class name');
     }
   });
 });
