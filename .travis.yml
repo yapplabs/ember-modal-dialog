@@ -25,7 +25,7 @@ before_install:
   - yarn global add bower
 
 install:
-  - yarn install --no-lockfile
+  - yarn install --no-lockfile --ignore-engines
   - bower install
 
 script:
