@@ -58,7 +58,7 @@ export default Component.extend({
 
   makeOverlayClickableOnIOS: on('didInsertElement', function() {
     if (this.get('isIOS')) {
-      document.querySelector('div[data-ember-modal-dialog-overlay]').style.cursor = 'pointer';
+      document.querySelector('.ember-modal-overlay').style.cursor = 'pointer';
     }
   }),
 
