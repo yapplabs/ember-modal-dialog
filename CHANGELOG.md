@@ -1,7 +1,14 @@
 # Change Log
 
-## [2.4.2](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.2) (2018-02-22)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.1...2.4.2)
+## [2.4.3](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.3) (2018-03-03)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.2...2.4.3)
+
+**Merged pull requests:**
+
+- Fix bug in specifying incorrect overlay selector on iOS [\#245](https://github.com/yapplabs/ember-modal-dialog/pull/245) ([lukemelia](https://github.com/lukemelia))
+
+## [v2.4.2](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.2) (2018-02-22)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.1...v2.4.2)
 
 **Merged pull requests:**
 
