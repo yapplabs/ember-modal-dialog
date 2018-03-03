@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { oneWay } from '@ember/object/computed';
 import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/basic-dialog';
@@ -13,7 +14,7 @@ export default Component.extend({
   wrapperClassNames: null,
 
   modalService: service('modal-dialog'),
-  destinationElementId: computed.oneWay('modalService.destinationElementId'),
+  destinationElementId: oneWay('modalService.destinationElementId'),
 
   variantWrapperClass: 'emd-static',
   containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', function() {
