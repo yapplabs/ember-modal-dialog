@@ -1,3 +1,4 @@
+import { oneWay, readOnly } from '@ember/object/computed';
 import Component from '@ember/component';
 import { dasherize } from '@ember/string';
 import { computed } from '@ember/object';
@@ -13,7 +14,7 @@ export default Component.extend({
   tagName: '',
   layout,
   modalService: service('modal-dialog'),
-  destinationElementId: computed.oneWay('modalService.destinationElementId'),
+  destinationElementId: oneWay('modalService.destinationElementId'),
   modalDialogComponentName: computed('renderInPlace', 'tetherTarget', 'animatable', 'hasLiquidWormhole', 'hasLiquidTether', function(){
     let tetherTarget = this.get('tetherTarget');
     let hasLiquidTether = this.get('hasLiquidTether');
@@ -33,8 +34,8 @@ export default Component.extend({
     return 'ember-modal-dialog/-basic-dialog';
   }),
   animatable: null,
-  hasLiquidWormhole: computed.readOnly('modalService.hasLiquidWormhole'),
-  hasLiquidTether: computed.readOnly('modalService.hasLiquidTether'),
+  hasLiquidWormhole: readOnly('modalService.hasLiquidWormhole'),
+  hasLiquidTether: readOnly('modalService.hasLiquidTether'),
 
   didReceiveAttrs() {
     this._super(...arguments);
@@ -71,7 +72,7 @@ export default Component.extend({
   clickOutsideToClose: false,
   renderInPlace: false,
   tetherTarget: null,
-  stack: computed.oneWay('elementId'), // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
+  stack: oneWay('elementId'), // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
   value: 0, // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
 
   targetAttachment: 'middle center',
