@@ -70,7 +70,8 @@ export default Component.extend({
       }
 
       // if the click is within the dialog, do nothing
-      if (document.querySelector(modalSelector).contains(target)) {
+      let modalEl = document.querySelector(modalSelector);
+      if (modalEl && modalEl.contains(target)) {
         return;
       }
 
