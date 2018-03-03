@@ -10,7 +10,6 @@ Router.map(function() {
   this.route('tethered');
   this.route('animatable');
   this.route('tethered-animatable');
-  this.route('tether-dialog'); //deprecated
 });
 
 export default Router;
