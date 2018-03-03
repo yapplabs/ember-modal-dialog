@@ -16,7 +16,8 @@
     "build": "ember build",
     "start": "ember serve",
     "deploy": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -",
-    "test": "ember try:each"
+    "test": "ember try:each",
+    "lint:js": "eslint ./*.js app config lib server tests"
   },
   "dependencies": {
     "ember-cli-babel": "^6.12.0",
