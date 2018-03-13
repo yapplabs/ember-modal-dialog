@@ -12,6 +12,7 @@ module.exports = {
     'ember'
   ],
   rules: {
-    'ember/new-module-imports': 'error'
+    'ember/new-module-imports': 'error',
+    'ember/no-jquery': 'error'
   }
 };

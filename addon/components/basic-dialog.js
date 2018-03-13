@@ -1,8 +1,6 @@
-import { on } from '@ember/object/evented';
 import Component from '@ember/component';
-import $ from 'jquery';
 import { computed } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
+import { oneWay } from '@ember/object/computed';
 import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/basic-dialog';
@@ -11,8 +9,12 @@ export default Component.extend({
   tagName: '',
   layout,
 
+  containerClassNames: null,
+  overlayClassNames: null,
+  wrapperClassNames: null,
+
   modalService: service('modal-dialog'),
-  destinationElementId: computed.oneWay('modalService.destinationElementId'),
+  destinationElementId: oneWay('modalService.destinationElementId'),
 
   variantWrapperClass: 'emd-static',
   containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', function() {
@@ -50,54 +52,63 @@ export default Component.extend({
     return this.get('overlayPosition') === 'sibling';
   }),
 
-  isIOS: computed(function() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent);
-  }),
-
-  makeOverlayClickableOnIOS: on('didInsertElement', function() {
-    if (this.get('isIOS')) {
-      $('div[data-ember-modal-dialog-overlay]').css('cursor', 'pointer');
-    }
-  }),
-
   didInsertElement() {
     if (!this.get('clickOutsideToClose')) {
       return;
     }
+    this.makeOverlayClickableOnIOS();
 
-    const handleClick = (event) => {
-      let $eventTarget = $(event.target);
-
+    this.handleClick = ({ target }) => {
       // if the click has already resulted in the target
       // being removed or hidden, do nothing
-      if (!$eventTarget.is(':visible')) {
+      if (target.offsetWidth === 0 && target.offsetHeight === 0) {
         return;
       }
 
+      let modalSelector = '.ember-modal-dialog';
+      if (this.get('stack')) {
+        modalSelector = '#' + this.get('stack') + modalSelector;
+      }
+
       // if the click is within the dialog, do nothing
-      if ($eventTarget.closest('.ember-modal-dialog').length) {
+      let modalEl = document.querySelector(modalSelector);
+      if (modalEl && modalEl.contains(target)) {
         return;
       }
 
       this.sendAction('onClose');
     };
-    const registerClick = () => $(document).on(`click.ember-modal-dialog-${guidFor(this)}`, handleClick);
+
+    const registerClick = () => document.addEventListener('click', this.handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
 
     if (this.get('isIOS')) {
-      const registerTouch = () => $(document).on(`touchend.ember-modal-dialog-${guidFor(this)}`, handleClick);
+      const registerTouch = () => document.addEventListener('touchend', this.handleClick);
       setTimeout(registerTouch);
     }
     this._super(...arguments);
   },
 
   willDestroyElement() {
-    $(document).off(`click.ember-modal-dialog-${guidFor(this)}`);
+    document.removeEventListener('click', this.handleClick);
     if (this.get('isIOS')) {
-      $(document).off(`touchend.ember-modal-dialog-${guidFor(this)}`);
+      document.removeEventListener('touchend', this.handleClick);
     }
     this._super(...arguments);
+  },
+
+  isIOS: computed(function() {
+    return /iPad|iPhone|iPod/.test(navigator.userAgent);
+  }),
+
+  makeOverlayClickableOnIOS: function() {
+    if (this.get('isIOS')) {
+      let overlayEl = document.querySelector('div[data-emd-overlay]');
+      if (overlayEl) {
+        overlayEl.style.cursor = 'pointer';
+      }
+    }
   }
 });

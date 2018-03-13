@@ -1,4 +1,3 @@
-import $ from 'jquery';
 import Controller from '@ember/controller';
 import { set, get } from '@ember/object';
 
@@ -58,11 +57,11 @@ export default Controller.extend({
       this.toggleProperty('isShowingCenteredScrolling');
 
       if (this.get('isShowingCenteredScrolling')) {
-        $('#modal-overlays').addClass('active');
-        $('body').addClass('centered-modal-showing');
+        document.querySelector('#modal-overlays').classList.add('active');
+        document.body.classList.add('centered-modal-showing');
       } else {
-        $('#modal-overlays').removeClass('active');
-        $('body').removeClass('centered-modal-showing');
+        document.querySelector('#modal-overlays').classList.remove('active');
+        document.body.classList.remove('centered-modal-showing');
       }
     },
     clickedTranslucentOverlay() {

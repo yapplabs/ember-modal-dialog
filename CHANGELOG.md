@@ -1,5 +1,43 @@
 # Change Log
 
+## [2.4.3](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.3) (2018-03-03)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.2...2.4.3)
+
+**Merged pull requests:**
+
+- Fix bug in specifying incorrect overlay selector on iOS [\#245](https://github.com/yapplabs/ember-modal-dialog/pull/245) ([lukemelia](https://github.com/lukemelia))
+
+## [v2.4.2](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.2) (2018-02-22)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.1...v2.4.2)
+
+**Merged pull requests:**
+
+- Update version compatibility \(which controls ember:try version targets\) [\#243](https://github.com/yapplabs/ember-modal-dialog/pull/243) ([lukemelia](https://github.com/lukemelia))
+- Fix bug with clickOutsideToClose when specifying a stack [\#242](https://github.com/yapplabs/ember-modal-dialog/pull/242) ([andrewhavens](https://github.com/andrewhavens))
+- Removing jQuery [\#234](https://github.com/yapplabs/ember-modal-dialog/pull/234) ([gmurphey](https://github.com/gmurphey))
+- Confusing sentence [\#223](https://github.com/yapplabs/ember-modal-dialog/pull/223) ([Dan-Ste](https://github.com/Dan-Ste))
+
+## [v2.4.1](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.1) (2017-12-05)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.0...v2.4.1)
+
+**Merged pull requests:**
+
+- Revert modules update to file in app directory [\#232](https://github.com/yapplabs/ember-modal-dialog/pull/232) ([Dhaulagiri](https://github.com/Dhaulagiri))
+- handle global document being undefined [\#230](https://github.com/yapplabs/ember-modal-dialog/pull/230) ([BryanCrotaz](https://github.com/BryanCrotaz))
+
+## [v2.4.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.0) (2017-11-21)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.3.0...v2.4.0)
+
+**Merged pull requests:**
+
+- Add ember-cli-version-checker as a dep [\#222](https://github.com/yapplabs/ember-modal-dialog/pull/222) ([samselikoff](https://github.com/samselikoff))
+- Make optional dependencies section easier to read [\#220](https://github.com/yapplabs/ember-modal-dialog/pull/220) ([chrisvdp](https://github.com/chrisvdp))
+- fix\(\#195\): provide default values for concatenatedProperties [\#217](https://github.com/yapplabs/ember-modal-dialog/pull/217) ([RustyToms](https://github.com/RustyToms))
+- use new modules api [\#215](https://github.com/yapplabs/ember-modal-dialog/pull/215) ([Dhaulagiri](https://github.com/Dhaulagiri))
+- Fixed formatting on `ember install ember-tether` [\#209](https://github.com/yapplabs/ember-modal-dialog/pull/209) ([djones](https://github.com/djones))
+- keyboard example - use Ember best practice form instead of .on\(\) [\#208](https://github.com/yapplabs/ember-modal-dialog/pull/208) ([caseywatts](https://github.com/caseywatts))
+- Update imports for newer Ember-cli [\#204](https://github.com/yapplabs/ember-modal-dialog/pull/204) ([mazondo](https://github.com/mazondo))
+
 ## [v2.3.0](https://github.com/yapplabs/ember-modal-dialog/tree/v2.3.0) (2017-06-23)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.2.0...v2.3.0)
 
