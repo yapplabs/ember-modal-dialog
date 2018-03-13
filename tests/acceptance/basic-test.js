@@ -135,17 +135,11 @@ test('modal with custom styles', async function(assert) {
     dialogText: 'Custom Styles',
     closeSelector: overlaySelector,
     whileOpen() {
-<<<<<<< HEAD
-      assert.ok($(`${modalRootElementSelector} ${overlaySelector}`).hasClass('custom-styles-overlay'), 'has provided overlayClass');
-      assert.ok($(`${modalRootElementSelector} ${dialogSelector}`).hasClass('custom-styles-modal-container'), 'has provided container-class');
+      assert.ok(find(`${modalRootElementSelector} ${overlaySelector}`).classList.contains('custom-styles-overlay'), 'has provided overlayClass');
+      assert.ok(find(`${modalRootElementSelector} ${dialogSelector}`).classList.contains('custom-styles-modal-container'), 'has provided container-class');
     },
     ariaLabelId: "example-custom-styles-title",
     ariaDescriptionId: "example-custom-styles-desc"
-=======
-      assert.ok(find(`${modalRootElementSelector} ${overlaySelector}`).classList.contains('custom-styles-overlay'), 'has provided overlayClass');
-      assert.ok(find(`${modalRootElementSelector} ${dialogSelector}`).classList.contains('custom-styles-modal-container'), 'has provided container-class');
-    }
->>>>>>> master
   });
   await assert.dialogOpensAndCloses({
     openSelector: '#example-custom-styles button',
@@ -162,15 +156,10 @@ test('target - selector', async function(assert) {
     dialogText: 'Target - Selector',
     closeSelector: dialogCloseButton,
     whileOpen() {
-<<<<<<< HEAD
-      assert.ok($(dialogSelector).hasClass('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
+      assert.ok(find(dialogSelector).classList.contains('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
     },
     ariaLabelId: "example-target-selector-title",
     ariaDescriptionId: "example-target-selector-desc"
-=======
-      assert.ok(find(dialogSelector).classList.contains('ember-modal-dialog-target-attachment-left'), 'has targetAttachment class name');
-    }
->>>>>>> master
   });
 });
 
