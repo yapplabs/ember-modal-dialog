@@ -13,7 +13,7 @@ export default Service.extend({
   hasEmberTether: computedFromConfig('hasEmberTether'),
   hasLiquidWormhole: computedFromConfig('hasLiquidWormhole'),
   hasLiquidTether: computedFromConfig('hasLiquidTether'),
-  destinationElementId: computed(function() {
+  destinationElementSelector: computed(function() {
     /*
       everywhere except test, this property will be overwritten
       by the initializer that appends the modal container div
@@ -21,7 +21,7 @@ export default Service.extend({
       tests, this is a nice fallback.
     */
     if (ENV.environment === 'test') {
-      return 'ember-testing';
+      return '#ember-testing';
     }
   })
 });

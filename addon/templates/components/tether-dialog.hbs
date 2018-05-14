@@ -1,5 +1,5 @@
 {{#if hasOverlay}}
-  {{#ember-wormhole to=destinationElementId}}
+  {{#ember-wormhole destinationElement=destinationElement}}
     <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
   {{/ember-wormhole}}
 {{/if}}

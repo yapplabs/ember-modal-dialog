@@ -25,6 +25,7 @@ module.exports = function(environment) {
       // Here is how to configure a custom modalRootElementId
       // emberModalDialog: {
       //   modalRootElementId: 'custom-modal-root-element'
+      //   modalRootElementSelector: '#some .existing-element .selector'
       //}
     }
   };

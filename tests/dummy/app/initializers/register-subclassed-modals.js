@@ -5,8 +5,8 @@ export default {
     let customModals = ['my-cool-modal-dialog'];
     customModals.forEach(function(customModal) {
       App.inject(`component:${customModal}`,
-                 'destinationElementId',
-                 'config:modals-container-id');
+                 'destinationElementSelector',
+                 'config:modals-container-selector');
     });
   }
 };
