@@ -18,15 +18,22 @@ function appendContainerElement(rootElementId, id) {
 
 export default function(App) {
   let emberModalDialog = App.emberModalDialog || {};
-  let modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
 
-  App.register('config:modals-container-id',
-               modalContainerElId,
+  let modalContainerElSelector;
+
+  if (emberModalDialog.modalRootElementSelector) {
+    modalContainerElSelector = emberModalDialog.modalRootElementSelector;
+  } else  {
+    let modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
+    modalContainerElSelector = `#${modalContainerElId}`;
+    appendContainerElement(App.rootElement, modalContainerElId);
+  }
+
+  App.register('config:modals-container-selector',
+               modalContainerElSelector,
                { instantiate: false });
 
   App.inject('service:modal-dialog',
-             'destinationElementId',
-             'config:modals-container-id');
-
-  appendContainerElement(App.rootElement, modalContainerElId);
+             'destinationElementSelector',
+             'config:modals-container-selector');
 }

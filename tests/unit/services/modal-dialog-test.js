@@ -7,5 +7,5 @@ moduleFor('service:modal-dialog', 'Unit | Service | modal dialog', {
 
 test('it reports ember-testing as the destinationElementId', function(assert) {
   let service = this.subject();
-  assert.equal(service.get('destinationElementId'), 'ember-testing');
+  assert.equal(service.get('destinationElementSelector'), '#ember-testing');
 });
