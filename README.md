@@ -301,7 +301,8 @@ export default ModalDialog.extend({
 });
 ```
 
-This can then be used like so:
+By subclassing `modal-dialog` your component will use the default modal dialog template. Therefore, you do not need to create a `app/templates/components/full-screen-modal.hbs` file.
+Your component can then be used like so:
 
 ```htmlbars
 {{#full-screen-modal}}
