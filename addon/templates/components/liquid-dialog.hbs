@@ -4,7 +4,7 @@
       {{#if hasOverlay}}
         <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
       {{/if}}
-      <div class={{containerClassNamesString}}>
+      <div class={{containerClassNamesString}} role="dialog" aria-labelledby={{aria-labelledby}} aria-describedby={{aria-describedby}}>
         {{yield}}
       </div>
     </div>
@@ -13,12 +13,12 @@
   {{#liquid-wormhole stack=stack value=value class=(concat 'liquid-dialog-container ' wrapperClassNamesString ' ' wrapperClass)}}
     {{#if hasOverlay}}
       <div class={{overlayClassNamesString}} onclick={{action (ignore-children onClickOverlay)}} tabindex="-1" data-emd-overlay>
-        <div class={{containerClassNamesString}}>
+        <div class={{containerClassNamesString}} role="dialog" aria-labelledby={{aria-labelledby}} aria-describedby={{aria-describedby}}>
           {{yield}}
         </div>
       </div>
     {{else}}
-      <div class={{containerClassNamesString}}>
+      <div class={{containerClassNamesString}} role="dialog" aria-labelledby={{aria-labelledby}} aria-describedby={{aria-describedby}}>
         {{yield}}
       </div>
     {{/if}}

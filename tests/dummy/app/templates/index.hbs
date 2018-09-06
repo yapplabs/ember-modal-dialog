@@ -18,9 +18,11 @@
     {{!-- BEGIN-SNIPPET basic-modal-dialog --}}
     {{#modal-dialog
         onClose=(action (mut isShowingBasic) false)
+        aria-labelledby="example-basic-title"
+        aria-describedby="example-basic-desc"
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Basic</p>
+      <h1 id="example-basic-title">Stop! Modal Time!</h1>
+      <p id="example-basic-desc">Basic</p>
       <button onclick={{action (mut isShowingBasic) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -36,9 +38,11 @@
     {{#modal-dialog
         onClose=(action (mut isShowingTranslucent) false)
         translucentOverlay=true
+        aria-labelledby="example-translucent-title"
+        aria-describedby="example-translucent-desc"
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>With Translucent Overlay</p>
+      <h1 id="example-translucent-title">Stop! Modal Time!</h1>
+      <p id="example-translucent-desc">With Translucent Overlay</p>
       <button onclick={{action (mut isShowingTranslucent) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -55,9 +59,11 @@
         onClose=(action (mut isShowingTranslucentWithCallback) false)
         translucentOverlay=true
         onClickOverlay='clickedTranslucentOverlay'
+        aria-labelledby="example-translucent-with-callback-title"
+        aria-describedby="example-translucent-with-callback-desc"
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Translucent Overlay with Callback</p>
+      <h1 id="example-translucent-with-callback-title">Stop! Modal Time!</h1>
+      <p id="example-translucent-with-callback-desc">Translucent Overlay with Callback</p>
       <button onclick={{action (mut isShowingTranslucentWithCallback) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -74,9 +80,11 @@
         onClose=(action (mut isShowingWithoutOverlay) false)
         hasOverlay=false
         clickOutsideToClose=true
+        aria-labelledby="example-without-overlay-title"
+        aria-describedby="example-without-overlay-desc"
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Without Overlay</p>
+      <h1 id="example-without-overlay-title">Stop! Modal Time!</h1>
+      <p id="example-without-overlay-desc">Without Overlay</p>
       <button onclick={{action (mut isShowingWithoutOverlay) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -93,9 +101,11 @@
         onClose=(action (mut isShowingSibling) false)
         translucentOverlay=true
         overlayPosition='sibling'
+        aria-labelledby="example-overlay-sibling-title"
+        aria-describedby="example-overlay-sibling-desc"
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>With Translucent Overlay as Sibling</p>
+      <h1 id="example-overlay-sibling-title">Stop! Modal Time!</h1>
+      <p id="example-overlay-sibling-desc">With Translucent Overlay as Sibling</p>
       <button onclick={{action (mut isShowingSibling) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -114,9 +124,11 @@
         targetAttachment='none'
         containerClass=customContainerClassNames
         overlayClass='custom-styles-overlay'
+        aria-labelledby="example-custom-styles-title"
+        aria-describedby="example-custom-styles-desc"
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Custom Styles</p>
+      <h1 id="example-custom-styles-title">Stop! Modal Time!</h1>
+      <p id="example-custom-styles-desc">Custom Styles</p>
       <button onclick={{action (mut isShowingCustomStyles) false}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -134,9 +146,11 @@
     {{#modal-dialog onClose='toggleTargetSelector'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target='#alignModalDialogToMe' }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - Selector: '#alignModalDialogToMe'</p>
+                    target='#alignModalDialogToMe'
+                    aria-labelledby="example-target-selector-title"
+                    aria-describedby="example-target-selector-desc" }}
+      <h1 id="example-target-selector-title">Stop! Modal Time!</h1>
+      <p id="example-target-selector-desc">Target - Selector: '#alignModalDialogToMe'</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetSelector'}}>Close</button>
@@ -158,9 +172,11 @@
     {{#modal-dialog onClose='toggleTargetElement'
                     targetAttachment=exampleTargetAttachment
                     attachment=exampleAttachment
-                    target="#bwmde" }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - Element #bwmde</p>
+                    target="#bwmde"
+                    aria-labelledby="example-target-element-title"
+                    aria-describedby="example-target-element-desc" }}
+      <h1 id="example-target-element-title">Stop! Modal Time!</h1>
+      <p id="example-target-element-desc">Target - Element #bwmde</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
       <button {{action 'closeTargetElement'}}>Close</button>
@@ -181,8 +197,8 @@
         onClose=(action (mut isShowingSubclassed) false)
         translucentOverlay=true
     }}
-      <h1>Stop! Modal Time!</h1>
-      <p>Via Subclass</p>
+      <h1 id="my-cool-title">Stop! Modal Time!</h1>
+      <p id="my-cool-desc">Via Subclass</p>
       <button onclick={{action (mut isShowingSubclassed) false}}>Close</button>
     {{/my-cool-modal-dialog}}
     {{!-- END-SNIPPET --}}
@@ -204,9 +220,11 @@
           targetAttachment='none'
           containerClass='ember-modal-dialog-in-place'
           overlayClass='ember-modal-overlay-in-place'
+          aria-labelledby="example-in-place-title"
+          aria-describedby="example-in-place-desc"
       }}
-        <h1>Stop! Modal Time!</h1>
-        <p>In Place</p>
+        <h1 id="example-in-place-title">Stop! Modal Time!</h1>
+        <p id="example-in-place-desc">In Place</p>
         <button onclick={{action (mut isShowingInPlace) false}}>Close</button>
       {{/modal-dialog}}
       {{!-- END-SNIPPET --}}
@@ -229,8 +247,9 @@
           containerClass='centered-scrolling-container'
           overlayClass='centered-scrolling-overlay'
           wrapperClass='centered-scrolling-wrapper'
+          aria-labelledby="example-centered-scrolling-title"
       }}
-        <h1>Really Long Content To Demonstrate Scrolling</h1>
+        <h1 id="example-centered-scrolling-title">Really Long Content To Demonstrate Scrolling</h1>
         <ul>
           <li>Hover over modal and scroll</li>
           <li>Also hover over overlay and scroll</li>
@@ -257,8 +276,9 @@
         translucentOverlay=true
         targetAttachment='elementCenter'
         target='#elementCenter'
+        aria-labelledby="example-center-title"
     }}
-      <p>Centered on element.</p>
+      <p id="example-center-title">Centered on element.</p>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
