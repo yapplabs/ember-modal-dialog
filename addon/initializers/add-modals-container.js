@@ -1,7 +1,7 @@
 /*globals document */
 let hasDOM = typeof document !== 'undefined';
 
-function appendContainerElement(rootElementId, id) {
+function appendContainerElement(rootElementOrId, id) {
   if (!hasDOM) {
     return;
   }
@@ -10,7 +10,7 @@ function appendContainerElement(rootElementId, id) {
     return;
   }
 
-  let rootEl = document.querySelector(rootElementId);
+  let rootEl = rootElementOrId.appendChild ? rootElementOrId : document.querySelector(rootElementOrId);
   let modalContainerEl = document.createElement('div');
   modalContainerEl.id = id;
   rootEl.appendChild(modalContainerEl);
