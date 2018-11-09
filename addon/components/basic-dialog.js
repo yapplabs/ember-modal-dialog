@@ -80,7 +80,7 @@ export default Component.extend({
         return;
       }
 
-      this.sendAction('onClose');
+      this.get('onClose')();
     };
 
     const registerClick = () => document.addEventListener('click', this.handleClick);

@@ -99,14 +99,14 @@ export default Component.extend({
   },
   actions: {
     onClose() {
-      this.sendAction('onClose');
+      this.get('onClose')();
     },
     onClickOverlay(e) {
       e.preventDefault();
       if (this.get('onClickOverlay')) {
-        this.sendAction('onClickOverlay');
+        this.get('onClickOverlay')();
       } else {
-        this.sendAction('onClose');
+        this.get('onClose')();
       }
     }
   }

@@ -275,7 +275,7 @@ export default ModalDialog.extend(EmberKeyboardMixin, {
   },
 
   closeOnEsc: Ember.on(keyDown('Escape'), function() {
-    this.sendAction('close');
+    this.get('close')();
   })
 });
 ```
