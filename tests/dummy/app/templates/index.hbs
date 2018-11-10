@@ -54,7 +54,7 @@
     {{#modal-dialog
         onClose=(action (mut isShowingTranslucentWithCallback) false)
         translucentOverlay=true
-        onClickOverlay='clickedTranslucentOverlay'
+        onClickOverlay=(action 'clickedTranslucentOverlay')
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Translucent Overlay with Callback</p>
@@ -223,7 +223,7 @@
     {{#if isShowingCenteredScrolling}}
       {{!-- BEGIN-SNIPPET centered-scrolling-modal-dialog --}}
       {{#modal-dialog
-          onClose='toggleCenteredScrolling'
+          onClose=(action 'toggleCenteredScrolling')
           translucentOverlay=true
           targetAttachment='none'
           containerClass='centered-scrolling-container'

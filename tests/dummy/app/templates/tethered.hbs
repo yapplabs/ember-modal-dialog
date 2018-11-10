@@ -50,7 +50,7 @@
   {{#if isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog-tethered --}}
     {{#modal-dialog
-      onClose='toggleTargetSelector'
+      onClose=(action 'toggleTargetSelector')
       hasOverlay=false
       targetAttachment=exampleTargetAttachment
       attachment=exampleAttachment
@@ -77,7 +77,7 @@
   {{#if isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog-tethered --}}
     {{#modal-dialog
-        onClose='toggleTargetElement'
+        onClose=(action 'toggleTargetElement')
         hasOverlay=false
         targetAttachment=exampleTargetAttachment
         attachment=exampleAttachment
