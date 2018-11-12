@@ -1,32 +1,31 @@
-{{#component modalDialogComponentName
-    wrapperClass=wrapperClass
-    wrapperClassNames=wrapperClassNames
-    overlayClass=overlayClass
-    overlayClassNames=overlayClassNames
-    containerClass=containerClass
-    containerClassNames=containerClassNames
-    hasOverlay=hasOverlay
-    translucentOverlay=translucentOverlay
-    clickOutsideToClose=clickOutsideToClose
-    destinationElementId=destinationElementId
-    overlayPosition=overlayPosition
-
-    tetherTarget=tetherTarget
-    legacyTarget=target
-    attachment=attachment
-    targetAttachment=targetAttachment
-    targetModifier=targetModifier
-    targetOffset=targetOffset
-    offset=offset
-    tetherClassPrefix=tetherClassPrefix
-    constraints=constraints
-    attachmentClass=attachmentClass
-    targetAttachmentClass=targetAttachmentClass
-    stack=stack
-    value=value
-
-    onClickOverlay=(action 'onClickOverlay')
-    onClose=(action 'onClose')
+{{#component
+  modalDialogComponentName
+  wrapperClass=wrapperClass
+  wrapperClassNames=wrapperClassNames
+  overlayClass=overlayClass
+  overlayClassNames=overlayClassNames
+  containerClass=containerClass
+  containerClassNames=containerClassNames
+  hasOverlay=hasOverlay
+  translucentOverlay=translucentOverlay
+  clickOutsideToClose=clickOutsideToClose
+  destinationElementId=destinationElementId
+  overlayPosition=overlayPosition
+  tetherTarget=tetherTarget
+  legacyTarget=target
+  attachment=attachment
+  targetAttachment=targetAttachment
+  targetModifier=targetModifier
+  targetOffset=targetOffset
+  offset=offset
+  tetherClassPrefix=tetherClassPrefix
+  constraints=constraints
+  attachmentClass=attachmentClass
+  targetAttachmentClass=targetAttachmentClass
+  stack=stack
+  value=value
+  onClickOverlay=(action "onClickOverlay")
+  onClose=(action "onClose")
 }}
   {{yield}}
 {{/component}}

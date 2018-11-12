@@ -2,12 +2,18 @@
   {{#if isOverlaySibling}}
     <div class="{{wrapperClassNamesString}} {{wrapperClass}}">
       {{#if hasOverlay}}
-        <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
+        <div
+          class={{overlayClassNamesString}}
+          onclick={{action onClickOverlay}}
+          tabindex="-1"
+          data-emd-overlay
+        >
+        </div>
       {{/if}}
       {{#ember-modal-dialog-positioned-container
-          class=containerClassNamesString
-          targetAttachment=targetAttachment
-          target=legacyTarget
+        class=containerClassNamesString
+        targetAttachment=targetAttachment
+        target=legacyTarget
       }}
         {{yield}}
       {{/ember-modal-dialog-positioned-container}}
@@ -15,20 +21,25 @@
   {{else}}
     <div class="{{wrapperClassNamesString}} {{wrapperClass}}">
       {{#if hasOverlay}}
-        <div class={{overlayClassNamesString}} onclick={{action (ignore-children onClickOverlay)}} tabindex="-1" data-emd-overlay>
+        <div
+          class={{overlayClassNamesString}}
+          onclick={{action (ignore-children onClickOverlay)}}
+          tabindex="-1"
+          data-emd-overlay
+        >
           {{#ember-modal-dialog-positioned-container
-              class=containerClassNamesString
-              targetAttachment=targetAttachment
-              target=legacyTarget
+            class=containerClassNamesString
+            targetAttachment=targetAttachment
+            target=legacyTarget
           }}
             {{yield}}
           {{/ember-modal-dialog-positioned-container}}
         </div>
       {{else}}
         {{#ember-modal-dialog-positioned-container
-            class=containerClassNamesString
-            targetAttachment=targetAttachment
-            target=legacyTarget
+          class=containerClassNamesString
+          targetAttachment=targetAttachment
+          target=legacyTarget
         }}
           {{yield}}
         {{/ember-modal-dialog-positioned-container}}

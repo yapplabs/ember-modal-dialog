@@ -1,20 +1,29 @@
 {{#if hasOverlay}}
-  {{#liquid-wormhole stack='modal-overlay' class="liquid-dialog-container"}}
-    <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
+  {{#liquid-wormhole
+    stack="modal-overlay"
+    class="liquid-dialog-container"
+  }}
+    <div
+      class={{overlayClassNamesString}}
+      onclick={{action onClickOverlay}}
+      tabindex="-1"
+      data-emd-overlay
+    >
+    </div>
   {{/liquid-wormhole}}
 {{/if}}
 {{#liquid-tether
-    class=containerClassNamesString
-    target=tetherTarget
-    attachment=attachment
-    targetAttachment=targetAttachment
-    targetModifier=targetModifier
-    classPrefix=tetherClassPrefix
-    offset=offset
-    targetOffset=targetOffset
-    constraints=constraints
-    stack=stack
-    value=value
+  class=containerClassNamesString
+  target=tetherTarget
+  attachment=attachment
+  targetAttachment=targetAttachment
+  targetModifier=targetModifier
+  classPrefix=tetherClassPrefix
+  offset=offset
+  targetOffset=targetOffset
+  constraints=constraints
+  stack=stack
+  value=value
 }}
   {{yield}}
 {{/liquid-tether}}

@@ -1,18 +1,24 @@
 {{#if hasOverlay}}
   {{#ember-wormhole to=destinationElementId}}
-    <div class={{overlayClassNamesString}} onclick={{action onClickOverlay}} tabindex="-1" data-emd-overlay></div>
+    <div
+      class={{overlayClassNamesString}}
+      onclick={{action onClickOverlay}}
+      tabindex="-1"
+      data-emd-overlay
+    >
+    </div>
   {{/ember-wormhole}}
 {{/if}}
 {{#ember-tether
-    class=containerClassNamesString
-    target=tetherTarget
-    attachment=attachment
-    targetAttachment=targetAttachment
-    targetModifier=targetModifier
-    classPrefix=tetherClassPrefix
-    offset=offset
-    targetOffset=targetOffset
-    constraints=constraints
+  class=containerClassNamesString
+  target=tetherTarget
+  attachment=attachment
+  targetAttachment=targetAttachment
+  targetModifier=targetModifier
+  classPrefix=tetherClassPrefix
+  offset=offset
+  targetOffset=targetOffset
+  constraints=constraints
 }}
   {{yield}}
 {{/ember-tether}}

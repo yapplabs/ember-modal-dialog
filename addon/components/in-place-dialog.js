@@ -1,3 +1,4 @@
+/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
 import Component from '@ember/component';
 import { computed } from '@ember/object';
 import layout from '../templates/components/in-place-dialog';

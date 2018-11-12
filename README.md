@@ -339,29 +339,39 @@ module.exports = {
 * For Ember versions >= 2.4, use the latest published version
 * For Ember versions >= 1.10 and < 2.4, use ember-modal-dialog 1.0.0 _(Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See #71)_
 
-## Installation
+Installation
+------------------------------------------------------------------------------
 
 * `ember install ember-modal-dialog`
 
-## Running the dummy app
+### Installation
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+* `git clone <repository-url>`
+* `cd my-addon`
+* `npm install`
 
-## Running Tests
+### Linting
 
-* `ember try:each`
-* `ember test`
-* `ember test --server`
+* `npm run lint:hbs`
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
+
+### Running tests
+
+* `ember test` – Runs the test suite on the current Ember version
+* `ember test --server` – Runs the test suite in "watch mode"
+* `ember try:each` – Runs the test suite against multiple Ember versions
 
 ## Unit Tests
 
 When running unit tests on components that use ember-modal-dialog, modals will be
 attached to the `#ember-testing` div.
 
-## Building
 
-* `ember build`
+## Running the Dummy Application
+
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
@@ -378,4 +388,4 @@ This project uses [https://github.com/skywinder/github-changelog-generator](http
 ## Credits
 
 Contributions from @stefanpenner, @krisselden, @chrislopresto, @lukemelia, @raycohen, @andrewhavens, @samselikoff and
-others. [Yapp Labs](http://yapplabs.com) is an Ember.js consultancy based in NYC.
+others. [Yapp Labs](http://yapplabs.com) was an Ember.js consultancy based in NYC, that has since been folded into [Yapp](https://www.yapp.us).
