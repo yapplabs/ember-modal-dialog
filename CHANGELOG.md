@@ -1,7 +1,30 @@
 # Change Log
 
-## [2.4.3](https://github.com/yapplabs/ember-modal-dialog/tree/2.4.3) (2018-03-03)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.2...2.4.3)
+## [3.0.0-beta.1](https://github.com/yapplabs/ember-modal-dialog/tree/3.0.0-beta.1) (2018-11-12)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.4...3.0.0-beta.1)
+
+**Merged pull requests:**
+
+- \[BREAKING\] Update ember to 3.5, drop support for Ember 2.4  [\#265](https://github.com/yapplabs/ember-modal-dialog/pull/265) ([lukemelia](https://github.com/lukemelia))
+- use closure actions [\#264](https://github.com/yapplabs/ember-modal-dialog/pull/264) ([mcfiredrill](https://github.com/mcfiredrill))
+- Handle when App.rootElement can be a node, rather than an id [\#263](https://github.com/yapplabs/ember-modal-dialog/pull/263) ([averydev](https://github.com/averydev))
+- update README.md Custom Modals section [\#259](https://github.com/yapplabs/ember-modal-dialog/pull/259) ([hakilebara](https://github.com/hakilebara))
+- Update .travis.yml [\#258](https://github.com/yapplabs/ember-modal-dialog/pull/258) ([samselikoff](https://github.com/samselikoff))
+- Don't sendAction in click handler when component isDestroying or isDestroyed [\#255](https://github.com/yapplabs/ember-modal-dialog/pull/255) ([oscarni](https://github.com/oscarni))
+
+## [v2.4.4](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.4) (2018-05-14)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v3.0.0-beta.0...v2.4.4)
+
+## [v3.0.0-beta.0](https://github.com/yapplabs/ember-modal-dialog/tree/v3.0.0-beta.0) (2018-03-03)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.3...v3.0.0-beta.0)
+
+**Merged pull requests:**
+
+- Update dependencies [\#247](https://github.com/yapplabs/ember-modal-dialog/pull/247) ([lukemelia](https://github.com/lukemelia))
+- \[BREAKING\] Remove deprecations in anticipation of 3.0.0 [\#246](https://github.com/yapplabs/ember-modal-dialog/pull/246) ([lukemelia](https://github.com/lukemelia))
+
+## [v2.4.3](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.3) (2018-03-03)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.2...v2.4.3)
 
 **Merged pull requests:**
 
@@ -14,6 +37,7 @@
 
 - Update version compatibility \(which controls ember:try version targets\) [\#243](https://github.com/yapplabs/ember-modal-dialog/pull/243) ([lukemelia](https://github.com/lukemelia))
 - Fix bug with clickOutsideToClose when specifying a stack [\#242](https://github.com/yapplabs/ember-modal-dialog/pull/242) ([andrewhavens](https://github.com/andrewhavens))
+- ember-cli-update to 2.17 [\#235](https://github.com/yapplabs/ember-modal-dialog/pull/235) ([Dhaulagiri](https://github.com/Dhaulagiri))
 - Removing jQuery [\#234](https://github.com/yapplabs/ember-modal-dialog/pull/234) ([gmurphey](https://github.com/gmurphey))
 - Confusing sentence [\#223](https://github.com/yapplabs/ember-modal-dialog/pull/223) ([Dan-Ste](https://github.com/Dan-Ste))
 
