@@ -41,12 +41,14 @@ Here is a more useful example of how to conditionally display a modal based on a
 **Template**
 
 ```htmlbars
-<button {{action "toggleModal"}}>Toggle Modal</button>
+<button {{action (action "toggleModal")}}>Toggle Modal</button>
 
 {{#if isShowingModal}}
-  {{#modal-dialog onClose="toggleModal"
-                  targetAttachment="center"
-                  translucentOverlay=true}}
+  {{#modal-dialog
+      onClose=(action "toggleModal")
+      targetAttachment="center"
+      translucentOverlay=true
+  }}
     Oh hai there!
   {{/modal-dialog}}
 {{/if}}
@@ -169,9 +171,10 @@ Then pass a selector as `tetherTarget` for the modal you wish to position this w
 
 ```htmlbars
 {{#modal-dialog
-  tetherTarget='#target-element-id'
-  targetAttachment='middle right'
-  attachment='middle left'}}
+    tetherTarget='#target-element-id'
+    targetAttachment='middle right'
+    attachment='middle left'
+}}
   I am a modal that will remain tethered to the right of the element with id 'target-element-id'
 {{/modal-dialog}}
 ```
