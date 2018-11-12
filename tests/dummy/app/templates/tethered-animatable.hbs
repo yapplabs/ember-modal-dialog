@@ -50,7 +50,7 @@
   {{#if isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether --}}
     {{#modal-dialog
-      onClose='toggleTargetSelector'
+      onClose=(action 'toggleTargetSelector')
       hasOverlay=false
       targetAttachment=exampleTargetAttachment
       attachment=exampleAttachment
@@ -78,7 +78,7 @@
   {{#if isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog-liquid-tether --}}
     {{#modal-dialog
-        onClose='toggleTargetElement'
+        onClose=(action 'toggleTargetElement')
         hasOverlay=false
         targetAttachment=exampleTargetAttachment
         attachment=exampleAttachment
@@ -104,7 +104,7 @@
   {{#if isShowingElementCenterModal}}
   {{!-- BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether --}}
     {{#modal-dialog
-        onClose='toggleElementCenterModal'
+        onClose=(action 'toggleElementCenterModal')
         translucentOverlay=true
         tetherTarget='#elementCenter'
         animatable=true

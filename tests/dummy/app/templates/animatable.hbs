@@ -18,7 +18,7 @@
   {{#if isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-modal-dialog-animatable --}}
     {{#modal-dialog
-        onClose='toggleBasic'
+        onClose=(action 'toggleBasic')
         overlayPosition='sibling'
         clickOutsideToClose=true
         animatable=true
@@ -38,7 +38,7 @@
   {{#if isShowingTranslucent}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-animatable --}}
     {{#modal-dialog
-        onClose='toggleTranslucent'
+        onClose=(action 'toggleTranslucent')
         translucentOverlay=true
         overlayPosition='sibling'
         clickOutsideToClose=true
@@ -59,7 +59,7 @@
   {{#if isShowingWithoutOverlay}}
     {{!-- BEGIN-SNIPPET without-overlay-modal-dialog-animatable --}}
     {{#modal-dialog
-        onClose='toggleWithoutOverlay'
+        onClose=(action 'toggleWithoutOverlay')
         hasOverlay=false
         animatable=true
     }}
@@ -80,7 +80,7 @@
   {{#if isShowingWithoutOverlayClickOutsideToClose}}
     {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-modal-dialog-animatable --}}
     {{#modal-dialog
-          onClose='toggleWithoutOverlayClickOutsideToClose'
+          onClose=(action 'toggleWithoutOverlayClickOutsideToClose')
           hasOverlay=false
           clickOutsideToClose=true
           animatable=true
@@ -93,7 +93,7 @@
   {{/if}}
   {{#if isShowingWithoutOverlayClickOutsideToCloseAnotherOne}}
     {{#modal-dialog
-        onClose='toggleWithoutOverlayClickOutsideToCloseAnotherOne'
+        onClose=(action 'toggleWithoutOverlayClickOutsideToCloseAnotherOne')
         hasOverlay=false
         clickOutsideToClose=true
         offset='100px 0'
@@ -141,7 +141,7 @@
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog-animatable --}}
     {{#my-cool-modal-dialog
-         onClose='toggleSubclassed'
+         onClose=(action 'toggleSubclassed')
          animatable=true
     }}
       <h1>Stop! Modal Time!</h1>
