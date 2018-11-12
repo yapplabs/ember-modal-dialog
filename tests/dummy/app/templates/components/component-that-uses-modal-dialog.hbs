@@ -1,9 +1,9 @@
-  {{#if isShowingModalDialog}}
-    {{#modal-dialog}}
-      <h1>Stop! Modal Time!</h1>
-      <button class="close" {{action 'closeModalDialog'}}>Close</button>
-    {{/modal-dialog}}
-  {{/if}}
+{{#if isShowingModalDialog}}
+  {{#modal-dialog}}
+    <h1>Stop! Modal Time!</h1>
+    <button class="close" {{action "closeModalDialog"}}>Close</button>
+  {{/modal-dialog}}
+{{/if}}
 
-  <h1>A component that has a modal dialog</h1>
-  <button class="open" {{action 'openModalDialog'}}>Open Dialog</button>
+<h1>A component that has a modal dialog</h1>
+<button class="open" {{action "openModalDialog"}}>Open Dialog</button>

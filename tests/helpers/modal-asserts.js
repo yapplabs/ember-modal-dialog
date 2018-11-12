@@ -1,8 +1,8 @@
-import { click, findAll, waitUntil } from 'ember-native-dom-helpers';
+import { click, waitUntil } from '@ember/test-helpers';
 import QUnit from 'qunit';
 
 export function findContains(selector, text) {
-  return [].slice.apply(findAll(selector)).filter((e) => e.textContent.trim().indexOf(text) > -1)[0];
+  return [].slice.apply(document.querySelectorAll(selector)).filter((e) => e.textContent.trim().indexOf(text) > -1)[0];
 }
 
 export default function registerAssertHelpers() {
@@ -12,17 +12,17 @@ export default function registerAssertHelpers() {
 
   assert.isPresentOnce = function(selector, message) {
     message = message || `${selector} is present in DOM once`;
-    return this.equal(findAll(selector).length, 1, message);
+    return this.equal(document.querySelectorAll(selector).length, 1, message);
   };
 
   assert.isAbsent = function(selector, message) {
     message = message || `${selector} is absent from DOM`;
-    return this.equal(findAll(selector).length, 0, message);
+    return this.equal(document.querySelectorAll(selector).length, 0, message);
   };
 
   assert.isVisible = function(selector, message) {
     message = message || `${selector} is not visible`;
-    return this.ok(findWithAssert(selector).is(':visible'), message);
+    return this.dom(selector).isVisible(message);
   };
 
   assert.dialogOpensAndCloses = async function(options) {

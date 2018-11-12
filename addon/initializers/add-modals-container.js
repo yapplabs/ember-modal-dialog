@@ -1,4 +1,4 @@
-/*globals document */
+/*globals document, Ember */
 let hasDOM = typeof document !== 'undefined';
 
 function appendContainerElement(rootElementOrId, id) {
@@ -21,7 +21,7 @@ export default function(App) {
   let modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
 
   App.register('config:modals-container-id',
-               modalContainerElId,
+               Ember.testing ? 'ember-testing' : modalContainerElId,
                { instantiate: false });
 
   App.inject('service:modal-dialog',

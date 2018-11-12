@@ -55,6 +55,8 @@ export default Component.extend({
   },
   // onClose - set this from templates
 
+  /* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+
   // containerClass - set this from templates
   containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
 
@@ -65,6 +67,7 @@ export default Component.extend({
   wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
 
   concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
+  /* eslint-enable ember/avoid-leaking-state-in-ember-objects */
 
   hasOverlay: true,
   translucentOverlay: false,
