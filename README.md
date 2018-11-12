@@ -336,7 +336,8 @@ module.exports = {
 
 ## Dependencies
 
-* For Ember versions >= 2.4, use the latest published version
+* For Ember versions >= 2.8, use the latest published version (Note that ember-cli >= 2.13 is required, though your ember version may be >= 2.8)
+* For Ember versions >= 2.4 and < 2.8, use the latest 2.x version
 * For Ember versions >= 1.10 and < 2.4, use ember-modal-dialog 1.0.0 _(Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See #71)_
 
 Installation
