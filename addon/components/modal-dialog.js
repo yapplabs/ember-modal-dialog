@@ -77,6 +77,7 @@ export default Component.extend({
   tetherTarget: null,
   stack: oneWay('elementId'), // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
   value: 0, // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
+  onClose: function(){},
 
   targetAttachment: 'middle center',
   tetherClassPrefix: null,
