@@ -102,14 +102,18 @@ export default Component.extend({
   },
   actions: {
     onClose() {
-      this.get('onClose')();
+      if (this.get('onClose')) {
+        this.get('onClose')();
+      }
     },
     onClickOverlay(e) {
       e.preventDefault();
       if (this.get('onClickOverlay')) {
         this.get('onClickOverlay')();
       } else {
-        this.get('onClose')();
+        if (this.get('onClose')) {
+          this.get('onClose')();
+        }
       }
     }
   }
