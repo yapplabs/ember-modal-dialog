@@ -1,11 +1,18 @@
 # Change Log
 
-## [3.0.0-beta.2](https://github.com/yapplabs/ember-modal-dialog/tree/3.0.0-beta.2) (2018-11-12)
-[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v3.0.0-beta.1...3.0.0-beta.2)
+## [3.0.0-beta.3](https://github.com/yapplabs/ember-modal-dialog/tree/3.0.0-beta.3) (2018-11-23)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v3.0.0-beta.2...3.0.0-beta.3)
 
 **Merged pull requests:**
 
-- Update to ember-cli-babel@7. [\#266](https://github.com/yapplabs/ember-modal-dialog/pull/266) ([rwjblue](https://github.com/rwjblue))
+- Only try to invoke onClose action if it has been provided [\#271](https://github.com/yapplabs/ember-modal-dialog/pull/271) ([lukemelia](https://github.com/lukemelia))
+
+## [v3.0.0-beta.2](https://github.com/yapplabs/ember-modal-dialog/tree/v3.0.0-beta.2) (2018-11-12)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v3.0.0-beta.1...v3.0.0-beta.2)
+
+**Merged pull requests:**
+
+- \[BREAKING\] Update to ember-cli-babel@7. \(Drops support for ember-cli \< 2.13\) [\#266](https://github.com/yapplabs/ember-modal-dialog/pull/266) ([rwjblue](https://github.com/rwjblue))
 
 ## [v3.0.0-beta.1](https://github.com/yapplabs/ember-modal-dialog/tree/v3.0.0-beta.1) (2018-11-12)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/v2.4.4...v3.0.0-beta.1)
