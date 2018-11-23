@@ -79,8 +79,9 @@ export default Component.extend({
       if (modalEl && modalEl.contains(target)) {
         return;
       }
-
-      this.get('onClose')();
+      if (this.get('onClose')) {
+        this.get('onClose')();
+      }
     };
 
     const registerClick = () => document.addEventListener('click', this.handleClick);
