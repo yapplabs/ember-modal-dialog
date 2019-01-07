@@ -4,6 +4,41 @@ The ember-modal-dialog addon provides components to implement modal dialogs thro
 
 Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions like [ember-wormhole](//github.com/yapplabs/ember-wormhole) to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
 
+## Table of Contents
+<!-- toc -->
+
+- [Live Demo and Test Examples](#live-demo-and-test-examples)
+- [Including In An Ember Application](#including-in-an-ember-application)
+- [Controller-bound Usage](#controller-bound-usage)
+- [Routable Usage](#routable-usage)
+- [Configurable Properties](#configurable-properties)
+  * [modal-dialog](#modal-dialog)
+    + [Tethering](#tethering)
+    + [Animation](#animation)
+  * [Optional Dependencies](#optional-dependencies)
+- [Which Component Should I Use?](#which-component-should-i-use)
+- [Positioning](#positioning)
+    + [Caveats](#caveats)
+- [Wormholes](#wormholes)
+- [Configuring the Modal Root Element Id](#configuring-the-modal-root-element-id)
+- [Configuring Styles](#configuring-styles)
+- [Keyboard shortcuts](#keyboard-shortcuts)
+- [iOS](#ios)
+- [Custom Modals](#custom-modals)
+- [Using as a nested addon](#using-as-a-nested-addon)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+  * [Installation](#installation-1)
+  * [Linting](#linting)
+  * [Running tests](#running-tests)
+- [Unit Tests](#unit-tests)
+- [Running the Dummy Application](#running-the-dummy-application)
+- [Generating the Changelog](#generating-the-changelog)
+- [Additional Resources](#additional-resources)
+- [Credits](#credits)
+
+<!-- tocstop -->
+
 ## Live Demo and Test Examples
 
 View a live demo here: [http://yapplabs.github.io/ember-modal-dialog/](http://yapplabs.github.io/ember-modal-dialog/)
