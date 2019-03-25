@@ -5,6 +5,7 @@ The ember-modal-dialog addon provides components to implement modal dialogs thro
 Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions like [ember-wormhole](//github.com/yapplabs/ember-wormhole) to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
 
 ## Table of Contents
+
 <!-- toc -->
 
 - [Live Demo and Test Examples](#live-demo-and-test-examples)
@@ -27,14 +28,8 @@ Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions l
 - [Custom Modals](#custom-modals)
 - [Using as a nested addon](#using-as-a-nested-addon)
 - [Dependencies](#dependencies)
-- [Installation](#installation)
-  * [Installation](#installation-1)
-  * [Linting](#linting)
-  * [Running tests](#running-tests)
-- [Unit Tests](#unit-tests)
-- [Running the Dummy Application](#running-the-dummy-application)
-- [Generating the Changelog](#generating-the-changelog)
 - [Additional Resources](#additional-resources)
+- [Contributing](#contributing)
 - [Credits](#credits)
 
 <!-- tocstop -->
@@ -375,51 +370,13 @@ module.exports = {
 * For Ember versions >= 2.4 and < 2.8, use the latest 2.x version
 * For Ember versions >= 1.10 and < 2.4, use ember-modal-dialog 1.0.0 _(Due to a bug in these versions of Ember, you may have trouble with Ember 1.13.7, 1.13.8 and 1.13.9 -- See #71)_
 
-Installation
-------------------------------------------------------------------------------
-
-* `ember install ember-modal-dialog`
-
-### Installation
-
-* `git clone <repository-url>`
-* `cd my-addon`
-* `npm install`
-
-### Linting
-
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
-
-### Running tests
-
-* `ember test` – Runs the test suite on the current Ember version
-* `ember test --server` – Runs the test suite in "watch mode"
-* `ember try:each` – Runs the test suite against multiple Ember versions
-
-## Unit Tests
-
-When running unit tests on components that use ember-modal-dialog, modals will be
-attached to the `#ember-testing` div.
-
-
-## Running the Dummy Application
-
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
-
-## Generating the Changelog
-
-This project uses [https://github.com/skywinder/github-changelog-generator](https://github.com/skywinder/github-changelog-generator) to generate its changelog.
-
-`github_changelog_generator --future-release=x.y.z --no-issues`
-
 ## Additional Resources
 
 * [Screencast on using ember-modal-dialog](https://www.emberscreencasts.com/posts/74-ember-modal-dialog)
+
+## Contributing
+
+See the [Contributing](CONTRIBUTING.md) guide for details.
 
 ## Credits
 
