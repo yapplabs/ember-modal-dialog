@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { oneWay } from '@ember/object/computed';
 import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/basic-dialog';
@@ -12,9 +11,16 @@ export default Component.extend({
   containerClassNames: null,
   overlayClassNames: null,
   wrapperClassNames: null,
+  destinationElementId: null,
 
   modalService: service('modal-dialog'),
-  destinationElementId: oneWay('modalService.destinationElementId'),
+
+  init() {
+    this._super(...arguments);
+    if (!this.get('destinationElementId')) {
+      this.set('destinationElementId', this.get('modalService.destinationElementId'));
+    }
+  },
 
   variantWrapperClass: 'emd-static',
   containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', function() {
