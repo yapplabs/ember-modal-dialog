@@ -48,13 +48,19 @@ Here is the simplest way to get started with ember-modal-dialog:
 
 ```sh
 ember install ember-modal-dialog
-ember install ember-cli-sass
 ```
 
+If you are using SASS then you can import the necessary CSS in your `app.scss`
 **app.scss**
 ```scss
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+```
+
+Otherwise you can import them directly into your `app.css` with a slightly different syntax
+```css
+@import "ember-modal-dialog/ember-modal-structure.css";
+@import "ember-modal-dialog/ember-modal-appearance.css";
 ```
 
 **application.hbs**

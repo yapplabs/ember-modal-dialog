@@ -1,33 +1,38 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
-@import "tomorrow-night-eighties";
+@import "_tomorrow-night-eighties";
 
 body {
   font-family: sans-serif;
   font-size: 12px;
   margin: 0;
 }
+
+
 .ApplicationRoute {
   margin: 20px;
-  &-summary {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
-  }
-  &-nav {
-    margin-bottom: 20px;
-    padding: 0;
-  }
-  &-nav > li {
-    display: inline-block;
-    &::after {
-      content: ' | ';
-    }
-    &:last-child {
-      &::after {
-        content: '';
-      }
-    }
-  }
+}
+
+.ApplicationRoute-summary {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.ApplicationRoute-nav {
+  margin-bottom: 20px;
+  padding: 0;
+}
+
+.ApplicationRoute-nav > li {
+  display: inline-block;
+}
+
+.ApplicationRoute-nav > li::after {
+  content: ' | ';
+}
+
+.ApplicationRoute-nav > li:last-child::after {
+  content: '';
 }
 
 .example {
@@ -78,10 +83,9 @@ h2 {
 // END-SNIPPET
 
 // BEGIN-SNIPPET custom-styles
-$theme-color: #0f9d58;
 
 .custom-styles-overlay {
-  background-color: rgba($theme-color, .77);
+  background-color: rgba(15, 157, 88, .77);
 }
 
 .custom-styles-overlay,
@@ -104,7 +108,7 @@ $theme-color: #0f9d58;
   width: 300px;
 
   h1 {
-    color: $theme-color;
+    color: #0f9d58;
   }
 }
 // END-SNIPPET
