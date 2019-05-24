@@ -50,14 +50,9 @@ Here is the simplest way to get started with ember-modal-dialog:
 ember install ember-modal-dialog
 ```
 
-If you are using SASS then you can import the necessary CSS in your `app.scss`
-**app.scss**
-```scss
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-```
+Then import the CSS files
 
-Otherwise you can import them directly into your `app.css` with a slightly different syntax
+**app.css**
 ```css
 @import "ember-modal-dialog/ember-modal-structure.css";
 @import "ember-modal-dialog/ember-modal-appearance.css";
@@ -193,7 +188,7 @@ This can be customized (see `overlayPosition`).
 
 ## Positioning
 
-With the default SCSS provided, your modal will be centered in the viewport. By adjusting the CSS, you can adjust this logic.
+With the default CSS provided, your modal will be centered in the viewport. By adjusting the CSS, you can adjust this logic.
 
 Pass a `tetherTarget` in order to position our modal in relation to the target and enable your modal remain positioned near their targets when users scroll or resize the window.
 
@@ -253,19 +248,21 @@ module.exports = function(environment) {
 
 ## Configuring Styles
 
-The addon packages default styles for modal structure and appearance. To use these styles, install ember-cli-sass and import the relevant SCSS file(s) in `app.scss`.
+You can import the CSS files directly
 
-```sh
-> ember install ember-cli-sass
+**app.css**
+```css
+@import "ember-modal-dialog/ember-modal-structure.css";
+@import "ember-modal-dialog/ember-modal-appearance.css";
 ```
+
+If you’re using SASS then just import the CSS slightly differently
 
 **app.scss**
 ```scss
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 ```
-
-If you would prefer not to use Sass, just grab the contents of these files and adapt them for your needs -- there is not much there.
 
 ## Keyboard shortcuts
 
