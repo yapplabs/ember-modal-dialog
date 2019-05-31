@@ -10,6 +10,7 @@ Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions l
 
 - [Live Demo and Test Examples](#live-demo-and-test-examples)
 - [Including In An Ember Application](#including-in-an-ember-application)
+- [Upgrading](#upgrading)
 - [Controller-bound Usage](#controller-bound-usage)
 - [Routable Usage](#routable-usage)
 - [Configurable Properties](#configurable-properties)
@@ -64,6 +65,14 @@ Then import the CSS files
   Oh hai there!
 {{/modal-dialog}}
 ```
+
+## Upgrading
+
+Earlier versions of `ember-modal-dialog` required `ember-cli-sass` and an `app.scss` file to import styling.
+
+Please be aware this is no longer the case.
+
+Existing applications should continue to work correctly but if you were using `ember-cli-sass` solely due to `ember-modal-dialog` it might be worthwhile removing `ember-cli-sass` completely and just importing the styles directly into `app.css` instead, as shown above.
 
 ## Controller-bound Usage
 
