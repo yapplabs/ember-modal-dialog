@@ -55,6 +55,14 @@ Then import the CSS files
 
 **app.css**
 ```css
+@import "ember-modal-dialog/ember-modal-structure.css";
+@import "ember-modal-dialog/ember-modal-appearance.css";
+```
+
+If you’re using SASS then just import the CSS slightly differently
+
+**app.scss**
+```scss
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 ```
