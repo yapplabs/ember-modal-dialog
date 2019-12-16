@@ -55,8 +55,8 @@ Then import the CSS files
 
 **app.css**
 ```css
-@import "ember-modal-dialog/ember-modal-structure.css";
-@import "ember-modal-dialog/ember-modal-appearance.css";
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
 ```
 
 **application.hbs**
