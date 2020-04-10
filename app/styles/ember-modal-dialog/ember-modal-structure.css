@@ -11,6 +11,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 .ember-modal-wrapper.emd-animatable.emd-wrapper-target-attachment-center {
