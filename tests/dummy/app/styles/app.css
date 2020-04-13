@@ -1,6 +1,6 @@
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-@import "_tomorrow-night-eighties";
+@import "./ember-modal-dialog/ember-modal-structure.css";
+@import "./ember-modal-dialog/ember-modal-appearance.css";
+@import "_tomorrow-night-eighties.css";
 
 body {
   font-family: sans-serif;
