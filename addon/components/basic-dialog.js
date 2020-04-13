@@ -64,6 +64,10 @@ export default Component.extend({
         return;
       }
 
+      if (this.isDestroying || this.isDestroyed) {
+        return;
+      }
+
       let modalSelector = '.ember-modal-dialog';
       if (this.get('stack')) {
         modalSelector = '#' + this.get('stack') + modalSelector;
