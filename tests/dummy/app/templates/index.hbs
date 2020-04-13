@@ -132,7 +132,7 @@
   {{#if isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog --}}
     {{#modal-dialog
-      onClose="toggleTargetSelector"
+      onClose=(action "toggleTargetSelector")
       targetAttachment=exampleTargetAttachment
       attachment=exampleAttachment
       target="#alignModalDialogToMe"
@@ -158,7 +158,7 @@
   {{#if isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog --}}
     {{#modal-dialog
-      onClose="toggleTargetElement"
+      onClose=(action "toggleTargetElement")
       targetAttachment=exampleTargetAttachment
       attachment=exampleAttachment
       target="#bwmde"
