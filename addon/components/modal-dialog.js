@@ -14,7 +14,15 @@ export default Component.extend({
   tagName: '',
   layout,
   modalService: service('modal-dialog'),
-  destinationElementId: oneWay('modalService.destinationElementId'),
+  destinationElementId: null,
+
+  init() {
+    this._super(...arguments);
+    if (!this.get('destinationElementId')) {
+      this.set('destinationElementId', this.get('modalService.destinationElementId'));
+    }
+  },
+
   modalDialogComponentName: computed('renderInPlace', 'tetherTarget', 'animatable', 'hasLiquidWormhole', 'hasLiquidTether', function(){
     let tetherTarget = this.get('tetherTarget');
     let hasLiquidTether = this.get('hasLiquidTether');
