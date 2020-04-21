@@ -2,7 +2,7 @@ import { oneWay, readOnly } from '@ember/object/computed';
 import Component from '@ember/component';
 import { dasherize } from '@ember/string';
 import { computed } from '@ember/object';
-import { isEmpty } from '@ember/utils';
+import { isEmpty, typeOf } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/modal-dialog';
 import { warn } from '@ember/debug';
@@ -110,16 +110,16 @@ export default Component.extend({
   },
   actions: {
     onClose() {
-      if (this.get('onClose')) {
+      if (typeOf(this.get('onClose')) === 'function') {
         this.get('onClose')();
       }
     },
     onClickOverlay(e) {
       e.preventDefault();
-      if (this.get('onClickOverlay')) {
+      if (typeof(this.get('onClickOverlay')) === 'function') {
         this.get('onClickOverlay')();
       } else {
-        if (this.get('onClose')) {
+        if (typeof(this.get('onClose')) === 'function') {
           this.get('onClose')();
         }
       }
