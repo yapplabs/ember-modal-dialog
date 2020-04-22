@@ -2,7 +2,7 @@ import { oneWay, readOnly } from '@ember/object/computed';
 import Component from '@ember/component';
 import { dasherize } from '@ember/string';
 import { computed } from '@ember/object';
-import { isEmpty, typeOf } from '@ember/utils';
+import { isEmpty, typeOf, isNone } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/modal-dialog';
 import { warn } from '@ember/debug';
@@ -110,18 +110,30 @@ export default Component.extend({
   },
   actions: {
     onClose() {
-      if (typeOf(this.get('onClose')) === 'function') {
-        this.get('onClose')();
+      const onClose = this.get('onClose');
+      // we shouldn't warn if the callback is not provided at all
+      if (!isNone(onClose)) {
+        if (typeOf(onClose) === 'function') {
+          onClose();
+        } else {
+          warn('onClose handler must be a function', false, { id: 'ember-modal-dialog.on-close' })
+        }
       }
     },
     onClickOverlay(e) {
       e.preventDefault();
-      if (typeof(this.get('onClickOverlay')) === 'function') {
-        this.get('onClickOverlay')();
-      } else {
-        if (typeof(this.get('onClose')) === 'function') {
-          this.get('onClose')();
+
+      const onClickOverlay = this.get('onClickOverlay');
+      // we shouldn't warn if the callback is not provided at all
+      if (!isNone(onClickOverlay)) {
+        if (typeof(onClickOverlay) === 'function') {
+          onClickOverlay();
+        } else {
+          warn('onClickOverlay handler must be a function', false, { id: 'ember-modal-dialog.on-click-overlay' })
         }
+      } else {
+        // call close action
+        this.send('onClose');
       }
     }
   }
