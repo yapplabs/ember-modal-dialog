@@ -1,5 +1,10 @@
 # Change Log
 
+## [2.4.5](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.5) (220-04-27)
+[Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/2.4.4...v2.4.5)
+
+Backported https://github.com/yapplabs/ember-modal-dialog/commit/2d83a7afc0ef68d7abfa65891ea4a0fbb0e5fa89
+
 ## [2.4.4](https://github.com/yapplabs/ember-modal-dialog/tree/v2.4.4) (2018-05-13)
 [Full Changelog](https://github.com/yapplabs/ember-modal-dialog/compare/2.4.3...v2.4.4)
 
