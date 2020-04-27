@@ -2,10 +2,10 @@ import { oneWay, readOnly } from '@ember/object/computed';
 import Component from '@ember/component';
 import { dasherize } from '@ember/string';
 import { computed } from '@ember/object';
-import { isEmpty } from '@ember/utils';
+import { isEmpty, typeOf, isNone } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import layout from '../templates/components/modal-dialog';
-import { warn } from '@ember/debug';
+import { assert, warn } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
@@ -110,19 +110,29 @@ export default Component.extend({
   },
   actions: {
     onClose() {
-      if (this.get('onClose')) {
-        this.get('onClose')();
+      const onClose = this.get('onClose');
+      // we shouldn't warn if the callback is not provided at all
+      if (isNone(onClose)) {
+        return;
       }
+
+      assert('onClose handler must be a function', typeOf(onClose) === 'function');
+
+      onClose();
     },
     onClickOverlay(e) {
       e.preventDefault();
-      if (this.get('onClickOverlay')) {
-        this.get('onClickOverlay')();
-      } else {
-        if (this.get('onClose')) {
-          this.get('onClose')();
-        }
+
+      const onClickOverlay = this.get('onClickOverlay');
+      // we shouldn't warn if the callback is not provided at all
+      if (isNone(onClickOverlay)) {
+        this.send('onClose');
+        return;
       }
+
+      assert('onClickOverlay handler must be a function', typeOf(onClickOverlay) === 'function');
+
+      onClickOverlay();
     }
   }
 });
