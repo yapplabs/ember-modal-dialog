@@ -127,6 +127,9 @@ export default class BasicDialog extends Component {
       if (modalEl && modalEl.contains(target)) {
         return;
       }
+      if (this.shouldIgnoreCloseClick && this.shouldIgnoreCloseClick(modalEl, target)) {
+        return;
+      }
       if (this.onClose) {
         this.onClose();
       }
