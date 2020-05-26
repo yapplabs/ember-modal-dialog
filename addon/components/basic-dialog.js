@@ -103,6 +103,10 @@ export default class BasicDialog extends Component {
     this.makeOverlayClickableOnIOS();
 
     this.handleClick = ({ target }) => {
+      if (!this.get('clickOutsideToClose')) {
+        return;
+      }
+
       // if the click has already resulted in the target
       // being removed or hidden, do nothing
       if (target.offsetWidth === 0 && target.offsetHeight === 0) {
