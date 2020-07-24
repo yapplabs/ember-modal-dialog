@@ -1,3 +1,28 @@
+## v3.0.1 (2020-07-24)
+
+#### :bug: Bug Fix
+* [#300](https://github.com/yapplabs/ember-modal-dialog/pull/300) Fix dummy app css and two actions ([@lukemelia](https://github.com/lukemelia))
+* [#295](https://github.com/yapplabs/ember-modal-dialog/pull/295) fixes my previous change to the css installation instructions ([@christophermlne](https://github.com/christophermlne))
+* [#294](https://github.com/yapplabs/ember-modal-dialog/pull/294) fixes bad css import snippet in README installation instructions ([@christophermlne](https://github.com/christophermlne))
+
+#### :memo: Documentation
+* [#295](https://github.com/yapplabs/ember-modal-dialog/pull/295) fixes my previous change to the css installation instructions ([@christophermlne](https://github.com/christophermlne))
+* [#294](https://github.com/yapplabs/ember-modal-dialog/pull/294) fixes bad css import snippet in README installation instructions ([@christophermlne](https://github.com/christophermlne))
+* [#281](https://github.com/yapplabs/ember-modal-dialog/pull/281) Update README.md ([@newyork-anthonyng](https://github.com/newyork-anthonyng))
+
+#### :house: Internal
+* [#307](https://github.com/yapplabs/ember-modal-dialog/pull/307) Switch to release-it ([@lukemelia](https://github.com/lukemelia))
+* [#305](https://github.com/yapplabs/ember-modal-dialog/pull/305) Bump websocket-extensions from 0.1.3 to 0.1.4 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#304](https://github.com/yapplabs/ember-modal-dialog/pull/304) Bump jquery from 3.4.1 to 3.5.0 ([@dependabot[bot]](https://github.com/apps/dependabot))
+* [#306](https://github.com/yapplabs/ember-modal-dialog/pull/306) Bump lodash from 4.17.11 to 4.17.19 ([@dependabot[bot]](https://github.com/apps/dependabot))
+
+#### Committers: 5
+- Anthony Ng ([@newyork-anthonyng](https://github.com/newyork-anthonyng))
+- Ben Kiefer ([@benkiefer](https://github.com/benkiefer))
+- Christopher Milne ([@christophermlne](https://github.com/christophermlne))
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+- [@mum-never-proud](https://github.com/mum-never-proud)
+
 # Change Log
 
 ## [3.0.0-beta.4](https://github.com/yapplabs/ember-modal-dialog/tree/3.0.0-beta.4) (2019-06-18)
