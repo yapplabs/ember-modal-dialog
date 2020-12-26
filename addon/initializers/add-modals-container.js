@@ -1,6 +1,6 @@
-/*globals document */
 import Application, { getOwner } from '@ember/application';
 import Engine from '@ember/engine';
+import { assert } from '@ember/debug'
 import Ember from 'ember';
 
 let hasDOM = typeof document !== 'undefined';
