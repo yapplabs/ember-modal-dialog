@@ -28,6 +28,7 @@ export default function(AppOrEngine) {
     // As there is only a single `Router` across the whole app, which is owned
     // by the root `Application`, this reliably finds the root `Application`
     // from an`Engine`.
+    // eslint-disable-next-line ember/no-private-routing-service
     App = getOwner(getOwner(AppOrEngine).lookup('router:main'));
   } else {
     assert(`Could not find the root Application for '${AppOrEngine}'.`);
