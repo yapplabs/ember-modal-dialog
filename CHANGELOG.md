@@ -1,3 +1,11 @@
+## v3.0.2 (2021-02-18)
+
+#### :bug: Bug Fix
+* [#315](https://github.com/yapplabs/ember-modal-dialog/pull/315) fix: support `ember-engines` ([@buschtoens](https://github.com/buschtoens))
+
+#### Committers: 1
+- Jan Buschtöns ([@buschtoens](https://github.com/buschtoens))
+
 ## v3.0.1 (2020-07-24)
 
 #### :bug: Bug Fix
