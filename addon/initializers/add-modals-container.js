@@ -39,7 +39,7 @@ export default function(AppOrEngine) {
 
   AppOrEngine.register(
     'config:modals-container-id',
-    Ember.testing ? 'ember-testing' : modalContainerElId,
+    { toString: () => Ember.testing ? 'ember-testing' : modalContainerElId },
     { instantiate: false }
   );
 
