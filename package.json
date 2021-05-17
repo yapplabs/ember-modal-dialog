@@ -27,11 +27,13 @@
     "ember-cli-htmlbars": "^3.0.0",
     "ember-cli-version-checker": "^2.1.0",
     "ember-ignore-children-helper": "^1.0.1",
-    "ember-wormhole": "^0.5.5"
+    "ember-wormhole": "^0.5.5",
+    "webpack": "^5.37.0"
   },
   "devDependencies": {
     "@ember/jquery": "^0.5.2",
     "@ember/optional-features": "^0.7.0",
+    "@embroider/test-setup": "^0.40.0",
     "broccoli-asset-rev": "^2.7.0",
     "ember-cli": "~3.9.0",
     "ember-cli-build-notifications": "^0.4.0",
