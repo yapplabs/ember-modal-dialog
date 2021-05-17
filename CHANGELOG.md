@@ -1,3 +1,14 @@
+## v3.0.3 (2021-05-17)
+
+#### :bug: Bug Fix
+* [#326](https://github.com/yapplabs/ember-modal-dialog/pull/326) initializers/add-modals-container: Work around string injection bug ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#327](https://github.com/yapplabs/ember-modal-dialog/pull/327) Silence deprecation warnings ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v3.0.2 (2021-02-18)
 
 #### :bug: Bug Fix
