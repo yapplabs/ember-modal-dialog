@@ -1,45 +1,45 @@
-{{#ember-wormhole to=destinationElementId}}
-  {{#if isOverlaySibling}}
-    <div class="{{wrapperClassNamesString}} {{wrapperClass}}">
-      {{#if hasOverlay}}
+{{#ember-wormhole to=this.destinationElementId}}
+  {{#if this.isOverlaySibling}}
+    <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
+      {{#if this.hasOverlay}}
         <div
-          class={{overlayClassNamesString}}
-          onclick={{action onClickOverlay}}
+          class={{this.overlayClassNamesString}}
+          onclick={{action this.onClickOverlay}}
           tabindex="-1"
           data-emd-overlay
         >
         </div>
       {{/if}}
       {{#ember-modal-dialog-positioned-container
-        class=containerClassNamesString
-        targetAttachment=targetAttachment
-        target=legacyTarget
+        class=this.containerClassNamesString
+        targetAttachment=this.targetAttachment
+        target=this.legacyTarget
       }}
         {{yield}}
       {{/ember-modal-dialog-positioned-container}}
     </div>
   {{else}}
-    <div class="{{wrapperClassNamesString}} {{wrapperClass}}">
-      {{#if hasOverlay}}
+    <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
+      {{#if this.hasOverlay}}
         <div
-          class={{overlayClassNamesString}}
-          onclick={{action (ignore-children onClickOverlay)}}
+          class={{this.overlayClassNamesString}}
+          onclick={{action (ignore-children this.onClickOverlay)}}
           tabindex="-1"
           data-emd-overlay
         >
           {{#ember-modal-dialog-positioned-container
-            class=containerClassNamesString
-            targetAttachment=targetAttachment
-            target=legacyTarget
+            class=this.containerClassNamesString
+            targetAttachment=this.targetAttachment
+            target=this.legacyTarget
           }}
             {{yield}}
           {{/ember-modal-dialog-positioned-container}}
         </div>
       {{else}}
         {{#ember-modal-dialog-positioned-container
-          class=containerClassNamesString
-          targetAttachment=targetAttachment
-          target=legacyTarget
+          class=this.containerClassNamesString
+          targetAttachment=this.targetAttachment
+          target=this.legacyTarget
         }}
           {{yield}}
         {{/ember-modal-dialog-positioned-container}}
