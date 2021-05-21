@@ -27,7 +27,7 @@
     "ember-cli-htmlbars": "^3.0.0",
     "ember-cli-version-checker": "^2.1.0",
     "ember-ignore-children-helper": "^1.0.1",
-    "ember-wormhole": "^0.5.5"
+    "ember-wormhole": "^0.6.0"
   },
   "devDependencies": {
     "@ember/jquery": "^0.5.2",
