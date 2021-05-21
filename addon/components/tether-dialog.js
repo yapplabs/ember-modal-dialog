@@ -10,7 +10,7 @@ export default BasicDialog.extend({
     this._ensureAttachments();
   },
   targetAttachmentClass: computed('targetAttachment', function() {
-    let targetAttachment = this.get('targetAttachment') || '';
+    let targetAttachment = this.targetAttachment || '';
     return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
   }),
 
@@ -35,10 +35,10 @@ export default BasicDialog.extend({
   // targetOffset - passed in
   // targetModifier - passed in
   _ensureAttachments() {
-    if (!this.get('attachment')) {
+    if (!this.attachment) {
       this.set('attachment', 'middle center');
     }
-    if (!this.get('targetAttachment')) {
+    if (!this.targetAttachment) {
       this.set('targetAttachment', 'middle center');
     }
   }

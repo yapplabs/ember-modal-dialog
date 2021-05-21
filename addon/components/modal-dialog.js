@@ -18,18 +18,18 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    if (!this.get('destinationElementId')) {
-      this.set('destinationElementId', this.get('modalService.destinationElementId'));
+    if (!this.destinationElementId) {
+      this.set('destinationElementId', this.modalService.destinationElementId);
     }
   },
 
   modalDialogComponentName: computed('renderInPlace', 'tetherTarget', 'animatable', 'hasLiquidWormhole', 'hasLiquidTether', function(){
-    let tetherTarget = this.get('tetherTarget');
-    let hasLiquidTether = this.get('hasLiquidTether');
-    let hasLiquidWormhole = this.get('hasLiquidWormhole');
-    let animatable = this.get('animatable');
+    let tetherTarget = this.tetherTarget;
+    let hasLiquidTether = this.hasLiquidTether;
+    let hasLiquidWormhole = this.hasLiquidWormhole;
+    let animatable = this.animatable;
 
-    if (this.get('renderInPlace')) {
+    if (this.renderInPlace) {
       return 'ember-modal-dialog/-in-place-dialog';
     } else if (tetherTarget && hasLiquidTether && hasLiquidWormhole && animatable === true) {
       return 'ember-modal-dialog/-liquid-tether-dialog';
@@ -52,7 +52,7 @@ export default Component.extend({
     }
   },
   validateProps() {
-    let overlayPosition = this.get('overlayPosition');
+    let overlayPosition = this.overlayPosition;
     if (VALID_OVERLAY_POSITIONS.indexOf(overlayPosition) === -1) {
       warn(
         `overlayPosition value '${overlayPosition}' is not valid (valid values [${VALID_OVERLAY_POSITIONS.join(', ')}])`,
@@ -89,7 +89,7 @@ export default Component.extend({
   targetAttachment: 'middle center',
   tetherClassPrefix: null,
   attachmentClass: computed('attachment', function() {
-    let attachment = this.get('attachment');
+    let attachment = this.attachment;
     if (isEmpty(attachment)) {
       return;
     }
@@ -98,19 +98,19 @@ export default Component.extend({
     }).join(' ');
   }),
   targetAttachmentClass: computed('targetAttachment', function() {
-    let targetAttachment = this.get('targetAttachment') || '';
+    let targetAttachment = this.targetAttachment || '';
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
     return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
   }),
   ensureEmberTetherPresent() {
-    if (!this.get('modalService.hasEmberTether')) {
+    if (!this.modalService.hasEmberTether) {
       throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
     }
   },
   actions: {
     onClose() {
-      const onClose = this.get('onClose');
+      const onClose = this.onClose;
       // we shouldn't warn if the callback is not provided at all
       if (isNone(onClose)) {
         return;
@@ -123,7 +123,7 @@ export default Component.extend({
     onClickOverlay(e) {
       e.preventDefault();
 
-      const onClickOverlay = this.get('onClickOverlay');
+      const onClickOverlay = this.onClickOverlay;
       // we shouldn't warn if the callback is not provided at all
       if (isNone(onClickOverlay)) {
         this.send('onClose');

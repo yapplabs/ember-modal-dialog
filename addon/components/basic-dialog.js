@@ -17,33 +17,33 @@ export default Component.extend({
 
   init() {
     this._super(...arguments);
-    if (!this.get('destinationElementId')) {
-      this.set('destinationElementId', this.get('modalService.destinationElementId'));
+    if (!this.destinationElementId) {
+      this.set('destinationElementId', this.modalService.destinationElementId);
     }
   },
 
   variantWrapperClass: 'emd-static',
   containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', function() {
     return [
-      this.get('containerClassNames').join(' '),
-      this.get('targetAttachmentClass'),
-      this.get('attachmentClass'),
-      this.get('containerClass')
+      this.containerClassNames.join(' '),
+      this.targetAttachmentClass,
+      this.attachmentClass,
+      this.containerClass
     ].filter((className) => !isEmpty(className)).join(' ');
   }),
   overlayClassNamesString: computed('overlayClassNames.[]', 'overlayClass', 'translucentOverlay', function(){
     return [
-      this.get('overlayClassNames').join(' '),
-      this.get('translucentOverlay') ? 'translucent' : null,
-      this.get('overlayClass')
+      this.overlayClassNames.join(' '),
+      this.translucentOverlay ? 'translucent' : null,
+      this.overlayClass
     ].filter((className) => !isEmpty(className)).join(' ');
   }),
   wrapperClassNamesString: computed('wrapperClassNames.[]', 'targetAttachmentClass', 'variantWrapperClass', 'wrapperClass', function(){
     return [
-      this.get('wrapperClassNames').join(' '),
-      this.get('targetAttachmentClass').replace('emd-', 'emd-wrapper-'),
-      this.get('variantWrapperClass'),
-      this.get('wrapperClass')
+      this.wrapperClassNames.join(' '),
+      this.targetAttachmentClass.replace('emd-', 'emd-wrapper-'),
+      this.variantWrapperClass,
+      this.wrapperClass
     ].filter((className) => !isEmpty(className)).join(' ');
   }),
 
@@ -55,11 +55,11 @@ export default Component.extend({
   isCentered: true,
   overlayPosition: null,
   isOverlaySibling: computed('overlayPosition', function() {
-    return this.get('overlayPosition') === 'sibling';
+    return this.overlayPosition === 'sibling';
   }),
 
   didInsertElement() {
-    if (!this.get('clickOutsideToClose')) {
+    if (!this.clickOutsideToClose) {
       return;
     }
     this.makeOverlayClickableOnIOS();
@@ -76,8 +76,8 @@ export default Component.extend({
       }
 
       let modalSelector = '.ember-modal-dialog';
-      if (this.get('stack')) {
-        modalSelector = '#' + this.get('stack') + modalSelector;
+      if (this.stack) {
+        modalSelector = '#' + this.stack + modalSelector;
       }
 
       // if the click is within the dialog, do nothing
@@ -85,8 +85,8 @@ export default Component.extend({
       if (modalEl && modalEl.contains(target)) {
         return;
       }
-      if (this.get('onClose')) {
-        this.get('onClose')();
+      if (this.onClose) {
+        this.onClose();
       }
     };
 
@@ -95,7 +95,7 @@ export default Component.extend({
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
 
-    if (this.get('isIOS')) {
+    if (this.isIOS) {
       const registerTouch = () => document.addEventListener('touchend', this.handleClick);
       setTimeout(registerTouch);
     }
@@ -104,7 +104,7 @@ export default Component.extend({
 
   willDestroyElement() {
     document.removeEventListener('click', this.handleClick);
-    if (this.get('isIOS')) {
+    if (this.isIOS) {
       document.removeEventListener('touchend', this.handleClick);
     }
     this._super(...arguments);
@@ -115,7 +115,7 @@ export default Component.extend({
   }),
 
   makeOverlayClickableOnIOS: function() {
-    if (this.get('isIOS')) {
+    if (this.isIOS) {
       let overlayEl = document.querySelector('div[data-emd-overlay]');
       if (overlayEl) {
         overlayEl.style.cursor = 'pointer';

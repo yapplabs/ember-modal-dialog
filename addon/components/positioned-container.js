@@ -17,11 +17,11 @@ export default Component.extend({
   targetAttachment: 'center',
 
   isPositioned: computed('targetAttachment', 'target', 'renderInPlace', function() {
-    if (this.get('renderInPlace')) {
+    if (this.renderInPlace) {
       return false;
     }
-    let target = this.get('target');
-    let targetAttachment = this.get('targetAttachment');
+    let target = this.target;
+    let targetAttachment = this.targetAttachment;
     if (target === 'body' && (targetAttachment === 'center' || targetAttachment === 'middle center')) {
       return false;
     }
@@ -38,7 +38,7 @@ export default Component.extend({
       return;
     }
 
-    if (this.get('isPositioned')) {
+    if (this.isPositioned) {
       this.updateTargetAttachment();
     } else {
       this.element.style.left = '';
@@ -47,7 +47,7 @@ export default Component.extend({
   })),
 
   getWrappedTargetAttachmentElement() {
-    const target = this.get('target');
+    const target = this.target;
     if (!target) {
       return null;
     }
@@ -69,7 +69,7 @@ export default Component.extend({
   },
 
   updateTargetAttachment() {
-    let targetAttachment = this.get('targetAttachment');
+    let targetAttachment = this.targetAttachment;
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
     assert(
