@@ -67,7 +67,7 @@
     "release-it-lerna-changelog": "^2.3.0"
   },
   "engines": {
-    "node": "8.* || >= 10.*"
+    "node": "12.* || >= 14.*"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
@@ -93,5 +93,9 @@
       "release": true,
       "tokenRef": "GITHUB_AUTH"
     }
+  },
+  "volta": {
+    "node": "12.22.1",
+    "yarn": "1.22.10"
   }
 }
