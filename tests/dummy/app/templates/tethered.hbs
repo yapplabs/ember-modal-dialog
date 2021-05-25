@@ -19,9 +19,9 @@
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
+  <button onclick={{action (mut isShowingCustomStyles) true}} type="button">Do It</button>
   {{code-snippet name="custom-styles-modal-dialog-tethered.hbs"}}
-  {{code-snippet name="custom-styles.scss"}}
+  {{code-snippet name="custom-styles.css"}}
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-tethered --}}
     {{#modal-dialog
@@ -35,7 +35,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button onclick={{action (mut isShowingCustomStyles) false}}>Close</button>
+      <button onclick={{action (mut isShowingCustomStyles) false}} type="button">Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -44,7 +44,7 @@
 <div class="example" id="example-target-selector">
   <h2>Target (Selector)</h2>
   <div class="targetContainer">
-    <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
+    <button id="alignTetherDialogToMe" type="button" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
   {{code-snippet name="target-selector-modal-dialog-tethered.hbs"}}
   {{#if isShowingTargetSelector}}
@@ -60,7 +60,7 @@
       <p>Target - Selector: "#alignTetherDialogToMe"</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action "closeTargetSelector"}}>Close</button>
+      <button type="button" {{action "closeTargetSelector"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -70,7 +70,7 @@
   <h2>Target (Element)</h2>
   <div class="targetContainer">
     <span id="bwtde">
-      <button {{action "toggleTargetElement"}}>Do It</button>
+      <button type="button" {{action "toggleTargetElement"}}>Do It</button>
     </span>
   </div>
   {{code-snippet name="target-element-modal-dialog-tethered.hbs"}}
@@ -87,7 +87,7 @@
       <p>Target - Element #bwtde</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action "closeTargetElement"}}>Close</button>
+      <button type="button" {{action "closeTargetElement"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -96,7 +96,7 @@
 <div class="example">
   <h2>Element Center</h2>
   <span id="elementCenter">
-    <button onclick={{action (mut isShowingElementCenterModal) true}}>Element Center</button>
+    <button onclick={{action (mut isShowingElementCenterModal) true}} type="button">Element Center</button>
   </span>
   {{code-snippet name="element-centered-modal-dialog-tethered.hbs"}}
   {{#if isShowingElementCenterModal}}
