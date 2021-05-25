@@ -1,3 +1,20 @@
+## v4.0.0-alpha.0 (2021-05-25)
+
+#### :boom: Breaking Change
+* [#332](https://github.com/yapplabs/ember-modal-dialog/pull/332) Drop support for Ember 3.19 and below ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#333](https://github.com/yapplabs/ember-modal-dialog/pull/333) Add volta config ([@lukemelia](https://github.com/lukemelia))
+* [#324](https://github.com/yapplabs/ember-modal-dialog/pull/324) Upgrade `ember-wormhole` to v0.6.0 ([@legallai](https://github.com/legallai))
+* [#331](https://github.com/yapplabs/ember-modal-dialog/pull/331) Remove obsolete `this.get(...)` calls ([@Turbo87](https://github.com/Turbo87))
+* [#330](https://github.com/yapplabs/ember-modal-dialog/pull/330) dummy: Remove obsolete `register-subclassed-modals` initializer ([@Turbo87](https://github.com/Turbo87))
+* [#329](https://github.com/yapplabs/ember-modal-dialog/pull/329) Add missing `this.` prefixes to the templates ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 3
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+- [@legallai](https://github.com/legallai)
+
 ## v3.0.3 (2021-05-17)
 
 #### :bug: Bug Fix
