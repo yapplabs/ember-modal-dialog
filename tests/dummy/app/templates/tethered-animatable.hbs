@@ -18,9 +18,9 @@
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
+  <button onclick={{action (mut isShowingCustomStyles) true}} type="button">Do It</button>
   {{code-snippet name="custom-styles-modal-dialog-liquid-tether.hbs"}}
-  {{code-snippet name="custom-styles.scss"}}
+  {{code-snippet name="custom-styles.css"}}
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether --}}
     {{#modal-dialog
@@ -35,7 +35,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button onclick={{action (mut isShowingCustomStyles) false}}>Close</button>
+      <button onclick={{action (mut isShowingCustomStyles) false}} type="button">Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -44,7 +44,7 @@
 <div class="example" id="example-target-selector">
   <h2>Target (Selector)</h2>
   <div class="targetContainer">
-    <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
+    <button id="alignTetherDialogToMe" type="button" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
   {{code-snippet name="target-selector-modal-dialog-liquid-tether.hbs"}}
   {{#if isShowingTargetSelector}}
@@ -61,7 +61,7 @@
       <p>Target - Selector: "#alignTetherDialogToMe"</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action "closeTargetSelector"}}>Close</button>
+      <button type="button" {{action "closeTargetSelector"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -71,7 +71,7 @@
   <h2>Target (Element)</h2>
   <div class="targetContainer">
     <span id="bwtde">
-      <button {{action "toggleTargetElement"}}>Do It</button>
+      <button type="button" {{action "toggleTargetElement"}}>Do It</button>
     </span>
   </div>
   {{code-snippet name="target-element-modal-dialog-liquid-tether.hbs"}}
@@ -89,7 +89,7 @@
       <p>Target - Element #bwtde</p>
       <p>Target Attachment: {{exampleTargetAttachment}}</p>
       <p>Attachment: {{exampleAttachment}}</p>
-      <button {{action "closeTargetElement"}}>Close</button>
+      <button type="button" {{action "closeTargetElement"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -98,7 +98,7 @@
 <div class="example">
   <h2>Element Center</h2>
   <span id="elementCenter">
-    <button {{action "toggleElementCenterModal"}}>Element Center</button>
+    <button type="button" {{action "toggleElementCenterModal"}}>Element Center</button>
   </span>
   {{code-snippet name="element-centered-modal-dialog-liquid-tether.hbs"}}
   {{#if isShowingElementCenterModal}}
@@ -119,19 +119,19 @@
   <h2>Separate Stacks</h2>
   <button
     id="separateStacksButton1"
-    onclick={{action (mut isShowingSeparateStacksModal1) true}}
+    onclick={{action (mut isShowingSeparateStacksModal1) true}} type="button"
   >
     Show Modal 1 (modal-stack-a)
   </button>
   <button
     id="separateStacksButton2"
-    onclick={{action (mut isShowingSeparateStacksModal2) true}}
+    onclick={{action (mut isShowingSeparateStacksModal2) true}} type="button"
   >
     Show Modal 2 (modal-stack-b)
   </button>
   <button
     id="separateStacksButton3"
-    onclick={{action (mut isShowingSeparateStacksModal3) true}}
+    onclick={{action (mut isShowingSeparateStacksModal3) true}} type="button"
   >
     Show Modal 3 (modal-stack-b)
   </button>
@@ -143,7 +143,7 @@
     {{#modal-dialog
       stack="modal-stack-a"
       containerClass="modal-stack"
-      onClose=(action (mut isShowingSeparateStacksModal1 false))
+      onClose=(action (mut isShowingSeparateStacksModal1) false)
       hasOverlay=false
       clickOutsideToClose=true
       tetherTarget="#separateStacksButton1"

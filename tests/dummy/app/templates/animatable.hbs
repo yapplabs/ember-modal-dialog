@@ -13,7 +13,7 @@
 
 <div class="example" id="example-basic">
   <h2>Basic</h2>
-  <button {{action "toggleBasic"}}>Do It</button>
+  <button type="button" {{action "toggleBasic"}}>Do It</button>
   {{code-snippet name="basic-modal-dialog-animatable.hbs"}}
   {{#if isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-modal-dialog-animatable --}}
@@ -25,7 +25,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
-      <button {{action "toggleBasic"}}>Close</button>
+      <button type="button" {{action "toggleBasic"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -33,7 +33,7 @@
 
 <div class="example" id="example-translucent">
   <h2>With Translucent Overlay</h2>
-  <button {{action "toggleTranslucent"}}>Do It</button>
+  <button type="button" {{action "toggleTranslucent"}}>Do It</button>
   {{code-snippet name="translucent-modal-dialog-animatable.hbs"}}
   {{#if isShowingTranslucent}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-animatable --}}
@@ -46,7 +46,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay</p>
-      <button {{action "toggleTranslucent"}}>Close</button>
+      <button type="button" {{action "toggleTranslucent"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -54,7 +54,7 @@
 
 <div class="example" id="example-without-overlay">
   <h2>Without Overlay</h2>
-  <button {{action "toggleWithoutOverlay"}}>Do It</button>
+  <button type="button" {{action "toggleWithoutOverlay"}}>Do It</button>
   {{code-snippet name="without-overlay-modal-dialog-animatable.hbs"}}
   {{#if isShowingWithoutOverlay}}
     {{!-- BEGIN-SNIPPET without-overlay-modal-dialog-animatable --}}
@@ -65,7 +65,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Without Overlay</p>
-      <button {{action "toggleWithoutOverlay"}}>Close</button>
+      <button type="button" {{action "toggleWithoutOverlay"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -73,10 +73,9 @@
 
 <div class="example" id="example-without-overlay-click-outside-to-close">
   <h2>Without Overlay - Click Outside to Close</h2>
-  <button {{action "toggleWithoutOverlayClickOutsideToClose"}}>Do It</button>
+  <button type="button" {{action "toggleWithoutOverlayClickOutsideToClose"}}>Do It</button>
   <button
-    id="without-overlay-another-one-button"
-    {{action "toggleWithoutOverlayClickOutsideToCloseAnotherOne"}}
+    id="without-overlay-another-one-button" type="button" {{action "toggleWithoutOverlayClickOutsideToCloseAnotherOne"}}
   >
     Another one
   </button>
@@ -93,7 +92,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Without Overlay - Click Outside to Close</p>
-      <button {{action "toggleWithoutOverlayClickOutsideToClose"}}>Close</button>
+      <button type="button" {{action "toggleWithoutOverlayClickOutsideToClose"}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -107,7 +106,7 @@
     }}
       <h1>Stop! Another modal!</h1>
       <p>Without Overlay Another One - Click Outside to Close</p>
-      <button {{action "toggleWithoutOverlayClickOutsideToCloseAnotherOne"}}>Close</button>
+      <button type="button" {{action "toggleWithoutOverlayClickOutsideToCloseAnotherOne"}}>Close</button>
     {{/modal-dialog}}
   {{/if}}
 
@@ -115,13 +114,13 @@
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut isShowingCustomStyles true)}}>Do It</button>
+  <button onclick={{action (mut isShowingCustomStyles) true}} type="button">Do It</button>
   {{code-snippet name="custom-styles-modal-dialog-animatable.hbs"}}
-  {{code-snippet name="custom-styles.scss"}}
+  {{code-snippet name="custom-styles.css"}}
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-animatable --}}
     {{#modal-dialog
-      onClose=(action (mut isShowingCustomStyles false))
+      onClose=(action (mut isShowingCustomStyles) false)
       containerClass="custom-styles-modal-container"
       overlayClass="custom-styles-overlay"
       wrapperClass="custom-styles-wrapper"
@@ -132,7 +131,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button {{action (action (mut isShowingCustomStyles false))}}>Close</button>
+      <button type="button" {{action (action (mut isShowingCustomStyles) false)}}>Close</button>
     {{/modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -140,10 +139,10 @@
 
 <div class="example" id="example-subclass">
   <h2>Via Subclass</h2>
-  <button {{action "toggleSubclassed"}}>Do It</button>
+  <button type="button" {{action "toggleSubclassed"}}>Do It</button>
   {{code-snippet name="subclass.js"}}
   {{code-snippet name="subclass-modal-dialog-animatable.hbs"}}
-  {{code-snippet name="subclass-styles.scss"}}
+  {{code-snippet name="subclass-styles.css"}}
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog-animatable --}}
     {{#my-cool-modal-dialog
@@ -152,7 +151,7 @@
     }}
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
-      <button {{action "toggleSubclassed"}}>Close</button>
+      <button type="button" {{action "toggleSubclassed"}}>Close</button>
     {{/my-cool-modal-dialog}}
     {{!-- END-SNIPPET --}}
   {{/if}}

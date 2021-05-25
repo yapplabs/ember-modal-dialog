@@ -299,15 +299,15 @@ export default ModalDialog.extend({
 
   willDestroyElement(){
     this._super(...arguments);
-    Ember.$('body').off('keyup.modal-dialog');
+    document.body.removeEventListener('keyup', this.closeOnEscapeKey);
   },
 
   _initEscListener() {
-    const closeOnEscapeKey = (ev) => {
+    this.closeOnEscapeKey = (ev) => {
       if (ev.keyCode === ESC_KEY) { this.get('onClose')(); }
     };
 
-    Ember.$('body').on('keyup.modal-dialog', closeOnEscapeKey);
+    document.body.addEventListener('keyup', this.closeOnEscapeKey);
   },
 });
 ```
