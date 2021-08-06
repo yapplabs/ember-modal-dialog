@@ -1,4 +1,4 @@
-{{#ember-wormhole to=this.destinationElementId}}
+<EmberWormhole @to={{this.destinationElementId}}>
   {{#if this.isOverlaySibling}}
     <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
       {{#if this.hasOverlay}}
@@ -10,13 +10,9 @@
         >
         </div>
       {{/if}}
-      {{#ember-modal-dialog-positioned-container
-        class=this.containerClassNamesString
-        targetAttachment=this.targetAttachment
-        target=this.legacyTarget
-      }}
+      <EmberModalDialogPositionedContainer @class={{this.containerClassNamesString}} @targetAttachment={{this.targetAttachment}} @target={{this.legacyTarget}}>
         {{yield}}
-      {{/ember-modal-dialog-positioned-container}}
+      </EmberModalDialogPositionedContainer>
     </div>
   {{else}}
     <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
@@ -27,23 +23,15 @@
           tabindex="-1"
           data-emd-overlay
         >
-          {{#ember-modal-dialog-positioned-container
-            class=this.containerClassNamesString
-            targetAttachment=this.targetAttachment
-            target=this.legacyTarget
-          }}
+          <EmberModalDialogPositionedContainer @class={{this.containerClassNamesString}} @targetAttachment={{this.targetAttachment}} @target={{this.legacyTarget}}>
             {{yield}}
-          {{/ember-modal-dialog-positioned-container}}
+          </EmberModalDialogPositionedContainer>
         </div>
       {{else}}
-        {{#ember-modal-dialog-positioned-container
-          class=this.containerClassNamesString
-          targetAttachment=this.targetAttachment
-          target=this.legacyTarget
-        }}
+        <EmberModalDialogPositionedContainer @class={{this.containerClassNamesString}} @targetAttachment={{this.targetAttachment}} @target={{this.legacyTarget}}>
           {{yield}}
-        {{/ember-modal-dialog-positioned-container}}
+        </EmberModalDialogPositionedContainer>
       {{/if}}
     </div>
   {{/if}}
-{{/ember-wormhole}}
+</EmberWormhole>

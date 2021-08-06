@@ -8,25 +8,20 @@
 
 <div class="example">
   <h3>app/transitions.js for these examples</h3>
-  {{code-snippet name="animated-transitions.js"}}
+  <CodeSnippet @name="animated-transitions.js" />
 </div>
 
 <div class="example" id="example-basic">
   <h2>Basic</h2>
   <button {{action "toggleBasic"}}>Do It</button>
-  {{code-snippet name="basic-modal-dialog-animatable.hbs"}}
+  <CodeSnippet @name="basic-modal-dialog-animatable.hbs" />
   {{#if isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-modal-dialog-animatable --}}
-    {{#modal-dialog
-      onClose=(action "toggleBasic")
-      overlayPosition="sibling"
-      clickOutsideToClose=true
-      animatable=true
-    }}
+    <ModalDialog @onClose={{action "toggleBasic"}} @overlayPosition="sibling" @clickOutsideToClose={{true}} @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
       <button {{action "toggleBasic"}}>Close</button>
-    {{/modal-dialog}}
+    </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
@@ -34,20 +29,14 @@
 <div class="example" id="example-translucent">
   <h2>With Translucent Overlay</h2>
   <button {{action "toggleTranslucent"}}>Do It</button>
-  {{code-snippet name="translucent-modal-dialog-animatable.hbs"}}
+  <CodeSnippet @name="translucent-modal-dialog-animatable.hbs" />
   {{#if isShowingTranslucent}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-animatable --}}
-    {{#modal-dialog
-      onClose=(action "toggleTranslucent")
-      translucentOverlay=true
-      overlayPosition="sibling"
-      clickOutsideToClose=true
-      animatable=true
-    }}
+    <ModalDialog @onClose={{action "toggleTranslucent"}} @translucentOverlay={{true}} @overlayPosition="sibling" @clickOutsideToClose={{true}} @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay</p>
       <button {{action "toggleTranslucent"}}>Close</button>
-    {{/modal-dialog}}
+    </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
@@ -55,18 +44,14 @@
 <div class="example" id="example-without-overlay">
   <h2>Without Overlay</h2>
   <button {{action "toggleWithoutOverlay"}}>Do It</button>
-  {{code-snippet name="without-overlay-modal-dialog-animatable.hbs"}}
+  <CodeSnippet @name="without-overlay-modal-dialog-animatable.hbs" />
   {{#if isShowingWithoutOverlay}}
     {{!-- BEGIN-SNIPPET without-overlay-modal-dialog-animatable --}}
-    {{#modal-dialog
-      onClose=(action "toggleWithoutOverlay")
-      hasOverlay=false
-      animatable=true
-    }}
+    <ModalDialog @onClose={{action "toggleWithoutOverlay"}} @hasOverlay={{false}} @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Without Overlay</p>
       <button {{action "toggleWithoutOverlay"}}>Close</button>
-    {{/modal-dialog}}
+    </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
@@ -80,60 +65,38 @@
   >
     Another one
   </button>
-  {{code-snippet
-    name="without-overlay-click-outside-to-close-modal-dialog-animatable.hbs"
-  }}
+  <CodeSnippet @name="without-overlay-click-outside-to-close-modal-dialog-animatable.hbs" />
   {{#if isShowingWithoutOverlayClickOutsideToClose}}
     {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-modal-dialog-animatable --}}
-    {{#modal-dialog
-      onClose=(action "toggleWithoutOverlayClickOutsideToClose")
-      hasOverlay=false
-      clickOutsideToClose=true
-      animatable=true
-    }}
+    <ModalDialog @onClose={{action "toggleWithoutOverlayClickOutsideToClose"}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Without Overlay - Click Outside to Close</p>
       <button {{action "toggleWithoutOverlayClickOutsideToClose"}}>Close</button>
-    {{/modal-dialog}}
+    </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
   {{#if isShowingWithoutOverlayClickOutsideToCloseAnotherOne}}
-    {{#modal-dialog
-      onClose=(action "toggleWithoutOverlayClickOutsideToCloseAnotherOne")
-      hasOverlay=false
-      clickOutsideToClose=true
-      offset="100px 0"
-      animatable=true
-    }}
+    <ModalDialog @onClose={{action "toggleWithoutOverlayClickOutsideToCloseAnotherOne"}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @offset="100px 0" @animatable={{true}}>
       <h1>Stop! Another modal!</h1>
       <p>Without Overlay Another One - Click Outside to Close</p>
       <button {{action "toggleWithoutOverlayClickOutsideToCloseAnotherOne"}}>Close</button>
-    {{/modal-dialog}}
+    </ModalDialog>
   {{/if}}
 
 </div>
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut isShowingCustomStyles true)}}>Do It</button>
-  {{code-snippet name="custom-styles-modal-dialog-animatable.hbs"}}
-  {{code-snippet name="custom-styles.scss"}}
+  <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
+  <CodeSnippet @name="custom-styles-modal-dialog-animatable.hbs" />
+  <CodeSnippet @name="custom-styles.scss" />
   {{#if isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-animatable --}}
-    {{#modal-dialog
-      onClose=(action (mut isShowingCustomStyles false))
-      containerClass="custom-styles-modal-container"
-      overlayClass="custom-styles-overlay"
-      wrapperClass="custom-styles-wrapper"
-      overlayPosition="sibling"
-      clickOutsideToClose=true
-      targetAttachment="none"
-      animatable=true
-    }}
+    <ModalDialog @onClose={{action (mut isShowingCustomStyles) false}} @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay" @wrapperClass="custom-styles-wrapper" @overlayPosition="sibling" @clickOutsideToClose={{true}} @targetAttachment="none" @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button {{action (action (mut isShowingCustomStyles false))}}>Close</button>
-    {{/modal-dialog}}
+      <button {{action (action (mut isShowingCustomStyles) false)}}>Close</button>
+    </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>
@@ -141,19 +104,16 @@
 <div class="example" id="example-subclass">
   <h2>Via Subclass</h2>
   <button {{action "toggleSubclassed"}}>Do It</button>
-  {{code-snippet name="subclass.js"}}
-  {{code-snippet name="subclass-modal-dialog-animatable.hbs"}}
-  {{code-snippet name="subclass-styles.scss"}}
+  <CodeSnippet @name="subclass.js" />
+  <CodeSnippet @name="subclass-modal-dialog-animatable.hbs" />
+  <CodeSnippet @name="subclass-styles.scss" />
   {{#if isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog-animatable --}}
-    {{#my-cool-modal-dialog
-      onClose=(action "toggleSubclassed")
-      animatable=true
-    }}
+    <MyCoolModalDialog @onClose={{action "toggleSubclassed"}} @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
       <button {{action "toggleSubclassed"}}>Close</button>
-    {{/my-cool-modal-dialog}}
+    </MyCoolModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
 </div>

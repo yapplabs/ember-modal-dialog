@@ -1,9 +1,5 @@
 {{#if this.isOverlaySibling}}
-  {{#liquid-wormhole
-    stack=this.stack
-    value=this.value
-    class=(concat "liquid-dialog-container " this.wrapperClassNamesString " " this.wrapperClass)
-  }}
+  <LiquidWormhole @stack={{this.stack}} @value={{this.value}} @class={{concat "liquid-dialog-container " this.wrapperClassNamesString " " this.wrapperClass}}>
     <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
       {{#if this.hasOverlay}}
         <div
@@ -18,13 +14,9 @@
         {{yield}}
       </div>
     </div>
-  {{/liquid-wormhole}}
+  </LiquidWormhole>
 {{else}}
-  {{#liquid-wormhole
-    stack=this.stack
-    value=this.value
-    class=(concat "liquid-dialog-container " this.wrapperClassNamesString " " this.wrapperClass)
-  }}
+  <LiquidWormhole @stack={{this.stack}} @value={{this.value}} @class={{concat "liquid-dialog-container " this.wrapperClassNamesString " " this.wrapperClass}}>
     {{#if this.hasOverlay}}
       <div
         class={{this.overlayClassNamesString}}
@@ -41,5 +33,5 @@
         {{yield}}
       </div>
     {{/if}}
-  {{/liquid-wormhole}}
+  </LiquidWormhole>
 {{/if}}

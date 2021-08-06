@@ -3,10 +3,10 @@
     The modal-dialog component can behave in four different ways.
   </p>
   <ul class="ApplicationRoute-nav">
-    <li>{{#link-to "index"}}css-positioned, not animatable{{/link-to}}</li>
-    <li>{{#link-to "animatable"}}css-positioned, animatable{{/link-to}}</li>
-    <li>{{#link-to "tethered"}}tethered, not animatable{{/link-to}}</li>
-    <li>{{#link-to "tethered-animatable"}}tethered, animatable{{/link-to}}</li>
+    <li><LinkTo @route="index">css-positioned, not animatable</LinkTo></li>
+    <li><LinkTo @route="animatable">css-positioned, animatable</LinkTo></li>
+    <li><LinkTo @route="tethered">tethered, not animatable</LinkTo></li>
+    <li><LinkTo @route="tethered-animatable">tethered, animatable</LinkTo></li>
   </ul>
 
   {{outlet}}
