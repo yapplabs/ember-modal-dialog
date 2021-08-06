@@ -12,15 +12,13 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 
-import Ember from 'ember';
+import { helper } from '@ember/component/helper';
 
-export function ignoreChildren([nextHandler]) {
+export default helper(function ignoreChildren([nextHandler]) {
   return function(...args) {
     let event = args[args.length - 1];
     if (event && event.target === event.currentTarget) {
       nextHandler.apply(this, args);
     }
   };
-}
-
-export default Ember.Helper.helper(ignoreChildren);
+});

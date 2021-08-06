@@ -114,7 +114,7 @@ export default Component.extend({
     return /iPad|iPhone|iPod/.test(navigator.userAgent);
   }),
 
-  makeOverlayClickableOnIOS: function() {
+  makeOverlayClickableOnIOS() {
     if (this.isIOS) {
       let overlayEl = document.querySelector('div[data-emd-overlay]');
       if (overlayEl) {

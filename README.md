@@ -105,12 +105,12 @@ Here is a more useful example of how to conditionally display a modal based on a
 **Controller**
 
 ```javascript
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   isShowingModal: false,
   actions: {
-    toggleModal: function() {
+    toggleModal() {
       this.toggleProperty('isShowingModal');
     }
   }
@@ -316,7 +316,7 @@ This can work, but some apps require a more sophisticated approach. One approach
 
 ```javascript
 // app/components/modal-dialog.js
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
 import ModalDialog from 'ember-modal-dialog/components/modal-dialog';
 import { EKMixin as EmberKeyboardMixin, keyDown } from 'ember-keyboard';
 
@@ -327,7 +327,7 @@ export default ModalDialog.extend(EmberKeyboardMixin, {
     this.set('keyboardActivated', true);
   },
 
-  closeOnEsc: Ember.on(keyDown('Escape'), function() {
+  closeOnEsc: on(keyDown('Escape'), function() {
     this.get('onClose')();
   })
 });
@@ -371,7 +371,7 @@ If you create an addon that you want to depend on ember-modal-dialog, you need t
 
 module.exports = {
   name: 'my-addon',
-  config: function(environment, appConfig) {
+  config(environment, appConfig) {
     let initialConfig = _.merge({}, appConfig);
     let updatedConfig = this.addons.reduce((config, addon) => {
       if (addon.config) {
