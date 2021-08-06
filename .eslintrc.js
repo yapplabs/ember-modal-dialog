@@ -1,8 +1,14 @@
+'use strict';
+
 module.exports = {
   root: true,
+  parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 2020,
-    sourceType: 'module'
+    sourceType: 'module',
+    ecmaFeatures: {
+      legacyDecorators: true
+    }
   },
   plugins: [
     'ember'
@@ -23,6 +29,7 @@ module.exports = {
     'ember/no-observers': 'warn',
     'ember/require-computed-macros': 'warn',
     'ember/require-tagless-components': 'warn',
+    'ember/no-jquery': 'error'
   },
   overrides: [
     // node files
@@ -44,8 +51,7 @@ module.exports = {
         'tests/dummy/app/**'
       ],
       parserOptions: {
-        sourceType: 'script',
-        ecmaVersion: 2015
+        sourceType: 'script'
       },
       env: {
         browser: false,
