@@ -15,8 +15,12 @@
   "scripts": {
     "build": "ember build --environment=production",
     "deploy": "ember github-pages:commit --message \"Deploy gh-pages from commit $(git rev-parse HEAD)\"; git push; git checkout -",
+    "lint": "npm-run-all --aggregate-output --continue-on-error --parallel 'lint:!(fix)'",
+    "lint:fix": "npm-run-all --aggregate-output --continue-on-error --parallel lint:*:fix",
     "lint:hbs": "ember-template-lint .",
-    "lint:js": "eslint .",
+    "lint:hbs:fix": "ember-template-lint . --fix",
+    "lint:js": "eslint . --cache",
+    "lint:js:fix": "eslint . --fix",
     "release": "release-it",
     "start": "ember serve",
     "test": "ember test",
@@ -64,6 +68,7 @@
     "liquid-tether": "^2.0.7",
     "liquid-wormhole": "^2.1.5",
     "loader.js": "^4.7.0",
+    "npm-run-all": "^4.1.5",
     "qunit-dom": "^1.0.0",
     "release-it": "^13.6.5",
     "release-it-lerna-changelog": "^2.3.0"
