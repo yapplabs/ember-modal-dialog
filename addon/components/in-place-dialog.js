@@ -1,21 +1,21 @@
-/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+import classic from 'ember-classic-decorator';
+import { tagName, layout as templateLayout } from '@ember-decorators/component';
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 import layout from '../templates/components/in-place-dialog';
 
-const computedJoin = function(prop) {
-  return computed(prop, function() {
-    return this.get(prop).join(' ');
-  });
-};
+@classic
+@tagName('')
+@templateLayout(layout)
+export default class InPlaceDialog extends Component {
+  containerClass = null; // passed in
 
-export default Component.extend({
-  tagName: '',
-  layout,
+  init(){
+    super.init(...arguments);
 
-  containerClass: null, // passed in
-  containerClassNames: ['ember-modal-dialog', 'ember-modal-dialog-in-place', 'emd-in-place'], // set this in a subclass definition
-  containerClassNamesString: computedJoin('containerClassNames'),
+    this.containerClassNames = ['ember-modal-dialog', 'ember-modal-dialog-in-place', 'emd-in-place']; // set this in a subclass definition
+  }
 
-  concatenatedProperties: ['containerClassNames']
-});
+  get containerClassNamesString() {
+    return this.containerClassNames.join(' ');
+  }
+}

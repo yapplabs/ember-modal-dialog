@@ -1,13 +1,18 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
+import { action } from '@ember/object';
 
-export default Component.extend({
-  isShowingModalDialog: false,
-  actions: {
-    openModalDialog() {
-      this.set('isShowingModalDialog', true);
-    },
-    closeModalDialog() {
-      this.set('isShowingModalDialog', false);
-    }
+@classic
+export default class ComponentThatUsesModalDialog extends Component {
+  isShowingModalDialog = false;
+
+  @action
+  openModalDialog() {
+    this.set('isShowingModalDialog', true);
   }
-});
+
+  @action
+  closeModalDialog() {    
+    this.set('isShowingModalDialog', false);
+  }
+}

@@ -137,11 +137,11 @@ Property              | Purpose
 `renderInPlace`       | A boolean, when true renders the modal without wormholing or tethering, useful for including a modal in a style guide
 `overlayPosition`     | either `'parent'` or `'sibling'`,  to control whether the overlay div is rendered as a parent element of the container div or as a sibling to it (default: `'parent'`)
 `containerClass`      | CSS class name(s) to append to container divs. Set this from template.
-`containerClassNames` | CSS class names to append to container divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-dialog'`. If you subclass this component, you may define this in your subclass.)
+`containerClassNames` | CSS class names to append to container divs. If you subclass this component, you may define this in your subclass.)
 `overlayClass`        | CSS class name(s) to append to overlay divs. Set this from template.
-`overlayClassNames`   | CSS class names to append to overlay divs. This is a concatenated property, so it does **not** replace the default overlay class (default: `'ember-modal-overlay'`. If you subclass this component, you may define this in your subclass.)
+`overlayClassNames`   | CSS class names to append to overlay divs. If you subclass this component, you may define this in your subclass.)
 `wrapperClass`        | CSS class name(s) to append to wrapper divs. Set this from template.
-`wrapperClassNames`   | CSS class names to append to wrapper divs. This is a concatenated property, so it does **not** replace the default container class (default: `'ember-modal-wrapper'`. If you subclass this component, you may define this in your subclass.)
+`wrapperClassNames`   | CSS class names to append to wrapper divs. If you subclass this component, you may define this in your subclass.)
 `animatable`          | A boolean, when `true` makes modal animatable using `liquid-fire` (requires `liquid-wormhole` to be installed, and for tethering situations `liquid-tether`. Having these optional dependencies installed and not specifying `animatable` will make `animatable=true` be the default.)
 
 #### Tethering
