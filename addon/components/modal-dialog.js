@@ -1,29 +1,41 @@
-import { oneWay, readOnly } from '@ember/object/computed';
+import classic from 'ember-classic-decorator';
+import { tagName, layout as templateLayout } from '@ember-decorators/component';
+import { action, computed } from '@ember/object';
+import { inject as service } from '@ember/service';
+import { readOnly, oneWay } from '@ember/object/computed';
 import Component from '@ember/component';
 import { dasherize } from '@ember/string';
-import { computed } from '@ember/object';
 import { isEmpty, typeOf, isNone } from '@ember/utils';
-import { inject as service } from '@ember/service';
 import layout from '../templates/components/modal-dialog';
 import { assert, warn } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
 
-export default Component.extend({
-  tagName: '',
-  layout,
-  modalService: service('modal-dialog'),
-  destinationElementId: null,
+@classic
+@tagName('')
+@templateLayout(layout)
+export default class ModalDialog extends Component {
+  @service('modal-dialog')
+  modalService;
+
+  destinationElementId = null;
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     if (!this.destinationElementId) {
       this.set('destinationElementId', this.modalService.destinationElementId);
     }
-  },
+  }
 
-  modalDialogComponentName: computed('renderInPlace', 'tetherTarget', 'animatable', 'hasLiquidWormhole', 'hasLiquidTether', function(){
+  @computed(
+    'renderInPlace',
+    'tetherTarget',
+    'animatable',
+    'hasLiquidWormhole',
+    'hasLiquidTether'
+  )
+  get modalDialogComponentName() {
     let tetherTarget = this.tetherTarget;
     let hasLiquidTether = this.hasLiquidTether;
     let hasLiquidWormhole = this.hasLiquidWormhole;
@@ -40,17 +52,23 @@ export default Component.extend({
       return 'ember-modal-dialog/-liquid-dialog';
     }
     return 'ember-modal-dialog/-basic-dialog';
-  }),
-  animatable: null,
-  hasLiquidWormhole: readOnly('modalService.hasLiquidWormhole'),
-  hasLiquidTether: readOnly('modalService.hasLiquidTether'),
+  }
+
+  animatable = null;
+
+  @readOnly('modalService.hasLiquidWormhole')
+  hasLiquidWormhole;
+
+  @readOnly('modalService.hasLiquidTether')
+  hasLiquidTether;
 
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
     if (DEBUG) {
       this.validateProps();
     }
-  },
+  }
+
   validateProps() {
     let overlayPosition = this.overlayPosition;
     if (VALID_OVERLAY_POSITIONS.indexOf(overlayPosition) === -1) {
@@ -60,79 +78,74 @@ export default Component.extend({
         { id: 'ember-modal-dialog.validate-overlay-position'}
       );
     }
-  },
-  // onClose - set this from templates
+  }
 
-  /* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+  hasOverlay = true;
 
-  // containerClass - set this from templates
-  containerClassNames: ['ember-modal-dialog'], // set this in a subclass definition
+  translucentOverlay = false;
+  overlayPosition = 'parent'; // `parent` or `sibling`
+  clickOutsideToClose = false;
+  renderInPlace = false;
+  tetherTarget = null;
 
-  // overlayClass - set this from templates
-  overlayClassNames: ['ember-modal-overlay'], // set this in a subclass definition
+  @oneWay('elementId')
+  stack; // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
 
-  // wrapperClass - set this from templates
-  wrapperClassNames: ['ember-modal-wrapper'], // set this in a subclass definition
+  value = 0; // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
+  targetAttachment = 'middle center';
+  tetherClassPrefix = null;
 
-  concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
-  /* eslint-enable ember/avoid-leaking-state-in-ember-objects */
-
-  hasOverlay: true,
-  translucentOverlay: false,
-  overlayPosition: 'parent', // `parent` or `sibling`
-  clickOutsideToClose: false,
-  renderInPlace: false,
-  tetherTarget: null,
-  stack: oneWay('elementId'), // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
-  value: 0, // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
-
-  targetAttachment: 'middle center',
-  tetherClassPrefix: null,
-  attachmentClass: computed('attachment', function() {
+  @computed('attachment')
+  get attachmentClass() {
     let attachment = this.attachment;
     if (isEmpty(attachment)) {
-      return;
+      return undefined;
     }
     return attachment.split(' ').map((attachmentPart) => {
       return `emd-attachment-${dasherize(attachmentPart)}`;
     }).join(' ');
-  }),
-  targetAttachmentClass: computed('targetAttachment', function() {
+  }
+
+  @computed('targetAttachment')
+  get targetAttachmentClass() {
     let targetAttachment = this.targetAttachment || '';
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
     return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
-  }),
+  }
+
   ensureEmberTetherPresent() {
     if (!this.modalService.hasEmberTether) {
       throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
     }
-  },
-  actions: {
-    onClose() {
-      const onClose = this.onClose;
-      // we shouldn't warn if the callback is not provided at all
-      if (isNone(onClose)) {
-        return;
-      }
-
-      assert('onClose handler must be a function', typeOf(onClose) === 'function');
-
-      onClose();
-    },
-    onClickOverlay(e) {
-      e.preventDefault();
-
-      const onClickOverlay = this.onClickOverlay;
-      // we shouldn't warn if the callback is not provided at all
-      if (isNone(onClickOverlay)) {
-        this.send('onClose');
-        return;
-      }
-
-      assert('onClickOverlay handler must be a function', typeOf(onClickOverlay) === 'function');
-
-      onClickOverlay();
-    }
   }
-});
+
+  @action
+  onCloseAction() {
+    const onClose = this.onClose;
+    // we shouldn't warn if the callback is not provided at all
+    if (isNone(onClose)) {
+      return;
+    }
+
+    assert('onClose handler must be a function', typeOf(onClose) === 'function');
+
+    onClose();
+  }
+
+  @action
+  onClickOverlayAction(e) {
+    e.preventDefault();
+
+    const onClickOverlay = this.onClickOverlay;
+    // we shouldn't warn if the callback is not provided at all
+    if (isNone(onClickOverlay)) {
+      this.onCloseAction();
+      return;
+    }
+
+    assert('onClickOverlay handler must be a function', typeOf(onClickOverlay) === 'function');
+
+    onClickOverlay();
+  }
+}

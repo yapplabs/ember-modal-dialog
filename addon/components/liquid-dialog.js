@@ -1,10 +1,17 @@
-/* eslint-disable ember/avoid-leaking-state-in-ember-objects */
+import classic from 'ember-classic-decorator';
+import { layout as templateLayout } from '@ember-decorators/component';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/liquid-dialog';
 
-export default BasicDialog.extend({
-  layout,
-  hasOverlay: true,
-  containerClassNames: ['liquid-dialog'],
-  variantWrapperClass: 'emd-animatable'
-});
+@classic
+@templateLayout(layout)
+export default class LiquidDialog extends BasicDialog {
+  hasOverlay = true;
+  variantWrapperClass = 'emd-animatable';
+
+  init(){
+    super.init(...arguments);
+
+    this.containerClassNames?.push('liquid-dialog');
+  }
+}
