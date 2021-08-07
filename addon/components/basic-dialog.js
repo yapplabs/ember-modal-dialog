@@ -1,62 +1,83 @@
-import Component from '@ember/component';
+import classic from 'ember-classic-decorator';
+import { tagName, layout as templateLayout } from '@ember-decorators/component';
 import { computed } from '@ember/object';
-import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { isEmpty } from '@ember/utils';
 import layout from '../templates/components/basic-dialog';
 
-export default Component.extend({
-  tagName: '',
-  layout,
+@classic
+@tagName('')
+@templateLayout(layout)
+export default class BasicDialog extends Component {
+  containerClassNames = null;
+  overlayClassNames = null;
+  wrapperClassNames = null;
+  destinationElementId = null;
+  translucentOverlay = false;
+  clickOutsideToClose = false;
+  hasOverlay = true;
+  isCentered = true;
+  overlayPosition = null;
 
-  containerClassNames: null,
-  overlayClassNames: null,
-  wrapperClassNames: null,
-  destinationElementId: null,
-
-  modalService: service('modal-dialog'),
+  @service('modal-dialog')
+  modalService;
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
     if (!this.destinationElementId) {
       this.set('destinationElementId', this.modalService.destinationElementId);
     }
-  },
+  }
 
-  variantWrapperClass: 'emd-static',
-  containerClassNamesString: computed('containerClassNames.[]', 'targetAttachmentClass', 'attachmentClass', 'containerClass', function() {
+  variantWrapperClass = 'emd-static';
+
+  @computed(
+    'containerClassNames.[]',
+    'targetAttachmentClass',
+    'attachmentClass',
+    'containerClass'
+  )
+  get containerClassNamesString() {
     return [
-      this.containerClassNames.join(' '),
+      'ember-modal-dialog',
+      this.containerClassNames?.join(' '),
       this.targetAttachmentClass,
       this.attachmentClass,
       this.containerClass
     ].filter((className) => !isEmpty(className)).join(' ');
-  }),
-  overlayClassNamesString: computed('overlayClassNames.[]', 'overlayClass', 'translucentOverlay', function(){
+  }
+
+  @computed('overlayClassNames.[]', 'overlayClass', 'translucentOverlay')
+  get overlayClassNamesString() {
     return [
-      this.overlayClassNames.join(' '),
+      'ember-modal-overlay',
+      this.overlayClassNames?.join(' '),
       this.translucentOverlay ? 'translucent' : null,
       this.overlayClass
     ].filter((className) => !isEmpty(className)).join(' ');
-  }),
-  wrapperClassNamesString: computed('wrapperClassNames.[]', 'targetAttachmentClass', 'variantWrapperClass', 'wrapperClass', function(){
+  }
+
+  @computed(
+    'wrapperClassNames.[]',
+    'targetAttachmentClass',
+    'variantWrapperClass',
+    'wrapperClass'
+  )
+  get wrapperClassNamesString() {
     return [
-      this.wrapperClassNames.join(' '),
+      'ember-modal-wrapper',
+      this.wrapperClassNames?.join(' '),
       this.targetAttachmentClass.replace('emd-', 'emd-wrapper-'),
       this.variantWrapperClass,
       this.wrapperClass
     ].filter((className) => !isEmpty(className)).join(' ');
-  }),
+  }
 
-  concatenatedProperties: ['containerClassNames', 'overlayClassNames', 'wrapperClassNames'],
-
-  translucentOverlay: false,
-  clickOutsideToClose: false,
-  hasOverlay: true,
-  isCentered: true,
-  overlayPosition: null,
-  isOverlaySibling: computed('overlayPosition', function() {
+  @computed('overlayPosition')
+  get isOverlaySibling() {
     return this.overlayPosition === 'sibling';
-  }),
+  }
 
   didInsertElement() {
     if (!this.clickOutsideToClose) {
@@ -99,20 +120,21 @@ export default Component.extend({
       const registerTouch = () => document.addEventListener('touchend', this.handleClick);
       setTimeout(registerTouch);
     }
-    this._super(...arguments);
-  },
+    super.didInsertElement(...arguments);
+  }
 
   willDestroyElement() {
     document.removeEventListener('click', this.handleClick);
     if (this.isIOS) {
       document.removeEventListener('touchend', this.handleClick);
     }
-    this._super(...arguments);
-  },
+    super.willDestroyElement(...arguments);
+  }
 
-  isIOS: computed(function() {
+  @computed
+  get isIOS() {
     return /iPad|iPhone|iPod/.test(navigator.userAgent);
-  }),
+  }
 
   makeOverlayClickableOnIOS() {
     if (this.isIOS) {
@@ -122,4 +144,4 @@ export default Component.extend({
       }
     }
   }
-});
+}

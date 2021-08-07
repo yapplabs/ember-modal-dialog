@@ -1,36 +1,46 @@
+import classic from 'ember-classic-decorator';
+import { layout as templateLayout } from '@ember-decorators/component';
 import { computed } from '@ember/object';
 import { dasherize } from '@ember/string';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/tether-dialog';
 
-export default BasicDialog.extend({
-  layout,
-  init(){
-    this._super(...arguments);
+@classic
+@templateLayout(layout)
+export default class TetherDialog extends BasicDialog {
+  init() {
+    super.init(...arguments);
     this._ensureAttachments();
-  },
-  targetAttachmentClass: computed('targetAttachment', function() {
+  }
+
+  @computed('targetAttachment')
+  get targetAttachmentClass() {
     let targetAttachment = this.targetAttachment || '';
     return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
-  }),
+  }
 
-  targetAttachment: null,
-  attachment: null,
+  targetAttachment = null;
+  attachment = null;
+
   didReceiveAttrs() {
-    this._super(...arguments);
+    super.didReceiveAttrs(...arguments);
     this._ensureAttachments();
-  },
-  tetherTarget: null, // element, css selector, view instance, 'viewport', or 'scroll-handle'
-  tetherClassPrefix: computed({
-    get() {
-      return 'ember-tether';
-    }, set(key, val) {
+  }
+
+  tetherTarget = null; // element, css selector, view instance, 'viewport', or 'scroll-handle'
+
+  @computed
+  get tetherClassPrefix() {
+    return 'ember-tether';
+  }
+
+  set tetherClassPrefix(val) {
       if (val) {
         return val;
       }
       return 'ember-tether';
     }
-  }),
+
   // offset - passed in
   // targetOffset - passed in
   // targetModifier - passed in
@@ -42,4 +52,4 @@ export default BasicDialog.extend({
       this.set('targetAttachment', 'middle center');
     }
   }
-});
+}
