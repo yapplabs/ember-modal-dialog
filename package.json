@@ -34,7 +34,6 @@
     "ember-wormhole": "^0.6.0"
   },
   "devDependencies": {
-    "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^1.3.0",
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
@@ -42,12 +41,10 @@
     "broccoli-asset-rev": "^3.0.0",
     "ember-auto-import": "^1.5.3",
     "ember-cli": "~3.16.0",
-    "ember-cli-build-notifications": "^0.4.0",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-deprecation-workflow": "^1.0.1",
     "ember-cli-github-pages": "^0.2.2",
     "ember-cli-inject-live-reload": "^2.0.2",
-    "ember-cli-shims": "^1.2.0",
     "ember-cli-template-lint": "^1.0.0-beta.3",
     "ember-cli-uglify": "^3.0.0",
     "ember-code-snippet": "^2.4.0",
