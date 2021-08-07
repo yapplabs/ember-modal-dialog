@@ -32,9 +32,9 @@ export default Controller.extend({
   },
   actions: {
     toggleTargetSelector() {
-      if (this.get('isShowingTargetSelector')) {
-        let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
-        let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
+      if (this.isShowingTargetSelector) {
+        let newTargetAttachment = this.nextAttachment(this.exampleTargetAttachment);
+        let newAttachment = this.nextAttachment(this.exampleAttachment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
@@ -44,9 +44,9 @@ export default Controller.extend({
       this.toggleProperty('isShowingTargetSelector');
     },
     toggleTargetElement() {
-      if (this.get('isShowingTargetElement')) {
-        let newTargetAttachment = this.nextAttachment(this.get('exampleTargetAttachment'));
-        let newAttachment = this.nextAttachment(this.get('exampleAttachment'));
+      if (this.isShowingTargetElement) {
+        let newTargetAttachment = this.nextAttachment(this.exampleTargetAttachment);
+        let newAttachment = this.nextAttachment(this.exampleAttachment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
         if (newTargetAttachment !== 'middle left') {
@@ -58,7 +58,7 @@ export default Controller.extend({
     toggleCenteredScrolling() {
       this.toggleProperty('isShowingCenteredScrolling');
 
-      if (this.get('isShowingCenteredScrolling')) {
+      if (this.isShowingCenteredScrolling) {
         document.querySelector('#modal-overlays').classList.add('active');
         document.body.classList.add('centered-modal-showing');
       } else {

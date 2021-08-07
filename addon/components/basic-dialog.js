@@ -54,9 +54,7 @@ export default Component.extend({
   hasOverlay: true,
   isCentered: true,
   overlayPosition: null,
-  isOverlaySibling: computed('overlayPosition', function() {
-    return this.overlayPosition === 'sibling';
-  }),
+  isOverlaySibling: computed.equal('overlayPosition', 'sibling'),
 
   didInsertElement() {
     if (!this.clickOutsideToClose) {
