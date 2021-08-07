@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { set, get } from '@ember/object';
+import { set } from '@ember/object';
 
 export default Controller.extend({
   isShowingBasic: false,
@@ -26,7 +26,7 @@ export default Controller.extend({
   },
   actions: {
     toggleActiveComponent() {
-      if (get(this, 'activeComponent') === 'modal-dialog') {
+      if (this.activeComponent === 'modal-dialog') {
         set(this, 'activeComponent', 'tether-dialog');
       } else {
         set(this, 'activeComponent', 'modal-dialog');
@@ -56,7 +56,7 @@ export default Controller.extend({
     toggleCenteredScrolling() {
       this.toggleProperty('isShowingCenteredScrolling');
 
-      if (this.get('isShowingCenteredScrolling')) {
+      if (this.isShowingCenteredScrolling) {
         document.querySelector('#modal-overlays').classList.add('active');
         document.body.classList.add('centered-modal-showing');
       } else {

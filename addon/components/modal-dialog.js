@@ -99,7 +99,7 @@ export default class ModalDialog extends Component {
   get attachmentClass() {
     let attachment = this.attachment;
     if (isEmpty(attachment)) {
-      return;
+      return undefined;
     }
     return attachment.split(' ').map((attachmentPart) => {
       return `emd-attachment-${dasherize(attachmentPart)}`;

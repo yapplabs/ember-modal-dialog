@@ -21,6 +21,7 @@ module.exports = {
     browser: true
   },
   rules: {
+    'no-setter-return': 'off',
     'ember/no-actions-hash': 'warn',
     'ember/no-classic-classes': 'warn',
     'ember/no-classic-components': 'warn',
