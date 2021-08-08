@@ -16,9 +16,11 @@ export default class TetherDialog extends BasicDialog {
   @computed('targetAttachment')
   get targetAttachmentClass() {
     let targetAttachment = this.targetAttachment || '';
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)}`;
+    // Convert tether-styled values like 'middle right' to 'right'
+    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
+    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
   }
-
+  
   targetAttachment = null;
   attachment = null;
 

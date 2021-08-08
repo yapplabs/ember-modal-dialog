@@ -5,6 +5,7 @@ import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 import { isEmpty } from '@ember/utils';
 import layout from '../templates/components/basic-dialog';
+import { dasherize } from '@ember/string';
 
 @classic
 @tagName('')
@@ -77,6 +78,14 @@ export default class BasicDialog extends Component {
   @computed('overlayPosition')
   get isOverlaySibling() {
     return this.overlayPosition === 'sibling';
+  }
+
+  @computed('targetAttachment')
+  get targetAttachmentClass() {
+    let targetAttachment = this.targetAttachment || '';
+    // Convert tether-styled values like 'middle right' to 'right'
+    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
+    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
   }
 
   didInsertElement() {

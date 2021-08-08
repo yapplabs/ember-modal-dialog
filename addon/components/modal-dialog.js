@@ -106,14 +106,6 @@ export default class ModalDialog extends Component {
     }).join(' ');
   }
 
-  @computed('targetAttachment')
-  get targetAttachmentClass() {
-    let targetAttachment = this.targetAttachment || '';
-    // Convert tether-styled values like 'middle right' to 'right'
-    targetAttachment = targetAttachment.split(' ').slice(-1)[0];
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
-  }
-
   ensureEmberTetherPresent() {
     if (!this.modalService.hasEmberTether) {
       throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
