@@ -1,7 +1,6 @@
 import Application, { getOwner } from '@ember/application';
 import Engine from '@ember/engine';
 import { assert } from '@ember/debug'
-import Ember from 'ember';
 
 let hasDOM = typeof document !== 'undefined';
 
@@ -36,10 +35,10 @@ export default function(AppOrEngine) {
 
   let emberModalDialog = AppOrEngine.emberModalDialog ?? App.emberModalDialog ?? {};
   let modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
-
+  let isTestEnv = AppOrEngine.resolveRegistration('config:environment').environment === 'test';
   AppOrEngine.register(
     'config:modals-container-id',
-    { toString: () => Ember.testing ? 'ember-testing' : modalContainerElId },
+    { toString: () => isTestEnv ? 'ember-testing' : modalContainerElId },
     { instantiate: false }
   );
 
