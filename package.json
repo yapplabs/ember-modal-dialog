@@ -61,7 +61,7 @@
     "ember-source": "~3.27.0",
     "ember-source-channel-url": "^2.0.1",
     "ember-template-lint": "^2.9.1",
-    "ember-tether": "^1.0.0",
+    "ember-tether": "^2.0.0",
     "ember-truth-helpers": "^3.0.0",
     "ember-try": "^1.4.0",
     "eslint": "^7.16.0",
