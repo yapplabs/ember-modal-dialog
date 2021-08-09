@@ -9,10 +9,14 @@ import layout from '../templates/components/in-place-dialog';
 export default class InPlaceDialog extends Component {
   containerClass = null; // passed in
 
-  init(){
+  init() {
     super.init(...arguments);
 
-    this.containerClassNames = ['ember-modal-dialog', 'ember-modal-dialog-in-place', 'emd-in-place']; // set this in a subclass definition
+    this.containerClassNames = [
+      'ember-modal-dialog',
+      'ember-modal-dialog-in-place',
+      'emd-in-place',
+    ]; // set this in a subclass definition
   }
 
   get containerClassNamesString() {

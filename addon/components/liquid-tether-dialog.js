@@ -13,9 +13,11 @@ export default class LiquidTetherDialog extends BasicDialog {
     let targetAttachment = this.targetAttachment || '';
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
+    return `ember-modal-dialog-target-attachment-${dasherize(
+      targetAttachment
+    )} emd-target-attachment-${dasherize(targetAttachment)}`;
   }
-  
+
   targetAttachment = null;
   attachment = null;
 
@@ -35,11 +37,11 @@ export default class LiquidTetherDialog extends BasicDialog {
   }
 
   set tetherClassPrefix(val) {
-      if (val) {
-        return val;
-      }
-      return 'liquid-tether';
+    if (val) {
+      return val;
     }
+    return 'liquid-tether';
+  }
 
   hasOverlay = true;
 

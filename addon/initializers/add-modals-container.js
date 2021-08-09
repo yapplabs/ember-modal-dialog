@@ -1,6 +1,6 @@
 import Application, { getOwner } from '@ember/application';
 import Engine from '@ember/engine';
-import { assert } from '@ember/debug'
+import { assert } from '@ember/debug';
 
 let hasDOM = typeof document !== 'undefined';
 
@@ -13,13 +13,15 @@ function appendContainerElement(rootElementOrId, id) {
     return;
   }
 
-  let rootEl = rootElementOrId.appendChild ? rootElementOrId : document.querySelector(rootElementOrId);
+  let rootEl = rootElementOrId.appendChild
+    ? rootElementOrId
+    : document.querySelector(rootElementOrId);
   let modalContainerEl = document.createElement('div');
   modalContainerEl.id = id;
   rootEl.appendChild(modalContainerEl);
 }
 
-export default function(AppOrEngine) {
+export default function (AppOrEngine) {
   let App;
   if (AppOrEngine instanceof Application) {
     App = AppOrEngine;
@@ -33,12 +35,16 @@ export default function(AppOrEngine) {
     assert(`Could not find the root Application for '${AppOrEngine}'.`);
   }
 
-  let emberModalDialog = AppOrEngine.emberModalDialog ?? App.emberModalDialog ?? {};
-  let modalContainerElId = emberModalDialog.modalRootElementId || 'modal-overlays';
-  let isTestEnv = AppOrEngine.resolveRegistration('config:environment').environment === 'test';
+  let emberModalDialog =
+    AppOrEngine.emberModalDialog ?? App.emberModalDialog ?? {};
+  let modalContainerElId =
+    emberModalDialog.modalRootElementId || 'modal-overlays';
+  let isTestEnv =
+    AppOrEngine.resolveRegistration('config:environment').environment ===
+    'test';
   AppOrEngine.register(
     'config:modals-container-id',
-    { toString: () => isTestEnv ? 'ember-testing' : modalContainerElId },
+    { toString: () => (isTestEnv ? 'ember-testing' : modalContainerElId) },
     { instantiate: false }
   );
 

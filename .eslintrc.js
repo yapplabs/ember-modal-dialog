@@ -29,7 +29,7 @@ module.exports = {
     'ember/no-observers': 'warn',
     'ember/require-computed-macros': 'warn',
     'ember/require-tagless-components': 'warn',
-    'ember/no-jquery': 'error'
+    'ember/no-jquery': 'error',
   },
   overrides: [
     // node files

@@ -12,7 +12,7 @@ export default class ComponentThatUsesModalDialog extends Component {
   }
 
   @action
-  closeModalDialog() {    
+  closeModalDialog() {
     this.set('isShowingModalDialog', false);
   }
 }

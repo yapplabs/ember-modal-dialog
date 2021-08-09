@@ -6,6 +6,6 @@ module.exports = {
     'no-action': false,
     'no-curly-component-invocation': false,
     'no-implicit-this': false,
-    'require-button-type': false
-  }
+    'require-button-type': false,
+  },
 };

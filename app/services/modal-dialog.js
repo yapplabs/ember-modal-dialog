@@ -3,7 +3,7 @@ import Service from '@ember/service';
 import ENV from '../config/environment';
 
 function computedFromConfig(prop) {
-  return computed(function(){
+  return computed(function () {
     return ENV['ember-modal-dialog'] && ENV['ember-modal-dialog'][prop];
   });
 }

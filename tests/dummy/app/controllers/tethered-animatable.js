@@ -52,11 +52,15 @@ export default Controller.extend({
       this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
     },
     toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
-      this.toggleProperty('isShowingWithoutOverlayClickOutsideToCloseAnotherOne');
+      this.toggleProperty(
+        'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
+      );
     },
     toggleTargetSelector() {
       if (this.isShowingTargetSelector) {
-        let newTargetAttachment = this.nextAttachment(this.exampleTargetAttachment);
+        let newTargetAttachment = this.nextAttachment(
+          this.exampleTargetAttachment
+        );
         let newAttachment = this.nextAttachment(this.exampleAttachment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
@@ -68,7 +72,9 @@ export default Controller.extend({
     },
     toggleTargetElement() {
       if (this.isShowingTargetElement) {
-        let newTargetAttachment = this.nextAttachment(this.exampleTargetAttachment);
+        let newTargetAttachment = this.nextAttachment(
+          this.exampleTargetAttachment
+        );
         let newAttachment = this.nextAttachment(this.exampleAttachment);
         this.set('exampleTargetAttachment', newTargetAttachment);
         this.set('exampleAttachment', newAttachment);
@@ -112,6 +118,6 @@ export default Controller.extend({
     },
     clickedTranslucentOverlay() {
       window.onClickOverlayCallbackCalled = true;
-    }
-  }
+    },
+  },
 });

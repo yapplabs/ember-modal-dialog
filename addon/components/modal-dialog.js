@@ -43,7 +43,12 @@ export default class ModalDialog extends Component {
 
     if (this.renderInPlace) {
       return 'ember-modal-dialog/-in-place-dialog';
-    } else if (tetherTarget && hasLiquidTether && hasLiquidWormhole && animatable === true) {
+    } else if (
+      tetherTarget &&
+      hasLiquidTether &&
+      hasLiquidWormhole &&
+      animatable === true
+    ) {
       return 'ember-modal-dialog/-liquid-tether-dialog';
     } else if (tetherTarget) {
       this.ensureEmberTetherPresent();
@@ -73,9 +78,11 @@ export default class ModalDialog extends Component {
     let overlayPosition = this.overlayPosition;
     if (VALID_OVERLAY_POSITIONS.indexOf(overlayPosition) === -1) {
       warn(
-        `overlayPosition value '${overlayPosition}' is not valid (valid values [${VALID_OVERLAY_POSITIONS.join(', ')}])`,
+        `overlayPosition value '${overlayPosition}' is not valid (valid values [${VALID_OVERLAY_POSITIONS.join(
+          ', '
+        )}])`,
         false,
-        { id: 'ember-modal-dialog.validate-overlay-position'}
+        { id: 'ember-modal-dialog.validate-overlay-position' }
       );
     }
   }
@@ -101,14 +108,19 @@ export default class ModalDialog extends Component {
     if (isEmpty(attachment)) {
       return undefined;
     }
-    return attachment.split(' ').map((attachmentPart) => {
-      return `emd-attachment-${dasherize(attachmentPart)}`;
-    }).join(' ');
+    return attachment
+      .split(' ')
+      .map((attachmentPart) => {
+        return `emd-attachment-${dasherize(attachmentPart)}`;
+      })
+      .join(' ');
   }
 
   ensureEmberTetherPresent() {
     if (!this.modalService.hasEmberTether) {
-      throw new Error('Please install ember-tether in order to pass a tetherTarget to modal-dialog');
+      throw new Error(
+        'Please install ember-tether in order to pass a tetherTarget to modal-dialog'
+      );
     }
   }
 
@@ -120,7 +132,10 @@ export default class ModalDialog extends Component {
       return;
     }
 
-    assert('onClose handler must be a function', typeOf(onClose) === 'function');
+    assert(
+      'onClose handler must be a function',
+      typeOf(onClose) === 'function'
+    );
 
     onClose();
   }
@@ -136,7 +151,10 @@ export default class ModalDialog extends Component {
       return;
     }
 
-    assert('onClickOverlay handler must be a function', typeOf(onClickOverlay) === 'function');
+    assert(
+      'onClickOverlay handler must be a function',
+      typeOf(onClickOverlay) === 'function'
+    );
 
     onClickOverlay();
   }
