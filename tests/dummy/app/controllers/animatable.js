@@ -48,7 +48,9 @@ export default Controller.extend({
       this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
     },
     toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
-      this.toggleProperty('isShowingWithoutOverlayClickOutsideToCloseAnotherOne');
+      this.toggleProperty(
+        'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
+      );
     },
     toggleSubclassed() {
       this.toggleProperty('isShowingSubclassed');
@@ -66,6 +68,6 @@ export default Controller.extend({
     },
     clickedTranslucentOverlay() {
       window.onClickOverlayCallbackCalled = true;
-    }
-  }
+    },
+  },
 });

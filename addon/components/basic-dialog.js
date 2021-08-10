@@ -45,8 +45,10 @@ export default class BasicDialog extends Component {
       this.containerClassNames?.join(' '),
       this.targetAttachmentClass,
       this.attachmentClass,
-      this.containerClass
-    ].filter((className) => !isEmpty(className)).join(' ');
+      this.containerClass,
+    ]
+      .filter((className) => !isEmpty(className))
+      .join(' ');
   }
 
   @computed('overlayClassNames.[]', 'overlayClass', 'translucentOverlay')
@@ -55,8 +57,10 @@ export default class BasicDialog extends Component {
       'ember-modal-overlay',
       this.overlayClassNames?.join(' '),
       this.translucentOverlay ? 'translucent' : null,
-      this.overlayClass
-    ].filter((className) => !isEmpty(className)).join(' ');
+      this.overlayClass,
+    ]
+      .filter((className) => !isEmpty(className))
+      .join(' ');
   }
 
   @computed(
@@ -71,8 +75,10 @@ export default class BasicDialog extends Component {
       this.wrapperClassNames?.join(' '),
       this.targetAttachmentClass.replace('emd-', 'emd-wrapper-'),
       this.variantWrapperClass,
-      this.wrapperClass
-    ].filter((className) => !isEmpty(className)).join(' ');
+      this.wrapperClass,
+    ]
+      .filter((className) => !isEmpty(className))
+      .join(' ');
   }
 
   @computed('overlayPosition')
@@ -85,7 +91,9 @@ export default class BasicDialog extends Component {
     let targetAttachment = this.targetAttachment || '';
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
-    return `ember-modal-dialog-target-attachment-${dasherize(targetAttachment)} emd-target-attachment-${dasherize(targetAttachment)}`;
+    return `ember-modal-dialog-target-attachment-${dasherize(
+      targetAttachment
+    )} emd-target-attachment-${dasherize(targetAttachment)}`;
   }
 
   didInsertElement() {
@@ -120,13 +128,15 @@ export default class BasicDialog extends Component {
       }
     };
 
-    const registerClick = () => document.addEventListener('click', this.handleClick);
+    const registerClick = () =>
+      document.addEventListener('click', this.handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
     setTimeout(registerClick);
 
     if (this.isIOS) {
-      const registerTouch = () => document.addEventListener('touchend', this.handleClick);
+      const registerTouch = () =>
+        document.addEventListener('touchend', this.handleClick);
       setTimeout(registerTouch);
     }
     super.didInsertElement(...arguments);

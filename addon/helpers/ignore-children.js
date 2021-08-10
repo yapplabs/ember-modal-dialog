@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import { helper } from '@ember/component/helper';
 
 export default helper(function ignoreChildren([nextHandler]) {
-  return function(...args) {
+  return function (...args) {
     let event = args[args.length - 1];
     if (event && event.target === event.currentTarget) {
       nextHandler.apply(this, args);

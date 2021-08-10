@@ -2,7 +2,7 @@
 
 var VersionChecker = require('ember-cli-version-checker');
 
-module.exports = function( environment, appConfig, addon ) {
+module.exports = function (environment, appConfig, addon) {
   appConfig['ember-modal-dialog'] = appConfig['ember-modal-dialog'] || {};
 
   var checker = new VersionChecker(addon);
