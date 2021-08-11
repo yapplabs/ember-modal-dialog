@@ -1,4 +1,4 @@
-import { click, find, visit } from '@ember/test-helpers';
+import { click, find, settled, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { findContains } from '../helpers/modal-asserts';
 import { setupApplicationTest } from 'ember-qunit';
@@ -10,14 +10,18 @@ const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
 module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
   setupApplicationTest(hooks);
-  hooks.beforeEach(function () {
-    return visit('/');
+  hooks.beforeEach(async function () {
+    await visit('/');
+  });
+
+  hooks.afterEach(async function () {
+    await settled();
   });
 
   test('basic modal', async function (assert) {
-    assert.isPresentOnce(modalRootElementSelector);
+    assert.dom(modalRootElementSelector).exists({ count: 1 });
     assert.isAbsent(overlaySelector);
-    assert.isPresentOnce('#example-basic button');
+    assert.dom('#example-basic button').exists({ count: 1 });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-basic button',
@@ -94,7 +98,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
     await click('#example-translucent-with-callback button');
     await click(overlaySelector);
 
-    assert.isPresentOnce(overlaySelector);
+    assert.dom(overlaySelector).exists({ count: 1 });
     assert.ok(window.onClickOverlayCallbackCalled);
 
     await click(dialogCloseButton);

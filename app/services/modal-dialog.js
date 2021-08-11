@@ -1,6 +1,7 @@
 import { computed } from '@ember/object';
 import Service from '@ember/service';
 import ENV from '../config/environment';
+import { getDestinationElementIdFromConfig } from 'ember-modal-dialog/utils/config-utils';
 
 function computedFromConfig(prop) {
   return computed(function () {
@@ -12,5 +13,7 @@ export default Service.extend({
   hasEmberTether: computedFromConfig('hasEmberTether'),
   hasLiquidWormhole: computedFromConfig('hasLiquidWormhole'),
   hasLiquidTether: computedFromConfig('hasLiquidTether'),
-  destinationElementId: null, // injected by initializer
+  destinationElementId: computed(function () {
+    return getDestinationElementIdFromConfig(ENV);
+  }),
 });
