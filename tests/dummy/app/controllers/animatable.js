@@ -1,16 +1,19 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
-import { set } from '@ember/object';
+import { set, action } from '@ember/object';
 
-export default Controller.extend({
-  isShowingBasic: false,
-  isShowingTranslucent: false,
-  isShowingTranslucentWithCallback: false,
-  isShowingWithoutOverlay: false,
-  isShowingWithoutOverlayClickOutsideToClose: false,
-  isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
-  isShowingSubclassed: false,
-  isShowingCenteredScrolling: false,
-  isShowingElementCenterModal: false,
+@classic
+export default class AnimatableController extends Controller {
+  isShowingBasic = false;
+  isShowingTranslucent = false;
+  isShowingTranslucentWithCallback = false;
+  isShowingWithoutOverlay = false;
+  isShowingWithoutOverlayClickOutsideToClose = false;
+  isShowingWithoutOverlayClickOutsideToCloseAnotherOne = false;
+  isShowingSubclassed = false;
+  isShowingCenteredScrolling = false;
+  isShowingElementCenterModal = false;
+
   nextAttachment(val) {
     switch (val) {
       case 'middle right':
@@ -23,51 +26,69 @@ export default Controller.extend({
         return 'middle right';
     }
     return false;
-  },
-  actions: {
-    toggleActiveComponent() {
-      if (this.activeComponent === 'modal-dialog') {
-        set(this, 'activeComponent', 'tether-dialog');
-      } else {
-        set(this, 'activeComponent', 'modal-dialog');
-      }
-    },
-    toggleBasic() {
-      this.toggleProperty('isShowingBasic');
-    },
-    toggleTranslucent() {
-      this.toggleProperty('isShowingTranslucent');
-    },
-    toggleTranslucentWithCallback() {
-      this.toggleProperty('isShowingTranslucentWithCallback');
-    },
-    toggleWithoutOverlay() {
-      this.toggleProperty('isShowingWithoutOverlay');
-    },
-    toggleWithoutOverlayClickOutsideToClose() {
-      this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
-    },
-    toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
-      this.toggleProperty(
-        'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
-      );
-    },
-    toggleSubclassed() {
-      this.toggleProperty('isShowingSubclassed');
-    },
-    toggleCenteredScrolling() {
-      this.toggleProperty('isShowingCenteredScrolling');
+  }
 
-      if (this.isShowingCenteredScrolling) {
-        document.querySelector('#modal-overlays').classList.add('active');
-        document.body.classList.add('centered-modal-showing');
-      } else {
-        document.querySelector('#modal-overlays').classList.remove('active');
-        document.body.classList.remove('centered-modal-showing');
-      }
-    },
-    clickedTranslucentOverlay() {
-      window.onClickOverlayCallbackCalled = true;
-    },
-  },
-});
+  @action
+  toggleActiveComponent() {
+    if (this.activeComponent === 'modal-dialog') {
+      set(this, 'activeComponent', 'tether-dialog');
+    } else {
+      set(this, 'activeComponent', 'modal-dialog');
+    }
+  }
+
+  @action
+  toggleBasic() {
+    this.toggleProperty('isShowingBasic');
+  }
+
+  @action
+  toggleTranslucent() {
+    this.toggleProperty('isShowingTranslucent');
+  }
+
+  @action
+  toggleTranslucentWithCallback() {
+    this.toggleProperty('isShowingTranslucentWithCallback');
+  }
+
+  @action
+  toggleWithoutOverlay() {
+    this.toggleProperty('isShowingWithoutOverlay');
+  }
+
+  @action
+  toggleWithoutOverlayClickOutsideToClose() {
+    this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
+  }
+
+  @action
+  toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
+    this.toggleProperty(
+      'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
+    );
+  }
+
+  @action
+  toggleSubclassed() {
+    this.toggleProperty('isShowingSubclassed');
+  }
+
+  @action
+  toggleCenteredScrolling() {
+    this.toggleProperty('isShowingCenteredScrolling');
+
+    if (this.isShowingCenteredScrolling) {
+      document.querySelector('#modal-overlays').classList.add('active');
+      document.body.classList.add('centered-modal-showing');
+    } else {
+      document.querySelector('#modal-overlays').classList.remove('active');
+      document.body.classList.remove('centered-modal-showing');
+    }
+  }
+
+  @action
+  clickedTranslucentOverlay() {
+    window.onClickOverlayCallbackCalled = true;
+  }
+}

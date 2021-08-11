@@ -1,4 +1,4 @@
-import { visit } from '@ember/test-helpers';
+import { settled, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 
@@ -7,8 +7,12 @@ const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
 module('Acceptance: modal-dialog | tethered and animatable', function (hooks) {
   setupApplicationTest(hooks);
-  hooks.beforeEach(function () {
-    return visit('/tethered-animatable');
+  hooks.beforeEach(async function () {
+    await visit('/tethered-animatable');
+  });
+
+  hooks.afterEach(async function () {
+    await settled();
   });
 
   test('target - selector', async function (assert) {

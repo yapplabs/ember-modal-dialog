@@ -1,11 +1,15 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  isShowingTargetSelector: false,
-  isShowingTargetElement: false,
-  isShowingElementCenterModal: false,
-  exampleTargetAttachment: 'middle left',
-  exampleAttachment: 'middle right',
+@classic
+export default class TetheredController extends Controller {
+  isShowingTargetSelector = false;
+  isShowingTargetElement = false;
+  isShowingElementCenterModal = false;
+  exampleTargetAttachment = 'middle left';
+  exampleAttachment = 'middle right';
+
   nextAttachment(val) {
     switch (val) {
       case 'middle right':
@@ -18,45 +22,51 @@ export default Controller.extend({
         return 'middle right';
     }
     return false;
-  },
-  actions: {
-    toggleTargetSelector() {
-      if (this.isShowingTargetSelector) {
-        let newTargetAttachment = this.nextAttachment(
-          this.exampleTargetAttachment
-        );
-        let newAttachment = this.nextAttachment(this.exampleAttachment);
-        this.set('exampleTargetAttachment', newTargetAttachment);
-        this.set('exampleAttachment', newAttachment);
-        if (newTargetAttachment !== 'middle left') {
-          return;
-        }
+  }
+
+  @action
+  toggleTargetSelector() {
+    if (this.isShowingTargetSelector) {
+      let newTargetAttachment = this.nextAttachment(
+        this.exampleTargetAttachment
+      );
+      let newAttachment = this.nextAttachment(this.exampleAttachment);
+      this.set('exampleTargetAttachment', newTargetAttachment);
+      this.set('exampleAttachment', newAttachment);
+      if (newTargetAttachment !== 'middle left') {
+        return;
       }
-      this.toggleProperty('isShowingTargetSelector');
-    },
-    toggleTargetElement() {
-      if (this.isShowingTargetElement) {
-        let newTargetAttachment = this.nextAttachment(
-          this.exampleTargetAttachment
-        );
-        let newAttachment = this.nextAttachment(this.exampleAttachment);
-        this.set('exampleTargetAttachment', newTargetAttachment);
-        this.set('exampleAttachment', newAttachment);
-        if (newTargetAttachment !== 'middle left') {
-          return;
-        }
+    }
+    this.toggleProperty('isShowingTargetSelector');
+  }
+
+  @action
+  toggleTargetElement() {
+    if (this.isShowingTargetElement) {
+      let newTargetAttachment = this.nextAttachment(
+        this.exampleTargetAttachment
+      );
+      let newAttachment = this.nextAttachment(this.exampleAttachment);
+      this.set('exampleTargetAttachment', newTargetAttachment);
+      this.set('exampleAttachment', newAttachment);
+      if (newTargetAttachment !== 'middle left') {
+        return;
       }
-      this.toggleProperty('isShowingTargetElement');
-    },
-    closeTargetSelector() {
-      this.set('isShowingTargetSelector', false);
-      this.set('exampleTargetAttachment', 'middle left');
-      this.set('exampleAttachment', 'middle right');
-    },
-    closeTargetElement() {
-      this.set('isShowingTargetElement', false);
-      this.set('exampleTargetAttachment', 'middle left');
-      this.set('exampleAttachment', 'middle right');
-    },
-  },
-});
+    }
+    this.toggleProperty('isShowingTargetElement');
+  }
+
+  @action
+  closeTargetSelector() {
+    this.set('isShowingTargetSelector', false);
+    this.set('exampleTargetAttachment', 'middle left');
+    this.set('exampleAttachment', 'middle right');
+  }
+
+  @action
+  closeTargetElement() {
+    this.set('isShowingTargetElement', false);
+    this.set('exampleTargetAttachment', 'middle left');
+    this.set('exampleAttachment', 'middle right');
+  }
+}

@@ -1,20 +1,23 @@
+import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
-import { set } from '@ember/object';
+import { set, action } from '@ember/object';
 
-export default Controller.extend({
-  isShowingBasic: false,
-  isShowingTranslucent: false,
-  isShowingTranslucentWithCallback: false,
-  isShowingWithoutOverlay: false,
-  isShowingWithoutOverlayClickOutsideToClose: false,
-  isShowingWithoutOverlayClickOutsideToCloseAnotherOne: false,
-  isShowingTargetSelector: false,
-  isShowingTargetElement: false,
-  isShowingSubclassed: false,
-  isShowingCenteredScrolling: false,
-  isShowingElementCenterModal: false,
-  exampleTargetAttachment: 'middle left',
-  exampleAttachment: 'middle right',
+@classic
+export default class TetheredAnimatableController extends Controller {
+  isShowingBasic = false;
+  isShowingTranslucent = false;
+  isShowingTranslucentWithCallback = false;
+  isShowingWithoutOverlay = false;
+  isShowingWithoutOverlayClickOutsideToClose = false;
+  isShowingWithoutOverlayClickOutsideToCloseAnotherOne = false;
+  isShowingTargetSelector = false;
+  isShowingTargetElement = false;
+  isShowingSubclassed = false;
+  isShowingCenteredScrolling = false;
+  isShowingElementCenterModal = false;
+  exampleTargetAttachment = 'middle left';
+  exampleAttachment = 'middle right';
+
   nextAttachment(val) {
     switch (val) {
       case 'middle right':
@@ -27,97 +30,125 @@ export default Controller.extend({
         return 'middle right';
     }
     return false;
-  },
-  actions: {
-    toggleActiveComponent() {
-      if (this.activeComponent === 'modal-dialog') {
-        set(this, 'activeComponent', 'tether-dialog');
-      } else {
-        set(this, 'activeComponent', 'modal-dialog');
-      }
-    },
-    toggleBasic() {
-      this.toggleProperty('isShowingBasic');
-    },
-    toggleTranslucent() {
-      this.toggleProperty('isShowingTranslucent');
-    },
-    toggleTranslucentWithCallback() {
-      this.toggleProperty('isShowingTranslucentWithCallback');
-    },
-    toggleWithoutOverlay() {
-      this.toggleProperty('isShowingWithoutOverlay');
-    },
-    toggleWithoutOverlayClickOutsideToClose() {
-      this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
-    },
-    toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
-      this.toggleProperty(
-        'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
-      );
-    },
-    toggleTargetSelector() {
-      if (this.isShowingTargetSelector) {
-        let newTargetAttachment = this.nextAttachment(
-          this.exampleTargetAttachment
-        );
-        let newAttachment = this.nextAttachment(this.exampleAttachment);
-        this.set('exampleTargetAttachment', newTargetAttachment);
-        this.set('exampleAttachment', newAttachment);
-        if (newTargetAttachment !== 'middle left') {
-          return;
-        }
-      }
-      this.toggleProperty('isShowingTargetSelector');
-    },
-    toggleTargetElement() {
-      if (this.isShowingTargetElement) {
-        let newTargetAttachment = this.nextAttachment(
-          this.exampleTargetAttachment
-        );
-        let newAttachment = this.nextAttachment(this.exampleAttachment);
-        this.set('exampleTargetAttachment', newTargetAttachment);
-        this.set('exampleAttachment', newAttachment);
-        if (newTargetAttachment !== 'middle left') {
-          return;
-        }
-      }
-      this.toggleProperty('isShowingTargetElement');
-    },
-    toggleSubclassed() {
-      this.toggleProperty('isShowingSubclassed');
-    },
-    toggleCenteredScrolling() {
-      this.toggleProperty('isShowingCenteredScrolling');
+  }
 
-      if (this.isShowingCenteredScrolling) {
-        document.querySelector('#modal-overlays').classList.add('active');
-        document.body.classList.add('centered-modal-showing');
-      } else {
-        document.querySelector('#modal-overlays').classList.remove('active');
-        document.body.classList.remove('centered-modal-showing');
+  @action
+  toggleActiveComponent() {
+    if (this.activeComponent === 'modal-dialog') {
+      set(this, 'activeComponent', 'tether-dialog');
+    } else {
+      set(this, 'activeComponent', 'modal-dialog');
+    }
+  }
+
+  @action
+  toggleBasic() {
+    this.toggleProperty('isShowingBasic');
+  }
+
+  @action
+  toggleTranslucent() {
+    this.toggleProperty('isShowingTranslucent');
+  }
+
+  @action
+  toggleTranslucentWithCallback() {
+    this.toggleProperty('isShowingTranslucentWithCallback');
+  }
+
+  @action
+  toggleWithoutOverlay() {
+    this.toggleProperty('isShowingWithoutOverlay');
+  }
+
+  @action
+  toggleWithoutOverlayClickOutsideToClose() {
+    this.toggleProperty('isShowingWithoutOverlayClickOutsideToClose');
+  }
+
+  @action
+  toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
+    this.toggleProperty(
+      'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
+    );
+  }
+
+  @action
+  toggleTargetSelector() {
+    if (this.isShowingTargetSelector) {
+      let newTargetAttachment = this.nextAttachment(
+        this.exampleTargetAttachment
+      );
+      let newAttachment = this.nextAttachment(this.exampleAttachment);
+      this.set('exampleTargetAttachment', newTargetAttachment);
+      this.set('exampleAttachment', newAttachment);
+      if (newTargetAttachment !== 'middle left') {
+        return;
       }
-    },
-    toggleElementCenterModal() {
-      this.toggleProperty('isShowingElementCenterModal');
-      if (this.isShowingElementCenterModal) {
-        this.set('targetAttachment', 'elementCenter');
-        this.set('exampleTargetAttachment', 'elementCenter');
-        this.set('exampleAttachment', 'elementCenter');
+    }
+    this.toggleProperty('isShowingTargetSelector');
+  }
+
+  @action
+  toggleTargetElement() {
+    if (this.isShowingTargetElement) {
+      let newTargetAttachment = this.nextAttachment(
+        this.exampleTargetAttachment
+      );
+      let newAttachment = this.nextAttachment(this.exampleAttachment);
+      this.set('exampleTargetAttachment', newTargetAttachment);
+      this.set('exampleAttachment', newAttachment);
+      if (newTargetAttachment !== 'middle left') {
+        return;
       }
-    },
-    closeTargetSelector() {
-      this.set('isShowingTargetSelector', false);
-      this.set('exampleTargetAttachment', 'middle left');
-      this.set('exampleAttachment', 'middle right');
-    },
-    closeTargetElement() {
-      this.set('isShowingTargetElement', false);
-      this.set('exampleTargetAttachment', 'middle left');
-      this.set('exampleAttachment', 'middle right');
-    },
-    clickedTranslucentOverlay() {
-      window.onClickOverlayCallbackCalled = true;
-    },
-  },
-});
+    }
+    this.toggleProperty('isShowingTargetElement');
+  }
+
+  @action
+  toggleSubclassed() {
+    this.toggleProperty('isShowingSubclassed');
+  }
+
+  @action
+  toggleCenteredScrolling() {
+    this.toggleProperty('isShowingCenteredScrolling');
+
+    if (this.isShowingCenteredScrolling) {
+      document.querySelector('#modal-overlays').classList.add('active');
+      document.body.classList.add('centered-modal-showing');
+    } else {
+      document.querySelector('#modal-overlays').classList.remove('active');
+      document.body.classList.remove('centered-modal-showing');
+    }
+  }
+
+  @action
+  toggleElementCenterModal() {
+    this.toggleProperty('isShowingElementCenterModal');
+    if (this.isShowingElementCenterModal) {
+      this.set('targetAttachment', 'elementCenter');
+      this.set('exampleTargetAttachment', 'elementCenter');
+      this.set('exampleAttachment', 'elementCenter');
+    }
+  }
+
+  @action
+  closeTargetSelector() {
+    this.set('isShowingTargetSelector', false);
+    this.set('exampleTargetAttachment', 'middle left');
+    this.set('exampleAttachment', 'middle right');
+  }
+
+  @action
+  closeTargetElement() {
+    this.set('isShowingTargetElement', false);
+    this.set('exampleTargetAttachment', 'middle left');
+    this.set('exampleAttachment', 'middle right');
+  }
+
+  @action
+  clickedTranslucentOverlay() {
+    window.onClickOverlayCallbackCalled = true;
+  }
+}

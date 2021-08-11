@@ -1,5 +1,4 @@
 import { click, waitUntil } from '@ember/test-helpers';
-import QUnit from 'qunit';
 
 export function findContains(selector, text) {
   return [].slice
@@ -7,15 +6,9 @@ export function findContains(selector, text) {
     .filter((e) => e.textContent.trim().indexOf(text) > -1)[0];
 }
 
-export default function registerAssertHelpers() {
-  const { assert } = QUnit;
+export default function registerAssertHelpers(assert) {
   const overlaySelector = '.ember-modal-overlay';
   const dialogSelector = '.ember-modal-dialog';
-
-  assert.isPresentOnce = function (selector, message) {
-    message = message || `${selector} is present in DOM once`;
-    return this.equal(document.querySelectorAll(selector).length, 1, message);
-  };
 
   assert.isAbsent = function (selector, message) {
     message = message || `${selector} is absent from DOM`;
@@ -34,7 +27,7 @@ export default function registerAssertHelpers() {
       return findContains(dialogSelector, options.dialogText);
     });
     if (options.hasOverlay) {
-      self.isPresentOnce(overlaySelector);
+      self.dom(overlaySelector).exists({ count: 1 });
     }
     if (options.whileOpen) {
       await options.whileOpen();

@@ -1,4 +1,4 @@
-import { visit } from '@ember/test-helpers';
+import { settled, visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 
@@ -10,14 +10,18 @@ const dialogCloseButton = [dialogSelector, 'button'].join(' ');
 
 module('Acceptance: modal-dialog | animatable', function (hooks) {
   setupApplicationTest(hooks);
-  hooks.beforeEach(function () {
-    return visit('/animatable');
+  hooks.beforeEach(async function () {
+    await visit('/animatable');
+  });
+
+  hooks.afterEach(async function () {
+    await settled();
   });
 
   test('basic modal', async function (assert) {
-    assert.isPresentOnce(modalRootElementSelector);
+    assert.dom(modalRootElementSelector).exists({ count: 1 });
     assert.isAbsent(overlaySelector);
-    assert.isPresentOnce('#example-basic button');
+    assert.dom('#example-basic button').exists({ count: 1 });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-basic button',
