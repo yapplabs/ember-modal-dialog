@@ -64,9 +64,7 @@ export default class AnimatableController extends Controller {
 
   @action
   toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
-    this.toggleProperty(
-      'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
-    );
+    this.toggleProperty('isShowingWithoutOverlayClickOutsideToCloseAnotherOne');
   }
 
   @action

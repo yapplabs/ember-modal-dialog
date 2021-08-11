@@ -68,9 +68,7 @@ export default class TetheredAnimatableController extends Controller {
 
   @action
   toggleWithoutOverlayClickOutsideToCloseAnotherOne() {
-    this.toggleProperty(
-      'isShowingWithoutOverlayClickOutsideToCloseAnotherOne'
-    );
+    this.toggleProperty('isShowingWithoutOverlayClickOutsideToCloseAnotherOne');
   }
 
   @action
