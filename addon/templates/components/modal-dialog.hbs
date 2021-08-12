@@ -1,30 +1,29 @@
-{{#component
-  (ensure-safe-component this.modalDialogComponentName)
-  wrapperClass=this.wrapperClass
-  wrapperClassNames=this.wrapperClassNames
-  overlayClass=this.overlayClass
-  overlayClassNames=this.overlayClassNames
-  containerClass=this.containerClass
-  containerClassNames=this.containerClassNames
-  hasOverlay=this.hasOverlay
-  translucentOverlay=this.translucentOverlay
-  clickOutsideToClose=this.clickOutsideToClose
-  destinationElementId=this.destinationElementId
-  overlayPosition=this.overlayPosition
-  tetherTarget=this.tetherTarget
-  legacyTarget=this.target
-  attachment=this.attachment
-  targetAttachment=this.targetAttachment
-  targetModifier=this.targetModifier
-  targetOffset=this.targetOffset
-  offset=this.offset
-  tetherClassPrefix=this.tetherClassPrefix
-  constraints=this.constraints
-  attachmentClass=this.attachmentClass
-  stack=this.stack
-  value=this.value
-  onClickOverlay=this.onClickOverlayAction
-  onClose=this.onCloseAction
-}}
+<this.whichModalDialogComponent
+  @wrapperClass={{this.wrapperClass}}
+  @wrapperClassNames={{this.wrapperClassNames}}
+  @overlayClass={{this.overlayClass}}
+  @overlayClassNames={{this.overlayClassNames}}
+  @containerClass={{this.containerClass}}
+  @containerClassNames={{this.containerClassNames}}
+  @hasOverlay={{this.hasOverlay}}
+  @translucentOverlay={{this.translucentOverlay}}
+  @clickOutsideToClose={{this.clickOutsideToClose}}
+  @destinationElementId={{this.destinationElementId}}
+  @overlayPosition={{this.overlayPosition}}
+  @tetherTarget={{this.tetherTarget}}
+  @legacyTarget={{this.target}}
+  @attachment={{this.attachment}}
+  @targetAttachment={{this.targetAttachment}}
+  @targetModifier={{this.targetModifier}}
+  @targetOffset={{this.targetOffset}}
+  @offset={{this.offset}}
+  @tetherClassPrefix={{this.tetherClassPrefix}}
+  @constraints={{this.constraints}}
+  @attachmentClass={{this.attachmentClass}}
+  @stack={{this.stack}}
+  @value={{this.value}}
+  @onClickOverlay={{this.onClickOverlayAction}}
+  @onClose={{this.onCloseAction}}
+>
   {{yield}}
-{{/component}}
+</this.whichModalDialogComponent>
