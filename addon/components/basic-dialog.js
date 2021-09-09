@@ -22,8 +22,8 @@ export default class BasicDialog extends Component {
   @service('modal-dialog')
   modalService;
 
-  constructor() {
-    super(...arguments);
+  init() {
+    super.init(...arguments);
     if (!this.destinationElementId) {
       set(this, 'destinationElementId', this.modalService.destinationElementId);
     }

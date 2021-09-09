@@ -19,8 +19,9 @@ export default class ModalDialog extends Component {
 
   destinationElementId = null;
 
-  constructor() {
-    super(...arguments);
+  init() {
+    super.init(...arguments);
+    
     if (!this.destinationElementId) {
       set(this, 'destinationElementId', this.modalService.destinationElementId);
     }

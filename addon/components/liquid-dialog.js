@@ -7,8 +7,8 @@ export default class LiquidDialog extends BasicDialog {
   hasOverlay = true;
   variantWrapperClass = 'emd-animatable';
 
-  constructor() {
-    super(...arguments);
+  init() {
+    super.init(...arguments);
 
     this.containerClassNames?.push('liquid-dialog');
   }

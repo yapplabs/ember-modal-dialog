@@ -7,8 +7,8 @@ import layout from '../templates/components/in-place-dialog';
 export default class InPlaceDialog extends Component {
   containerClass = null; // passed in
 
-  constructor() {
-    super(...arguments);
+  init() {
+    super.init(...arguments);
 
     this.containerClassNames = [
       'ember-modal-dialog',
@@ -18,6 +18,6 @@ export default class InPlaceDialog extends Component {
   }
 
   get containerClassNamesString() {
-    return this.containerClassNames.join(' ');
+    return this.containerClassNames?.join(' ') ?? '';
   }
 }

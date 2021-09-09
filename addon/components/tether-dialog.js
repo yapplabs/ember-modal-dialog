@@ -6,8 +6,8 @@ import layout from '../templates/components/tether-dialog';
 
 @templateLayout(layout)
 export default class TetherDialog extends BasicDialog {
-  constructor() {
-    super(...arguments);
+  init() {
+    super.init(...arguments);
     this._ensureAttachments();
   }
 
