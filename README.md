@@ -304,7 +304,7 @@ export default ModalDialog.extend({
 
   _initEscListener() {
     const closeOnEscapeKey = (ev) => {
-      if (ev.keyCode === ESC_KEY) { this.get('onClose')(); }
+      if (ev.keyCode === ESC_KEY) { get(this, 'onClose')(); }
     };
 
     Ember.$('body').on('keyup.modal-dialog', closeOnEscapeKey);
@@ -324,11 +324,11 @@ export default ModalDialog.extend(EmberKeyboardMixin, {
   init() {
     this._super(...arguments);
 
-    this.set('keyboardActivated', true);
+    set(this, 'keyboardActivated', true);
   },
 
   closeOnEsc: on(keyDown('Escape'), function() {
-    this.get('onClose')();
+    get(this, 'onClose')();
   })
 });
 ```

@@ -1,6 +1,6 @@
 /* eslint-disable ember/no-computed-properties-in-native-classes */
 import { layout as templateLayout } from '@ember-decorators/component';
-import { computed } from '@ember/object';
+import { computed, set } from '@ember/object';
 import { dasherize } from '@ember/string';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/liquid-tether-dialog';
@@ -23,10 +23,10 @@ export default class LiquidTetherDialog extends BasicDialog {
   didReceiveAttrs() {
     super.didReceiveAttrs(...arguments);
     if (!this.attachment) {
-      this.set('attachment', 'middle center');
+      set(this, 'attachment', 'middle center');
     }
     if (!this.targetAttachment) {
-      this.set('targetAttachment', 'middle center');
+      set(this, 'targetAttachment', 'middle center');
     }
   }
 

@@ -76,8 +76,8 @@ export default class TetheredAnimatableController extends Controller {
         this.exampleTargetAttachment
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
-      this.set('exampleTargetAttachment', newTargetAttachment);
-      this.set('exampleAttachment', newAttachment);
+      set(this, 'exampleTargetAttachment', newTargetAttachment);
+      set(this, 'exampleAttachment', newAttachment);
       if (newTargetAttachment !== 'middle left') {
         return;
       }
@@ -92,8 +92,8 @@ export default class TetheredAnimatableController extends Controller {
         this.exampleTargetAttachment
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
-      this.set('exampleTargetAttachment', newTargetAttachment);
-      this.set('exampleAttachment', newAttachment);
+      set(this, 'exampleTargetAttachment', newTargetAttachment);
+      set(this, 'exampleAttachment', newAttachment);
       if (newTargetAttachment !== 'middle left') {
         return;
       }
@@ -123,24 +123,24 @@ export default class TetheredAnimatableController extends Controller {
   toggleElementCenterModal() {
     this.toggleProperty('isShowingElementCenterModal');
     if (this.isShowingElementCenterModal) {
-      this.set('targetAttachment', 'elementCenter');
-      this.set('exampleTargetAttachment', 'elementCenter');
-      this.set('exampleAttachment', 'elementCenter');
+      set(this, 'targetAttachment', 'elementCenter');
+      set(this, 'exampleTargetAttachment', 'elementCenter');
+      set(this, 'exampleAttachment', 'elementCenter');
     }
   }
 
   @action
   closeTargetSelector() {
-    this.set('isShowingTargetSelector', false);
-    this.set('exampleTargetAttachment', 'middle left');
-    this.set('exampleAttachment', 'middle right');
+    set(this, 'isShowingTargetSelector', false);
+    set(this, 'exampleTargetAttachment', 'middle left');
+    set(this, 'exampleAttachment', 'middle right');
   }
 
   @action
   closeTargetElement() {
-    this.set('isShowingTargetElement', false);
-    this.set('exampleTargetAttachment', 'middle left');
-    this.set('exampleAttachment', 'middle right');
+    set(this, 'isShowingTargetElement', false);
+    set(this, 'exampleTargetAttachment', 'middle left');
+    set(this, 'exampleAttachment', 'middle right');
   }
 
   @action

@@ -21,15 +21,16 @@ module.exports = {
   },
   rules: {
     'no-setter-return': 'off',
+    'ember/classic-decorator-no-classic-methods': 'warn',
     'ember/no-actions-hash': 'warn',
     'ember/no-classic-classes': 'warn',
     'ember/no-classic-components': 'warn',
     'ember/no-component-lifecycle-hooks': 'warn',
+    'ember/no-computed-properties-in-native-classes': 'warn',
     'ember/no-get': 'warn',
     'ember/no-observers': 'warn',
     'ember/require-computed-macros': 'warn',
     'ember/require-tagless-components': 'warn',
-    'ember/use-ember-get-and-set': 'error',
     'ember/no-jquery': 'error',
   },
   overrides: [
