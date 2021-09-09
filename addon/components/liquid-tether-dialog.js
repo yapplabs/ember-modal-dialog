@@ -1,11 +1,10 @@
-import classic from 'ember-classic-decorator';
+/* eslint-disable ember/no-computed-properties-in-native-classes */
 import { layout as templateLayout } from '@ember-decorators/component';
 import { computed } from '@ember/object';
 import { dasherize } from '@ember/string';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/liquid-tether-dialog';
 
-@classic
 @templateLayout(layout)
 export default class LiquidTetherDialog extends BasicDialog {
   @computed('targetAttachment')

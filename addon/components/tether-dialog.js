@@ -1,15 +1,13 @@
-import classic from 'ember-classic-decorator';
 import { layout as templateLayout } from '@ember-decorators/component';
 import { computed } from '@ember/object';
 import { dasherize } from '@ember/string';
 import BasicDialog from './basic-dialog';
 import layout from '../templates/components/tether-dialog';
 
-@classic
 @templateLayout(layout)
 export default class TetherDialog extends BasicDialog {
-  init() {
-    super.init(...arguments);
+  constructor() {
+    super(...arguments);
     this._ensureAttachments();
   }
 

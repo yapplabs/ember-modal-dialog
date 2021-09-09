@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-@classic
 export default class TetheredController extends Controller {
   isShowingTargetSelector = false;
   isShowingTargetElement = false;

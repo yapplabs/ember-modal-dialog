@@ -1,4 +1,3 @@
-import classic from 'ember-classic-decorator';
 import { tagName, layout as templateLayout } from '@ember-decorators/component';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
@@ -7,7 +6,6 @@ import { isEmpty } from '@ember/utils';
 import layout from '../templates/components/basic-dialog';
 import { dasherize } from '@ember/string';
 
-@classic
 @tagName('')
 @templateLayout(layout)
 export default class BasicDialog extends Component {
@@ -24,8 +22,8 @@ export default class BasicDialog extends Component {
   @service('modal-dialog')
   modalService;
 
-  init() {
-    super.init(...arguments);
+  constructor() {
+    super(...arguments);
     if (!this.destinationElementId) {
       this.set('destinationElementId', this.modalService.destinationElementId);
     }
