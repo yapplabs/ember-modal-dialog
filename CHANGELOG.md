@@ -1,3 +1,21 @@
+## v4.0.0-alpha.1 (2021-09-09)
+
+#### :boom: Breaking Change
+* [#350](https://github.com/yapplabs/ember-modal-dialog/pull/350) Stop delegating targetAttachmentClass argument ([@lukemelia](https://github.com/lukemelia))
+
+#### :house: Internal
+* [#351](https://github.com/yapplabs/ember-modal-dialog/pull/351) Avoid global `Ember` deprecation in add-modals-container initializer ([@lukemelia](https://github.com/lukemelia))
+* [#346](https://github.com/yapplabs/ember-modal-dialog/pull/346) Update lint commands ([@rwwagner90](https://github.com/rwwagner90))
+* [#345](https://github.com/yapplabs/ember-modal-dialog/pull/345) Use GitHub Actions instead of Travis ([@rwwagner90](https://github.com/rwwagner90))
+* [#344](https://github.com/yapplabs/ember-modal-dialog/pull/344) Update to angle bracket components ([@rwwagner90](https://github.com/rwwagner90))
+* [#341](https://github.com/yapplabs/ember-modal-dialog/pull/341) Update to ember-cli 3.16 ([@rwwagner90](https://github.com/rwwagner90))
+* [#338](https://github.com/yapplabs/ember-modal-dialog/pull/338) Adopt ember-ignore-children-helper ([@bjornharrtell](https://github.com/bjornharrtell))
+
+#### Committers: 3
+- Björn Harrtell ([@bjornharrtell](https://github.com/bjornharrtell))
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+- Robert Wagner ([@rwwagner90](https://github.com/rwwagner90))
+
 ## v4.0.0-alpha.0 (2021-05-25)
 
 #### :boom: Breaking Change
