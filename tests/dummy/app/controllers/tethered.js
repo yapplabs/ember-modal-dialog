@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import Controller from '@ember/controller';
 
-@classic
 export default class TetheredController extends Controller {
   isShowingTargetSelector = false;
   isShowingTargetElement = false;
@@ -31,8 +29,8 @@ export default class TetheredController extends Controller {
         this.exampleTargetAttachment
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
-      this.set('exampleTargetAttachment', newTargetAttachment);
-      this.set('exampleAttachment', newAttachment);
+      set(this, 'exampleTargetAttachment', newTargetAttachment);
+      set(this, 'exampleAttachment', newAttachment);
       if (newTargetAttachment !== 'middle left') {
         return;
       }
@@ -47,8 +45,8 @@ export default class TetheredController extends Controller {
         this.exampleTargetAttachment
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
-      this.set('exampleTargetAttachment', newTargetAttachment);
-      this.set('exampleAttachment', newAttachment);
+      set(this, 'exampleTargetAttachment', newTargetAttachment);
+      set(this, 'exampleAttachment', newAttachment);
       if (newTargetAttachment !== 'middle left') {
         return;
       }
@@ -58,15 +56,15 @@ export default class TetheredController extends Controller {
 
   @action
   closeTargetSelector() {
-    this.set('isShowingTargetSelector', false);
-    this.set('exampleTargetAttachment', 'middle left');
-    this.set('exampleAttachment', 'middle right');
+    set(this, 'isShowingTargetSelector', false);
+    set(this, 'exampleTargetAttachment', 'middle left');
+    set(this, 'exampleAttachment', 'middle right');
   }
 
   @action
   closeTargetElement() {
-    this.set('isShowingTargetElement', false);
-    this.set('exampleTargetAttachment', 'middle left');
-    this.set('exampleAttachment', 'middle right');
+    set(this, 'isShowingTargetElement', false);
+    set(this, 'exampleTargetAttachment', 'middle left');
+    set(this, 'exampleAttachment', 'middle right');
   }
 }

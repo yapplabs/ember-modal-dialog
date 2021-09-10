@@ -1,9 +1,7 @@
-import classic from 'ember-classic-decorator';
 import { tagName, layout as templateLayout } from '@ember-decorators/component';
 import Component from '@ember/component';
 import layout from '../templates/components/in-place-dialog';
 
-@classic
 @tagName('')
 @templateLayout(layout)
 export default class InPlaceDialog extends Component {
@@ -20,6 +18,6 @@ export default class InPlaceDialog extends Component {
   }
 
   get containerClassNamesString() {
-    return this.containerClassNames.join(' ');
+    return this.containerClassNames?.join(' ') ?? '';
   }
 }

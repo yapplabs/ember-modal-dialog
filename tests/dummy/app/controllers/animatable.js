@@ -1,8 +1,6 @@
-import classic from 'ember-classic-decorator';
 import Controller from '@ember/controller';
 import { set, action } from '@ember/object';
 
-@classic
 export default class AnimatableController extends Controller {
   isShowingBasic = false;
   isShowingTranslucent = false;

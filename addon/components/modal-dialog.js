@@ -1,6 +1,5 @@
-import classic from 'ember-classic-decorator';
 import { tagName, layout as templateLayout } from '@ember-decorators/component';
-import { action, computed } from '@ember/object';
+import { action, computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { readOnly, oneWay } from '@ember/object/computed';
 import Component from '@ember/component';
@@ -12,7 +11,6 @@ import { DEBUG } from '@glimmer/env';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
 
-@classic
 @tagName('')
 @templateLayout(layout)
 export default class ModalDialog extends Component {
@@ -23,8 +21,9 @@ export default class ModalDialog extends Component {
 
   init() {
     super.init(...arguments);
+
     if (!this.destinationElementId) {
-      this.set('destinationElementId', this.modalService.destinationElementId);
+      set(this, 'destinationElementId', this.modalService.destinationElementId);
     }
   }
 
