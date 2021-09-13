@@ -8,6 +8,8 @@ import { isEmpty, typeOf, isNone } from '@ember/utils';
 import layout from '../templates/components/modal-dialog';
 import { assert, warn } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';
+import { importSync } from '@embroider/macros';
+import { ensureSafeComponent } from '@embroider/util';
 
 const VALID_OVERLAY_POSITIONS = ['parent', 'sibling'];
 
@@ -34,28 +36,27 @@ export default class ModalDialog extends Component {
     'hasLiquidWormhole',
     'hasLiquidTether'
   )
-  get modalDialogComponentName() {
-    let tetherTarget = this.tetherTarget;
-    let hasLiquidTether = this.hasLiquidTether;
-    let hasLiquidWormhole = this.hasLiquidWormhole;
-    let animatable = this.animatable;
+  get whichModalDialogComponent() {
+    let { animatable, hasLiquidTether, hasLiquidWormhole, tetherTarget } = this;
+    let componentName = 'basic-dialog';
 
     if (this.renderInPlace) {
-      return 'ember-modal-dialog/-in-place-dialog';
+      componentName = 'in-place-dialog';
     } else if (
       tetherTarget &&
       hasLiquidTether &&
       hasLiquidWormhole &&
       animatable === true
     ) {
-      return 'ember-modal-dialog/-liquid-tether-dialog';
+      componentName = 'liquid-tether-dialog';
     } else if (tetherTarget) {
       this.ensureEmberTetherPresent();
-      return 'ember-modal-dialog/-tether-dialog';
+      componentName = 'tether-dialog';
     } else if (hasLiquidWormhole && animatable === true) {
-      return 'ember-modal-dialog/-liquid-dialog';
+      componentName = 'liquid-dialog';
     }
-    return 'ember-modal-dialog/-basic-dialog';
+    let module = importSync(`ember-modal-dialog/components/${componentName}`);
+    return ensureSafeComponent(module.default, this);
   }
 
   animatable = null;
