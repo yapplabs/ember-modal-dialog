@@ -179,22 +179,22 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
     ].join(' ');
     let dialogElement = find(dialogSelector);
 
-    assert.equal(
+    assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('position'),
       'static',
       'not absolutely positioned'
     );
-    assert.equal(
+    assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('left'),
       'auto',
       'should not be positioned (left)'
     );
-    assert.equal(
+    assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('margin-left'),
       '0px',
       'should not be positioned (margin-left)'
     );
-    assert.equal(
+    assert.strictEqual(
       findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText),
       undefined,
       'dialog is not open'
@@ -205,12 +205,12 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
     );
 
     await click(inPlaceCloseButton);
-    assert.equal(
+    assert.strictEqual(
       findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText),
       undefined,
       'dialog is not open'
     );
-    assert.equal(
+    assert.strictEqual(
       findContains(`${inPlaceRootSelector} ${dialogSelector}`, dialogText),
       undefined,
       'dialog is not rendered in place'
