@@ -6,6 +6,6 @@ module('Unit | Service | modal dialog', function (hooks) {
 
   test('it knows the destinationElementId', function (assert) {
     let service = this.owner.lookup('service:modal-dialog');
-    assert.equal(service.get('destinationElementId'), 'modal-overlays');
+    assert.strictEqual(service.get('destinationElementId'), 'modal-overlays');
   });
 });
