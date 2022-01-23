@@ -18,15 +18,15 @@
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
+  <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
   <CodeSnippet @name="custom-styles-modal-dialog-liquid-tether.hbs" />
   <CodeSnippet @name="custom-styles.scss" />
-  {{#if isShowingCustomStyles}}
+  {{#if this.isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action (mut isShowingCustomStyles) false}} @tetherTarget="body" @targetAttachment="top right" @targetModifier="visible" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay" @animatable={{true}}>
+    <ModalDialog @onClose={{action (mut this.isShowingCustomStyles) false}} @tetherTarget="body" @targetAttachment="top right" @targetModifier="visible" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay" @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button onclick={{action (mut isShowingCustomStyles) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingCustomStyles) false}}>Close</button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -38,13 +38,13 @@
     <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
   <CodeSnippet @name="target-selector-modal-dialog-liquid-tether.hbs" />
-  {{#if isShowingTargetSelector}}
+  {{#if this.isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{exampleTargetAttachment}} @attachment={{exampleAttachment}} @tetherTarget="#alignTetherDialogToMe" @animatable={{true}}>
+    <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#alignTetherDialogToMe" @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Target - Selector: "#alignTetherDialogToMe"</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
+      <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
+      <p>Attachment: {{this.exampleAttachment}}</p>
       <button {{action "closeTargetSelector"}}>Close</button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
@@ -59,13 +59,13 @@
     </span>
   </div>
   <CodeSnippet @name="target-element-modal-dialog-liquid-tether.hbs" />
-  {{#if isShowingTargetElement}}
+  {{#if this.isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{exampleTargetAttachment}} @attachment={{exampleAttachment}} @tetherTarget="#bwtde" @animatable={{true}}>
+    <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#bwtde" @animatable={{true}}>
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element #bwtde</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
+      <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
+      <p>Attachment: {{this.exampleAttachment}}</p>
       <button {{action "closeTargetElement"}}>Close</button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
@@ -78,7 +78,7 @@
     <button {{action "toggleElementCenterModal"}}>Element Center</button>
   </span>
   <CodeSnippet @name="element-centered-modal-dialog-liquid-tether.hbs" />
-  {{#if isShowingElementCenterModal}}
+  {{#if this.isShowingElementCenterModal}}
     {{!-- BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether --}}
     <ModalDialog @onClose={{action "toggleElementCenterModal"}} @translucentOverlay={{true}} @tetherTarget="#elementCenter" @animatable={{true}}>
       <p>Centered on element.</p>
@@ -91,19 +91,19 @@
   <h2>Separate Stacks</h2>
   <button
     id="separateStacksButton1"
-    onclick={{action (mut isShowingSeparateStacksModal1) true}}
+    onclick={{action (mut this.isShowingSeparateStacksModal1) true}}
   >
     Show Modal 1 (modal-stack-a)
   </button>
   <button
     id="separateStacksButton2"
-    onclick={{action (mut isShowingSeparateStacksModal2) true}}
+    onclick={{action (mut this.isShowingSeparateStacksModal2) true}}
   >
     Show Modal 2 (modal-stack-b)
   </button>
   <button
     id="separateStacksButton3"
-    onclick={{action (mut isShowingSeparateStacksModal3) true}}
+    onclick={{action (mut this.isShowingSeparateStacksModal3) true}}
   >
     Show Modal 3 (modal-stack-b)
   </button>
@@ -111,18 +111,18 @@
   <p>If you open 2, then 3, the #2 should animate to #3"s spot.</p>
   <CodeSnippet @name="separate-stacks-modal-dialog-liquid-tether.hbs" />
   {{!-- BEGIN-SNIPPET separate-stacks-modal-dialog-liquid-tether --}}
-  {{#if isShowingSeparateStacksModal1}}
-    <ModalDialog @stack="modal-stack-a" @containerClass="modal-stack" @onClose={{action (mut isShowingSeparateStacksModal1) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton1" @targetAttachment="bottom center" @attachment="top center" @animatable={{true}}>
+  {{#if this.isShowingSeparateStacksModal1}}
+    <ModalDialog @stack="modal-stack-a" @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal1) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton1" @targetAttachment="bottom center" @attachment="top center" @animatable={{true}}>
       <p>I am modal 1.</p>
     </ModalDialog>
   {{/if}}
-  {{#if isShowingSeparateStacksModal2}}
-    <ModalDialog @stack="modal-stack-b" @value={{2}} @containerClass="modal-stack" @onClose={{action (mut isShowingSeparateStacksModal2) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton2" @targetAttachment="top center" @attachment="bottom center" @animatable={{true}}>
+  {{#if this.isShowingSeparateStacksModal2}}
+    <ModalDialog @stack="modal-stack-b" @value={{2}} @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal2) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton2" @targetAttachment="top center" @attachment="bottom center" @animatable={{true}}>
       <p>I am modal 2.</p>
     </ModalDialog>
   {{/if}}
-  {{#if isShowingSeparateStacksModal3}}
-    <ModalDialog @stack="modal-stack-b" @value={{2}} @containerClass="modal-stack" @onClose={{action (mut isShowingSeparateStacksModal3) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton3" @targetAttachment="middle right" @attachment="middle left" @animatable={{true}}>
+  {{#if this.isShowingSeparateStacksModal3}}
+    <ModalDialog @stack="modal-stack-b" @value={{2}} @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal3) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton3" @targetAttachment="middle right" @attachment="middle left" @animatable={{true}}>
       <p>I am modal 3.</p>
     </ModalDialog>
   {{/if}}
