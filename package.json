@@ -82,6 +82,10 @@
     "release-it-lerna-changelog": "^2.3.0",
     "webpack": "^5.67.0"
   },
+  "resolutions": {
+    "**/@embroider/macros": "^1.0.0",
+    "**/@embroider/util": "^1.0.0"
+  },
   "engines": {
     "node": "12.* || 14.* || >= 16"
   },
