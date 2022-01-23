@@ -28,8 +28,8 @@
     "test:ember-compatibility": "ember try:each"
   },
   "dependencies": {
-    "@embroider/macros": "^0.49.0",
-    "@embroider/util": "^0.49.0",
+    "@embroider/macros": "^1.0.0",
+    "@embroider/util": "^1.0.0",
     "ember-cli-babel": "^7.26.8",
     "ember-cli-htmlbars": "^6.0.1",
     "ember-cli-version-checker": "^2.1.0",
@@ -40,12 +40,12 @@
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.6.0",
-    "@embroider/test-setup": "^0.49.0",
+    "@embroider/test-setup": "^1.0.0",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
     "babel-eslint": "^10.1.0",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.2.4",
+    "ember-auto-import": "^2.4.0",
     "ember-cli": "~4.0.1",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-deprecation-workflow": "^2.1.0",
@@ -70,9 +70,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-qunit": "^7.2.0",
-    "liquid-fire": "^0.33.0",
-    "liquid-tether": "pzuraq/liquid-tether#bd777277dfa7000046e615519420b255f18f71a0",
-    "liquid-wormhole": "pzuraq/liquid-wormhole#0604500e66e3a94274895797d78747b77ff21023",
+    "liquid-fire": "^0.34.0",
+    "liquid-tether": "pzuraq/liquid-tether#7c140024787c3c1b266e89a2ef528eaea898c78e",
+    "liquid-wormhole": "pzuraq/liquid-wormhole#efa7e5ca518de7c1d6c52666b70bbc0671fcf380",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
@@ -80,7 +80,7 @@
     "qunit-dom": "^2.0.0",
     "release-it": "^13.6.5",
     "release-it-lerna-changelog": "^2.3.0",
-    "webpack": "^5.65.0"
+    "webpack": "^5.67.0"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
