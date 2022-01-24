@@ -63,24 +63,24 @@ export default class ModalDialog extends Component {
   )
   get whichModalDialogComponent() {
     let { animatable, hasLiquidTether, hasLiquidWormhole, tetherTarget } = this;
-    let componentName = 'basic-dialog';
+    let module = importSync('ember-modal-dialog/components/basic-dialog');
 
     if (this.renderInPlace) {
-      componentName = 'in-place-dialog';
+      module = importSync('ember-modal-dialog/components/in-place-dialog');
     } else if (
       tetherTarget &&
       hasLiquidTether &&
       hasLiquidWormhole &&
       animatable === true
     ) {
-      componentName = 'liquid-tether-dialog';
+      module = importSync('ember-modal-dialog/components/liquid-tether-dialog');
     } else if (tetherTarget) {
       this.ensureEmberTetherPresent();
-      componentName = 'tether-dialog';
+      module = importSync('ember-modal-dialog/components/tether-dialog');
     } else if (hasLiquidWormhole && animatable === true) {
-      componentName = 'liquid-dialog';
+      module = importSync('ember-modal-dialog/components/liquid-dialog');
     }
-    let module = importSync(`ember-modal-dialog/components/${componentName}`);
+
     return ensureSafeComponent(module.default, this);
   }
 
