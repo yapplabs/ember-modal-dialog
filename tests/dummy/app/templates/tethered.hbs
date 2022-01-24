@@ -19,15 +19,15 @@
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut isShowingCustomStyles) true}}>Do It</button>
+  <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
   <CodeSnippet @name="custom-styles-modal-dialog-tethered.hbs" />
   <CodeSnippet @name="custom-styles.scss" />
-  {{#if isShowingCustomStyles}}
+  {{#if this.isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-tethered --}}
-    <ModalDialog @onClose={{action (mut isShowingCustomStyles) false}} @tetherTarget="body" @targetModifier="visible" @targetAttachment="top right" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay">
+    <ModalDialog @onClose={{action (mut this.isShowingCustomStyles) false}} @tetherTarget="body" @targetModifier="visible" @targetAttachment="top right" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay">
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button onclick={{action (mut isShowingCustomStyles) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingCustomStyles) false}}>Close</button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -39,13 +39,13 @@
     <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
   <CodeSnippet @name="target-selector-modal-dialog-tethered.hbs" />
-  {{#if isShowingTargetSelector}}
+  {{#if this.isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog-tethered --}}
-    <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{exampleTargetAttachment}} @attachment={{exampleAttachment}} @tetherTarget="#alignTetherDialogToMe">
+    <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#alignTetherDialogToMe">
       <h1>Stop! Modal Time!</h1>
       <p>Target - Selector: "#alignTetherDialogToMe"</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
+      <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
+      <p>Attachment: {{this.exampleAttachment}}</p>
       <button {{action "closeTargetSelector"}}>Close</button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
@@ -60,13 +60,13 @@
     </span>
   </div>
   <CodeSnippet @name="target-element-modal-dialog-tethered.hbs" />
-  {{#if isShowingTargetElement}}
+  {{#if this.isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog-tethered --}}
-    <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{exampleTargetAttachment}} @attachment={{exampleAttachment}} @tetherTarget="#bwtde">
+    <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#bwtde">
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element #bwtde</p>
-      <p>Target Attachment: {{exampleTargetAttachment}}</p>
-      <p>Attachment: {{exampleAttachment}}</p>
+      <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
+      <p>Attachment: {{this.exampleAttachment}}</p>
       <button {{action "closeTargetElement"}}>Close</button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
@@ -76,12 +76,12 @@
 <div class="example">
   <h2>Element Center</h2>
   <span id="elementCenter">
-    <button onclick={{action (mut isShowingElementCenterModal) true}}>Element Center</button>
+    <button onclick={{action (mut this.isShowingElementCenterModal) true}}>Element Center</button>
   </span>
   <CodeSnippet @name="element-centered-modal-dialog-tethered.hbs" />
-  {{#if isShowingElementCenterModal}}
+  {{#if this.isShowingElementCenterModal}}
     {{!-- BEGIN-SNIPPET element-centered-modal-dialog-tethered --}}
-    <ModalDialog @translucentOverlay={{true}} @tetherTarget="#elementCenter" @onClose={{action (mut isShowingElementCenterModal) false}}>
+    <ModalDialog @translucentOverlay={{true}} @tetherTarget="#elementCenter" @onClose={{action (mut this.isShowingElementCenterModal) false}}>
       <p>Centered on element.</p>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
