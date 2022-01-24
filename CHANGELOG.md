@@ -1,3 +1,17 @@
+## v4.0.0-beta.0 (2022-01-24)
+
+#### :rocket: Enhancement
+* [#358](https://github.com/yapplabs/ember-modal-dialog/pull/358) Start on embroider support ([@rwwagner90](https://github.com/rwwagner90))
+
+#### :house: Internal
+* [#370](https://github.com/yapplabs/ember-modal-dialog/pull/370) Embroider support ([@rwwagner90](https://github.com/rwwagner90))
+* [#369](https://github.com/yapplabs/ember-modal-dialog/pull/369) Bump deps, yarn upgrade ([@rwwagner90](https://github.com/rwwagner90))
+* [#365](https://github.com/yapplabs/ember-modal-dialog/pull/365) ember-cli 4 ([@rwwagner90](https://github.com/rwwagner90))
+* [#361](https://github.com/yapplabs/ember-modal-dialog/pull/361) Remove ember-classic-decorator ([@rwwagner90](https://github.com/rwwagner90))
+
+#### Committers: 1
+- Robert Wagner ([@rwwagner90](https://github.com/rwwagner90))
+
 ## v4.0.0-alpha.1 (2021-09-09)
 
 #### :boom: Breaking Change
