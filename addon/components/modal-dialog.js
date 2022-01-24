@@ -19,14 +19,39 @@ export default class ModalDialog extends Component {
   @service('modal-dialog')
   modalService;
 
+  animatable = null;
+  clickOutsideToClose = false;
   destinationElementId = null;
+  hasOverlay = true;
+  overlayPosition = 'parent'; // `parent` or `sibling`
+  renderInPlace = false;
+  targetAttachment = 'middle center';
+  tetherClassPrefix = null;
+  tetherTarget = null;
+  translucentOverlay = false;
+  value = 0; // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
 
-  init() {
-    super.init(...arguments);
+  @readOnly('modalService.hasLiquidWormhole')
+  hasLiquidWormhole;
 
-    if (!this.destinationElementId) {
-      set(this, 'destinationElementId', this.modalService.destinationElementId);
+  @readOnly('modalService.hasLiquidTether')
+  hasLiquidTether;
+
+  @oneWay('elementId')
+  stack; // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
+
+  @computed('attachment')
+  get attachmentClass() {
+    let attachment = this.attachment;
+    if (isEmpty(attachment)) {
+      return undefined;
     }
+    return attachment
+      .split(' ')
+      .map((attachmentPart) => {
+        return `emd-attachment-${dasherize(attachmentPart)}`;
+      })
+      .join(' ');
   }
 
   @computed(
@@ -55,17 +80,17 @@ export default class ModalDialog extends Component {
     } else if (hasLiquidWormhole && animatable === true) {
       componentName = 'liquid-dialog';
     }
-    let module = importSync(`./${componentName}`);
+    let module = importSync(`ember-modal-dialog/components/${componentName}`);
     return ensureSafeComponent(module.default, this);
   }
 
-  animatable = null;
+  init() {
+    super.init(...arguments);
 
-  @readOnly('modalService.hasLiquidWormhole')
-  hasLiquidWormhole;
-
-  @readOnly('modalService.hasLiquidTether')
-  hasLiquidTether;
+    if (!this.destinationElementId) {
+      set(this, 'destinationElementId', this.modalService.destinationElementId);
+    }
+  }
 
   didReceiveAttrs() {
     super.didReceiveAttrs(...arguments);
@@ -85,35 +110,6 @@ export default class ModalDialog extends Component {
         { id: 'ember-modal-dialog.validate-overlay-position' }
       );
     }
-  }
-
-  hasOverlay = true;
-
-  translucentOverlay = false;
-  overlayPosition = 'parent'; // `parent` or `sibling`
-  clickOutsideToClose = false;
-  renderInPlace = false;
-  tetherTarget = null;
-
-  @oneWay('elementId')
-  stack; // pass a `stack` string to set a "stack" to be passed to liquid-wormhole / liquid-tether
-
-  value = 0; // pass a `value` to set a "value" to be passed to liquid-wormhole / liquid-tether
-  targetAttachment = 'middle center';
-  tetherClassPrefix = null;
-
-  @computed('attachment')
-  get attachmentClass() {
-    let attachment = this.attachment;
-    if (isEmpty(attachment)) {
-      return undefined;
-    }
-    return attachment
-      .split(' ')
-      .map((attachmentPart) => {
-        return `emd-attachment-${dasherize(attachmentPart)}`;
-      })
-      .join(' ');
   }
 
   ensureEmberTetherPresent() {
