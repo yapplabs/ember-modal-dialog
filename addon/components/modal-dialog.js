@@ -55,7 +55,9 @@ export default class ModalDialog extends Component {
     } else if (hasLiquidWormhole && animatable === true) {
       componentName = 'liquid-dialog';
     }
-    let module = importSync(`ember-modal-dialog/components/${componentName}`);
+    let module = importSync(
+      `ember-modal-dialog/addon/components/${componentName}`
+    );
     return ensureSafeComponent(module.default, this);
   }
 
