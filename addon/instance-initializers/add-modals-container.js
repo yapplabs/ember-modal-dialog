@@ -1,4 +1,5 @@
 import { getDestinationElementIdFromConfig } from 'ember-modal-dialog/utils/config-utils';
+import { getOwner } from '@ember/application';
 
 let hasDOM = typeof document !== 'undefined';
 
@@ -24,5 +25,11 @@ export default function (instance) {
   let config = instance.resolveRegistration('config:environment');
   let modalContainerElId = getDestinationElementIdFromConfig(config);
 
-  appendContainerElement(instance.rootElement, modalContainerElId);
+  // As there is only a single `Router` across the whole app, which is owned
+  // by the root `Application`, this reliably finds the root `Application`
+  // from an `Application` or `Engine`.
+  // eslint-disable-next-line ember/no-private-routing-service
+  let app = getOwner(instance.lookup('router:main'));
+
+  appendContainerElement(app.rootElement, modalContainerElId);
 }
