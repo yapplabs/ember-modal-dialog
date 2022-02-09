@@ -1,5 +1,13 @@
 ## v4.0.0 (2022-02-09)
 
+#### :boom: Breaking Change
+
+Drops support for Ember 3.19 and below
+
+#### :rocket: Enhancement
+
+Ember 4 compatibility and Embroider support
+
 ## v4.0.0-beta.0 (2022-01-24)
 
 #### :rocket: Enhancement
