@@ -85,6 +85,11 @@
   "peerDependencies": {
     "ember-tether": "^2.0.1"
   },
+  "peerDependenciesMeta": {
+    "ember-tether": {
+      "optional": true
+    }
+  },
   "resolutions": {
     "**/@embroider/macros": "^1.0.0",
     "**/@embroider/util": "^1.0.0"
