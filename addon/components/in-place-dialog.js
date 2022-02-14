@@ -18,6 +18,10 @@ export default class InPlaceDialog extends Component {
   }
 
   get containerClassNamesString() {
-    return this.containerClassNames?.join(' ') ?? '';
+    return (
+      (this.containerClassNames?.join && this.containerClassNames?.join(' ')) ||
+      this.containerClassNames ||
+      ''
+    );
   }
 }

@@ -80,6 +80,10 @@ h2 {
   border-radius: 100px;
   padding: 40px;
 }
+.my-cool-modal-2 {
+  border-width: 5px;
+  border-color: blue;
+}
 // END-SNIPPET
 
 // BEGIN-SNIPPET custom-styles
