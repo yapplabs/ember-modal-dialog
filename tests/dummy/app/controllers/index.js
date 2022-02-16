@@ -12,6 +12,7 @@ export default class IndexController extends Controller {
   isShowingTargetSelector = false;
   isShowingTargetElement = false;
   isShowingSubclassed = false;
+  isShowingSubclassed2 = false;
   isShowingInPlace = false;
   isShowingCenteredScrolling = false;
   isShowingElementCenterModal = false;

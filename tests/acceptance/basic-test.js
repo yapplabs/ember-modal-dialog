@@ -167,6 +167,22 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
     });
   });
 
+  test('subclassed modal with string for containerClassNames', async function (assert) {
+    await assert.dialogOpensAndCloses({
+      openSelector: '#example-subclass-2 button',
+      dialogText: 'Via Subclass',
+      closeSelector: overlaySelector,
+      whileOpen() {
+        assert
+          .dom(dialogSelector)
+          .hasClass('my-cool-modal', 'has provided containerClassNames');
+        assert
+          .dom(dialogSelector)
+          .hasClass('my-cool-modal-2', 'has provided containerClassNames');
+      },
+    });
+  });
+
   test('in place', async function (assert) {
     await click('#example-in-place button');
     let dialogText = 'In Place';

@@ -158,6 +158,23 @@
   {{/if}}
 </div>
 
+<div class="example" id="example-subclass-2">
+  <h2>Via Subclass</h2>
+  <button onclick={{action (mut this.isShowingSubclassed2) true}}>Do It</button>
+  <CodeSnippet @name="subclass.js" />
+  <CodeSnippet @name="subclass-modal-dialog-2.hbs" />
+  <CodeSnippet @name="subclass-styles.scss" />
+  {{#if this.isShowingSubclassed2}}
+    {{!-- BEGIN-SNIPPET subclass-modal-dialog-2 --}}
+    <MyCoolModalDialogTwo @onClose={{action (mut this.isShowingSubclassed2) false}} @translucentOverlay={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>Via Subclass</p>
+      <button onclick={{action (mut this.isShowingSubclassed2) false}}>Close</button>
+    </MyCoolModalDialogTwo>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
 <div class="example" id="example-in-place">
   <h2>In Place</h2>
   <button onclick={{action (mut this.isShowingInPlace) true}}>Do It</button>

@@ -32,15 +32,18 @@ export default class BasicDialog extends Component {
   variantWrapperClass = 'emd-static';
 
   @computed(
-    'containerClassNames.[]',
-    'targetAttachmentClass',
     'attachmentClass',
-    'containerClass'
+    'containerClass',
+    'containerClassNames.{[],join}',
+    'targetAttachmentClass'
   )
   get containerClassNamesString() {
+    let classNames =
+      (this.containerClassNames?.join && this.containerClassNames?.join(' ')) ||
+      this.containerClassNames;
     return [
       'ember-modal-dialog',
-      this.containerClassNames?.join(' '),
+      classNames,
       this.targetAttachmentClass,
       this.attachmentClass,
       this.containerClass,
@@ -49,11 +52,14 @@ export default class BasicDialog extends Component {
       .join(' ');
   }
 
-  @computed('overlayClassNames.[]', 'overlayClass', 'translucentOverlay')
+  @computed('overlayClass', 'overlayClassNames.{[],join}', 'translucentOverlay')
   get overlayClassNamesString() {
+    let classNames =
+      (this.overlayClassNames?.join && this.overlayClassNames?.join(' ')) ||
+      this.overlayClassNames;
     return [
       'ember-modal-overlay',
-      this.overlayClassNames?.join(' '),
+      classNames,
       this.translucentOverlay ? 'translucent' : null,
       this.overlayClass,
     ]
@@ -62,15 +68,18 @@ export default class BasicDialog extends Component {
   }
 
   @computed(
-    'wrapperClassNames.[]',
     'targetAttachmentClass',
     'variantWrapperClass',
-    'wrapperClass'
+    'wrapperClass',
+    'wrapperClassNames.{[],join}'
   )
   get wrapperClassNamesString() {
+    let classNames =
+      (this.wrapperClassNames?.join && this.wrapperClassNames?.join(' ')) ||
+      this.wrapperClassNames;
     return [
       'ember-modal-wrapper',
-      this.wrapperClassNames?.join(' '),
+      classNames,
       this.targetAttachmentClass.replace('emd-', 'emd-wrapper-'),
       this.variantWrapperClass,
       this.wrapperClass,
