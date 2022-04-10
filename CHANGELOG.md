@@ -1,3 +1,12 @@
+## v4.0.1 (2022-04-10)
+
+#### :bug: Bug Fix
+* [#378](https://github.com/yapplabs/ember-modal-dialog/pull/378) Fix error attempting to join class names when they are a string ([@lukemelia](https://github.com/lukemelia))
+
+#### Committers: 2
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+- Robert Wagner ([@rwwagner90](https://github.com/rwwagner90))
+
 ## v4.0.0 (2022-02-09)
 
 #### :boom: Breaking Change
