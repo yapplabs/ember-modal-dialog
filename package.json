@@ -70,9 +70,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-qunit": "^7.2.0",
-    "liquid-fire": "^0.34.0",
-    "liquid-tether": "pzuraq/liquid-tether#7c140024787c3c1b266e89a2ef528eaea898c78e",
-    "liquid-wormhole": "pzuraq/liquid-wormhole#efa7e5ca518de7c1d6c52666b70bbc0671fcf380",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
@@ -83,10 +80,22 @@
     "webpack": "^5.67.0"
   },
   "peerDependencies": {
-    "ember-tether": "^2.0.1"
+    "ember-tether": "^2.0.1",
+    "liquid-fire": "^0.34.0",
+    "liquid-tether": "pzuraq/liquid-tether#7c140024787c3c1b266e89a2ef528eaea898c78e",
+    "liquid-wormhole": "pzuraq/liquid-wormhole#efa7e5ca518de7c1d6c52666b70bbc0671fcf380"
   },
   "peerDependenciesMeta": {
     "ember-tether": {
+      "optional": true
+    },
+    "liquid-fire": {
+      "optional": true
+    },
+    "liquid-tether": {
+      "optional": true
+    },
+    "liquid-wormhole": {
       "optional": true
     }
   },
@@ -127,6 +136,6 @@
   },
   "volta": {
     "node": "12.22.1",
-    "yarn": "1.22.10"
+    "yarn": "1.22.18"
   }
 }
