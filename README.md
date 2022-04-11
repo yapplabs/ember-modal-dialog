@@ -8,30 +8,32 @@ Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions l
 
 <!-- toc -->
 
-- [Live Demo and Test Examples](#live-demo-and-test-examples)
-- [Including In An Ember Application](#including-in-an-ember-application)
-- [Upgrading](#upgrading)
-- [Controller-bound Usage](#controller-bound-usage)
-- [Routable Usage](#routable-usage)
-- [Configurable Properties](#configurable-properties)
-  * [modal-dialog](#modal-dialog)
-    + [Tethering](#tethering)
-    + [Animation](#animation)
-  * [Optional Dependencies](#optional-dependencies)
-- [Which Component Should I Use?](#which-component-should-i-use)
-- [Positioning](#positioning)
-    + [Caveats](#caveats)
-- [Wormholes](#wormholes)
-- [Configuring the Modal Root Element Id](#configuring-the-modal-root-element-id)
-- [Configuring Styles](#configuring-styles)
-- [Keyboard shortcuts](#keyboard-shortcuts)
-- [iOS](#ios)
-- [Custom Modals](#custom-modals)
-- [Using as a nested addon](#using-as-a-nested-addon)
-- [Dependencies](#dependencies)
-- [Additional Resources](#additional-resources)
-- [Contributing](#contributing)
-- [Credits](#credits)
+- [Ember Modal Dialog ![Build Status](https://travis-ci.org/yapplabs/ember-modal-dialog) [![Ember Observer Score](http://emberobserver.com/badges/ember-modal-dialog.svg)](http://emberobserver.com/addons/ember-modal-dialog)](#ember-modal-dialog--)
+  - [Table of Contents](#table-of-contents)
+  - [Live Demo and Test Examples](#live-demo-and-test-examples)
+  - [Including In An Ember Application](#including-in-an-ember-application)
+  - [Upgrading](#upgrading)
+  - [Controller-bound Usage](#controller-bound-usage)
+  - [Routable Usage](#routable-usage)
+  - [Configurable Properties](#configurable-properties)
+    - [modal-dialog](#modal-dialog)
+      - [Tethering](#tethering)
+      - [Animation](#animation)
+    - [Optional Dependencies](#optional-dependencies)
+  - [Which Component Should I Use?](#which-component-should-i-use)
+  - [Positioning](#positioning)
+      - [Caveats](#caveats)
+  - [Wormholes](#wormholes)
+  - [Configuring the Modal Root Element Id](#configuring-the-modal-root-element-id)
+  - [Configuring Styles](#configuring-styles)
+  - [Keyboard shortcuts](#keyboard-shortcuts)
+  - [iOS](#ios)
+  - [Custom Modals](#custom-modals)
+  - [Using as a nested addon](#using-as-a-nested-addon)
+  - [Dependencies](#dependencies)
+  - [Additional Resources](#additional-resources)
+  - [Contributing](#contributing)
+  - [Credits](#credits)
 
 <!-- tocstop -->
 
@@ -39,7 +41,7 @@ Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions l
 
 View a live demo here: [http://yapplabs.github.io/ember-modal-dialog/](http://yapplabs.github.io/ember-modal-dialog/)
 
-Test examples are located in `tests/dummy/app/templates/application.hbs` and can be run locally by following the instructions in the "Installation" and "Running" sections below.
+Test examples are located in `test-app/app/templates/application.hbs` and can be run locally by following the instructions in the "Installation" and "Running" sections below.
 
 [![Video image](https://i.vimeocdn.com/video/558401687_640x360.jpg)](https://vimeo.com/157192323)
 
@@ -68,7 +70,7 @@ If you’re using SASS then just import the CSS slightly differently
 ```
 
 **application.hbs**
-```htmlbars
+```hbs
 {{#modal-dialog}}
   Oh hai there!
 {{/modal-dialog}}
@@ -88,17 +90,17 @@ Here is a more useful example of how to conditionally display a modal based on a
 
 **Template**
 
-```htmlbars
-<button {{action (action "toggleModal")}}>Toggle Modal</button>
+```hbs
+<button {{on 'click' this.toggleModal}}>Toggle Modal</button>
 
-{{#if isShowingModal}}
-  {{#modal-dialog
-      onClose=(action "toggleModal")
-      targetAttachment="center"
-      translucentOverlay=true
-  }}
+{{#if this.isShowingModal}}
+  <ModalDialog
+      @onClose={{this.toggleModal}}
+      @targetAttachment="center"
+      @translucentOverlay={{true}}
+  >
     Oh hai there!
-  {{/modal-dialog}}
+  </ModalDialog>
 {{/if}}
 ```
 
@@ -106,24 +108,23 @@ Here is a more useful example of how to conditionally display a modal based on a
 
 ```javascript
 import Controller from '@ember/controller';
+import { tracked } from '@glimmer/tracking';
 
-export default Controller.extend({
-  isShowingModal: false,
-  actions: {
-    toggleModal() {
-      this.toggleProperty('isShowingModal');
-    }
+export default class extends Controller {
+  @tracked isShowingModal = false;
+  @action toggleModal() {
+    this.isShowingModal = !this.isShowingModal;
   }
-});
+}
 ```
 
 ## Routable Usage
 
-To have a modal open for a specific route, just drop the `{{modal-dialog}}` into that route's template. Don't forget to have an `{{outlet}}` on the parent route.
+To have a modal open for a specific route, just drop the `<ModalDialog>` into that route's template. Don't forget to have an `{{outlet}}` on the parent route.
 
 ## Configurable Properties
 
-### modal-dialog
+### &lt;ModalDialog&gt;
 
 The modal-dialog component supports the following properties:
 
@@ -171,7 +172,7 @@ Property              | Purpose
 
 This component supports animation when certain addons are present (liquid-wormhole, liquid-tether).
 
-Detection is be automatic. To opt out of using animatable features when you have these `liquid-*` addons installed, pass `animatable=false`.
+Detection is be automatic. To opt out of using animatable features when you have these `liquid-*` addons installed, pass `animatable={{false}}`.
 
 When in an animatable scenario, you may also pass the following properties, which are passed through to liquid-wormhole or liquid-tether:
 
@@ -191,17 +192,17 @@ Dependency                      | Documentation
 
 ## Which Component Should I Use?
 
-Various modal use cases are best supported by different DOM structures. Ember Modal Dialog's `modal-dialog` component provides the following capabilities:
+Various modal use cases are best supported by different DOM structures. Ember Modal Dialog's `ModalDialog` component provides the following capabilities:
 
-- modal-dialog without passing a `tetherTarget`: Uses ember-wormhole to append the following parent divs to the destination element: wrapper div > overlay div > container div
+- ModalDialog without passing a `tetherTarget`: Uses ember-wormhole to append the following parent divs to the destination element: wrapper div > overlay div > container div
 
-    ![](tests/dummy/public/modal-dialog.png)
+    ![](test-app/public/modal-dialog.png)
 
 This can be customized (see `overlayPosition`).
 
 - modal-dialog, with a `tetherTarget` provided: Uses ember-tether to display modal container div. Uses ember-wormhole to append optional overlay div to the destination element. Requires separate installation of [ember-tether](//github.com/yapplabs/ember-tether) dependency.
 
-    ![](tests/dummy/public/tether-dialog.png)
+    ![](test-app/public/tether-dialog.png)
 
 ## Positioning
 
@@ -217,14 +218,14 @@ To enable this behavior, install ember-tether as a dependency of **your ember ap
 
 Then pass a selector as `tetherTarget` for the modal you wish to position this way:
 
-```htmlbars
-{{#modal-dialog
-    tetherTarget='#target-element-id'
-    targetAttachment='middle right'
-    attachment='middle left'
-}}
+```hbs
+<ModalDialog
+  @tetherTarget="#target-element-id"
+  @targetAttachment="middle right"
+  @attachment="middle left"
+>
   I am a modal that will remain tethered to the right of the element with id 'target-element-id'
-{{/modal-dialog}}
+</ModalDialog>
 ```
 
 #### Caveats
@@ -354,13 +355,13 @@ export default ModalDialog.extend({
 });
 ```
 
-By subclassing `modal-dialog` your component will use the default modal dialog template. Therefore, you do not need to create a `app/templates/components/full-screen-modal.hbs` file.
+By subclassing `ModalDialog` your component will use the default modal dialog template. Therefore, you do not need to create a `app/templates/components/full-screen-modal.hbs` file.
 Your component can then be used like so:
 
-```htmlbars
-{{#full-screen-modal}}
+```hbs
+<FullScreenModal>
   Custom modal contents
-{{/full-screen-modal}}
+</FullScreenModal>
 ```
 ## Using as a nested addon
 

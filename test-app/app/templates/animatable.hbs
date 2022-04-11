@@ -1,0 +1,119 @@
+<h1 id="title">Animatable examples of the <code>modal-dialog</code> component</h1>
+
+<p>
+  If <a href="http://pzuraq.github.io/liquid-wormhole/"><code>liquid-wormhole</code></a>
+  is installed and `animatable=true` is passed, the component will
+  automatically become animatable using <code>liquid-fire</code>.
+</p>
+
+<div class="example">
+  <h3>app/transitions.js for these examples</h3>
+  <CodeSnippet @name="animated-transitions.js" />
+</div>
+
+<div class="example" id="example-basic">
+  <h2>Basic</h2>
+  <button {{on 'click' this.toggleBasic}}>Do It</button>
+  <CodeSnippet @name="basic-modal-dialog-animatable.hbs" />
+  {{#if this.isShowingBasic}}
+    {{!-- BEGIN-SNIPPET basic-modal-dialog-animatable --}}
+    <ModalDialog @onClose={{this.toggleBasic}} @overlayPosition="sibling" @clickOutsideToClose={{true}} @animatable={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>Basic</p>
+      <button {{on 'click' this.toggleBasic}}>Close</button>
+    </ModalDialog>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class="example" id="example-translucent">
+  <h2>With Translucent Overlay</h2>
+  <button {{on 'click' this.toggleTranslucent}}>Do It</button>
+  <CodeSnippet @name="translucent-modal-dialog-animatable.hbs" />
+  {{#if this.isShowingTranslucent}}
+    {{!-- BEGIN-SNIPPET translucent-modal-dialog-animatable --}}
+    <ModalDialog @onClose={{this.toggleTranslucent}} @translucentOverlay={{true}} @overlayPosition="sibling" @clickOutsideToClose={{true}} @animatable={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>With Translucent Overlay</p>
+      <button {{on 'click' this.toggleTranslucent}}>Close</button>
+    </ModalDialog>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class="example" id="example-without-overlay">
+  <h2>Without Overlay</h2>
+  <button {{on 'click' this.toggleWithoutOverlay}}>Do It</button>
+  <CodeSnippet @name="without-overlay-modal-dialog-animatable.hbs" />
+  {{#if this.isShowingWithoutOverlay}}
+    {{!-- BEGIN-SNIPPET without-overlay-modal-dialog-animatable --}}
+    <ModalDialog @onClose={{this.toggleWithoutOverlay}} @hasOverlay={{false}} @animatable={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay</p>
+      <button {{on 'click' this.toggleWithoutOverlay}}>Close</button>
+    </ModalDialog>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class="example" id="example-without-overlay-click-outside-to-close">
+  <h2>Without Overlay - Click Outside to Close</h2>
+  <button {{on 'click' this.toggleWithoutOverlayClickOutsideToClose}}>Do It</button>
+  <button
+    id="without-overlay-another-one-button"
+    {{on 'click' this.toggleWithoutOverlayClickOutsideToCloseAnotherOne}}
+  >
+    Another one
+  </button>
+  <CodeSnippet @name="without-overlay-click-outside-to-close-modal-dialog-animatable.hbs" />
+  {{#if this.isShowingWithoutOverlayClickOutsideToClose}}
+    {{!-- BEGIN-SNIPPET without-overlay-click-outside-to-close-modal-dialog-animatable --}}
+    <ModalDialog @onClose={{this.toggleWithoutOverlayClickOutsideToClose}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @animatable={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>Without Overlay - Click Outside to Close</p>
+      <button {{on 'click' this.toggleWithoutOverlayClickOutsideToClose}}>Close</button>
+    </ModalDialog>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+  {{#if this.isShowingWithoutOverlayClickOutsideToCloseAnotherOne}}
+    <ModalDialog @onClose={{this.toggleWithoutOverlayClickOutsideToCloseAnotherOne}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @offset="100px 0" @animatable={{true}}>
+      <h1>Stop! Another modal!</h1>
+      <p>Without Overlay Another One - Click Outside to Close</p>
+      <button {{on 'click' this.toggleWithoutOverlayClickOutsideToCloseAnotherOne}}>Close</button>
+    </ModalDialog>
+  {{/if}}
+
+</div>
+
+<div class="example" id="example-custom-styles">
+  <h2>Custom Styles</h2>
+  <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
+  <CodeSnippet @name="custom-styles-modal-dialog-animatable.hbs" />
+  <CodeSnippet @name="custom-styles.scss" />
+  {{#if this.isShowingCustomStyles}}
+    {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-animatable --}}
+    <ModalDialog @onClose={{action (mut this.isShowingCustomStyles) false}} @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay" @wrapperClass="custom-styles-wrapper" @overlayPosition="sibling" @clickOutsideToClose={{true}} @targetAttachment="none" @animatable={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>Custom Styles</p>
+      <button {{action (action (mut this.isShowingCustomStyles) false)}}>Close</button>
+    </ModalDialog>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>
+
+<div class="example" id="example-subclass">
+  <h2>Via Subclass</h2>
+  <button {{on 'click' this.toggleSubclassed}}>Do It</button>
+  <CodeSnippet @name="subclass.js" />
+  <CodeSnippet @name="subclass-modal-dialog-animatable.hbs" />
+  <CodeSnippet @name="subclass-styles.scss" />
+  {{#if this.isShowingSubclassed}}
+    {{!-- BEGIN-SNIPPET subclass-modal-dialog-animatable --}}
+    <MyCoolModalDialog @onClose={{this.toggleSubclassed}} @animatable={{true}}>
+      <h1>Stop! Modal Time!</h1>
+      <p>Via Subclass</p>
+      <button {{on 'click' this.toggleSubclassed}}>Close</button>
+    </MyCoolModalDialog>
+    {{!-- END-SNIPPET --}}
+  {{/if}}
+</div>

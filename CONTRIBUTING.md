@@ -24,10 +24,10 @@ When running unit tests on components that use ember-modal-dialog, modals will b
 attached to the `#ember-testing` div.
 
 
-## Running the Dummy Application
+## Running the Test Apps
 
-* `ember serve`
-* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+* `cd test-app && ember serve`
+* Visit the test-app application at [http://localhost:4200](http://localhost:4200).
 
 For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
 
