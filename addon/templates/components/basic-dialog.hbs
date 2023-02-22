@@ -1,34 +1,49 @@
 <EmberWormhole @to={{this.destinationElementId}}>
   {{#if this.isOverlaySibling}}
-    <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
+    <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
       {{#if this.hasOverlay}}
         <div
           class={{this.overlayClassNamesString}}
           onclick={{action this.onClickOverlay}}
-          tabindex="-1"
+          tabindex='-1'
           data-emd-overlay
         >
         </div>
       {{/if}}
-      <EmberModalDialogPositionedContainer @class={{this.containerClassNamesString}} @targetAttachment={{this.targetAttachment}} @target={{this.legacyTarget}}>
+      <EmberModalDialogPositionedContainer
+        @class={{this.containerClassNamesString}}
+        @targetAttachment={{this.targetAttachment}}
+        @target={{this.legacyTarget}}
+        ...attributes
+      >
         {{yield}}
       </EmberModalDialogPositionedContainer>
     </div>
   {{else}}
-    <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
+    <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
       {{#if this.hasOverlay}}
         <div
           class={{this.overlayClassNamesString}}
           onclick={{action (ignore-children this.onClickOverlay)}}
-          tabindex="-1"
+          tabindex='-1'
           data-emd-overlay
         >
-          <EmberModalDialogPositionedContainer @class={{this.containerClassNamesString}} @targetAttachment={{this.targetAttachment}} @target={{this.legacyTarget}}>
+          <EmberModalDialogPositionedContainer
+            @class={{this.containerClassNamesString}}
+            @targetAttachment={{this.targetAttachment}}
+            @target={{this.legacyTarget}}
+            ...attributes
+          >
             {{yield}}
           </EmberModalDialogPositionedContainer>
         </div>
       {{else}}
-        <EmberModalDialogPositionedContainer @class={{this.containerClassNamesString}} @targetAttachment={{this.targetAttachment}} @target={{this.legacyTarget}}>
+        <EmberModalDialogPositionedContainer
+          @class={{this.containerClassNamesString}}
+          @targetAttachment={{this.targetAttachment}}
+          @target={{this.legacyTarget}}
+          ...attributes
+        >
           {{yield}}
         </EmberModalDialogPositionedContainer>
       {{/if}}

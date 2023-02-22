@@ -3,12 +3,23 @@
     <div
       class={{this.overlayClassNamesString}}
       onclick={{action this.onClickOverlay}}
-      tabindex="-1"
+      tabindex='-1'
       data-emd-overlay
     >
     </div>
   </EmberWormhole>
 {{/if}}
-<EmberTether @class={{this.containerClassNamesString}} @target={{this.tetherTarget}} @attachment={{this.attachment}} @targetAttachment={{this.targetAttachment}} @targetModifier={{this.targetModifier}} @classPrefix={{this.tetherClassPrefix}} @offset={{this.offset}} @targetOffset={{this.targetOffset}} @constraints={{this.constraints}}>
+<EmberTether
+  @class={{this.containerClassNamesString}}
+  @target={{this.tetherTarget}}
+  @attachment={{this.attachment}}
+  @targetAttachment={{this.targetAttachment}}
+  @targetModifier={{this.targetModifier}}
+  @classPrefix={{this.tetherClassPrefix}}
+  @offset={{this.offset}}
+  @targetOffset={{this.targetOffset}}
+  @constraints={{this.constraints}}
+  ...attributes
+>
   {{yield}}
 </EmberTether>

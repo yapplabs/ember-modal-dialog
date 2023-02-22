@@ -1,35 +1,53 @@
 {{#if this.isOverlaySibling}}
-  <LiquidWormhole @stack={{this.stack}} @value={{this.value}} @class={{concat "liquid-dialog-container " this.wrapperClassNamesString " " this.wrapperClass}}>
-    <div class="{{this.wrapperClassNamesString}} {{this.wrapperClass}}">
+  <LiquidWormhole
+    @stack={{this.stack}}
+    @value={{this.value}}
+    @class={{concat
+      'liquid-dialog-container '
+      this.wrapperClassNamesString
+      ' '
+      this.wrapperClass
+    }}
+  >
+    <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
       {{#if this.hasOverlay}}
         <div
           class={{this.overlayClassNamesString}}
           onclick={{action this.onClickOverlay}}
-          tabindex="-1"
+          tabindex='-1'
           data-emd-overlay
         >
         </div>
       {{/if}}
-      <div class={{this.containerClassNamesString}}>
+      <div class={{this.containerClassNamesString}} ...attributes>
         {{yield}}
       </div>
     </div>
   </LiquidWormhole>
 {{else}}
-  <LiquidWormhole @stack={{this.stack}} @value={{this.value}} @class={{concat "liquid-dialog-container " this.wrapperClassNamesString " " this.wrapperClass}}>
+  <LiquidWormhole
+    @stack={{this.stack}}
+    @value={{this.value}}
+    @class={{concat
+      'liquid-dialog-container '
+      this.wrapperClassNamesString
+      ' '
+      this.wrapperClass
+    }}
+  >
     {{#if this.hasOverlay}}
       <div
         class={{this.overlayClassNamesString}}
         onclick={{action (ignore-children this.onClickOverlay)}}
-        tabindex="-1"
+        tabindex='-1'
         data-emd-overlay
       >
-        <div class={{this.containerClassNamesString}}>
+        <div class={{this.containerClassNamesString}} ...attributes>
           {{yield}}
         </div>
       </div>
     {{else}}
-      <div class={{this.containerClassNamesString}}>
+      <div class={{this.containerClassNamesString}} ...attributes>
         {{yield}}
       </div>
     {{/if}}
