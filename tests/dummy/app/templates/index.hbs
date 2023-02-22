@@ -184,7 +184,26 @@
     I AM THE CONTAINER
     {{#if this.isShowingInPlace}}
       {{!-- BEGIN-SNIPPET in-place-modal-dialog --}}
-      <ModalDialog @onClose={{action (mut this.isShowingSubclassed) false}} @renderInPlace={{true}} @targetAttachment="none" @containerClass="ember-modal-dialog-in-place" @overlayClass="ember-modal-overlay-in-place">
+      <ModalDialog @onClose={{action (mut this.isShowingSubclassed) false}} @renderInPlace={{true}} @targetAttachment="none" @containerClass="ember-modal-dialog-in-place my-custom-class" @overlayClass="ember-modal-overlay-in-place">
+        <h1>Stop! Modal Time!</h1>
+        <p>In Place</p>
+        <button onclick={{action (mut this.isShowingInPlace) false}}>Close</button>
+      </ModalDialog>
+      {{!-- END-SNIPPET --}}
+    {{/if}}
+  </div>
+</div>
+
+<div class="example" id="example-in-place-2">
+  <h2>In Place</h2>
+  <button onclick={{action (mut this.isShowingInPlace) true}}>Do It</button>
+  <CodeSnippet @name="in-place-modal-dialog.hbs" />
+  <CodeSnippet @name="in-place.scss" />
+  <div id="container-in-place-2">
+    I AM THE CONTAINER
+    {{#if this.isShowingInPlace}}
+      {{!-- BEGIN-SNIPPET in-place-modal-dialog --}}
+      <ModalDialog @onClose={{action (mut this.isShowingSubclassed) false}} @renderInPlace={{true}} @targetAttachment="none" @containerClassNames="ember-modal-dialog-in-place my-custom-class-2" @overlayClassNames="ember-modal-overlay-in-place">
         <h1>Stop! Modal Time!</h1>
         <p>In Place</p>
         <button onclick={{action (mut this.isShowingInPlace) false}}>Close</button>

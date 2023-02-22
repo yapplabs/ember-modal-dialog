@@ -193,8 +193,11 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       inPlaceDialogSelector,
       'button',
     ].join(' ');
-    let dialogElement = find(dialogSelector);
+    let dialogElement = find(inPlaceDialogSelector);
 
+    assert
+      .dom(inPlaceDialogSelector)
+      .hasClass('my-custom-class', 'has provided containerClass');
     assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('position'),
       'static',
@@ -231,5 +234,19 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       undefined,
       'dialog is not rendered in place'
     );
+
+    await click('#example-in-place-2 button');
+    inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
+    inPlaceRootSelector = '#container-in-place-2';
+    inPlaceCloseButton = [
+      inPlaceRootSelector,
+      inPlaceDialogSelector,
+      'button',
+    ].join(' ');
+
+    assert
+      .dom(inPlaceDialogSelector)
+      .hasClass('my-custom-class-2', 'has provided containerClassNames');
+    await click(inPlaceCloseButton);
   });
 });
