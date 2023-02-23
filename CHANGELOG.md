@@ -1,3 +1,18 @@
+## v4.1.0 (2023-02-23)
+
+#### :rocket: Enhancement
+* [#389](https://github.com/yapplabs/ember-modal-dialog/pull/389) Add splattibutes support and fix containerClassNames for rendered in place modals ([@ratierd](https://github.com/ratierd))
+
+#### :bug: Bug Fix
+* [#389](https://github.com/yapplabs/ember-modal-dialog/pull/389) Add splattibutes support and fix containerClassNames for rendered in place modals ([@ratierd](https://github.com/ratierd))
+
+#### :house: Internal
+* [#390](https://github.com/yapplabs/ember-modal-dialog/pull/390) Run tests with node 16 ([@lukemelia](https://github.com/lukemelia))
+
+#### Committers: 2
+- David Ratier ([@ratierd](https://github.com/ratierd))
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+
 ## v4.0.1 (2022-04-10)
 
 #### :bug: Bug Fix
