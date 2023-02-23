@@ -1,5 +1,12 @@
 <div
-  class={{concat this.containerClassNamesString " " this.attachmentClass " " this.containerClass}}
+  class={{concat
+    this.containerClassNamesString
+    ' '
+    this.attachmentClass
+    ' '
+    this.containerClass
+  }}
+  ...attributes
 >
   {{yield}}
 </div>

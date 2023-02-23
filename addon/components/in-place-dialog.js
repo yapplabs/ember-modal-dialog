@@ -5,23 +5,18 @@ import layout from '../templates/components/in-place-dialog';
 @tagName('')
 @templateLayout(layout)
 export default class InPlaceDialog extends Component {
-  containerClass = null; // passed in
-
-  init() {
-    super.init(...arguments);
-
-    this.containerClassNames = [
+  get containerClassNamesString() {
+    const addonClassNamesString = [
       'ember-modal-dialog',
       'ember-modal-dialog-in-place',
       'emd-in-place',
-    ]; // set this in a subclass definition
-  }
+    ].join(' ');
 
-  get containerClassNamesString() {
-    return (
+    const containerClassNamesString =
       (this.containerClassNames?.join && this.containerClassNames?.join(' ')) ||
       this.containerClassNames ||
-      ''
-    );
+      '';
+
+    return `${addonClassNamesString} ${containerClassNamesString}`;
   }
 }

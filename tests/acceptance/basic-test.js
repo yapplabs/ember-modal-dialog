@@ -27,12 +27,26 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       openSelector: '#example-basic button',
       dialogText: 'Basic',
       closeSelector: overlaySelector,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-basic button',
       dialogText: 'Basic',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -41,12 +55,26 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       openSelector: '#example-translucent button',
       dialogText: 'With Translucent Overlay',
       closeSelector: overlaySelector,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-translucent button',
       dialogText: 'With Translucent Overlay',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -55,12 +83,26 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       openSelector: '#example-without-overlay button',
       dialogText: 'Without Overlay',
       closeSelector: '#example-without-overlay',
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-without-overlay button',
       dialogText: 'Without Overlay',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -69,12 +111,26 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       openSelector: '#example-translucent button',
       dialogText: 'With Translucent Overlay',
       closeSelector: overlaySelector,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-translucent button',
       dialogText: 'With Translucent Overlay',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -83,12 +139,26 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       openSelector: '#example-overlay-sibling button',
       dialogText: 'With Translucent Overlay as Sibling',
       closeSelector: overlaySelector,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-overlay-sibling button',
       dialogText: 'With Translucent Overlay as Sibling',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -121,12 +191,24 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
             'custom-styles-modal-container',
             'has provided container-class'
           );
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
       },
     });
     await assert.dialogOpensAndCloses({
       openSelector: '#example-custom-styles button',
       dialogText: 'Custom Styles',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -142,6 +224,11 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
             'ember-modal-dialog-target-attachment-left',
             'has targetAttachment class name'
           );
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
       },
     });
   });
@@ -151,6 +238,13 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       openSelector: '#example-target-element button',
       dialogText: 'Target - Element',
       closeSelector: dialogCloseButton,
+      whileOpen: async function () {
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
+      },
     });
   });
 
@@ -163,6 +257,11 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert
           .dom(dialogSelector)
           .hasClass('my-cool-modal', 'has provided containerClassNames');
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
       },
     });
   });
@@ -179,6 +278,11 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert
           .dom(dialogSelector)
           .hasClass('my-cool-modal-2', 'has provided containerClassNames');
+        assert.hasDataTest(
+          dialogSelector,
+          'my-data-test',
+          'dialog has data-test attribute'
+        );
       },
     });
   });
@@ -193,8 +297,16 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       inPlaceDialogSelector,
       'button',
     ].join(' ');
-    let dialogElement = find(dialogSelector);
+    let dialogElement = find(inPlaceDialogSelector);
 
+    assert
+      .dom(inPlaceDialogSelector)
+      .hasClass('my-custom-class', 'has provided containerClass');
+    assert.hasDataTest(
+      inPlaceDialogSelector,
+      'my-data-test',
+      'dialog has data-test attribute'
+    );
     assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('position'),
       'static',
@@ -231,5 +343,24 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
       undefined,
       'dialog is not rendered in place'
     );
+
+    await click('#example-in-place-2 button');
+    inPlaceDialogSelector = `${dialogSelector}.ember-modal-dialog-in-place`;
+    inPlaceRootSelector = '#container-in-place-2';
+    inPlaceCloseButton = [
+      inPlaceRootSelector,
+      inPlaceDialogSelector,
+      'button',
+    ].join(' ');
+
+    assert
+      .dom(inPlaceDialogSelector)
+      .hasClass('my-custom-class-2', 'has provided containerClassNames');
+    assert.hasDataTest(
+      inPlaceDialogSelector,
+      'my-data-test',
+      'dialog has data-test attribute'
+    );
+    await click(inPlaceCloseButton);
   });
 });
