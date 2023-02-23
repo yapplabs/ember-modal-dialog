@@ -20,6 +20,11 @@ export default function registerAssertHelpers(assert) {
     return this.dom(selector).isVisible(message);
   };
 
+  assert.hasDataTest = function (selector, dataTest, message) {
+    message = message || `${selector} has data-test attribute`;
+    return this.dom(selector).hasAttribute('data-test', dataTest, message);
+  };
+
   assert.dialogOpensAndCloses = async function (options) {
     const self = this;
     await click(options.openSelector, options.context);
