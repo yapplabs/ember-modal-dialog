@@ -1,3 +1,11 @@
+## v4.1.2 (2023-05-08)
+
+#### :bug: Bug Fix
+* [#395](https://github.com/yapplabs/ember-modal-dialog/pull/395) ember-tether version change was missing in peerDependencies declaration ([@lukemelia](https://github.com/lukemelia))
+
+#### Committers: 1
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+
 ## v4.1.1 (2023-05-05)
 
 ## v4.1.0 (2023-02-23)
