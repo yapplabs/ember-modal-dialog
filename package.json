@@ -83,7 +83,7 @@
     "webpack": "^5.67.0"
   },
   "peerDependencies": {
-    "ember-tether": "^2.0.1"
+    "ember-tether": "^3.0.0"
   },
   "peerDependenciesMeta": {
     "ember-tether": {
