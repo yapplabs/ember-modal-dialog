@@ -1,12 +1,9 @@
 {{#if this.hasOverlay}}
   <LiquidWormhole @stack='modal-overlay' @class='liquid-dialog-container'>
-    <div
+    <EmberModalDialog::Overlay
       class={{this.overlayClassNamesString}}
-      onclick={{action this.onClickOverlay}}
-      tabindex='-1'
-      data-emd-overlay
-    >
-    </div>
+      @onClickOverlay={{this.onClickOverlay}}
+    />
   </LiquidWormhole>
 {{/if}}
 <LiquidTether

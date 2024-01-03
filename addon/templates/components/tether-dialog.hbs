@@ -1,12 +1,9 @@
 {{#if this.hasOverlay}}
   <EmberWormhole @to={{this.destinationElementId}}>
-    <div
+    <EmberModalDialog::Overlay
       class={{this.overlayClassNamesString}}
-      onclick={{action this.onClickOverlay}}
-      tabindex='-1'
-      data-emd-overlay
-    >
-    </div>
+      @onClickOverlay={{this.onClickOverlay}}
+    />
   </EmberWormhole>
 {{/if}}
 <EmberTether
