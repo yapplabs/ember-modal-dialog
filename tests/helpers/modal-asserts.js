@@ -28,8 +28,7 @@ export default function registerAssertHelpers(assert) {
   assert.dialogOpensAndCloses = async function (options) {
     const self = this;
     await click(options.openSelector, options.context);
-    await 
-    await waitUntil(function () {
+    await await waitUntil(function () {
       return findContains(dialogSelector, options.dialogText);
     });
     if (options.hasOverlay) {
