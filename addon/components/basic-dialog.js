@@ -5,6 +5,7 @@ import Component from '@ember/component';
 import { isEmpty } from '@ember/utils';
 import layout from '../templates/components/basic-dialog';
 import { dasherize } from '@ember/string';
+import { isIOS, clickHandlerDelay } from '../utils/config-utils';
 
 @tagName('')
 @templateLayout(layout)
@@ -107,7 +108,6 @@ export default class BasicDialog extends Component {
     if (!this.clickOutsideToClose) {
       return;
     }
-    this.makeOverlayClickableOnIOS();
 
     this.handleClick = ({ target }) => {
       // if the click has already resulted in the target
@@ -135,39 +135,28 @@ export default class BasicDialog extends Component {
       }
     };
 
+    const registerDelay = clickHandlerDelay(this);
+
     const registerClick = () =>
       document.addEventListener('click', this.handleClick);
 
     // setTimeout needed or else the click handler will catch the click that spawned this modal dialog
-    setTimeout(registerClick);
+    setTimeout(registerClick, registerDelay);
 
-    if (this.isIOS) {
+    if (isIOS) {
       const registerTouch = () =>
         document.addEventListener('touchend', this.handleClick);
-      setTimeout(registerTouch);
+      setTimeout(registerTouch, registerDelay);
     }
     super.didInsertElement(...arguments);
   }
 
   willDestroyElement() {
     document.removeEventListener('click', this.handleClick);
-    if (this.isIOS) {
+    if (isIOS) {
       document.removeEventListener('touchend', this.handleClick);
     }
+
     super.willDestroyElement(...arguments);
-  }
-
-  @computed
-  get isIOS() {
-    return /iPad|iPhone|iPod/.test(navigator.userAgent);
-  }
-
-  makeOverlayClickableOnIOS() {
-    if (this.isIOS) {
-      let overlayEl = document.querySelector('div[data-emd-overlay]');
-      if (overlayEl) {
-        overlayEl.style.cursor = 'pointer';
-      }
-    }
   }
 }

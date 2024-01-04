@@ -11,13 +11,10 @@
   >
     <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
       {{#if this.hasOverlay}}
-        <div
+        <EmberModalDialog::Overlay
           class={{this.overlayClassNamesString}}
-          onclick={{action this.onClickOverlay}}
-          tabindex='-1'
-          data-emd-overlay
-        >
-        </div>
+          @onClickOverlay={{this.onClickOverlay}}
+        />
       {{/if}}
       <div class={{this.containerClassNamesString}} ...attributes>
         {{yield}}
@@ -36,16 +33,14 @@
     }}
   >
     {{#if this.hasOverlay}}
-      <div
+      <EmberModalDialog::Overlay
         class={{this.overlayClassNamesString}}
-        onclick={{action (ignore-children this.onClickOverlay)}}
-        tabindex='-1'
-        data-emd-overlay
+        @onClickOverlay={{action (ignore-children this.onClickOverlay)}}
       >
         <div class={{this.containerClassNamesString}} ...attributes>
           {{yield}}
         </div>
-      </div>
+      </EmberModalDialog::Overlay>
     {{else}}
       <div class={{this.containerClassNamesString}} ...attributes>
         {{yield}}
