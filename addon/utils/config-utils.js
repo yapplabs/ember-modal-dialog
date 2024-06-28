@@ -11,7 +11,9 @@ export function getDestinationElementIdFromConfig(config) {
   return modalContainerId;
 }
 
-export const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+export const isIOS =
+  (globalThis.navigator || false) &&
+  /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 export function clickHandlerDelay(component) {
   let ENV = getOwner(component).resolveRegistration('config:environment');

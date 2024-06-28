@@ -19,6 +19,9 @@ module.exports = {
   env: {
     browser: true,
   },
+  globals: {
+    globalThis: 'readonly',
+  },
   rules: {
     'no-setter-return': 'off',
     'ember/classic-decorator-no-classic-methods': 'warn',
