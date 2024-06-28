@@ -1,3 +1,11 @@
+## v4.1.4 (2024-06-28)
+
+#### :bug: Bug Fix
+* [#400](https://github.com/yapplabs/ember-modal-dialog/pull/400) Avoid Fastboot crash when accessing `navigator` global ([@gilest](https://github.com/gilest))
+
+#### Committers: 1
+- Giles Thompson ([@gilest](https://github.com/gilest))
+
 ## v4.1.3 (2024-01-04)
 
 ## v4.1.2 (2023-05-08)
