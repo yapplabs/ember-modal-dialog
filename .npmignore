@@ -29,6 +29,7 @@
 /tests/
 /yarn-error.log
 /yarn.lock
+/pnpm-lock.yaml
 .gitkeep
 
 # ember-try
@@ -38,3 +39,4 @@
 /package.json.ember-try
 /package-lock.json.ember-try
 /yarn.lock.ember-try
+/pnpm-lock.yaml.ember-try

@@ -20,8 +20,12 @@
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
   <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
-  <CodeSnippet @name="custom-styles-modal-dialog-tethered.hbs" />
-  <CodeSnippet @name="custom-styles.scss" />
+  {{#let (get-code-snippet "custom-styles-modal-dialog-tethered.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
+  {{#let (get-code-snippet "custom-styles.css") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-tethered --}}
     <ModalDialog @onClose={{action (mut this.isShowingCustomStyles) false}} @tetherTarget="body" @targetModifier="visible" @targetAttachment="top right" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay">
@@ -38,7 +42,9 @@
   <div class="targetContainer">
     <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
-  <CodeSnippet @name="target-selector-modal-dialog-tethered.hbs" />
+  {{#let (get-code-snippet "target-selector-modal-dialog-tethered.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog-tethered --}}
     <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#alignTetherDialogToMe">
@@ -59,7 +65,9 @@
       <button {{action "toggleTargetElement"}}>Do It</button>
     </span>
   </div>
-  <CodeSnippet @name="target-element-modal-dialog-tethered.hbs" />
+  {{#let (get-code-snippet "target-element-modal-dialog-tethered.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog-tethered --}}
     <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#bwtde">
@@ -78,7 +86,9 @@
   <span id="elementCenter">
     <button onclick={{action (mut this.isShowingElementCenterModal) true}}>Element Center</button>
   </span>
-  <CodeSnippet @name="element-centered-modal-dialog-tethered.hbs" />
+  {{#let (get-code-snippet "element-centered-modal-dialog-tethered.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingElementCenterModal}}
     {{!-- BEGIN-SNIPPET element-centered-modal-dialog-tethered --}}
     <ModalDialog @translucentOverlay={{true}} @tetherTarget="#elementCenter" @onClose={{action (mut this.isShowingElementCenterModal) false}}>

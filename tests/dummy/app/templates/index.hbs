@@ -13,13 +13,20 @@
 <div class="example" id="example-basic">
   <h2>Basic</h2>
   <button onclick={{action (mut this.isShowingBasic) true}}>Do It</button>
-  <CodeSnippet @name="basic-modal-dialog.hbs" />
+  {{#let (get-code-snippet "basic-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingBasic}}
     {{!-- BEGIN-SNIPPET basic-modal-dialog --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingBasic) false}}>
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingBasic) false}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Basic</p>
-      <button onclick={{action (mut this.isShowingBasic) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingBasic) false}}>
+        Close
+      </button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -28,13 +35,22 @@
 <div class="example" id="example-translucent">
   <h2>With Translucent Overlay</h2>
   <button onclick={{action (mut this.isShowingTranslucent) true}}>Do It</button>
-  <CodeSnippet @name="translucent-modal-dialog.hbs" />
+  {{#let (get-code-snippet "translucent-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+
   {{#if this.isShowingTranslucent}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingTranslucent) false}} @translucentOverlay={{true}}>
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingTranslucent) false}}
+      @translucentOverlay={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay</p>
-      <button onclick={{action (mut this.isShowingTranslucent) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingTranslucent) false}}>
+        Close
+      </button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -43,13 +59,22 @@
 <div class="example" id="example-translucent-with-callback">
   <h2>Translucent Overlay with Callback</h2>
   <button onclick={{action (mut this.isShowingTranslucentWithCallback) true}}>Do It</button>
-  <CodeSnippet @name="translucent-modal-dialog-with-callback.hbs" />
+  {{#let (get-code-snippet "translucent-modal-dialog-with-callback.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingTranslucentWithCallback}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-with-callback --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingTranslucentWithCallback) false}} @translucentOverlay={{true}} @onClickOverlay={{action "clickedTranslucentOverlay"}}>
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingTranslucentWithCallback) false}}
+      @translucentOverlay={{true}}
+      @onClickOverlay={{action "clickedTranslucentOverlay"}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Translucent Overlay with Callback</p>
-      <button onclick={{action (mut this.isShowingTranslucentWithCallback) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingTranslucentWithCallback) false}}>
+        Close
+      </button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -58,13 +83,22 @@
 <div class="example" id="example-without-overlay">
   <h2>Without Overlay</h2>
   <button onclick={{action (mut this.isShowingWithoutOverlay) true}}>Do It</button>
-  <CodeSnippet @name="modal-dialog-without-overlay.hbs" />
+  {{#let (get-code-snippet "modal-dialog-without-overlay.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingWithoutOverlay}}
     {{!-- BEGIN-SNIPPET modal-dialog-without-overlay --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingWithoutOverlay) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}}>
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingWithoutOverlay) false}}
+      @hasOverlay={{false}}
+      @clickOutsideToClose={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Without Overlay</p>
-      <button onclick={{action (mut this.isShowingWithoutOverlay) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingWithoutOverlay) false}}>
+        Close
+      </button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -73,13 +107,22 @@
 <div class="example" id="example-overlay-sibling">
   <h2>With Overlay as a Sibling in the DOM</h2>
   <button onclick={{action (mut this.isShowingSibling) true}}>Do It</button>
-  <CodeSnippet @name="translucent-modal-dialog-sibling.hbs" />
+  {{#let (get-code-snippet "translucent-modal-dialog-sibling.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingSibling}}
     {{!-- BEGIN-SNIPPET translucent-modal-dialog-sibling --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingSibling) false}} @translucentOverlay={{true}} @overlayPosition="sibling">
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingSibling) false}}
+      @translucentOverlay={{true}}
+      @overlayPosition="sibling"
+    >
       <h1>Stop! Modal Time!</h1>
       <p>With Translucent Overlay as Sibling</p>
-      <button onclick={{action (mut this.isShowingSibling) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingSibling) false}}>
+        Close
+      </button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -88,14 +131,26 @@
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
   <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
-  <CodeSnippet @name="custom-styles-modal-dialog.hbs" />
-  <CodeSnippet @name="custom-styles.scss" />
+  {{#let (get-code-snippet "custom-styles-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "custom-styles.css") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingCustomStyles) false}} @targetAttachment="none" @containerClass={{this.customContainerClassNames}} @overlayClass="custom-styles-overlay">
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingCustomStyles) false}}
+      @targetAttachment="none"
+      @containerClass={{this.customContainerClassNames}}
+      @overlayClass="custom-styles-overlay"
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button onclick={{action (mut this.isShowingCustomStyles) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingCustomStyles) false}}>
+        Close
+      </button>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -106,7 +161,9 @@
   <div class="targetContainer">
     <button id="alignModalDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
-  <CodeSnippet @name="target-selector-modal-dialog.hbs" />
+  {{#let (get-code-snippet "target-selector-modal-dialog.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog --}}
     <ModalDialog data-test="my-data-test" @onClose={{action "toggleTargetSelector"}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @target="#alignModalDialogToMe">
@@ -127,10 +184,18 @@
       <button {{action "toggleTargetElement"}}>Do It</button>
     </span>
   </div>
-  <CodeSnippet @name="target-element-modal-dialog.hbs" />
+  {{#let (get-code-snippet "target-element-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action "toggleTargetElement"}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @target="#bwmde">
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action "toggleTargetElement"}}
+      @targetAttachment={{this.exampleTargetAttachment}}
+      @attachment={{this.exampleAttachment}}
+      @target="#bwmde"
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element #bwmde</p>
       <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
@@ -144,15 +209,27 @@
 <div class="example" id="example-subclass">
   <h2>Via Subclass</h2>
   <button onclick={{action (mut this.isShowingSubclassed) true}}>Do It</button>
-  <CodeSnippet @name="subclass.js" />
-  <CodeSnippet @name="subclass-modal-dialog.hbs" />
-  <CodeSnippet @name="subclass-styles.scss" />
+  {{#let (get-code-snippet "subclass.js") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "subclass-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "subclass-styles.css") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingSubclassed}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog --}}
-    <MyCoolModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingSubclassed) false}} @translucentOverlay={{true}}>
+    <MyCoolModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingSubclassed) false}}
+      @translucentOverlay={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
-      <button onclick={{action (mut this.isShowingSubclassed) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingSubclassed) false}}>
+        Close
+      </button>
     </MyCoolModalDialog>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -161,15 +238,27 @@
 <div class="example" id="example-subclass-2">
   <h2>Via Subclass</h2>
   <button onclick={{action (mut this.isShowingSubclassed2) true}}>Do It</button>
-  <CodeSnippet @name="subclass.js" />
-  <CodeSnippet @name="subclass-modal-dialog-2.hbs" />
-  <CodeSnippet @name="subclass-styles.scss" />
+  {{#let (get-code-snippet "subclass.js") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "subclass-modal-dialog-2.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "subclass-styles.css") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingSubclassed2}}
     {{!-- BEGIN-SNIPPET subclass-modal-dialog-2 --}}
-    <MyCoolModalDialogTwo data-test="my-data-test" @onClose={{action (mut this.isShowingSubclassed2) false}} @translucentOverlay={{true}}>
+    <MyCoolModalDialogTwo
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingSubclassed2) false}}
+      @translucentOverlay={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Via Subclass</p>
-      <button onclick={{action (mut this.isShowingSubclassed2) false}}>Close</button>
+      <button onclick={{action (mut this.isShowingSubclassed2) false}}>
+        Close
+      </button>
     </MyCoolModalDialogTwo>
     {{!-- END-SNIPPET --}}
   {{/if}}
@@ -178,8 +267,12 @@
 <div class="example" id="example-in-place">
   <h2>In Place</h2>
   <button onclick={{action (mut this.isShowingInPlace) true}}>Do It</button>
-  <CodeSnippet @name="in-place-modal-dialog.hbs" />
-  <CodeSnippet @name="in-place.scss" />
+  {{#let (get-code-snippet "in-place-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "in-place.css") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   <div id="container-in-place">
     I AM THE CONTAINER
     {{#if this.isShowingInPlace}}
@@ -197,16 +290,29 @@
 <div class="example" id="example-in-place-2">
   <h2>In Place</h2>
   <button onclick={{action (mut this.isShowingInPlace2) true}}>Do It</button>
-  <CodeSnippet @name="in-place-modal-dialog.hbs" />
-  <CodeSnippet @name="in-place.scss" />
+  {{#let (get-code-snippet "in-place-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "in-place.css") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   <div id="container-in-place-2">
     I AM THE CONTAINER
     {{#if this.isShowingInPlace2}}
       {{!-- BEGIN-SNIPPET in-place-modal-dialog --}}
-      <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingInPlace2) false}} @renderInPlace={{true}} @targetAttachment="none" @containerClassNames="ember-modal-dialog-in-place my-custom-class-2" @overlayClassNames="ember-modal-overlay-in-place">
+      <ModalDialog
+        data-test="my-data-test"
+        @onClose={{action (mut this.isShowingInPlace2) false}}
+        @renderInPlace={{true}}
+        @targetAttachment="none"
+        @containerClassNames="ember-modal-dialog-in-place my-custom-class-2"
+        @overlayClassNames="ember-modal-overlay-in-place"
+      >
         <h1>Stop! Modal Time!</h1>
         <p>In Place</p>
-        <button onclick={{action (mut this.isShowingInPlace2) false}}>Close</button>
+        <button onclick={{action (mut this.isShowingInPlace2) false}}>
+          Close
+        </button>
       </ModalDialog>
       {{!-- END-SNIPPET --}}
     {{/if}}
@@ -216,19 +322,33 @@
 <div class="example" id="example-centered-scrolling">
   <h2>Centered Scrolling</h2>
   <button {{action "toggleCenteredScrolling"}}>Do It</button>
-  <CodeSnippet @name="centered-scrolling-modal-dialog.hbs" />
-  <CodeSnippet @name="centered-scrolling.scss" />
+  {{#let (get-code-snippet "centered-scrolling-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
+  {{#let (get-code-snippet "centered-scrolling.css") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   <div id="container-centered-scrolling">
     {{#if this.isShowingCenteredScrolling}}
       {{!-- BEGIN-SNIPPET centered-scrolling-modal-dialog --}}
-      <ModalDialog data-test="my-data-test" @onClose={{action "toggleCenteredScrolling"}} @translucentOverlay={{true}} @targetAttachment="none" @containerClass="centered-scrolling-container" @overlayClass="centered-scrolling-overlay" @wrapperClass="centered-scrolling-wrapper">
+      <ModalDialog
+        data-test="my-data-test"
+        @onClose={{action "toggleCenteredScrolling"}}
+        @translucentOverlay={{true}}
+        @targetAttachment="none"
+        @containerClass="centered-scrolling-container"
+        @overlayClass="centered-scrolling-overlay"
+        @wrapperClass="centered-scrolling-wrapper"
+      >
         <h1>Really Long Content To Demonstrate Scrolling</h1>
         <ul>
           <li>Hover over modal and scroll</li>
           <li>Also hover over overlay and scroll</li>
         </ul>
         {{lorem-ipsum length=30000}}
-        <button {{action "toggleCenteredScrolling"}}>Close</button>
+        <button {{action "toggleCenteredScrolling"}}>
+          Close
+        </button>
       </ModalDialog>
       {{!-- END-SNIPPET --}}
     {{/if}}
@@ -240,10 +360,19 @@
   <span id="elementCenter">
     <button onclick={{action (mut this.isShowingElementCenterModal) true}}>Do It</button>
   </span>
-  <CodeSnippet @name="element-centered-modal-dialog.hbs" />
+  {{#let (get-code-snippet "element-centered-modal-dialog.hbs") as |snippet|}}
+    <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+  {{/let}}
   {{#if this.isShowingElementCenterModal}}
     {{!-- BEGIN-SNIPPET element-centered-modal-dialog --}}
-    <ModalDialog data-test="my-data-test" @onClose={{action (mut this.isShowingElementCenterModal) false}} @elementId={{this.elementId}} @translucentOverlay={{true}} @targetAttachment="elementCenter" @target="#elementCenter">
+    <ModalDialog
+      data-test="my-data-test"
+      @onClose={{action (mut this.isShowingElementCenterModal) false}}
+      @elementId={{this.elementId}}
+      @translucentOverlay={{true}}
+      @targetAttachment="elementCenter"
+      @target="#elementCenter"
+    >
       <p>Centered on element.</p>
     </ModalDialog>
     {{!-- END-SNIPPET --}}
