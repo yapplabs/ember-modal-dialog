@@ -40,6 +40,7 @@
   "devDependencies": {
     "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
+    "@ember/string": "^3.0.0",
     "@ember/test-helpers": "^2.6.0",
     "@embroider/test-setup": "^1.0.0",
     "@glimmer/component": "^1.1.2",
@@ -85,7 +86,6 @@
     "webpack": "^5.67.0"
   },
   "peerDependencies": {
-    "@ember/render-modifiers": "^2.1.0",
     "@ember/string": "^3.0.0 || ^4.0.0",
     "ember-tether": "^3.0.0",
     "liquid-tether": "^2.0.7",

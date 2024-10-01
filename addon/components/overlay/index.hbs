@@ -1,0 +1,9 @@
+<div
+  class={{this.cssClasses}}
+  tabindex='-1'
+  data-emd-overlay
+  {{on 'click' this.handleClick}}
+  ...attributes
+>
+  {{yield}}
+</div>
