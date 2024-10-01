@@ -8,30 +8,32 @@ Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions l
 
 <!-- toc -->
 
-- [Live Demo and Test Examples](#live-demo-and-test-examples)
-- [Including In An Ember Application](#including-in-an-ember-application)
-- [Upgrading](#upgrading)
-- [Controller-bound Usage](#controller-bound-usage)
-- [Routable Usage](#routable-usage)
-- [Configurable Properties](#configurable-properties)
-  * [modal-dialog](#modal-dialog)
-    + [Tethering](#tethering)
-    + [Animation](#animation)
-  * [Optional Dependencies](#optional-dependencies)
-- [Which Component Should I Use?](#which-component-should-i-use)
-- [Positioning](#positioning)
-    + [Caveats](#caveats)
-- [Wormholes](#wormholes)
-- [Configuring the Modal Root Element Id](#configuring-the-modal-root-element-id)
-- [Configuring Styles](#configuring-styles)
-- [Keyboard shortcuts](#keyboard-shortcuts)
-- [iOS](#ios)
-- [Custom Modals](#custom-modals)
-- [Using as a nested addon](#using-as-a-nested-addon)
-- [Dependencies](#dependencies)
-- [Additional Resources](#additional-resources)
-- [Contributing](#contributing)
-- [Credits](#credits)
+- [Ember Modal Dialog  ](#ember-modal-dialog--)
+  - [Table of Contents](#table-of-contents)
+  - [Live Demo and Test Examples](#live-demo-and-test-examples)
+  - [Including In An Ember Application](#including-in-an-ember-application)
+  - [Upgrading](#upgrading)
+  - [Controller-bound Usage](#controller-bound-usage)
+  - [Routable Usage](#routable-usage)
+  - [Configurable Properties](#configurable-properties)
+    - [modal-dialog](#modal-dialog)
+      - [Tethering](#tethering)
+      - [Animation](#animation)
+    - [Optional Dependencies](#optional-dependencies)
+  - [Which Component Should I Use?](#which-component-should-i-use)
+  - [Positioning](#positioning)
+      - [Caveats](#caveats)
+  - [Wormholes](#wormholes)
+  - [Configuring the Modal Root Element Id](#configuring-the-modal-root-element-id)
+  - [Configuring Styles](#configuring-styles)
+  - [Keyboard shortcuts](#keyboard-shortcuts)
+  - [iOS](#ios)
+  - [Custom Modals](#custom-modals)
+  - [Using as a nested addon](#using-as-a-nested-addon)
+  - [Compatibility \& Dependencies](#compatibility--dependencies)
+  - [Additional Resources](#additional-resources)
+  - [Contributing](#contributing)
+  - [Credits](#credits)
 
 <!-- tocstop -->
 
@@ -384,8 +386,9 @@ module.exports = {
 };
 ```
 
-## Dependencies
+## Compatibility & Dependencies
 
+* For Ember versions >= 4.0, liquid-tether is not compatible so the animated+tethered variation of ember-modal-dialog will not work 
 * For Ember versions >= 3.20, use the latest published version
 * For Ember versions >= 2.8 and < 3.20, use the latest 3.x version (Note that ember-cli >= 2.13 is required, though your ember version may be >= 2.8)
 * For Ember versions >= 2.4 and < 2.8, use the latest 2.x version

@@ -1,5 +1,8 @@
 name: CI
 
+env:
+  VOLTA_FEATURE_PNPM: 1
+
 on:
   push:
     branches:
@@ -17,33 +20,64 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Install volta
+        uses: volta-cli/action@v4
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path -s)" >> $GITHUB_OUTPUT
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        id: cache
         with:
-          node-version: 16.x
-          cache: yarn
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        shell: bash
+        run: pnpm install --frozen-lockfile
+      - name: Prune pnpm store
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        shell: bash
+        run: pnpm store prune
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
       - name: Run Tests
-        run: yarn test:ember
+        run: pnpm test:ember
 
   floating:
     name: "Floating Dependencies"
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Install volta
+        uses: volta-cli/action@v4
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path -s)" >> $GITHUB_OUTPUT
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        id: cache
         with:
-          node-version: 16.x
-          cache: yarn
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
       - name: Install Dependencies
-        run: yarn install --no-lockfile
+        shell: bash
+        run: pnpm install --no-frozen-lockfile
+      - name: Prune pnpm store
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        shell: bash
+        run: pnpm store prune
       - name: Run Tests
-        run: yarn test:ember
+        run: pnpm test:ember
 
   try-scenarios:
     name: ${{ matrix.try-scenario }}
@@ -56,22 +90,40 @@ jobs:
         try-scenario:
           - ember-lts-3.24
           - ember-lts-3.28
+          - ember-lts-4.4
+          - ember-lts-4.8
+          - ember-lts-4.12
+          - ember-lts-5.4
+          - ember-lts-5.8
           - ember-release
           - ember-beta
           - ember-canary
-          - ember-classic
-          - ember-default-with-jquery
           - embroider-safe
           - embroider-optimized
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Install Node
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v4
+      - name: Install volta
+        uses: volta-cli/action@v4
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path -s)" >> $GITHUB_OUTPUT
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        id: cache
         with:
-          node-version: 16.x
-          cache: yarn
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
       - name: Install Dependencies
-        run: yarn install --frozen-lockfile
+        shell: bash
+        run: pnpm install --frozen-lockfile
+      - name: Prune pnpm store
+        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+        shell: bash
+        run: pnpm store prune
       - name: Run Tests
         run: ./node_modules/.bin/ember try:one ${{ matrix.try-scenario }}

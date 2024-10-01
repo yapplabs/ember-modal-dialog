@@ -13,14 +13,20 @@
 
 <div class="example">
   <h3>app/transitions.js for these examples</h3>
-  <CodeSnippet @name="animated-with-tether-transitions.js" />
+  {{#let (get-code-snippet "animated-with-tether-transitions.js") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
 </div>
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
   <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
-  <CodeSnippet @name="custom-styles-modal-dialog-liquid-tether.hbs" />
-  <CodeSnippet @name="custom-styles.scss" />
+  {{#let (get-code-snippet "custom-styles-modal-dialog-liquid-tether.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
+  {{#let (get-code-snippet "custom-styles.css") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingCustomStyles}}
     {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether --}}
     <ModalDialog @onClose={{action (mut this.isShowingCustomStyles) false}} @tetherTarget="body" @targetAttachment="top right" @targetModifier="visible" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay" @animatable={{true}}>
@@ -37,7 +43,9 @@
   <div class="targetContainer">
     <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
   </div>
-  <CodeSnippet @name="target-selector-modal-dialog-liquid-tether.hbs" />
+  {{#let (get-code-snippet "target-selector-modal-dialog-liquid-tether.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingTargetSelector}}
     {{!-- BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether --}}
     <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#alignTetherDialogToMe" @animatable={{true}}>
@@ -58,7 +66,9 @@
       <button {{action "toggleTargetElement"}}>Do It</button>
     </span>
   </div>
-  <CodeSnippet @name="target-element-modal-dialog-liquid-tether.hbs" />
+  {{#let (get-code-snippet "target-element-modal-dialog-liquid-tether.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingTargetElement}}
     {{!-- BEGIN-SNIPPET target-element-modal-dialog-liquid-tether --}}
     <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#bwtde" @animatable={{true}}>
@@ -77,7 +87,9 @@
   <span id="elementCenter">
     <button {{action "toggleElementCenterModal"}}>Element Center</button>
   </span>
-  <CodeSnippet @name="element-centered-modal-dialog-liquid-tether.hbs" />
+  {{#let (get-code-snippet "element-centered-modal-dialog-liquid-tether.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{#if this.isShowingElementCenterModal}}
     {{!-- BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether --}}
     <ModalDialog @onClose={{action "toggleElementCenterModal"}} @translucentOverlay={{true}} @tetherTarget="#elementCenter" @animatable={{true}}>
@@ -109,7 +121,9 @@
   </button>
   <p>If you open 1, then 2 (different stacks), #1 should animate closed, and #2 should animate open.</p>
   <p>If you open 2, then 3, the #2 should animate to #3"s spot.</p>
-  <CodeSnippet @name="separate-stacks-modal-dialog-liquid-tether.hbs" />
+  {{#let (get-code-snippet "separate-stacks-modal-dialog-liquid-tether.hbs") as |snippet|}}
+  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
+{{/let}}
   {{!-- BEGIN-SNIPPET separate-stacks-modal-dialog-liquid-tether --}}
   {{#if this.isShowingSeparateStacksModal1}}
     <ModalDialog @stack="modal-stack-a" @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal1) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton1" @targetAttachment="bottom center" @attachment="top center" @animatable={{true}}>
