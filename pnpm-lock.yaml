@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      '@ember/render-modifiers':
-        specifier: ^2.1.0
-        version: 2.1.0(@babel/core@7.16.12)(ember-source@3.28.8(@babel/core@7.16.12))
-      '@ember/string':
-        specifier: ^3.0.0 || ^4.0.0
-        version: 4.0.0
       '@embroider/macros':
         specifier: ^1.0.0
         version: 1.0.0
@@ -42,6 +36,9 @@ importers:
       '@ember/optional-features':
         specifier: ^2.0.0
         version: 2.0.0
+      '@ember/string':
+        specifier: ^3.0.0
+        version: 3.1.1
       '@ember/test-helpers':
         specifier: ^2.6.0
         version: 2.6.0(@babel/core@7.16.12)
@@ -1346,8 +1343,9 @@ packages:
       '@glint/template':
         optional: true
 
-  '@ember/string@4.0.0':
-    resolution: {integrity: sha512-IMVyVE72twuAMSYcHzWSgtgYTtzlHlKSGW8vEbztnnmkU6uo7kVHmiqSN9R4RkBhzvh0VD4G76Eph+55t3iNIA==}
+  '@ember/string@3.1.1':
+    resolution: {integrity: sha512-UbXJ+k3QOrYN4SRPHgXCqYIJ+yWWUg1+vr0H4DhdQPTy8LJfyqwZ2tc5uqpSSnEXE+/1KopHBE5J8GDagAg5cg==}
+    engines: {node: 12.* || 14.* || >= 16}
 
   '@ember/test-helpers@2.6.0':
     resolution: {integrity: sha512-N5sr3layWk60wB3maCy+/5hFHQRcTh8aqxcZTSs3Od9QkuHdWBtRgMGLP/35mXpJlgWuu3xqLpt6u3dGHc8gCg==}
@@ -9464,7 +9462,11 @@ snapshots:
       - '@babel/core'
       - supports-color
 
-  '@ember/string@4.0.0': {}
+  '@ember/string@3.1.1':
+    dependencies:
+      ember-cli-babel: 7.26.11
+    transitivePeerDependencies:
+      - supports-color
 
   '@ember/test-helpers@2.6.0(@babel/core@7.16.12)':
     dependencies:

@@ -1,5 +1,5 @@
 import { helper } from '@ember/component/helper';
-import { htmlSafe } from '@ember/string';
+import { htmlSafe } from '@ember/template';
 
 let originalText =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, ' +
