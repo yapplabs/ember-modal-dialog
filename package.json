@@ -63,7 +63,7 @@
     "ember-source": "~3.28.8",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^3.16.0",
-    "ember-tether": "^3.0.0",
+    "ember-tether": "git+ssh://git@github.com/yapplabs/ember-tether.git#feat/body-element",
     "ember-truth-helpers": "^3.0.0",
     "ember-try": "^2.0.0",
     "eslint": "^7.32.0",
@@ -87,7 +87,7 @@
   },
   "peerDependencies": {
     "@ember/string": "^3.0.0 || ^4.0.0",
-    "ember-tether": "^3.0.0",
+    "ember-tether": "git+ssh://git@github.com/yapplabs/ember-tether.git#feat/body-element",
     "liquid-tether": "^2.0.7",
     "liquid-wormhole": "^3.0.1"
   },

@@ -23,6 +23,7 @@ export default class TetherDialog extends BasicDialog {
 
   targetAttachment = null;
   attachment = null;
+  bodyElement = null;
 
   didReceiveAttrs() {
     super.didReceiveAttrs(...arguments);
