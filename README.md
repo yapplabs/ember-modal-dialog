@@ -1,5 +1,19 @@
 # Ember Modal Dialog [![Build Status](https://travis-ci.org/yapplabs/ember-modal-dialog.svg?branch=master)](https://travis-ci.org/yapplabs/ember-modal-dialog) [![Ember Observer Score](http://emberobserver.com/badges/ember-modal-dialog.svg)](http://emberobserver.com/addons/ember-modal-dialog)
 
+## Regarding the Status of this Addon
+
+A lot has happened in browser APIs, the JS ecosytem, and in the Ember ecosystem since this addon was created.
+
+Most notably, all major browsers have added support for the HTML `dialog` element. This effectively delivers the core use case for this addon as a browser API. It is not syntax-compatible of course, so adopting it requires learning the new element and its programmatic API and using it as appropriate for your situation.
+
+In the Javascript ecosystem, tether.js has reached the end of its life, being succeeded by popper and now by floating-ui as the most common solution for positioning a DOM element relative to another element. Our experience is that floating-ui works great in conjunction with Ember's modifiers. While there are addons that wrap it, like ember-velcro, we have found that using it directly does the job quite well.
+
+In the Ember ecosystem, addon authors are transitioning addons to support modern versions of Ember and to become v2 addons. This addon has three dependencies that are either unsupported or poorly supported: ember-tether, liquid-wormhole, and liquid-tether.
+
+Having contemplated these changes, *we won't be investing in ongoing development of this addon, and are migrating away from it in our own projects*. We will still review and accept PRs for bug fixes and compatibility, but we encourage you to move on.
+
+## Overview
+
 The ember-modal-dialog addon provides components to implement modal dialogs throughout an Ember application using a simple, consistent pattern.
 
 Unlike some other modal libraries for Ember, ember-modal-dialog uses solutions like [ember-wormhole](//github.com/yapplabs/ember-wormhole) to render a modal structure as a top-level DOM element for layout purposes while retaining its logical position in the Ember view hierarchy. This difference introduces a certain elegance and, dare we say, joy, into the experience of using modals in your app. For more info on this, see the "Wormhole" section below.
