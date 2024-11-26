@@ -106,8 +106,8 @@ importers:
         specifier: ^3.16.0
         version: 3.16.0
       ember-tether:
-        specifier: ^3.0.0
-        version: 3.0.0(@babel/core@7.16.12)(ember-source@3.28.8(@babel/core@7.16.12))(webpack@5.67.0)
+        specifier: git+ssh://git@github.com/yapplabs/ember-tether.git#feat/body-element
+        version: https://codeload.github.com/yapplabs/ember-tether/tar.gz/3485fa2e19e7fcd08cb4969158fd02be66dae0e9(ember-source@3.28.8(@babel/core@7.16.12))(webpack@5.67.0)
       ember-truth-helpers:
         specifier: ^3.0.0
         version: 3.0.0
@@ -3545,11 +3545,12 @@ packages:
     engines: {node: 10.* || 12.* || >= 14.*}
     hasBin: true
 
-  ember-tether@3.0.0:
-    resolution: {integrity: sha512-2hrwbxGUuMtX4wnBJ2fYH0nx1utBM5r+g4zd7uvaqlPS3oTmTt96BKB7Xwq4R6jj6Vyxs9E48Fjv+pEAKEObnw==}
-    engines: {node: 14.* || 16.* || >= 18}
+  ember-tether@https://codeload.github.com/yapplabs/ember-tether/tar.gz/3485fa2e19e7fcd08cb4969158fd02be66dae0e9:
+    resolution: {tarball: https://codeload.github.com/yapplabs/ember-tether/tar.gz/3485fa2e19e7fcd08cb4969158fd02be66dae0e9}
+    version: 3.1.0
+    engines: {node: '>= 14'}
     peerDependencies:
-      ember-source: ^4.0.0
+      ember-source: ~3.28.0 || ^4.0.0 || ^5.0.0
 
   ember-truth-helpers@3.0.0:
     resolution: {integrity: sha512-hPKG9QqruAELh0li5xaiLZtr88ioWYxWCXisAWHWE0qCP4a2hgtuMzKUPpiTCkltvKjuqpzTZCU4VhQ+IlRmew==}
@@ -13045,16 +13046,16 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-tether@3.0.0(@babel/core@7.16.12)(ember-source@3.28.8(@babel/core@7.16.12))(webpack@5.67.0):
+  ember-tether@https://codeload.github.com/yapplabs/ember-tether/tar.gz/3485fa2e19e7fcd08cb4969158fd02be66dae0e9(ember-source@3.28.8(@babel/core@7.16.12))(webpack@5.67.0):
     dependencies:
-      '@ember/render-modifiers': 2.1.0(@babel/core@7.16.12)(ember-source@3.28.8(@babel/core@7.16.12))
-      ember-auto-import: 2.6.3(webpack@5.67.0)
-      ember-cli-babel: 7.26.11
-      ember-cli-htmlbars: 6.2.0
+      '@babel/core': 7.25.2
+      '@ember/render-modifiers': 2.1.0(@babel/core@7.25.2)(ember-source@3.28.8(@babel/core@7.16.12))
+      ember-auto-import: 2.8.1(webpack@5.67.0)
+      ember-cli-babel: 8.2.0(@babel/core@7.25.2)
+      ember-cli-htmlbars: 6.3.0
       ember-source: 3.28.8(@babel/core@7.16.12)
       tether: 2.0.0
     transitivePeerDependencies:
-      - '@babel/core'
       - '@glint/template'
       - supports-color
       - webpack
