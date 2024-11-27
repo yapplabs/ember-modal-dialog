@@ -115,10 +115,10 @@ export default class ModalDialog extends Component {
     if (VALID_OVERLAY_POSITIONS.indexOf(overlayPosition) === -1) {
       warn(
         `overlayPosition value '${overlayPosition}' is not valid (valid values [${VALID_OVERLAY_POSITIONS.join(
-          ', '
+          ', ',
         )}])`,
         false,
-        { id: 'ember-modal-dialog.validate-overlay-position' }
+        { id: 'ember-modal-dialog.validate-overlay-position' },
       );
     }
   }
@@ -128,10 +128,10 @@ export default class ModalDialog extends Component {
     if (DEBUG && VALID_OVERLAY_POSITIONS.indexOf(result) === -1) {
       warn(
         `overlayPosition value '${result}' is not valid (valid values [${VALID_OVERLAY_POSITIONS.join(
-          ', '
+          ', ',
         )}])`,
         false,
-        { id: 'ember-modal-dialog.validate-overlay-position' }
+        { id: 'ember-modal-dialog.validate-overlay-position' },
       );
     }
     return result;
@@ -140,7 +140,7 @@ export default class ModalDialog extends Component {
   ensureEmberTetherPresent() {
     if (!this.modalService.hasEmberTether) {
       throw new Error(
-        'Please install ember-tether in order to pass a tetherTarget to modal-dialog'
+        'Please install ember-tether in order to pass a tetherTarget to modal-dialog',
       );
     }
   }
@@ -154,7 +154,7 @@ export default class ModalDialog extends Component {
 
     assert(
       'onClose handler must be a function',
-      typeOf(onClose) === 'function'
+      typeOf(onClose) === 'function',
     );
 
     onClose();
@@ -172,7 +172,7 @@ export default class ModalDialog extends Component {
 
     assert(
       'onClickOverlay handler must be a function',
-      typeOf(onClickOverlay) === 'function'
+      typeOf(onClickOverlay) === 'function',
     );
 
     onClickOverlay();

@@ -63,7 +63,7 @@ module('Acceptance: modal-dialog | animatable', function (hooks) {
           .dom(dialogSelector)
           .hasClass(
             'custom-styles-modal-container',
-            'has provided containerClass'
+            'has provided containerClass',
           );
       },
     });

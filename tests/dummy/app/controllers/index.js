@@ -38,7 +38,7 @@ export default class IndexController extends Controller {
   toggleTargetSelector() {
     if (this.isShowingTargetSelector) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);
@@ -54,7 +54,7 @@ export default class IndexController extends Controller {
   toggleTargetElement() {
     if (this.isShowingTargetElement) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);

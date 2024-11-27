@@ -31,7 +31,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -44,7 +44,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -59,7 +59,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -72,7 +72,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -87,7 +87,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -100,7 +100,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -115,7 +115,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -128,7 +128,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -143,7 +143,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -156,7 +156,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -189,12 +189,12 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
           .dom(`#ember-testing ${dialogSelector}`)
           .hasClass(
             'custom-styles-modal-container',
-            'has provided container-class'
+            'has provided container-class',
           );
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -206,7 +206,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -222,12 +222,12 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
           .dom(dialogSelector)
           .hasClass(
             'ember-modal-dialog-target-attachment-left',
-            'has targetAttachment class name'
+            'has targetAttachment class name',
           );
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -242,7 +242,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -260,7 +260,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -281,7 +281,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
         assert.hasDataTest(
           dialogSelector,
           'my-data-test',
-          'dialog has data-test attribute'
+          'dialog has data-test attribute',
         );
       },
     });
@@ -305,43 +305,43 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
     assert.hasDataTest(
       inPlaceDialogSelector,
       'my-data-test',
-      'dialog has data-test attribute'
+      'dialog has data-test attribute',
     );
     assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('position'),
       'static',
-      'not absolutely positioned'
+      'not absolutely positioned',
     );
     assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('left'),
       'auto',
-      'should not be positioned (left)'
+      'should not be positioned (left)',
     );
     assert.strictEqual(
       getComputedStyle(dialogElement).getPropertyValue('margin-left'),
       '0px',
-      'should not be positioned (margin-left)'
+      'should not be positioned (margin-left)',
     );
     assert.strictEqual(
       findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText),
       undefined,
-      'dialog is not open'
+      'dialog is not open',
     );
     assert.ok(
       findContains(`${inPlaceRootSelector} ${dialogSelector}`, dialogText),
-      'dialog rendered in place, once'
+      'dialog rendered in place, once',
     );
 
     await click(inPlaceCloseButton);
     assert.strictEqual(
       findContains(`${modalRootElementSelector} ${dialogSelector}`, dialogText),
       undefined,
-      'dialog is not open'
+      'dialog is not open',
     );
     assert.strictEqual(
       findContains(`${inPlaceRootSelector} ${dialogSelector}`, dialogText),
       undefined,
-      'dialog is not rendered in place'
+      'dialog is not rendered in place',
     );
 
     await click('#example-in-place-2 button');
@@ -359,7 +359,7 @@ module('Acceptance: modal-dialog | no animation, no tether', function (hooks) {
     assert.hasDataTest(
       inPlaceDialogSelector,
       'my-data-test',
-      'dialog has data-test attribute'
+      'dialog has data-test attribute',
     );
     await click(inPlaceCloseButton);
   });

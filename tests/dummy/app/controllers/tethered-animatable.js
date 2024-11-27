@@ -73,7 +73,7 @@ export default class TetheredAnimatableController extends Controller {
   toggleTargetSelector() {
     if (this.isShowingTargetSelector) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);
@@ -89,7 +89,7 @@ export default class TetheredAnimatableController extends Controller {
   toggleTargetElement() {
     if (this.isShowingTargetElement) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);

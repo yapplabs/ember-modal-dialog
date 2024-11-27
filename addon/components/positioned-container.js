@@ -43,7 +43,7 @@ export default Component.extend({
       }
 
       return false;
-    }
+    },
   ),
 
   didGetPositioned: observer(
@@ -59,7 +59,7 @@ export default Component.extend({
         this.element.style.left = '';
         this.element.style.top = '';
       }
-    })
+    }),
   ),
 
   getWrappedTargetAttachmentElement() {
@@ -73,7 +73,7 @@ export default Component.extend({
       const wrappedElement = document.querySelector(targetSelector);
       assert(
         `No element found for modal-dialog's target selector '${targetSelector}'.`,
-        wrappedElement
+        wrappedElement,
       );
       return wrappedElement;
     }
@@ -93,9 +93,9 @@ export default Component.extend({
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
     assert(
       `Positioned container supports targetAttachments of ${SUPPORTED_TARGET_ATTACHMENTS.join(
-        ', '
+        ', ',
       )}`,
-      SUPPORTED_TARGET_ATTACHMENTS.indexOf(targetAttachment) > -1
+      SUPPORTED_TARGET_ATTACHMENTS.indexOf(targetAttachment) > -1,
     );
     const targetAttachmentMethod = `align${capitalize(targetAttachment)}`;
     const targetAttachmentElement = this.getWrappedTargetAttachmentElement();
@@ -153,7 +153,7 @@ export default Component.extend({
   alignBottom(targetAttachmentElement) {
     assert(
       'Bottom targetAttachment requires a target',
-      targetAttachmentElement
+      targetAttachmentElement,
     );
 
     const elementWidth = this.element.offsetWidth;
@@ -171,7 +171,7 @@ export default Component.extend({
   alignElementCenter(targetAttachmentElement) {
     assert(
       'ElementCenter targetAttachment requires a target',
-      targetAttachmentElement
+      targetAttachmentElement,
     );
 
     const elementWidth = this.element.offsetWidth;

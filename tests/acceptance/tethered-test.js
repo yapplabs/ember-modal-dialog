@@ -24,7 +24,7 @@ module('Acceptance: modal-dialog | tethered', function (hooks) {
           .dom(dialogSelector)
           .hasClass(
             'ember-tether-target-attached-left',
-            'has targetAttachment class name'
+            'has targetAttachment class name',
           );
       },
     });
