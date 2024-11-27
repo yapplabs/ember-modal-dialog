@@ -1,61 +1,129 @@
-<h1 id="title">Tethered &amp; animated examples of the <code>modal-dialog</code> component</h1>
+<h1 id="title">Tethered &amp; animated examples of the
+  <code>modal-dialog</code>
+  component</h1>
 <p>
-  These examples specify a <code>tetherTarget</code> property, as well as demonstrate
-  animation via <code>liquid-fire</code>. If requires that you install
-  <a href="http://pzuraq.github.io/liquid-tether/"><code>liquid-tether</code></a>
-  into your app. Once installed and `animatable=true` is passed, the component will
-  automatically become animatable using <code>liquid-fire</code>.
+  These examples specify a
+  <code>tetherTarget</code>
+  property, as well as demonstrate animation via
+  <code>liquid-fire</code>. If requires that you install
+  <a href="http://pzuraq.github.io/liquid-tether/"><code
+    >liquid-tether</code></a>
+  into your app. Once installed and `animatable=true` is passed,
+  the component will automatically become animatable using
+  <code>liquid-fire</code>.
 </p>
 <p>
-  If a <code>tetherTarget</code> is specified and neither <code>ember-tether</code>
-  nor <code>liquid-tether</code> is installed, an error will be raised.
+  If a
+  <code>tetherTarget</code>
+  is specified and neither
+  <code>ember-tether</code>
+  nor
+  <code>liquid-tether</code>
+  is installed, an error will be raised.
 </p>
 
 <div class="example">
   <h3>app/transitions.js for these examples</h3>
-  {{#let (get-code-snippet "animated-with-tether-transitions.js") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
+  {{#let
+    (get-code-snippet "animated-with-tether-transitions.js")
+    as |snippet|
+  }}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
 </div>
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
-  <button onclick={{action (mut this.isShowingCustomStyles) true}}>Do It</button>
-  {{#let (get-code-snippet "custom-styles-modal-dialog-liquid-tether.hbs") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
+  <button
+    onclick={{action (mut this.isShowingCustomStyles) true}}
+    type="button"
+  >Do It</button>
+  {{#let
+    (get-code-snippet
+      "custom-styles-modal-dialog-liquid-tether.hbs"
+    )
+    as |snippet|
+  }}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
   {{#let (get-code-snippet "custom-styles.css") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
   {{#if this.isShowingCustomStyles}}
-    {{!-- BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action (mut this.isShowingCustomStyles) false}} @tetherTarget="body" @targetAttachment="top right" @targetModifier="visible" @attachment="top right" @containerClass="custom-styles-modal-container" @overlayClass="custom-styles-overlay" @animatable={{true}}>
+    {{! BEGIN-SNIPPET custom-styles-modal-dialog-liquid-tether }}
+    <ModalDialog
+      @onClose={{action (mut this.isShowingCustomStyles) false}}
+      @tetherTarget="body"
+      @targetAttachment="top right"
+      @targetModifier="visible"
+      @attachment="top right"
+      @containerClass="custom-styles-modal-container"
+      @overlayClass="custom-styles-overlay"
+      @animatable={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Custom Styles</p>
-      <button onclick={{action (mut this.isShowingCustomStyles) false}}>Close</button>
+      <button
+        onclick={{action
+          (mut this.isShowingCustomStyles)
+          false
+        }}
+        type="button"
+      >Close</button>
     </ModalDialog>
-    {{!-- END-SNIPPET --}}
+    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
 <div class="example" id="example-target-selector">
   <h2>Target (Selector)</h2>
   <div class="targetContainer">
-    <button id="alignTetherDialogToMe" {{action "toggleTargetSelector"}}>Do It</button>
+    <button
+      id="alignTetherDialogToMe"
+      type="button"
+      {{action "toggleTargetSelector"}}
+    >Do It</button>
   </div>
-  {{#let (get-code-snippet "target-selector-modal-dialog-liquid-tether.hbs") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
+  {{#let
+    (get-code-snippet
+      "target-selector-modal-dialog-liquid-tether.hbs"
+    )
+    as |snippet|
+  }}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
   {{#if this.isShowingTargetSelector}}
-    {{!-- BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action "toggleTargetSelector"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#alignTetherDialogToMe" @animatable={{true}}>
+    {{! BEGIN-SNIPPET target-selector-modal-dialog-liquid-tether }}
+    <ModalDialog
+      @onClose={{action "toggleTargetSelector"}}
+      @hasOverlay={{false}}
+      @targetAttachment={{this.exampleTargetAttachment}}
+      @attachment={{this.exampleAttachment}}
+      @tetherTarget="#alignTetherDialogToMe"
+      @animatable={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Target - Selector: "#alignTetherDialogToMe"</p>
       <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
       <p>Attachment: {{this.exampleAttachment}}</p>
-      <button {{action "closeTargetSelector"}}>Close</button>
+      <button
+        type="button"
+        {{action "closeTargetSelector"}}
+      >Close</button>
     </ModalDialog>
-    {{!-- END-SNIPPET --}}
+    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
@@ -63,39 +131,74 @@
   <h2>Target (Element)</h2>
   <div class="targetContainer">
     <span id="bwtde">
-      <button {{action "toggleTargetElement"}}>Do It</button>
+      <button type="button" {{action "toggleTargetElement"}}>Do
+        It</button>
     </span>
   </div>
-  {{#let (get-code-snippet "target-element-modal-dialog-liquid-tether.hbs") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
+  {{#let
+    (get-code-snippet
+      "target-element-modal-dialog-liquid-tether.hbs"
+    )
+    as |snippet|
+  }}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
   {{#if this.isShowingTargetElement}}
-    {{!-- BEGIN-SNIPPET target-element-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action "toggleTargetElement"}} @hasOverlay={{false}} @targetAttachment={{this.exampleTargetAttachment}} @attachment={{this.exampleAttachment}} @tetherTarget="#bwtde" @animatable={{true}}>
+    {{! BEGIN-SNIPPET target-element-modal-dialog-liquid-tether }}
+    <ModalDialog
+      @onClose={{action "toggleTargetElement"}}
+      @hasOverlay={{false}}
+      @targetAttachment={{this.exampleTargetAttachment}}
+      @attachment={{this.exampleAttachment}}
+      @tetherTarget="#bwtde"
+      @animatable={{true}}
+    >
       <h1>Stop! Modal Time!</h1>
       <p>Target - Element #bwtde</p>
       <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
       <p>Attachment: {{this.exampleAttachment}}</p>
-      <button {{action "closeTargetElement"}}>Close</button>
+      <button
+        type="button"
+        {{action "closeTargetElement"}}
+      >Close</button>
     </ModalDialog>
-    {{!-- END-SNIPPET --}}
+    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
 <div class="example">
   <h2>Element Center</h2>
   <span id="elementCenter">
-    <button {{action "toggleElementCenterModal"}}>Element Center</button>
+    <button
+      type="button"
+      {{action "toggleElementCenterModal"}}
+    >Element Center</button>
   </span>
-  {{#let (get-code-snippet "element-centered-modal-dialog-liquid-tether.hbs") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
+  {{#let
+    (get-code-snippet
+      "element-centered-modal-dialog-liquid-tether.hbs"
+    )
+    as |snippet|
+  }}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
   {{#if this.isShowingElementCenterModal}}
-    {{!-- BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether --}}
-    <ModalDialog @onClose={{action "toggleElementCenterModal"}} @translucentOverlay={{true}} @tetherTarget="#elementCenter" @animatable={{true}}>
+    {{! BEGIN-SNIPPET element-centered-modal-dialog-liquid-tether }}
+    <ModalDialog
+      @onClose={{action "toggleElementCenterModal"}}
+      @translucentOverlay={{true}}
+      @tetherTarget="#elementCenter"
+      @animatable={{true}}
+    >
       <p>Centered on element.</p>
     </ModalDialog>
-    {{!-- END-SNIPPET --}}
+    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
@@ -103,42 +206,104 @@
   <h2>Separate Stacks</h2>
   <button
     id="separateStacksButton1"
-    onclick={{action (mut this.isShowingSeparateStacksModal1) true}}
+    onclick={{action
+      (mut this.isShowingSeparateStacksModal1)
+      true
+    }}
+    type="button"
   >
     Show Modal 1 (modal-stack-a)
   </button>
   <button
     id="separateStacksButton2"
-    onclick={{action (mut this.isShowingSeparateStacksModal2) true}}
+    onclick={{action
+      (mut this.isShowingSeparateStacksModal2)
+      true
+    }}
+    type="button"
   >
     Show Modal 2 (modal-stack-b)
   </button>
   <button
     id="separateStacksButton3"
-    onclick={{action (mut this.isShowingSeparateStacksModal3) true}}
+    onclick={{action
+      (mut this.isShowingSeparateStacksModal3)
+      true
+    }}
+    type="button"
   >
     Show Modal 3 (modal-stack-b)
   </button>
-  <p>If you open 1, then 2 (different stacks), #1 should animate closed, and #2 should animate open.</p>
+  <p>If you open 1, then 2 (different stacks), #1 should animate
+    closed, and #2 should animate open.</p>
   <p>If you open 2, then 3, the #2 should animate to #3"s spot.</p>
-  {{#let (get-code-snippet "separate-stacks-modal-dialog-liquid-tether.hbs") as |snippet|}}
-  <CodeBlock @code={{snippet.source}} @language={{snippet.language}} />
-{{/let}}
-  {{!-- BEGIN-SNIPPET separate-stacks-modal-dialog-liquid-tether --}}
+  {{#let
+    (get-code-snippet
+      "separate-stacks-modal-dialog-liquid-tether.hbs"
+    )
+    as |snippet|
+  }}
+    <CodeBlock
+      @code={{snippet.source}}
+      @language={{snippet.language}}
+    />
+  {{/let}}
+  {{! BEGIN-SNIPPET separate-stacks-modal-dialog-liquid-tether }}
   {{#if this.isShowingSeparateStacksModal1}}
-    <ModalDialog @stack="modal-stack-a" @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal1) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton1" @targetAttachment="bottom center" @attachment="top center" @animatable={{true}}>
+    <ModalDialog
+      @stack="modal-stack-a"
+      @containerClass="modal-stack"
+      @onClose={{action
+        (mut this.isShowingSeparateStacksModal1)
+        false
+      }}
+      @hasOverlay={{false}}
+      @clickOutsideToClose={{true}}
+      @tetherTarget="#separateStacksButton1"
+      @targetAttachment="bottom center"
+      @attachment="top center"
+      @animatable={{true}}
+    >
       <p>I am modal 1.</p>
     </ModalDialog>
   {{/if}}
   {{#if this.isShowingSeparateStacksModal2}}
-    <ModalDialog @stack="modal-stack-b" @value={{2}} @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal2) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton2" @targetAttachment="top center" @attachment="bottom center" @animatable={{true}}>
+    <ModalDialog
+      @stack="modal-stack-b"
+      @value={{2}}
+      @containerClass="modal-stack"
+      @onClose={{action
+        (mut this.isShowingSeparateStacksModal2)
+        false
+      }}
+      @hasOverlay={{false}}
+      @clickOutsideToClose={{true}}
+      @tetherTarget="#separateStacksButton2"
+      @targetAttachment="top center"
+      @attachment="bottom center"
+      @animatable={{true}}
+    >
       <p>I am modal 2.</p>
     </ModalDialog>
   {{/if}}
   {{#if this.isShowingSeparateStacksModal3}}
-    <ModalDialog @stack="modal-stack-b" @value={{2}} @containerClass="modal-stack" @onClose={{action (mut this.isShowingSeparateStacksModal3) false}} @hasOverlay={{false}} @clickOutsideToClose={{true}} @tetherTarget="#separateStacksButton3" @targetAttachment="middle right" @attachment="middle left" @animatable={{true}}>
+    <ModalDialog
+      @stack="modal-stack-b"
+      @value={{2}}
+      @containerClass="modal-stack"
+      @onClose={{action
+        (mut this.isShowingSeparateStacksModal3)
+        false
+      }}
+      @hasOverlay={{false}}
+      @clickOutsideToClose={{true}}
+      @tetherTarget="#separateStacksButton3"
+      @targetAttachment="middle right"
+      @attachment="middle left"
+      @animatable={{true}}
+    >
       <p>I am modal 3.</p>
     </ModalDialog>
   {{/if}}
-  {{!-- END-SNIPPET --}}
+  {{! END-SNIPPET }}
 </div>

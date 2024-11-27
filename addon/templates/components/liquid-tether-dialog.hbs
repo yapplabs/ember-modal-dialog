@@ -1,5 +1,8 @@
 {{#if this.hasOverlay}}
-  <LiquidWormhole @stack='modal-overlay' @class='liquid-dialog-container'>
+  <LiquidWormhole
+    @stack="modal-overlay"
+    @class="liquid-dialog-container"
+  >
     <EmberModalDialog::Overlay
       class={{this.overlayClassNamesString}}
       @onClickOverlay={{this.onClickOverlay}}

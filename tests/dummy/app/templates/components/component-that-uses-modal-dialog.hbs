@@ -1,9 +1,17 @@
 {{#if this.isShowingModalDialog}}
   <ModalDialog>
     <h1>Stop! Modal Time!</h1>
-    <button class="close" {{action "closeModalDialog"}}>Close</button>
+    <button
+      class="close"
+      type="button"
+      {{action "closeModalDialog"}}
+    >Close</button>
   </ModalDialog>
 {{/if}}
 
 <h1>A component that has a modal dialog</h1>
-<button class="open" {{action "openModalDialog"}}>Open Dialog</button>
+<button
+  class="open"
+  type="button"
+  {{action "openModalDialog"}}
+>Open Dialog</button>
