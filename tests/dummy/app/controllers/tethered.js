@@ -1,7 +1,11 @@
 import { action, set } from '@ember/object';
 import Controller from '@ember/controller';
 
+import { codeSnippets } from '../utils/code-snippets/tethered';
+
 export default class TetheredController extends Controller {
+  codeSnippets = codeSnippets;
+
   isShowingTargetSelector = false;
   isShowingTargetElement = false;
   isShowingElementCenterModal = false;

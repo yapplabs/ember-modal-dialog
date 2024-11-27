@@ -1,13 +1,11 @@
 @import "./ember-modal-dialog/ember-modal-structure.css";
 @import "./ember-modal-dialog/ember-modal-appearance.css";
-@import "_tomorrow-night-eighties.css";
 
 body {
   font-family: sans-serif;
   font-size: 12px;
   margin: 0;
 }
-
 
 .ApplicationRoute {
   margin: 20px;
@@ -42,7 +40,7 @@ body {
   border-radius: 4px;
   margin: 0 5px 5px 0;
   min-height: 120px;
-  width: 500px;
+  width: 800px;
   max-width: 93%;
 }
 
@@ -61,10 +59,6 @@ button {
   outline: none;
 }
 
-.targetContainer {
-  text-align: center;
-}
-
 pre {
   border: solid 1px #bbb;
   border-radius: 4px;
@@ -75,18 +69,16 @@ h2 {
   padding: 0 0 8px 0;
   margin: 0;
 }
-// BEGIN-SNIPPET subclass-styles
+
 .my-cool-modal {
   border-radius: 100px;
   padding: 40px;
 }
+
 .my-cool-modal-2 {
   border-width: 5px;
   border-color: blue;
 }
-// END-SNIPPET
-
-// BEGIN-SNIPPET custom-styles
 
 .custom-styles-overlay {
   background-color: rgba(15, 157, 88, .77);
@@ -115,9 +107,7 @@ h2 {
     color: #0f9d58;
   }
 }
-// END-SNIPPET
 
-// BEGIN-SNIPPET in-place
 .ember-modal-overlay-in-place {
   height: initial;
   opacity: initial;
@@ -127,9 +117,7 @@ h2 {
 .emd-in-place {
   position: initial;
 }
-// END-SNIPPET
 
-// BEGIN-SNIPPET centered-scrolling
 body.centered-modal-showing {
   overflow: hidden;
 }
@@ -165,4 +153,3 @@ body.centered-modal-showing {
   box-sizing: border-box;
   box-shadow: 0px 4px 25px 4px rgba(0,0,0,0.30);
 }
-// END-SNIPPET

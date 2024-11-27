@@ -1,7 +1,11 @@
 import { action, set } from '@ember/object';
 import Controller from '@ember/controller';
 
+import { codeSnippets } from '../utils/code-snippets/index';
+
 export default class IndexController extends Controller {
+  codeSnippets = codeSnippets;
+
   isShowingBasic = false;
   isShowingTranslucent = false;
   isShowingTranslucentWithCallback = false;

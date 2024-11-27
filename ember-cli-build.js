@@ -3,13 +3,7 @@
 const EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function (defaults) {
-  let app = new EmberAddon(defaults, {
-    snippetSearchPaths: ['tests/dummy/app'],
-    'ember-prism': {
-      theme: 'twilight',
-      components: ['scss', 'javascript', 'markup'],
-    },
-  });
+  let app = new EmberAddon(defaults, {});
 
   /*
     This build file specifies the options for the dummy test app of this

@@ -21,7 +21,7 @@ module('Acceptance: modal-dialog | animatable', function (hooks) {
   test('basic modal', async function (assert) {
     assert.dom(modalRootElementSelector).exists({ count: 1 });
     assert.isAbsent(overlaySelector);
-    assert.dom('#example-basic button').exists({ count: 1 });
+    assert.dom('#example-basic button').exists({ count: 2 });
 
     await assert.dialogOpensAndCloses({
       openSelector: '#example-basic button',

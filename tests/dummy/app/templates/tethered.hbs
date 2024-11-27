@@ -1,6 +1,9 @@
-<h1 id="title">Tethered examples of the
+<h1 id="title">
+  Tethered examples of the
   <code>modal-dialog</code>
-  component</h1>
+  component
+</h1>
+
 <p>
   These examples specify a
   <code>tetherTarget</code>
@@ -34,27 +37,28 @@
 
 <div class="example" id="example-custom-styles">
   <h2>Custom Styles</h2>
+
   <button
     onclick={{action (mut this.isShowingCustomStyles) true}}
     type="button"
-  >Do It</button>
-  {{#let
-    (get-code-snippet "custom-styles-modal-dialog-tethered.hbs")
-    as |snippet|
-  }}
-    <CodeBlock
-      @code={{snippet.source}}
-      @language={{snippet.language}}
-    />
-  {{/let}}
-  {{#let (get-code-snippet "custom-styles.css") as |snippet|}}
-    <CodeBlock
-      @code={{snippet.source}}
-      @language={{snippet.language}}
-    />
-  {{/let}}
+  >
+    Do It
+  </button>
+
+  <CodeBlock
+    @code={{get
+      this.codeSnippets
+      "custom-styles-modal-dialog-tethered-hbs"
+    }}
+    @language="hbs"
+  />
+
+  <CodeBlock
+    @code={{get this.codeSnippets "custom-styles-css"}}
+    @language="css"
+  />
+
   {{#if this.isShowingCustomStyles}}
-    {{! BEGIN-SNIPPET custom-styles-modal-dialog-tethered }}
     <ModalDialog
       @onClose={{action (mut this.isShowingCustomStyles) false}}
       @tetherTarget="body"
@@ -72,34 +76,35 @@
           false
         }}
         type="button"
-      >Close</button>
+      >
+        Close
+      </button>
     </ModalDialog>
-    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
 <div class="example" id="example-target-selector">
   <h2>Target (Selector)</h2>
-  <div class="targetContainer">
+
+  <div>
     <button
       id="alignTetherDialogToMe"
       type="button"
       {{action "toggleTargetSelector"}}
-    >Do It</button>
+    >
+      Do It
+    </button>
   </div>
-  {{#let
-    (get-code-snippet
-      "target-selector-modal-dialog-tethered.hbs"
-    )
-    as |snippet|
-  }}
-    <CodeBlock
-      @code={{snippet.source}}
-      @language={{snippet.language}}
-    />
-  {{/let}}
+
+  <CodeBlock
+    @code={{get
+      this.codeSnippets
+      "target-selector-modal-dialog-tethered-hbs"
+    }}
+    @language="hbs"
+  />
+
   {{#if this.isShowingTargetSelector}}
-    {{! BEGIN-SNIPPET target-selector-modal-dialog-tethered }}
     <ModalDialog
       @onClose={{action "toggleTargetSelector"}}
       @hasOverlay={{false}}
@@ -111,36 +116,33 @@
       <p>Target - Selector: "#alignTetherDialogToMe"</p>
       <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
       <p>Attachment: {{this.exampleAttachment}}</p>
-      <button
-        type="button"
-        {{action "closeTargetSelector"}}
-      >Close</button>
+      <button type="button" {{action "closeTargetSelector"}}>
+        Close
+      </button>
     </ModalDialog>
-    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
 <div class="example" id="example-target-element">
   <h2>Target (Element)</h2>
-  <div class="targetContainer">
+
+  <div>
     <span id="bwtde">
-      <button type="button" {{action "toggleTargetElement"}}>Do
-        It</button>
+      <button type="button" {{action "toggleTargetElement"}}>
+        Do It
+      </button>
     </span>
   </div>
-  {{#let
-    (get-code-snippet
-      "target-element-modal-dialog-tethered.hbs"
-    )
-    as |snippet|
-  }}
-    <CodeBlock
-      @code={{snippet.source}}
-      @language={{snippet.language}}
-    />
-  {{/let}}
+
+  <CodeBlock
+    @code={{get
+      this.codeSnippets
+      "target-element-modal-dialog-tethered-hbs"
+    }}
+    @language="hbs"
+  />
+
   {{#if this.isShowingTargetElement}}
-    {{! BEGIN-SNIPPET target-element-modal-dialog-tethered }}
     <ModalDialog
       @onClose={{action "toggleTargetElement"}}
       @hasOverlay={{false}}
@@ -152,17 +154,16 @@
       <p>Target - Element #bwtde</p>
       <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
       <p>Attachment: {{this.exampleAttachment}}</p>
-      <button
-        type="button"
-        {{action "closeTargetElement"}}
-      >Close</button>
+      <button type="button" {{action "closeTargetElement"}}>
+        Close
+      </button>
     </ModalDialog>
-    {{! END-SNIPPET }}
   {{/if}}
 </div>
 
 <div class="example">
   <h2>Element Center</h2>
+
   <span id="elementCenter">
     <button
       onclick={{action
@@ -170,21 +171,20 @@
         true
       }}
       type="button"
-    >Element Center</button>
+    >
+      Element Center
+    </button>
   </span>
-  {{#let
-    (get-code-snippet
-      "element-centered-modal-dialog-tethered.hbs"
-    )
-    as |snippet|
-  }}
-    <CodeBlock
-      @code={{snippet.source}}
-      @language={{snippet.language}}
-    />
-  {{/let}}
+
+  <CodeBlock
+    @code={{get
+      this.codeSnippets
+      "element-centered-modal-dialog-tethered-hbs"
+    }}
+    @language="hbs"
+  />
+
   {{#if this.isShowingElementCenterModal}}
-    {{! BEGIN-SNIPPET element-centered-modal-dialog-tethered }}
     <ModalDialog
       @translucentOverlay={{true}}
       @tetherTarget="#elementCenter"
@@ -195,6 +195,5 @@
     >
       <p>Centered on element.</p>
     </ModalDialog>
-    {{! END-SNIPPET }}
   {{/if}}
 </div>

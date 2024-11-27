@@ -22,6 +22,10 @@ module.exports = function (environment) {
       //   modalRootElementId: 'custom-modal-root-element'
       //}
     },
+
+    'ember-shiki': {
+      defaultThemes: ['github-dark'],
+    },
   };
 
   if (environment === 'development') {

@@ -1,5 +1,4 @@
 export default function () {
-  // BEGIN-SNIPPET animated-transitions
   this.transition(
     this.hasClass('liquid-dialog-container'),
     this.use(
@@ -14,8 +13,7 @@ export default function () {
       },
     ),
   );
-  // END-SNIPPET
-  // BEGIN-SNIPPET animated-with-tether-transitions
+
   this.transition(
     this.matchSelector('#modal-overlay'),
     this.toValue(
@@ -54,5 +52,4 @@ export default function () {
     this.matchSelector('#modal-stack-b'),
     this.use('fly-to', { movingSide: 'new' }),
   );
-  // END-SNIPPET
 }
