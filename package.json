@@ -137,6 +137,9 @@
     "pnpm": "9.14.2"
   },
   "pnpm": {
+    "overrides": {
+      "perf-primitives": "0.0.6"
+    },
     "patchedDependencies": {
       "ember-shiki@0.3.0": "patches/ember-shiki@0.3.0.patch"
     }
