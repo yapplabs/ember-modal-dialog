@@ -4,6 +4,7 @@ import Component from '@ember/component';
 import { capitalize } from '@ember/string';
 import { observer, computed } from '@ember/object';
 import { on } from '@ember/object/evented';
+
 const SUPPORTED_TARGET_ATTACHMENTS = [
   'top',
   'right',
