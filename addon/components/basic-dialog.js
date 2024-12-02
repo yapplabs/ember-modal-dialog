@@ -1,4 +1,3 @@
-import { tagName } from '@ember-decorators/component';
 import { computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
@@ -7,8 +6,9 @@ import { dasherize } from '@ember/string';
 
 import { isIOS, clickHandlerDelay } from '../utils/config-utils';
 
-@tagName('')
 export default class BasicDialog extends Component {
+  tagName = '';
+
   containerClassNames = null;
   overlayClassNames = null;
   wrapperClassNames = null;

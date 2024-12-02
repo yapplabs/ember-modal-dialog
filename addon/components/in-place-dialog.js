@@ -1,8 +1,8 @@
-import { tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
 
-@tagName('')
 export default class InPlaceDialog extends Component {
+  tagName = '';
+
   get containerClassNamesString() {
     const addonClassNamesString = [
       'ember-modal-dialog',
