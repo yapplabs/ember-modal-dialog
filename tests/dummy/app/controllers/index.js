@@ -1,7 +1,11 @@
 import { action, set } from '@ember/object';
 import Controller from '@ember/controller';
 
+import { codeSnippets } from '../utils/code-snippets/index';
+
 export default class IndexController extends Controller {
+  codeSnippets = codeSnippets;
+
   isShowingBasic = false;
   isShowingTranslucent = false;
   isShowingTranslucentWithCallback = false;
@@ -38,7 +42,7 @@ export default class IndexController extends Controller {
   toggleTargetSelector() {
     if (this.isShowingTargetSelector) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);
@@ -54,7 +58,7 @@ export default class IndexController extends Controller {
   toggleTargetElement() {
     if (this.isShowingTargetElement) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);

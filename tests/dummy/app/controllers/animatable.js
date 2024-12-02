@@ -1,7 +1,11 @@
 import Controller from '@ember/controller';
 import { set, action } from '@ember/object';
 
+import { codeSnippets } from '../utils/code-snippets/animatable';
+
 export default class AnimatableController extends Controller {
+  codeSnippets = codeSnippets;
+
   isShowingBasic = false;
   isShowingTranslucent = false;
   isShowingTranslucentWithCallback = false;

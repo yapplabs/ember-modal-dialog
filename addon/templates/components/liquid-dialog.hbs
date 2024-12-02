@@ -3,20 +3,26 @@
     @stack={{this.stack}}
     @value={{this.value}}
     @class={{concat
-      'liquid-dialog-container '
+      "liquid-dialog-container "
       this.wrapperClassNamesString
-      ' '
+      " "
       this.wrapperClass
     }}
   >
-    <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
+    <div
+      class="{{this.wrapperClassNamesString}}
+        {{this.wrapperClass}}"
+    >
       {{#if this.hasOverlay}}
         <EmberModalDialog::Overlay
           class={{this.overlayClassNamesString}}
           @onClickOverlay={{this.onClickOverlay}}
         />
       {{/if}}
-      <div class={{this.containerClassNamesString}} ...attributes>
+      <div
+        class={{this.containerClassNamesString}}
+        ...attributes
+      >
         {{yield}}
       </div>
     </div>
@@ -26,23 +32,31 @@
     @stack={{this.stack}}
     @value={{this.value}}
     @class={{concat
-      'liquid-dialog-container '
+      "liquid-dialog-container "
       this.wrapperClassNamesString
-      ' '
+      " "
       this.wrapperClass
     }}
   >
     {{#if this.hasOverlay}}
       <EmberModalDialog::Overlay
         class={{this.overlayClassNamesString}}
-        @onClickOverlay={{action (ignore-children this.onClickOverlay)}}
+        @onClickOverlay={{action
+          (ignore-children this.onClickOverlay)
+        }}
       >
-        <div class={{this.containerClassNamesString}} ...attributes>
+        <div
+          class={{this.containerClassNamesString}}
+          ...attributes
+        >
           {{yield}}
         </div>
       </EmberModalDialog::Overlay>
     {{else}}
-      <div class={{this.containerClassNamesString}} ...attributes>
+      <div
+        class={{this.containerClassNamesString}}
+        ...attributes
+      >
         {{yield}}
       </div>
     {{/if}}

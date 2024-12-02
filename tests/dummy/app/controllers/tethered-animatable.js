@@ -1,7 +1,11 @@
 import Controller from '@ember/controller';
 import { set, action } from '@ember/object';
 
+import { codeSnippets } from '../utils/code-snippets/tethered-animatable';
+
 export default class TetheredAnimatableController extends Controller {
+  codeSnippets = codeSnippets;
+
   isShowingBasic = false;
   isShowingTranslucent = false;
   isShowingTranslucentWithCallback = false;
@@ -73,7 +77,7 @@ export default class TetheredAnimatableController extends Controller {
   toggleTargetSelector() {
     if (this.isShowingTargetSelector) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);
@@ -89,7 +93,7 @@ export default class TetheredAnimatableController extends Controller {
   toggleTargetElement() {
     if (this.isShowingTargetElement) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);

@@ -1,7 +1,11 @@
 import { action, set } from '@ember/object';
 import Controller from '@ember/controller';
 
+import { codeSnippets } from '../utils/code-snippets/tethered';
+
 export default class TetheredController extends Controller {
+  codeSnippets = codeSnippets;
+
   isShowingTargetSelector = false;
   isShowingTargetElement = false;
   isShowingElementCenterModal = false;
@@ -26,7 +30,7 @@ export default class TetheredController extends Controller {
   toggleTargetSelector() {
     if (this.isShowingTargetSelector) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);
@@ -42,7 +46,7 @@ export default class TetheredController extends Controller {
   toggleTargetElement() {
     if (this.isShowingTargetElement) {
       let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment
+        this.exampleTargetAttachment,
       );
       let newAttachment = this.nextAttachment(this.exampleAttachment);
       set(this, 'exampleTargetAttachment', newTargetAttachment);

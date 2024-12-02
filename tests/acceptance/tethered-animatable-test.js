@@ -26,7 +26,7 @@ module('Acceptance: modal-dialog | tethered and animatable', function (hooks) {
           .dom(dialogSelector)
           .hasClass(
             'liquid-tether-target-attached-left',
-            'has targetAttachment class name'
+            'has targetAttachment class name',
           );
       },
     });

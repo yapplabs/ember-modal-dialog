@@ -1,6 +1,9 @@
 <EmberWormhole @to={{this.destinationElementId}}>
   {{#if this.isOverlaySibling}}
-    <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
+    <div
+      class="{{this.wrapperClassNamesString}}
+        {{this.wrapperClass}}"
+    >
       {{#if this.hasOverlay}}
         <EmberModalDialog::Overlay
           class={{this.overlayClassNamesString}}
@@ -17,11 +20,16 @@
       </EmberModalDialogPositionedContainer>
     </div>
   {{else}}
-    <div class='{{this.wrapperClassNamesString}} {{this.wrapperClass}}'>
+    <div
+      class="{{this.wrapperClassNamesString}}
+        {{this.wrapperClass}}"
+    >
       {{#if this.hasOverlay}}
         <EmberModalDialog::Overlay
           class={{this.overlayClassNamesString}}
-          @onClickOverlay={{action (ignore-children this.onClickOverlay)}}
+          @onClickOverlay={{action
+            (ignore-children this.onClickOverlay)
+          }}
         >
           <EmberModalDialogPositionedContainer
             @class={{this.containerClassNamesString}}

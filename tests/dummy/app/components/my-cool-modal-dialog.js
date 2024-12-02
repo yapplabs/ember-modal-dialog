@@ -1,4 +1,3 @@
-// BEGIN-SNIPPET subclass
 import ModalDialogComponent from 'ember-modal-dialog/components/modal-dialog';
 
 export default class MyCoolModalDialog extends ModalDialogComponent {
@@ -6,4 +5,3 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
   containerClassNames = ['my-cool-modal'];
   destinationElementId = 'modal-overlays';
 }
-// END-SNIPPET

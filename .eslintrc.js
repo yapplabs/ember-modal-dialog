@@ -2,12 +2,20 @@
 
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      legacyDecorators: true,
+    requireConfigFile: false,
+    babelOptions: {
+      plugins: [
+        [
+          '@babel/plugin-proposal-decorators',
+          {
+            decoratorsBeforeExport: true,
+          },
+        ],
+      ],
     },
   },
   plugins: ['ember'],
@@ -19,23 +27,16 @@ module.exports = {
   env: {
     browser: true,
   },
-  globals: {
-    globalThis: 'readonly',
-  },
   rules: {
     'no-setter-return': 'off',
     'ember/classic-decorator-no-classic-methods': 'warn',
     'ember/classic-decorator-hooks': 'warn',
-    'ember/no-actions-hash': 'warn',
     'ember/no-classic-classes': 'warn',
     'ember/no-classic-components': 'warn',
     'ember/no-component-lifecycle-hooks': 'warn',
     'ember/no-computed-properties-in-native-classes': 'warn',
-    'ember/no-get': 'warn',
     'ember/no-observers': 'warn',
-    'ember/require-computed-macros': 'warn',
     'ember/require-tagless-components': 'warn',
-    'ember/no-jquery': 'error',
   },
   overrides: [
     // node files
@@ -43,6 +44,7 @@ module.exports = {
       files: [
         './.eslintrc.js',
         './.prettierrc.js',
+        './.stylelintrc.js',
         './.template-lintrc.js',
         './ember-cli-build.js',
         './index.js',
@@ -58,8 +60,7 @@ module.exports = {
         browser: false,
         node: true,
       },
-      plugins: ['node'],
-      extends: ['plugin:node/recommended'],
+      extends: ['plugin:n/recommended'],
     },
     {
       // test files

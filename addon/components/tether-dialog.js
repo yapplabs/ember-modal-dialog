@@ -17,7 +17,7 @@ export default class TetherDialog extends BasicDialog {
     // Convert tether-styled values like 'middle right' to 'right'
     targetAttachment = targetAttachment.split(' ').slice(-1)[0];
     return `ember-modal-dialog-target-attachment-${dasherize(
-      targetAttachment
+      targetAttachment,
     )} emd-target-attachment-${dasherize(targetAttachment)}`;
   }
 

@@ -1,0 +1,25 @@
+diff --git a/dist/components/code-block.js b/dist/components/code-block.js
+index 1b4eb37ff47f97bf032c3f63de003531fc813409..74c783ee5121a77bcdc9a9b227d1113cf11359f4 100644
+--- a/dist/components/code-block.js
++++ b/dist/components/code-block.js
+@@ -1,6 +1,6 @@
+ import { _ as _applyDecoratedDescriptor, a as _initializerDefineProperty, b as _defineProperty } from '../_rollupPluginBabelHelpers-e795903d.js';
+ import { getOwner } from '@ember/application';
+-import { service } from '@ember/service';
++import { inject as service } from '@ember/service';
+ import Component from '@glimmer/component';
+ import { tracked } from '@glimmer/tracking';
+ import { htmlSafe } from '@ember/template';
+diff --git a/dist/modifiers/shiki-render.js b/dist/modifiers/shiki-render.js
+index 06f9173b4d507e9121e208da20a6be606e5c59a2..2f8f4c60c5a0c1450b66313e91f3f90c35271e80 100644
+--- a/dist/modifiers/shiki-render.js
++++ b/dist/modifiers/shiki-render.js
+@@ -1,7 +1,7 @@
+ import { _ as _applyDecoratedDescriptor, a as _initializerDefineProperty, b as _defineProperty } from '../_rollupPluginBabelHelpers-e795903d.js';
+ import { buildTask } from 'ember-concurrency/-private/async-arrow-runtime';
+ import Modifier from 'ember-modifier';
+-import { service } from '@ember/service';
++import { inject as service } from '@ember/service';
+ import 'ember-concurrency';
+ 
+ var _class, _descriptor;

@@ -5,15 +5,12 @@ module.exports = function (environment) {
     modulePrefix: 'dummy',
     environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'history',
     EmberENV: {
+      EXTEND_PROTOTYPES: false,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. EMBER_NATIVE_DECORATOR_SUPPORT: true
-      },
-      EXTEND_PROTOTYPES: {
-        // Prevent Ember Data from overriding Date.parse.
-        Date: false,
       },
     },
 
@@ -24,6 +21,10 @@ module.exports = function (environment) {
       // emberModalDialog: {
       //   modalRootElementId: 'custom-modal-root-element'
       //}
+    },
+
+    'ember-shiki': {
+      defaultThemes: ['github-dark'],
     },
   };
 
