@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
-import { isIOS } from '../../utils/config-utils';
 import { htmlSafe } from '@ember/template';
+
+import { isIOS } from '../utils/config-utils';
 
 export default class OverlayComponent extends Component {
   get cssClasses() {

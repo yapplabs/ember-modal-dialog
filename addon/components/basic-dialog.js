@@ -1,15 +1,14 @@
-import { tagName, layout as templateLayout } from '@ember-decorators/component';
 import { computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 import { isEmpty } from '@ember/utils';
-import layout from '../templates/components/basic-dialog';
 import { dasherize } from '@ember/string';
+
 import { isIOS, clickHandlerDelay } from '../utils/config-utils';
 
-@tagName('')
-@templateLayout(layout)
 export default class BasicDialog extends Component {
+  tagName = '';
+
   containerClassNames = null;
   overlayClassNames = null;
   wrapperClassNames = null;
