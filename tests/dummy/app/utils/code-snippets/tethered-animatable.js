@@ -39,7 +39,7 @@ this.transition(
 );`,
 
   'custom-styles-modal-dialog-liquid-tether-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingCustomStyles) false}}
+  @onClose={{this.closeModal}}
   @tetherTarget="body"
   @targetAttachment="top right"
   @targetModifier="visible"
@@ -51,11 +51,8 @@ this.transition(
   <h1>Stop! Modal Time!</h1>
   <p>Custom Styles</p>
   <button
-    onclick={{action
-      (mut this.isShowingCustomStyles)
-      false
-    }}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -90,7 +87,7 @@ this.transition(
 }`,
 
   'target-selector-modal-dialog-liquid-tether-hbs': `<ModalDialog
-  @onClose={{action "toggleTargetSelector"}}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @targetAttachment={{this.exampleTargetAttachment}}
   @attachment={{this.exampleAttachment}}
@@ -103,14 +100,14 @@ this.transition(
   <p>Attachment: {{this.exampleAttachment}}</p>
   <button
     type="button"
-    {{action "closeTargetSelector"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'target-element-modal-dialog-liquid-tether-hbs': `<ModalDialog
-  @onClose={{action "toggleTargetElement"}}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @targetAttachment={{this.exampleTargetAttachment}}
   @attachment={{this.exampleAttachment}}
@@ -123,14 +120,14 @@ this.transition(
   <p>Attachment: {{this.exampleAttachment}}</p>
   <button
     type="button"
-    {{action "closeTargetElement"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'element-centered-modal-dialog-liquid-tether-hbs': `<ModalDialog
-  @onClose={{action "toggleElementCenterModal"}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
   @tetherTarget="#elementCenter"
   @animatable={{true}}
@@ -142,10 +139,7 @@ this.transition(
   <ModalDialog
     @stack="modal-stack-a"
     @containerClass="modal-stack"
-    @onClose={{action
-      (mut this.isShowingSeparateStacksModal1)
-      false
-    }}
+    @onClose={{this.closeModal1}}
     @hasOverlay={{false}}
     @clickOutsideToClose={{true}}
     @tetherTarget="#separateStacksButton1"
@@ -161,10 +155,7 @@ this.transition(
     @stack="modal-stack-b"
     @value={{2}}
     @containerClass="modal-stack"
-    @onClose={{action
-      (mut this.isShowingSeparateStacksModal2)
-      false
-    }}
+    @onClose={{this.closeModal2}}
     @hasOverlay={{false}}
     @clickOutsideToClose={{true}}
     @tetherTarget="#separateStacksButton2"
@@ -180,10 +171,7 @@ this.transition(
     @stack="modal-stack-b"
     @value={{2}}
     @containerClass="modal-stack"
-    @onClose={{action
-      (mut this.isShowingSeparateStacksModal3)
-      false
-    }}
+    @onClose={{this.closeModal3}}
     @hasOverlay={{false}}
     @clickOutsideToClose={{true}}
     @tetherTarget="#separateStacksButton3"
