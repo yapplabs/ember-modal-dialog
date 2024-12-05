@@ -1,90 +1,78 @@
 export const codeSnippets = {
   'basic-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingBasic) false}}
+  @onClose={{this.closeModal}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>Basic</p>
   <button
-    onclick={{action (mut this.isShowingBasic) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'translucent-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingTranslucent) false}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>With Translucent Overlay</p>
   <button
-    onclick={{action (mut this.isShowingTranslucent) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'translucent-modal-dialog-with-callback-hbs': `<ModalDialog
-  @onClose={{action
-    (mut this.isShowingTranslucentWithCallback)
-    false
-  }}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
-  @onClickOverlay={{action "clickedTranslucentOverlay"}}
+  @onClickOverlay={{this.onClickTranslucentOverlay}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>Translucent Overlay with Callback</p>
   <button
-    onclick={{action
-      (mut this.isShowingTranslucentWithCallback)
-      false
-    }}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'modal-dialog-without-overlay-hbs': `<ModalDialog
-  @onClose={{action
-    (mut this.isShowingWithoutOverlay)
-    false
-  }}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @clickOutsideToClose={{true}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>Without Overlay</p>
   <button
-    onclick={{action
-      (mut this.isShowingWithoutOverlay)
-      false
-    }}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'translucent-modal-dialog-sibling-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingSibling) false}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
   @overlayPosition="sibling"
 >
   <h1>Stop! Modal Time!</h1>
   <p>With Translucent Overlay as Sibling</p>
   <button
-    onclick={{action (mut this.isShowingSibling) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'custom-styles-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingCustomStyles) false}}
+  @onClose={{this.closeModal}}
   @targetAttachment="none"
   @containerClass={{this.customContainerClassNames}}
   @overlayClass="custom-styles-overlay"
@@ -92,11 +80,8 @@ export const codeSnippets = {
   <h1>Stop! Modal Time!</h1>
   <p>Custom Styles</p>
   <button
-    onclick={{action
-      (mut this.isShowingCustomStyles)
-      false
-    }}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -131,7 +116,7 @@ export const codeSnippets = {
 }`,
 
   'target-selector-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action "toggleTargetSelector"}}
+  @onClose={{this.closeModal}}
   @targetAttachment={{this.exampleTargetAttachment}}
   @attachment={{this.exampleAttachment}}
   @target="#alignModalDialogToMe"
@@ -142,14 +127,14 @@ export const codeSnippets = {
   <p>Attachment: {{this.exampleAttachment}}</p>
   <button
     type="button"
-    {{action "closeTargetSelector"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'target-element-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action "toggleTargetElement"}}
+  @onClose={{this.closeModal}}
   @targetAttachment={{this.exampleTargetAttachment}}
   @attachment={{this.exampleAttachment}}
   @target="#bwmde"
@@ -160,7 +145,7 @@ export const codeSnippets = {
   <p>Attachment: {{this.exampleAttachment}}</p>
   <button
     type="button"
-    {{action "closeTargetElement"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -182,21 +167,21 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
   <p>Via Subclass</p>
   <button
     type="button"
-    {{action "toggleSubclassed"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </MyCoolModalDialog>`,
 
   'subclass-modal-dialog-hbs': `<MyCoolModalDialog
-  @onClose={{action (mut this.isShowingSubclassed) false}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>Via Subclass</p>
   <button
-    onclick={{action (mut this.isShowingSubclassed) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -208,21 +193,21 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
 }`,
 
   'subclass-modal-dialog-2-hbs': `<MyCoolModalDialogTwo
-  @onClose={{action (mut this.isShowingSubclassed2) false}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>Via Subclass</p>
   <button
-    onclick={{action (mut this.isShowingSubclassed2) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </MyCoolModalDialogTwo>`,
 
   'in-place-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingInPlace) false}}
+  @onClose={{this.closeModal}}
   @renderInPlace={{true}}
   @targetAttachment="none"
   @containerClass="ember-modal-dialog-in-place my-custom-class"
@@ -231,8 +216,8 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
   <h1>Stop! Modal Time!</h1>
   <p>In Place</p>
   <button
-    onclick={{action (mut this.isShowingInPlace) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -249,7 +234,7 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
 }`,
 
   'in-place-modal-dialog-2-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingInPlace2) false}}
+  @onClose={{this.closeModal}}
   @renderInPlace={{true}}
   @targetAttachment="none"
   @containerClassNames="ember-modal-dialog-in-place my-custom-class-2"
@@ -258,15 +243,15 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
   <h1>Stop! Modal Time!</h1>
   <p>In Place</p>
   <button
-    onclick={{action (mut this.isShowingInPlace2) false}}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'centered-scrolling-modal-dialog-hbs': `<ModalDialog
-  @onClose={{action "toggleCenteredScrolling"}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
   @targetAttachment="none"
   @containerClass="centered-scrolling-container"
@@ -281,7 +266,7 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
   {{lorem-ipsum length=30000}}
   <button
     type="button"
-    {{action "toggleCenteredScrolling"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -325,10 +310,7 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
 
   'element-centered-modal-dialog-hbs': `<ModalDialog
   data-test="my-data-test"
-  @onClose={{action
-    (mut this.isShowingElementCenterModal)
-    false
-  }}
+  @onClose={{this.closeModal}}
   @elementId={{this.elementId}}
   @translucentOverlay={{true}}
   @targetAttachment="elementCenter"

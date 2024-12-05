@@ -1,28 +1,14 @@
-import { action, set } from '@ember/object';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { tracked } from '@glimmer/tracking';
 
 import { codeSnippets } from '../utils/code-snippets/index';
 
 export default class IndexController extends Controller {
   codeSnippets = codeSnippets;
 
-  isShowingBasic = false;
-  isShowingTranslucent = false;
-  isShowingTranslucentWithCallback = false;
-  isShowingWithoutOverlay = false;
-  isShowingWithoutOverlayClickOutsideToClose = false;
-  isShowingWithoutOverlayClickOutsideToCloseAnotherOne = false;
-  isShowingCustomStyles = false;
-  isShowingTargetSelector = false;
-  isShowingTargetElement = false;
-  isShowingSubclassed = false;
-  isShowingSubclassed2 = false;
-  isShowingInPlace = false;
-  isShowingCenteredScrolling = false;
-  isShowingElementCenterModal = false;
-  exampleTargetAttachment = 'middle left';
-  exampleAttachment = 'middle right';
-  customContainerClassNames = 'custom-styles-modal-container';
+  @tracked exampleTargetAttachment = 'middle left';
+  @tracked exampleAttachment = 'middle right';
 
   nextAttachment(val) {
     switch (val) {
@@ -38,67 +24,27 @@ export default class IndexController extends Controller {
     return false;
   }
 
-  @action
-  toggleTargetSelector() {
-    if (this.isShowingTargetSelector) {
-      let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment,
-      );
-      let newAttachment = this.nextAttachment(this.exampleAttachment);
-      set(this, 'exampleTargetAttachment', newTargetAttachment);
-      set(this, 'exampleAttachment', newAttachment);
-      if (newTargetAttachment !== 'middle left') {
-        return;
-      }
-    }
-    this.toggleProperty('isShowingTargetSelector');
-  }
-
-  @action
-  toggleTargetElement() {
-    if (this.isShowingTargetElement) {
-      let newTargetAttachment = this.nextAttachment(
-        this.exampleTargetAttachment,
-      );
-      let newAttachment = this.nextAttachment(this.exampleAttachment);
-      set(this, 'exampleTargetAttachment', newTargetAttachment);
-      set(this, 'exampleAttachment', newAttachment);
-      if (newTargetAttachment !== 'middle left') {
-        return;
-      }
-    }
-    this.toggleProperty('isShowingTargetElement');
-  }
-
-  @action
-  toggleCenteredScrolling() {
-    this.toggleProperty('isShowingCenteredScrolling');
-
-    if (this.isShowingCenteredScrolling) {
-      document.querySelector('#modal-overlays').classList.add('active');
-      document.body.classList.add('centered-modal-showing');
-    } else {
-      document.querySelector('#modal-overlays').classList.remove('active');
-      document.body.classList.remove('centered-modal-showing');
-    }
-  }
-
-  @action
-  closeTargetSelector() {
-    set(this, 'isShowingTargetSelector', false);
-    set(this, 'exampleTargetAttachment', 'middle left');
-    set(this, 'exampleAttachment', 'middle right');
-  }
-
-  @action
-  closeTargetElement() {
-    set(this, 'isShowingTargetElement', false);
-    set(this, 'exampleTargetAttachment', 'middle left');
-    set(this, 'exampleAttachment', 'middle right');
-  }
-
-  @action
-  clickedTranslucentOverlay() {
+  @action onClickTranslucentOverlay() {
     window.onClickOverlayCallbackCalled = true;
+  }
+
+  @action onCloseCenteredScrolling() {
+    document.querySelector('#modal-overlays').classList.remove('active');
+    document.body.classList.remove('centered-modal-showing');
+  }
+
+  @action onOpenCenteredScrolling() {
+    document.querySelector('#modal-overlays').classList.add('active');
+    document.body.classList.add('centered-modal-showing');
+  }
+
+  @action toggleTarget() {
+    const newTargetAttachment = this.nextAttachment(
+      this.exampleTargetAttachment,
+    );
+    const newAttachment = this.nextAttachment(this.exampleAttachment);
+
+    this.exampleTargetAttachment = newTargetAttachment;
+    this.exampleAttachment = newAttachment;
   }
 }
