@@ -160,7 +160,7 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
 }`,
 
   'subclass-modal-dialog-animatable-hbs': `<MyCoolModalDialog
-  @onClose={{action "toggleSubclassed"}}
+  @onClose={{this.closeModal}}
   @animatable={{true}}
 >
   <h1>Stop! Modal Time!</h1>
