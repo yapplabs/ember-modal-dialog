@@ -1,0 +1,34 @@
+<div class="example" id={{@id}}>
+  <h2>{{@title}}</h2>
+
+  <div>
+    {{yield
+      (hash
+        OpenButton=(component
+          "demo-modal/button"
+          label="Open"
+          onClick=this.openModal
+        )
+      )
+      to="menu"
+    }}
+  </div>
+
+  <div>
+    {{yield to="code"}}
+  </div>
+
+  <div>
+    {{yield
+      (hash
+        CloseButton=(component
+          "demo-modal/button"
+          label="Close"
+          onClick=this.closeModal
+        )
+        closeModal=this.closeModal
+        isModalOpen=this.isModalOpen
+      )
+    }}
+  </div>
+</div>
