@@ -29,7 +29,6 @@ module.exports = {
   },
   rules: {
     'no-setter-return': 'off',
-    'ember/classic-decorator-no-classic-methods': 'warn',
     'ember/classic-decorator-hooks': 'warn',
     'ember/no-classic-classes': 'warn',
     'ember/no-classic-components': 'warn',

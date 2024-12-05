@@ -1,6 +1,6 @@
 export const codeSnippets = {
   'custom-styles-modal-dialog-tethered-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingCustomStyles) false}}
+  @onClose={{this.closeModal}}
   @tetherTarget="body"
   @targetModifier="visible"
   @targetAttachment="top right"
@@ -11,11 +11,8 @@ export const codeSnippets = {
   <h1>Stop! Modal Time!</h1>
   <p>Custom Styles</p>
   <button
-    onclick={{action
-      (mut this.isShowingCustomStyles)
-      false
-    }}
     type="button"
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -50,7 +47,7 @@ export const codeSnippets = {
 }`,
 
   'target-selector-modal-dialog-tethered-hbs': `<ModalDialog
-  @onClose={{action "toggleTargetSelector"}}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @targetAttachment={{this.exampleTargetAttachment}}
   @attachment={{this.exampleAttachment}}
@@ -62,14 +59,14 @@ export const codeSnippets = {
   <p>Attachment: {{this.exampleAttachment}}</p>
   <button
     type="button"
-    {{action "closeTargetSelector"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'target-element-modal-dialog-tethered-hbs': `<ModalDialog
-  @onClose={{action "toggleTargetElement"}}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @targetAttachment={{this.exampleTargetAttachment}}
   @attachment={{this.exampleAttachment}}
@@ -81,7 +78,7 @@ export const codeSnippets = {
   <p>Attachment: {{this.exampleAttachment}}</p>
   <button
     type="button"
-    {{action "closeTargetElement"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -90,10 +87,7 @@ export const codeSnippets = {
   'element-centered-modal-dialog-tethered-hbs': `<ModalDialog
   @translucentOverlay={{true}}
   @tetherTarget="#elementCenter"
-  @onClose={{action
-    (mut this.isShowingElementCenterModal)
-    false
-  }}
+  @onClose={{this.closeModal}}
 >
   <p>Centered on element.</p>
 </ModalDialog>`,

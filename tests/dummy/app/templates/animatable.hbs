@@ -22,258 +22,214 @@
   />
 </div>
 
-<div class="example" id="example-basic">
-  <h2>Basic</h2>
+<DemoModal @id="example-basic" @title="Basic">
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
 
-  <button type="button" {{action "toggleBasic"}}>
-    Do It
-  </button>
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "basic-modal-dialog-animatable-hbs"
+      }}
+      @language="hbs"
+    />
+  </:code>
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "basic-modal-dialog-animatable-hbs"
-    }}
-    @language="hbs"
-  />
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @overlayPosition="sibling"
+        @clickOutsideToClose={{true}}
+        @animatable={{true}}
+      >
+        <h1>Stop! Modal Time!</h1>
+        <p>Basic</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-  {{#if this.isShowingBasic}}
-    <ModalDialog
-      @onClose={{action "toggleBasic"}}
-      @overlayPosition="sibling"
-      @clickOutsideToClose={{true}}
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Basic</p>
-      <button type="button" {{action "toggleBasic"}}>
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
-
-<div class="example" id="example-translucent">
-  <h2>With Translucent Overlay</h2>
-
-  <button type="button" {{action "toggleTranslucent"}}>
-    Do It
-  </button>
-
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "translucent-modal-dialog-animatable-hbs"
-    }}
-    @language="hbs"
-  />
-
-  {{#if this.isShowingTranslucent}}
-    <ModalDialog
-      @onClose={{action "toggleTranslucent"}}
-      @translucentOverlay={{true}}
-      @overlayPosition="sibling"
-      @clickOutsideToClose={{true}}
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>With Translucent Overlay</p>
-      <button type="button" {{action "toggleTranslucent"}}>
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
-
-<div class="example" id="example-without-overlay">
-  <h2>Without Overlay</h2>
-
-  <button type="button" {{action "toggleWithoutOverlay"}}>
-    Do It
-  </button>
-
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "without-overlay-modal-dialog-animatable-hbs"
-    }}
-    @language="hbs"
-  />
-
-  {{#if this.isShowingWithoutOverlay}}
-    <ModalDialog
-      @onClose={{action "toggleWithoutOverlay"}}
-      @hasOverlay={{false}}
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Without Overlay</p>
-      <button type="button" {{action "toggleWithoutOverlay"}}>
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
-
-<div
-  class="example"
-  id="example-without-overlay-click-outside-to-close"
+<DemoModal
+  @id="example-translucent"
+  @title="With Translucent Overlay"
 >
-  <h2>Without Overlay - Click Outside to Close</h2>
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
 
-  <button
-    type="button"
-    {{action "toggleWithoutOverlayClickOutsideToClose"}}
-  >
-    Do It
-  </button>
-  <button
-    id="without-overlay-another-one-button"
-    type="button"
-    {{action
-      "toggleWithoutOverlayClickOutsideToCloseAnotherOne"
-    }}
-  >
-    Another one
-  </button>
-
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "without-overlay-click-outside-to-close-modal-dialog-animatable-hbs"
-    }}
-    @language="hbs"
-  />
-
-  {{#if this.isShowingWithoutOverlayClickOutsideToClose}}
-    <ModalDialog
-      @onClose={{action
-        "toggleWithoutOverlayClickOutsideToClose"
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "translucent-modal-dialog-animatable-hbs"
       }}
-      @hasOverlay={{false}}
-      @clickOutsideToClose={{true}}
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Without Overlay - Click Outside to Close</p>
-      <button
-        type="button"
-        {{action "toggleWithoutOverlayClickOutsideToClose"}}
-      >
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
+      @language="hbs"
+    />
+  </:code>
 
-  {{#if
-    this.isShowingWithoutOverlayClickOutsideToCloseAnotherOne
-  }}
-    <ModalDialog
-      @onClose={{action
-        "toggleWithoutOverlayClickOutsideToCloseAnotherOne"
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @translucentOverlay={{true}}
+        @overlayPosition="sibling"
+        @clickOutsideToClose={{true}}
+        @animatable={{true}}
+      >
+        <h1>Stop! Modal Time!</h1>
+        <p>With Translucent Overlay</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
+
+<DemoModal
+  @id="example-without-overlay"
+  @title="Without Overlay"
+>
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
+
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "without-overlay-modal-dialog-animatable-hbs"
       }}
-      @hasOverlay={{false}}
-      @clickOutsideToClose={{true}}
-      @offset="100px 0"
-      @animatable={{true}}
-    >
-      <h1>Stop! Another modal!</h1>
-      <p>Without Overlay Another One - Click Outside to Close</p>
-      <button
-        type="button"
-        {{action
-          "toggleWithoutOverlayClickOutsideToCloseAnotherOne"
-        }}
+      @language="hbs"
+    />
+  </:code>
+
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @hasOverlay={{false}}
+        @animatable={{true}}
       >
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
+        <h1>Stop! Modal Time!</h1>
+        <p>Without Overlay</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-<div class="example" id="example-custom-styles">
-  <h2>Custom Styles</h2>
+<DemoModal
+  @id="example-without-overlay-click-outside-to-close"
+  @title="Without Overlay - Click Outside to Close"
+>
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
 
-  <button
-    onclick={{action (mut this.isShowingCustomStyles) true}}
-    type="button"
-  >
-    Do It
-  </button>
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "without-overlay-click-outside-to-close-modal-dialog-animatable-hbs"
+      }}
+      @language="hbs"
+    />
+  </:code>
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "custom-styles-modal-dialog-animatable-hbs"
-    }}
-    @language="hbs"
-  />
-
-  <CodeBlock
-    @code={{get this.codeSnippets "custom-styles-css"}}
-    @language="css"
-  />
-
-  {{#if this.isShowingCustomStyles}}
-    <ModalDialog
-      @onClose={{action (mut this.isShowingCustomStyles) false}}
-      @containerClass="custom-styles-modal-container"
-      @overlayClass="custom-styles-overlay"
-      @wrapperClass="custom-styles-wrapper"
-      @overlayPosition="sibling"
-      @clickOutsideToClose={{true}}
-      @targetAttachment="none"
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Custom Styles</p>
-      <button
-        type="button"
-        {{action
-          (action (mut this.isShowingCustomStyles) false)
-        }}
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @hasOverlay={{false}}
+        @clickOutsideToClose={{true}}
+        @animatable={{true}}
       >
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
+        <h1>Stop! Modal Time!</h1>
+        <p>Without Overlay - Click Outside to Close</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-<div class="example" id="example-subclass">
-  <h2>Via Subclass</h2>
+<DemoModal @id="example-custom-styles" @title="Custom Styles">
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
 
-  <button type="button" {{action "toggleSubclassed"}}>
-    Do It
-  </button>
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "custom-styles-modal-dialog-animatable-hbs"
+      }}
+      @language="hbs"
+    />
 
-  <CodeBlock
-    @code={{get this.codeSnippets "subclass-js"}}
-    @language="js"
-  />
+    <CodeBlock
+      @code={{get this.codeSnippets "custom-styles-css"}}
+      @language="css"
+    />
+  </:code>
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "subclass-modal-dialog-animatable-hbs"
-    }}
-    @language="hbs"
-  />
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @containerClass="custom-styles-modal-container"
+        @overlayClass="custom-styles-overlay"
+        @wrapperClass="custom-styles-wrapper"
+        @overlayPosition="sibling"
+        @clickOutsideToClose={{true}}
+        @targetAttachment="none"
+        @animatable={{true}}
+      >
+        <h1>Stop! Modal Time!</h1>
+        <p>Custom Styles</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-  <CodeBlock
-    @code={{get this.codeSnippets "subclass-styles-css"}}
-    @language="css"
-  />
+<DemoModal @id="example-subclass" @title="Via Subclass">
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
 
-  {{#if this.isShowingSubclassed}}
-    <MyCoolModalDialog
-      @onClose={{action "toggleSubclassed"}}
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Via Subclass</p>
-      <button type="button" {{action "toggleSubclassed"}}>
-        Close
-      </button>
-    </MyCoolModalDialog>
-  {{/if}}
-</div>
+  <:code>
+    <CodeBlock
+      @code={{get this.codeSnippets "subclass-js"}}
+      @language="js"
+    />
+
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "subclass-modal-dialog-animatable-hbs"
+      }}
+      @language="hbs"
+    />
+
+    <CodeBlock
+      @code={{get this.codeSnippets "subclass-styles-css"}}
+      @language="css"
+    />
+  </:code>
+
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <MyCoolModalDialog
+        @onClose={{D.closeModal}}
+        @animatable={{true}}
+      >
+        <h1>Stop! Modal Time!</h1>
+        <p>Via Subclass</p>
+        <D.CloseButton />
+      </MyCoolModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>

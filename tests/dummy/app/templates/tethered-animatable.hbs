@@ -37,192 +37,179 @@
   />
 </div>
 
-<div class="example" id="example-custom-styles">
-  <h2>Custom Styles</h2>
+<DemoModal @id="example-custom-styles" @title="Custom Styles">
+  <:menu as |M|>
+    <M.OpenButton />
+  </:menu>
 
-  <button
-    onclick={{action (mut this.isShowingCustomStyles) true}}
-    type="button"
-  >
-    Do It
-  </button>
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "custom-styles-modal-dialog-liquid-tether-hbs"
+      }}
+      @language="hbs"
+    />
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "custom-styles-modal-dialog-liquid-tether-hbs"
-    }}
-    @language="hbs"
-  />
+    <CodeBlock
+      @code={{get this.codeSnippets "custom-styles-css"}}
+      @language="css"
+    />
+  </:code>
 
-  <CodeBlock
-    @code={{get this.codeSnippets "custom-styles-css"}}
-    @language="css"
-  />
-
-  {{#if this.isShowingCustomStyles}}
-    <ModalDialog
-      @onClose={{action (mut this.isShowingCustomStyles) false}}
-      @tetherTarget="body"
-      @targetAttachment="top right"
-      @targetModifier="visible"
-      @attachment="top right"
-      @containerClass="custom-styles-modal-container"
-      @overlayClass="custom-styles-overlay"
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Custom Styles</p>
-      <button
-        onclick={{action
-          (mut this.isShowingCustomStyles)
-          false
-        }}
-        type="button"
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @tetherTarget="body"
+        @targetAttachment="top right"
+        @targetModifier="visible"
+        @attachment="top right"
+        @containerClass="custom-styles-modal-container"
+        @overlayClass="custom-styles-overlay"
+        @animatable={{true}}
       >
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
+        <h1>Stop! Modal Time!</h1>
+        <p>Custom Styles</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-<div class="example" id="example-target-selector">
-  <h2>Target (Selector)</h2>
+<DemoModal
+  @id="example-target-selector"
+  @onClose={{this.toggleTarget}}
+  @title="Target (Selector)"
+>
+  <:menu as |M|>
+    <M.OpenButton id="alignTetherDialogToMe" />
+  </:menu>
 
-  <div>
-    <button
-      id="alignTetherDialogToMe"
-      type="button"
-      {{action "toggleTargetSelector"}}
-    >
-      Do It
-    </button>
-  </div>
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "target-selector-modal-dialog-liquid-tether-hbs"
+      }}
+      @language="hbs"
+    />
+  </:code>
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "target-selector-modal-dialog-liquid-tether-hbs"
-    }}
-    @language="hbs"
-  />
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @hasOverlay={{false}}
+        @targetAttachment={{this.exampleTargetAttachment}}
+        @attachment={{this.exampleAttachment}}
+        @tetherTarget="#alignTetherDialogToMe"
+        @animatable={{true}}
+      >
+        <h1>Stop! Modal Time!</h1>
+        <p>Target - Selector: "#alignTetherDialogToMe"</p>
+        <p>Target Attachment:
+          {{this.exampleTargetAttachment}}</p>
+        <p>Attachment: {{this.exampleAttachment}}</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-  {{#if this.isShowingTargetSelector}}
-    <ModalDialog
-      @onClose={{action "toggleTargetSelector"}}
-      @hasOverlay={{false}}
-      @targetAttachment={{this.exampleTargetAttachment}}
-      @attachment={{this.exampleAttachment}}
-      @tetherTarget="#alignTetherDialogToMe"
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - Selector: "#alignTetherDialogToMe"</p>
-      <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
-      <p>Attachment: {{this.exampleAttachment}}</p>
-      <button type="button" {{action "closeTargetSelector"}}>
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
-
-<div class="example" id="example-target-element">
-  <h2>Target (Element)</h2>
-  <div>
+<DemoModal
+  @id="example-target-element"
+  @onClose={{this.toggleTarget}}
+  @title="Target (Element)"
+>
+  <:menu as |M|>
     <span id="bwtde">
-      <button type="button" {{action "toggleTargetElement"}}>
-        Do It
-      </button>
+      <M.OpenButton />
     </span>
-  </div>
+  </:menu>
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "target-element-modal-dialog-liquid-tether-hbs"
-    }}
-    @language="hbs"
-  />
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "target-element-modal-dialog-liquid-tether-hbs"
+      }}
+      @language="hbs"
+    />
+  </:code>
 
-  {{#if this.isShowingTargetElement}}
-    <ModalDialog
-      @onClose={{action "toggleTargetElement"}}
-      @hasOverlay={{false}}
-      @targetAttachment={{this.exampleTargetAttachment}}
-      @attachment={{this.exampleAttachment}}
-      @tetherTarget="#bwtde"
-      @animatable={{true}}
-    >
-      <h1>Stop! Modal Time!</h1>
-      <p>Target - Element #bwtde</p>
-      <p>Target Attachment: {{this.exampleTargetAttachment}}</p>
-      <p>Attachment: {{this.exampleAttachment}}</p>
-      <button type="button" {{action "closeTargetElement"}}>
-        Close
-      </button>
-    </ModalDialog>
-  {{/if}}
-</div>
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @hasOverlay={{false}}
+        @targetAttachment={{this.exampleTargetAttachment}}
+        @attachment={{this.exampleAttachment}}
+        @tetherTarget="#bwtde"
+        @animatable={{true}}
+      >
+        <h1>Stop! Modal Time!</h1>
+        <p>Target - Element #bwtde</p>
+        <p>Target Attachment:
+          {{this.exampleTargetAttachment}}</p>
+        <p>Attachment: {{this.exampleAttachment}}</p>
+        <D.CloseButton />
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
-<div class="example">
-  <h2>Element Center</h2>
+<DemoModal @id="example-element-center" @title="Element Center">
+  <:menu as |M|>
+    <span id="elementCenter">
+      <M.OpenButton />
+    </span>
+  </:menu>
 
-  <span id="elementCenter">
-    <button type="button" {{action "toggleElementCenterModal"}}>
-      Element Center
-    </button>
-  </span>
+  <:code>
+    <CodeBlock
+      @code={{get
+        this.codeSnippets
+        "element-centered-modal-dialog-liquid-tether-hbs"
+      }}
+      @language="hbs"
+    />
+  </:code>
 
-  <CodeBlock
-    @code={{get
-      this.codeSnippets
-      "element-centered-modal-dialog-liquid-tether-hbs"
-    }}
-    @language="hbs"
-  />
-
-  {{#if this.isShowingElementCenterModal}}
-    <ModalDialog
-      @onClose={{action "toggleElementCenterModal"}}
-      @translucentOverlay={{true}}
-      @tetherTarget="#elementCenter"
-      @animatable={{true}}
-    >
-      <p>Centered on element.</p>
-    </ModalDialog>
-  {{/if}}
-</div>
+  <:default as |D|>
+    {{#if D.isModalOpen}}
+      <ModalDialog
+        @onClose={{D.closeModal}}
+        @translucentOverlay={{true}}
+        @tetherTarget="#elementCenter"
+        @animatable={{true}}
+      >
+        <p>Centered on element.</p>
+      </ModalDialog>
+    {{/if}}
+  </:default>
+</DemoModal>
 
 <div class="example">
   <h2>Separate Stacks</h2>
   <button
     id="separateStacksButton1"
-    onclick={{action
-      (mut this.isShowingSeparateStacksModal1)
-      true
-    }}
     type="button"
+    {{on "click" this.openSeparateStackModal1}}
   >
     Show Modal 1 (modal-stack-a)
   </button>
   <button
     id="separateStacksButton2"
-    onclick={{action
-      (mut this.isShowingSeparateStacksModal2)
-      true
-    }}
     type="button"
+    {{on "click" this.openSeparateStackModal2}}
   >
     Show Modal 2 (modal-stack-b)
   </button>
   <button
     id="separateStacksButton3"
-    onclick={{action
-      (mut this.isShowingSeparateStacksModal3)
-      true
-    }}
     type="button"
+    {{on "click" this.openSeparateStackModal3}}
   >
     Show Modal 3 (modal-stack-b)
   </button>
@@ -243,10 +230,7 @@
     <ModalDialog
       @stack="modal-stack-a"
       @containerClass="modal-stack"
-      @onClose={{action
-        (mut this.isShowingSeparateStacksModal1)
-        false
-      }}
+      @onClose={{this.closeSeparateStackModal1}}
       @hasOverlay={{false}}
       @clickOutsideToClose={{true}}
       @tetherTarget="#separateStacksButton1"
@@ -262,10 +246,7 @@
       @stack="modal-stack-b"
       @value={{2}}
       @containerClass="modal-stack"
-      @onClose={{action
-        (mut this.isShowingSeparateStacksModal2)
-        false
-      }}
+      @onClose={{this.closeSeparateStackModal2}}
       @hasOverlay={{false}}
       @clickOutsideToClose={{true}}
       @tetherTarget="#separateStacksButton2"
@@ -281,10 +262,7 @@
       @stack="modal-stack-b"
       @value={{2}}
       @containerClass="modal-stack"
-      @onClose={{action
-        (mut this.isShowingSeparateStacksModal3)
-        false
-      }}
+      @onClose={{this.closeSeparateStackModal3}}
       @hasOverlay={{false}}
       @clickOutsideToClose={{true}}
       @tetherTarget="#separateStacksButton3"

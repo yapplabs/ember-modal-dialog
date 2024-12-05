@@ -15,7 +15,7 @@ export const codeSnippets = {
 );`,
 
   'basic-modal-dialog-animatable-hbs': `<ModalDialog
-  @onClose={{action "toggleBasic"}}
+  @onClose={{this.closeModal}}
   @overlayPosition="sibling"
   @clickOutsideToClose={{true}}
   @animatable={{true}}
@@ -24,14 +24,14 @@ export const codeSnippets = {
   <p>Basic</p>
   <button
     type="button"
-    {{action "toggleBasic"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'translucent-modal-dialog-animatable-hbs': `<ModalDialog
-  @onClose={{action "toggleTranslucent"}}
+  @onClose={{this.closeModal}}
   @translucentOverlay={{true}}
   @overlayPosition="sibling"
   @clickOutsideToClose={{true}}
@@ -41,14 +41,14 @@ export const codeSnippets = {
   <p>With Translucent Overlay</p>
   <button
     type="button"
-    {{action "toggleTranslucent"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'without-overlay-modal-dialog-animatable-hbs': `<ModalDialog
-  @onClose={{action "toggleWithoutOverlay"}}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @animatable={{true}}
 >
@@ -56,16 +56,14 @@ export const codeSnippets = {
   <p>Without Overlay</p>
   <button
     type="button"
-    {{action "toggleWithoutOverlay"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'without-overlay-click-outside-to-close-modal-dialog-animatable-hbs': `<ModalDialog
-  @onClose={{action
-    "toggleWithoutOverlayClickOutsideToClose"
-  }}
+  @onClose={{this.closeModal}}
   @hasOverlay={{false}}
   @clickOutsideToClose={{true}}
   @animatable={{true}}
@@ -74,14 +72,14 @@ export const codeSnippets = {
   <p>Without Overlay - Click Outside to Close</p>
   <button
     type="button"
-    {{action "toggleWithoutOverlayClickOutsideToClose"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
 </ModalDialog>`,
 
   'custom-styles-modal-dialog-animatable-hbs': `<ModalDialog
-  @onClose={{action (mut this.isShowingCustomStyles) false}}
+  @onClose={{this.closeModal}}
   @containerClass="custom-styles-modal-container"
   @overlayClass="custom-styles-overlay"
   @wrapperClass="custom-styles-wrapper"
@@ -94,9 +92,7 @@ export const codeSnippets = {
   <p>Custom Styles</p>
   <button
     type="button"
-    {{action
-      (action (mut this.isShowingCustomStyles) false)
-    }}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
@@ -139,14 +135,14 @@ export default class MyCoolModalDialog extends ModalDialogComponent {
 }`,
 
   'subclass-modal-dialog-animatable-hbs': `<MyCoolModalDialog
-  @onClose={{action "toggleSubclassed"}}
+  @onClose={{this.closeModal}}
   @animatable={{true}}
 >
   <h1>Stop! Modal Time!</h1>
   <p>Via Subclass</p>
   <button
     type="button"
-    {{action "toggleSubclassed"}}
+    {{on "click" this.closeModal}}
   >
     Close
   </button>
