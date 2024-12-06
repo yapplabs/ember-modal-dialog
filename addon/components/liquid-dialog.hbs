@@ -41,9 +41,7 @@
     {{#if this.hasOverlay}}
       <EmberModalDialog::Overlay
         class={{this.overlayClassNamesString}}
-        @onClickOverlay={{action
-          (ignore-children this.onClickOverlay)
-        }}
+        @onClickOverlay={{ignore-children this.onClickOverlay}}
       >
         <div
           class={{this.containerClassNamesString}}
