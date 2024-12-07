@@ -10,6 +10,10 @@
 * [#406](https://github.com/yapplabs/ember-modal-dialog/pull/406) Convert ModalDialog component to glimmer ([@lukemelia](https://github.com/lukemelia))
 * [#405](https://github.com/yapplabs/ember-modal-dialog/pull/405) Move Overlay component to Glimmer ([@lukemelia](https://github.com/lukemelia))
 * [#403](https://github.com/yapplabs/ember-modal-dialog/pull/403) Adopt pnpm ([@lukemelia](https://github.com/lukemelia))
+* [#408](https://github.com/yapplabs/ember-modal-dialog/pull/408) Updated dependencies and ember-try scenarios ([@ijlee2](https://github.com/ijlee2))
+* [#409](https://github.com/yapplabs/ember-modal-dialog/pull/409) Removed classic layout and ember-decorators ([@ijlee2](https://github.com/ijlee2))
+* [#410](https://github.com/yapplabs/ember-modal-dialog/pull/410) Removed {{action}} helper from docs-app ([@ijlee2](https://github.com/ijlee2))
+* [#411](https://github.com/yapplabs/ember-modal-dialog/pull/411) Removed {{action}} helper from addon ([@ijlee2](https://github.com/ijlee2))
 
 #### Committers: 2
 - Isaac Lee ([@ijlee2](https://github.com/ijlee2))
