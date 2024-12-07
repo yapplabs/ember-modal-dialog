@@ -1,4 +1,4 @@
-# Ember Modal Dialog [![Build Status](https://travis-ci.org/yapplabs/ember-modal-dialog.svg?branch=master)](https://travis-ci.org/yapplabs/ember-modal-dialog) [![Ember Observer Score](http://emberobserver.com/badges/ember-modal-dialog.svg)](http://emberobserver.com/addons/ember-modal-dialog)
+# Ember Modal Dialog [![Build Status](https://github.com/yapplabs/ember-modal-dialog/actions/workflows/ci.yml/badge.svg)](https://github.com/yapplabs/ember-modal-dialog/actions/workflows/ci.yml) [![Ember Observer Score](http://emberobserver.com/badges/ember-modal-dialog.svg)](http://emberobserver.com/addons/ember-modal-dialog)
 
 ## Regarding the Status of this Addon
 
