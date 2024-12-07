@@ -1,3 +1,20 @@
+## v4.1.5 (2024-12-07)
+
+#### :bug: Bug Fix
+* [#404](https://github.com/yapplabs/ember-modal-dialog/pull/404) Move items from devDeps to peerDeps and update peerDepsMeta to clarify dependencies ([@lukemelia](https://github.com/lukemelia))
+
+#### :memo: Documentation
+* [#403](https://github.com/yapplabs/ember-modal-dialog/pull/403) Adopt pnpm ([@lukemelia](https://github.com/lukemelia))
+
+#### :house: Internal
+* [#406](https://github.com/yapplabs/ember-modal-dialog/pull/406) Convert ModalDialog component to glimmer ([@lukemelia](https://github.com/lukemelia))
+* [#405](https://github.com/yapplabs/ember-modal-dialog/pull/405) Move Overlay component to Glimmer ([@lukemelia](https://github.com/lukemelia))
+* [#403](https://github.com/yapplabs/ember-modal-dialog/pull/403) Adopt pnpm ([@lukemelia](https://github.com/lukemelia))
+
+#### Committers: 2
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+- Luke Melia ([@lukemelia](https://github.com/lukemelia))
+
 ## v4.1.4 (2024-06-28)
 
 #### :bug: Bug Fix
