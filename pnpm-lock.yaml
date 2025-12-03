@@ -37,9 +37,6 @@ importers:
       ember-wormhole:
         specifier: ^0.6.1
         version: 0.6.1
-      velocity-animate:
-        specifier: ^1.5.2
-        version: 1.5.2
     devDependencies:
       '@babel/eslint-parser':
         specifier: ^7.28.5
@@ -144,8 +141,8 @@ importers:
         specifier: ^0.37.1
         version: 0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2)
       liquid-tether:
-        specifier: github:pzuraq/liquid-tether#5a360aeaa08c2b6e986e3862309a1c9b1496c84b
-        version: https://codeload.github.com/pzuraq/liquid-tether/tar.gz/5a360aeaa08c2b6e986e3862309a1c9b1496c84b(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
+        specifier: github:pzuraq/liquid-tether#4539ef7756c91d4fcffe71c5ee91d15a645f6876
+        version: https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
       liquid-wormhole:
         specifier: ^6.0.0
         version: 6.0.0(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
@@ -170,6 +167,9 @@ importers:
       release-it-lerna-changelog:
         specifier: ^2.4.0
         version: 2.4.0(encoding@0.1.13)
+      velocity-animate:
+        specifier: ^1.5.2
+        version: 1.5.2
       webpack:
         specifier: ^5.103.0
         version: 5.103.0
@@ -4266,12 +4266,11 @@ packages:
     peerDependencies:
       velocity-animate: ^1.5.2
 
-  liquid-tether@https://codeload.github.com/pzuraq/liquid-tether/tar.gz/5a360aeaa08c2b6e986e3862309a1c9b1496c84b:
-    resolution: {tarball: https://codeload.github.com/pzuraq/liquid-tether/tar.gz/5a360aeaa08c2b6e986e3862309a1c9b1496c84b}
+  liquid-tether@https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876:
+    resolution: {tarball: https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876}
     version: 2.0.7
     engines: {node: '>= 18'}
     peerDependencies:
-      ember-source: ^4.0.0
       liquid-fire: ^0.37.1
       velocity-animate: ^1.5.2
 
@@ -12096,7 +12095,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  liquid-tether@https://codeload.github.com/pzuraq/liquid-tether/tar.gz/5a360aeaa08c2b6e986e3862309a1c9b1496c84b(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0):
+  liquid-tether@https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0):
     dependencies:
       '@babel/core': 7.28.5
       broccoli-funnel: 3.0.8
@@ -12104,7 +12103,6 @@ snapshots:
       ember-auto-import: 2.12.0(webpack@5.103.0)
       ember-cli-babel: 8.2.0(@babel/core@7.28.5)
       ember-cli-htmlbars: 6.3.0
-      ember-source: 5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0)
       liquid-fire: 0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2)
       liquid-wormhole: 6.0.0(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
       tether: 1.4.7
@@ -12112,6 +12110,7 @@ snapshots:
     transitivePeerDependencies:
       - '@glint/environment-ember-loose'
       - '@glint/template'
+      - ember-source
       - supports-color
       - webpack
 

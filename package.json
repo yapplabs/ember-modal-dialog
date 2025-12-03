@@ -71,7 +71,7 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-qunit": "^8.2.5",
     "liquid-fire": "^0.37.1",
-    "liquid-tether": "github:pzuraq/liquid-tether#5a360aeaa08c2b6e986e3862309a1c9b1496c84b",
+    "liquid-tether": "github:pzuraq/liquid-tether#4539ef7756c91d4fcffe71c5ee91d15a645f6876",
     "liquid-wormhole": "^6.0.0",
     "loader.js": "^4.7.0",
     "only-allow": "^1.2.2",
@@ -80,6 +80,7 @@
     "qunit-dom": "^3.5.0",
     "release-it": "^13.7.2",
     "release-it-lerna-changelog": "^2.4.0",
+    "velocity-animate": "^1.5.2",
     "webpack": "^5.103.0"
   },
   "peerDependencies": {
