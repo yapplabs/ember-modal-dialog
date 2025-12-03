@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
 import { typeOf } from '@ember/utils';
 import Component from '@ember/component';
-import { capitalize } from '@ember/string';
+import { capitalize } from '../utils/string-utils';
 import { observer, computed } from '@ember/object';
 import { on } from '@ember/object/evented';
 

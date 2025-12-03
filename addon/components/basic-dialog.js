@@ -2,7 +2,7 @@ import { computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 import { isEmpty } from '@ember/utils';
-import { dasherize } from '@ember/string';
+import { dasherize } from '../utils/string-utils';
 
 import { isIOS, clickHandlerDelay } from '../utils/config-utils';
 
