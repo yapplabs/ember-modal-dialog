@@ -141,8 +141,8 @@ importers:
         specifier: ^0.37.1
         version: 0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2)
       liquid-tether:
-        specifier: github:pzuraq/liquid-tether#4539ef7756c91d4fcffe71c5ee91d15a645f6876
-        version: https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
+        specifier: ^3.0.0
+        version: 3.0.0(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
       liquid-wormhole:
         specifier: ^6.0.0
         version: 6.0.0(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0)
@@ -4266,9 +4266,8 @@ packages:
     peerDependencies:
       velocity-animate: ^1.5.2
 
-  liquid-tether@https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876:
-    resolution: {tarball: https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876}
-    version: 2.0.7
+  liquid-tether@3.0.0:
+    resolution: {integrity: sha512-Bs8gNaOT1Mq/bN02H8WR3ypTttITuaHnAYLyUDlQ89+aS9o2nYuuauGXYGGAl9RPQHbSSapC1l70QEAgsmSltA==}
     engines: {node: '>= 18'}
     peerDependencies:
       liquid-fire: ^0.37.1
@@ -12095,7 +12094,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  liquid-tether@https://codeload.github.com/pzuraq/liquid-tether/tar.gz/4539ef7756c91d4fcffe71c5ee91d15a645f6876(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0):
+  liquid-tether@3.0.0(ember-source@5.12.0(@glimmer/component@1.1.2(@babel/core@7.28.5))(rsvp@4.8.5)(webpack@5.103.0))(liquid-fire@0.37.1(@babel/core@7.28.5)(velocity-animate@1.5.2))(velocity-animate@1.5.2)(webpack@5.103.0):
     dependencies:
       '@babel/core': 7.28.5
       broccoli-funnel: 3.0.8
