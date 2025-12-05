@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
-import { dasherize } from '@ember/string';
+import { dasherize } from '../utils/string-utils';
 import { typeOf } from '@ember/utils';
 import { assert, warn } from '@ember/debug';
 import { DEBUG } from '@glimmer/env';

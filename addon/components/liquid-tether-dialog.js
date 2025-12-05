@@ -1,6 +1,6 @@
 /* eslint-disable ember/no-computed-properties-in-native-classes */
 import { computed, set } from '@ember/object';
-import { dasherize } from '@ember/string';
+import { dasherize } from '../utils/string-utils';
 
 import BasicDialog from './basic-dialog';
 

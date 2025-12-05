@@ -15,7 +15,10 @@ module(
         </EmberModalDialog::-LiquidDialog>
       `);
 
-      assert.dom().hasText('Hello world!');
+      // Scope assertion to the modal dialog element specifically, not the entire test container.
+      // liquid-fire keeps hidden animation artifacts in the DOM for transitions,
+      // so checking the entire #ember-testing container would include those hidden copies.
+      assert.dom('.ember-modal-dialog').hasText('Hello world!');
     });
   },
 );
