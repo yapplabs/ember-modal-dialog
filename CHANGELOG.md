@@ -1,3 +1,11 @@
+## v5.0.0 (2025-12-08)
+
+#### :boom: Breaking Change
+* [#415](https://github.com/yapplabs/ember-modal-dialog/pull/415) Update liquid-* deps, remove @ember/string usage ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v4.1.5 (2024-12-07)
 
 #### :bug: Bug Fix
